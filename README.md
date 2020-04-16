@@ -13,11 +13,11 @@
 - `git push origin { pushしたいブランチ名 }`  
 
 # 新しいブランチを作成
-- 作成したと同時にブランチ切替 `git checkout -b { ブランチ名 }`  
-- 作成のみ、ブランチ切替は行われない `git branch { ブランチ名 }`  
+- `git checkout -b { ブランチ名 }` （作成したと同時にブランチ切替）
+- `git branch { ブランチ名 }` （作成のみ、ブランチ切替は行われない）
 
 # 状態を確認したい場合
 - `git status`  
 
 # コマンド参考
-- [Qiita ~Gitコマンド一覧~](ttps://qiita.com/fukumone/items/73e1a9a62c5e4454263b)
+- [Qiita ~Gitコマンド一覧~](https://qiita.com/fukumone/items/73e1a9a62c5e4454263b)
