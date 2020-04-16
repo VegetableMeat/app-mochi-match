@@ -20,4 +20,4 @@
 - `git status`  
 
 # コマンド参考
-- [Qiita ~Gitコマンド一覧~](https://qiita.com/fukumone/items/73e1a9a62c5e4454263b)
+- [Qiita Gitコマンド一覧](https://qiita.com/fukumone/items/73e1a9a62c5e4454263b)
