@@ -1,9 +1,11 @@
+/*
 import React from 'react';
 
-export default function CreateRoomButton() {
+export default function CreateRoomButton(room, createRoom) {
     return (
         <div>
-            <button>ルーム作成</button>
+            <button onClick={() => createRoom()}>ルーム作成</button>
+            {room}
         </div>
     )
-}
+}*/

@@ -4,6 +4,7 @@ import Header from '../components/Header';
 const mapStateToProps = (state) => {
     return {
         title: state.header.title,
+        room: state.createRoomButton.room
     };
 };
 
