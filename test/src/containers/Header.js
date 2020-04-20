@@ -4,7 +4,6 @@ import Header from '../components/Header';
 const mapStateToProps = (state) => {
     return {
         title: state.header.title,
-        test: state.header.test
     };
 };
 
