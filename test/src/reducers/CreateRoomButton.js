@@ -1,16 +1,25 @@
 import { CREATE_ROOM } from "../actions";
 
 const initialState = {
-    room: 0
+    id: 0,
+    name: 'ルーム番号',
+    room: []
 }
 
 const testReducer = (state = initialState, action) => {
+    console.log(state)
     switch (action.type) {
         case CREATE_ROOM:
-            state++;
-            return state;
+            return {
+                ...state,
+                id: ++state.id,
+                room: [
+                    ...state.room,
+                    state.name
+                ]
+            };
         default:
-            return state.room;
+            return state;
     }
 }
 

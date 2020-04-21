@@ -1,13 +1,7 @@
-// import React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import CreateRoomButton from '../components/CreateRoomButton';
 import { createRoom } from '../actions';
-
-const mapStateToProps = (state) => {
-    return {
-        room: state.createRoomButton
-    };
-};
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -17,4 +11,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateRoomButton);
+export default connect(null, mapDispatchToProps)(CreateRoomButton);
