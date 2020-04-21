@@ -3,11 +3,12 @@ const initialState = {
     test: 'test'
 }
 
-const testReducer = (state = initialState, action) => {
+const header = (state = initialState, action) => {
     switch (action.type) {
+
         default:
             return state;
     }
 }
 
-export default testReducer;
+export default header;

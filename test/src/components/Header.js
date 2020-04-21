@@ -7,7 +7,7 @@ export default function Header({ title }) {
         <div id="header">
             HEADER
             {title}
-            <CreateRoomButton />
+            <CreateRoomButton  />
         </div>   
     )
 }
