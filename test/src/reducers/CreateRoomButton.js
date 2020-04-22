@@ -6,9 +6,9 @@ const roomState = (state = [], action) => {
             return [
                 ...state,
                         {
-                            id: 1,
-                            host: 1,
-                            game: 1
+                            id: action.id,
+                            host: action.host,
+                            game: action.game
                         }
                     ]
         default:

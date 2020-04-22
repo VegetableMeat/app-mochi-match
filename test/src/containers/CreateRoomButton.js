@@ -4,14 +4,14 @@ import { createRoom } from '../actions';
 
 const mapStateToProps = (state) => {
     return {
-        room: state.roomState
+        room: state.roomState,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createRoom: () => {
-            dispatch(createRoom());
+        createRoom: (host, game) => {
+            dispatch(createRoom(host, game));
         }
     }
 }

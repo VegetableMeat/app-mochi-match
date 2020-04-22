@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './containers/Header';
 import Footer from './components/Footer';
-import Body from './components/Body';
+import Body from './containers/Body';
 
 export default function App() {
   return (
