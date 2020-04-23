@@ -1,8 +1,8 @@
 import React from 'react';
-import './Header.css';
-import CreateRoomButton from '../containers/CreateRoomButton';
+import './css/header.css';
+import CreateRoomButton from '../containers/createRoomButton';
 
-export default function Header({ title }) {
+export default function header({ title }) {
     return (
         <div id="header">
             HEADER

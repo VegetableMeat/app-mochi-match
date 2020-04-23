@@ -1,7 +1,7 @@
 import React from 'react';
-import './Footer.css';
+import './css/footer.css';
 
-export default function Footer() {
+export default function footer() {
     return (
         <div id="footer">
             FOOTER

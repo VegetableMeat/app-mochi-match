@@ -1,6 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import CreateRoomButton from '../components/CreateRoomButton';
+import CreateRoomButton from '../components/createRoomButton';
 import { createRoom } from '../actions';
 
 const mapDispatchToProps = (dispatch) => {

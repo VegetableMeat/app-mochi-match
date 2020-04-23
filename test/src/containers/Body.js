@@ -1,8 +1,8 @@
-// import React from 'react';
 import { connect } from 'react-redux';
-import Body from '../components/Body';
+import Body from '../components/body';
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
         room: state.createRoomButton.room
     };
