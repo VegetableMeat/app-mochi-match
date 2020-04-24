@@ -5,13 +5,13 @@ import Header from '../containers/Header';
 import Footer from './Footer';
 import Body from './Body';
 
-export default function Top() {
+export default function GameCreate() {
   return (
-    <div className="top">
+    <div className="game-create">
       <Header />
       <Body>
-        <h1>TOP画面です</h1>
-        <Link to='/gameCreate'>ゲーム作成画面へ</Link>
+        <h1>ゲーム作成画面です</h1>
+        <Link to='/'>TOP画面へ</Link>
       </ Body>
       <Footer />
     </div>

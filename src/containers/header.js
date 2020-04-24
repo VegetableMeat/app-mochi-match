@@ -1,17 +1,10 @@
 import { connect } from 'react-redux';
-import Header from '../components/header';
+import Header from '../components/Header';
 
 const mapStateToProps = (state) => {
-    return {
-        title: state.header.title,
-        room: state.createRoomButton.room
-    };
+  return {
+    title: state.Header.title
+  };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);

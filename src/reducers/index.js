@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import header from './header';
-import createRoomButton from './createRoomButton';
+import Header from './Header';
 
 const test =  combineReducers({
-    header,
-    createRoomButton
+  Header
 })
 
 export default test;
