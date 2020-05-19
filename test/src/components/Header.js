@@ -1,13 +1,12 @@
 import React from 'react';
-import './Header.css';
-import CreateRoomButton from '../containers/CreateRoomButton';
+import './css/Header.css';
 
-export default function Header({ title }) {
-    return (
-        <div id="header">
-            HEADER
-            {title}
-            <CreateRoomButton  />
-        </div>   
-    )
+export default function Header() {
+  return (
+    <div id="header">
+        <div class="title">
+            もちまっちげーみんぐ
+        </div>
+    </div>
+  )
 }

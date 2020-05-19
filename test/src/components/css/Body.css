@@ -1,0 +1,19 @@
+#body {
+  width: 94vw;
+  height: calc(100vh - 210px);
+  margin: 40px 3vw;
+}
+
+@media screen and (min-width: 1000px) {
+    #body {
+      width: 960px;
+      margin: 40px calc((100% - 960px) / 2);
+    }
+}
+
+@media screen and (max-width: 480px) {
+  #body {
+    width: 96vw;
+    margin: 40px 2vw;
+  }
+}

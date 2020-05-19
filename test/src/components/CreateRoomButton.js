@@ -1,9 +1,13 @@
 import React from 'react';
 
-export default function CreateRoomButton({ createRoom }) {
-    return (
-        <div>
-            <button onClick={() => createRoom("HOST NAME", "GAME NAME")}>ルーム作成</button>
-        </div>
-    )
+import './css/CreateRoomButton.css';
+
+export default function CreateRoomButton() {
+  return (
+    <div className="create-room-button">
+        <button>
+            <i class="fas fa-pen"></i>
+        </button>
+    </div>
+  )
 }
