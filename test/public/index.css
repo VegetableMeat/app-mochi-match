@@ -1,3 +1,9 @@
 body {
     background-color: #EBEBEB;
 }
+
+@media screen and (max-width: 320px) {
+    body {
+        width: 320px;
+    }
+}
