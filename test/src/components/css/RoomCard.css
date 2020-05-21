@@ -1,0 +1,28 @@
+.room-card {
+    display: inline-block;
+    width: 30%;
+    height: 200px;
+    margin: 0 0 3% 3%;
+    border: 1px solid black;
+}
+
+@media screen and (min-width: 1000px) {
+    .room-card {
+        width: 220px;
+        margin: 0 0 19px 19px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .room-card {
+        width: 48%;
+        margin: 0 0 18px 2%;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .room-card {
+        width: 100%;
+        margin: 0 0 16px 0;
+    }
+}

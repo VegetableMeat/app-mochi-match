@@ -1,6 +1,5 @@
 #body {
   width: 94vw;
-  height: calc(100vh - 210px);
   margin: 40px 3vw;
   display: flex;
 }

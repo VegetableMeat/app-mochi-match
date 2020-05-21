@@ -3,7 +3,8 @@
     width: 94vw;
     height: 60px;
     border: 1px black solid;
-    margin: 0 3vw 60px;
+    margin: 0 3vw;
+    padding: 20px 0 180px;
 }
 
   @media screen and (min-width: 1000px) {

@@ -1,7 +1,7 @@
 #footer {
   background-color: #A8A8A8;
   position: absolute;
-  top: 100vh;
+  bottom: 0;
   width: 100vw;
   height: 90px;
 }
