@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+import reducer from './store/Reducers';
 
 import Top from './components/Top';
 import GameCreate from './components/GameCreate';
-
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducer from './reducers';
 
 const store = createStore(reducer);
 

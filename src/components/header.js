@@ -1,10 +1,12 @@
 import React from 'react';
 import './css/Header.css';
 
-export default function Header({ title }) {
+export default function Header() {
   return (
     <div id="header">
-      {title}
+        <div class="title">
+            もちまっちげーみんぐ
+        </div>
     </div>
   )
 }

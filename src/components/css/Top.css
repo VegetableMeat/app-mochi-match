@@ -1,0 +1,21 @@
+#top {
+    position: relative;
+    min-height: 100vh;
+}
+
+
+.menu-wrapper-1 {
+    transform: translateY(0px);
+}
+
+.menu-wrapper-2 {
+    transform: translateY(-20px);
+}
+
+.menu-wrapper-3 {
+    transform: translateY(-40px);
+}
+
+.menu-wrapper-3 .menu-inner-wrapper{
+    padding: 20px 12px;
+}

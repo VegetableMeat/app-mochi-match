@@ -1,0 +1,13 @@
+.main-body {
+    width: calc(100vw - 6vw - 200px - 40px);
+    max-width: 720px;
+    
+    border: black solid 1px;
+    display: inline-block;
+}
+
+@media screen and (max-width: 480px) {
+    .main-body {
+        width: calc(100vw - 4vw - 120px - 20px);
+    }
+}
