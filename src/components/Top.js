@@ -10,9 +10,8 @@ import CreateRoomButton from './CreateRoomButton';
 import PageNation from './PageNation';
 import MenuHeader from './MenuHeader';
 import MenuInnerWrapper from './MenuInnerWrapper';
-import RoomContents from './RoomContents';
+import RoomContents from '../containers/RoomContentsContainer';
 import './css/Top.css';
-import RoomCard from './RoomCard';
 
 export default function Top() {
   return (
@@ -40,9 +39,7 @@ export default function Top() {
           </div>
         </SideMenu>
         <MainBody>
-          <RoomContents>
-            <RoomCard />
-          </RoomContents>
+          <RoomContents />
         </MainBody>
       </ Body>
       <CreateRoomButton />

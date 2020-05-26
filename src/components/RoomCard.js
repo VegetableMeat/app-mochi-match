@@ -1,10 +1,10 @@
 import React from 'react';
 import './css/RoomCard.css';
 
-export default function RoomCard() {
+export default function RoomCard(props) {
   return (
     <div className="room-card">
-        RoomCard
+      {props.children}
     </div>
   )
 }

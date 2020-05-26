@@ -21,7 +21,7 @@ const requestRoomListApi = () => {
 
 function* fetchRoomList() {
   const { data, error } = yield call(requestRoomListApi)
-
+  
   if(data) {
     yield put(getRoomOk(data))
   } else {
