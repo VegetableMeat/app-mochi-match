@@ -42,9 +42,6 @@ export default function Top() {
         <MainBody>
           <RoomContents>
             <RoomCard />
-            <RoomCard />
-            <RoomCard />
-            <RoomCard />
           </RoomContents>
         </MainBody>
       </ Body>
