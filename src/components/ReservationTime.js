@@ -5,7 +5,7 @@ export default function ReservationTime() {
   return (
     <div className="reservation-time">
         <div>
-            5/25 22:00~
+            12/31 23:59~
         </div>
     </div>   
   )

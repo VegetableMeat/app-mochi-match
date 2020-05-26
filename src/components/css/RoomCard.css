@@ -1,9 +1,12 @@
 .room-card {
     display: inline-block;
     width: 30%;
-    height: 200px;
+    min-height: 200px;
     margin: 0 0 3% 3%;
-    border: 1px solid black;
+    border-radius: 0 16px 16px 16px;
+    padding: 8px 10px;
+    position: relative;
+    background-color: #a8a8a8;
 }
 
 @media screen and (min-width: 1000px) {
@@ -25,4 +28,16 @@
         width: 100%;
         margin: 0 0 16px 0;
     }
+}
+
+.room-card .simple-profile {
+    margin: 14px 0 0;
+}
+
+.room-card .game-plate {
+    margin: 0;
+}
+
+.room-card .recrutiment-text {
+    margin-bottom: 20px;
 }

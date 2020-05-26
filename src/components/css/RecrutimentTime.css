@@ -1,0 +1,11 @@
+.recrutiment-time {
+    background-color: rgb(110, 110, 110);
+    color: white;
+    font-size: 10px;
+    padding: 2px 12px;
+    width: 100px;
+    border-radius: 15px 0 15px 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

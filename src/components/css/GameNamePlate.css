@@ -1,0 +1,18 @@
+.game-name-plate {
+    display: inline-block;
+    position: absolute;
+    top: 6px;
+    left: 0;
+    height: 20px;
+    padding: 2px 12px 2px 28px;
+    margin-left: 4px;
+    background-color: #4dcee6;
+    border-radius: 28px;
+    filter: drop-shadow(2px 2px 1px gray);
+}
+
+.game-name-plate .game-title {
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
+}
