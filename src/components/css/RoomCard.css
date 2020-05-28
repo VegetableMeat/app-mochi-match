@@ -23,7 +23,7 @@
     }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 620px) {
     .room-card {
         width: 100%;
         margin: 0 0 16px 0;
