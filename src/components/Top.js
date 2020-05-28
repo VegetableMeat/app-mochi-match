@@ -11,6 +11,7 @@ import PageNation from './PageNation';
 import MenuHeader from './MenuHeader';
 import MenuInnerWrapper from './MenuInnerWrapper';
 import RoomContents from '../containers/RoomContentsContainer';
+import FavoriteGames from './FavoriteGames';
 import './css/Top.css';
 
 export default function Top() {
@@ -28,13 +29,13 @@ export default function Top() {
           <div className="menu-wrapper menu-wrapper-2">
             <MenuHeader text="お気に入りゲーム" />
             <MenuInnerWrapper>
-              ゲーム一覧
+              <FavoriteGames />
             </MenuInnerWrapper>
           </div>
             <div className="menu-wrapper menu-wrapper-3">
             <MenuHeader text="人気ゲーム" />
             <MenuInnerWrapper>
-              ゲーム一覧
+              人気ゲーム
             </MenuInnerWrapper>
           </div>
         </SideMenu>
