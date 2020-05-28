@@ -2,7 +2,6 @@
     width: 200px;
     margin: 0 40px 0 0;
     height: calc(100vh - 210px);
-    border: black solid 1px;
     display: inline-block;
 }
 
