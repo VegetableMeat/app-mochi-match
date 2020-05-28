@@ -13,6 +13,8 @@ import MenuInnerWrapper from './MenuInnerWrapper';
 import RoomContents from './RoomContents';
 import './css/Top.css';
 import RoomCard from './RoomCard';
+import ShadowInputArea from './ShadowInputArea';
+import SerchButton from './SerchButton';
 
 export default function Top() {
   return (
@@ -23,7 +25,8 @@ export default function Top() {
           <div className="menu-wrapper menu-wrapper-1">
             <MenuHeader text="検索" />
             <MenuInnerWrapper>
-              検索フォーム
+              <ShadowInputArea />
+              <SerchButton />
             </MenuInnerWrapper>
           </div>
           <div className="menu-wrapper menu-wrapper-2">

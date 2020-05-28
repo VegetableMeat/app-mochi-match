@@ -19,3 +19,7 @@
 .menu-wrapper-3 .menu-inner-wrapper{
     padding: 20px 12px;
 }
+
+#top .shadow-input-area input {
+    padding-right: 40px;
+}
