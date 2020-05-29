@@ -12,6 +12,7 @@ import MenuHeader from './MenuHeader';
 import MenuInnerWrapper from './MenuInnerWrapper';
 import RoomContents from '../containers/RoomContentsContainer';
 import FavoriteGames from './FavoriteGames';
+import PopularGames from '../containers/PopularGamesContainer'
 import './css/Top.css';
 
 export default function Top() {
@@ -35,7 +36,7 @@ export default function Top() {
             <div className="menu-wrapper menu-wrapper-3">
             <MenuHeader text="人気ゲーム" />
             <MenuInnerWrapper>
-              人気ゲーム
+              <PopularGames />
             </MenuInnerWrapper>
           </div>
         </SideMenu>
