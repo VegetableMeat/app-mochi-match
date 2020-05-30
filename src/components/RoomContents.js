@@ -7,7 +7,7 @@ export default class RoomContents extends Component {
     this.props.actions.getRoomReq()
   }
   render() {
-    const { data, loadingFlag } = this.props.data
+    const { data, loadingFlag } = this.props
     return (
       <div className="room-contents">
         {data.map((data) => (<RoomCard key={data.room_id}>

@@ -5,9 +5,9 @@ import * as Actions from '../store/room/Action.js';
 import RoomContents from '../components/RoomContents';
 
 const mapStateToProps = (state) => {
-  console.log(state.roomState)
   return {
-    data: state.roomState
+    data: state.roomListState.data,
+    loaddingFlag: state.roomListState.loaddingFlag
   }
 }
 
