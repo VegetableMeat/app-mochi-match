@@ -10,8 +10,8 @@ export default class RoomContents extends Component {
     const { data, loadingFlag } = this.props
     return (
       <div className="room-contents">
-        {data.map((data) => (<RoomCard key={data.room_id}>
-            owner_id: {data.owner_id}<br/>
+        {data.map((data) => (<RoomCard key={data.room_id} data={data} />))}
+          {/* owner_id: {data.owner_id}<br/>
             icon: {data.icon}<br/>
             name: {data.name}<br/>
             hard: {data.hard}<br/>
@@ -19,8 +19,7 @@ export default class RoomContents extends Component {
             capacity: {data.capacity}<br/>
             text: {data.text}<br/>
             created: {data.created}<br/>
-            start: {data.start}
-          </RoomCard>))}
+            start: {data.start} */}
       </div>
     )
   }

@@ -1,0 +1,19 @@
+.capacity {
+    display: flex;
+    transform: translateY(-8px);
+}
+
+.capacity .label, .capacity .value {
+    display: inline-block;
+}
+
+.capacity .label {
+    color: white;
+    font-size: 9px;
+    margin: 8px 2px 0 auto; 
+}
+
+.capacity .value {
+    color: yellow;
+    font-size: 18px;
+}

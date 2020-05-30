@@ -12,7 +12,9 @@ import MenuHeader from './MenuHeader';
 import MenuInnerWrapper from './MenuInnerWrapper';
 import RoomContents from '../containers/RoomContentsContainer';
 import FavoriteGames from './FavoriteGames';
-import PopularGames from '../containers/PopularGamesContainer'
+import PopularGames from '../containers/PopularGamesContainer';
+import ShadowInputArea from './ShadowInputArea';
+import SerchButton from './SerchButton';
 import './css/Top.css';
 
 export default function Top() {
@@ -24,7 +26,8 @@ export default function Top() {
           <div className="menu-wrapper menu-wrapper-1">
             <MenuHeader text="検索" />
             <MenuInnerWrapper>
-              検索フォーム
+              <ShadowInputArea />
+              <SerchButton />
             </MenuInnerWrapper>
           </div>
           <div className="menu-wrapper menu-wrapper-2">

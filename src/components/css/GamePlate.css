@@ -1,0 +1,5 @@
+.game-plate {
+    display: flex;
+    margin: 4px 8px;
+    position: relative;
+}

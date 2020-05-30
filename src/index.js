@@ -7,15 +7,6 @@ import store from './Store';
 import Top from './components/Top';
 import GameCreate from './components/GameCreate';
 
-// import { createStore, applyMiddleware } from 'redux';
-// import { createLogger } from 'redux-logger';
-// import reducer from './store/Reducers';
-
-// const store = createStore(
-//   reducer,
-//   applyMiddleware(createLogger())
-// );
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
