@@ -10,7 +10,7 @@ export default class RoomContents extends Component {
     const { data, loadingFlag, commonActions } = this.props
     return (
       <div className="room-contents">
-        {data.map((data) => (<RoomCard key={data.room_id} data={data} onClick={commonActions} />))}
+        {data.map((data) => (<RoomCard key={data.room_id} data={data} action={commonActions} />))}
       </div>
     )
   }
