@@ -5,12 +5,10 @@ export default class PopularGames extends Component {
     this.props.actions.getPopularGamesReq()
   }
   render() {
-    const { data, loadingFlag } = this.props.data
-    {console.log(data)}
+    const { data, loadingFlag } = this.props
     return (
       <ol>
-         {/* {data.popular.map((data, key) => (<li key={key}>{data}</li>))}  */}
-          
+        {data.map((value, key) => (<li key={key}>{value.popular}</li>))}
       </ol>
     )
   }

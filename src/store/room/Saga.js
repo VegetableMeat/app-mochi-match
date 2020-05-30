@@ -7,7 +7,7 @@ import {
 } from './Action';
 
 const requestRoomListApi = () => {
-  const url = `http://192.168.1.42:3000/room/list`;
+  const url = `http://localhost:3000/room/list`;
   return axios
     .get(url)
     .then((res) => {
