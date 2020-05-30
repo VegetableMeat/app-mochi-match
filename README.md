@@ -4,17 +4,18 @@
 # 基本的なPushまでの流れ
 **変更した内容をadd**  
 - `git add .` （全部の場合）
-- `git add { pushしたいファイル名 }`
+- `git add pushしたいファイル名` （一つずつ指定したい場合）
 
 **コミットメッセージを記述**  
-- `git commit -m "{ ここにメッセージを残す }"`
+- `git commit -m "ここにメッセージを残す"`
 
 **指定したブランチにpushする**  
-- `git push origin { pushしたいブランチ名 }`  
+- `git push origin pushしたいブランチ名`
+- `git push origin HEAD` （大抵はこっちでいい）
 
 # 新しいブランチを作成
-- `git checkout -b { ブランチ名 }` （作成したと同時にブランチ切替）
-- `git branch { ブランチ名 }` （作成のみ、ブランチ切替は行われない）
+- `git checkout -b ブランチ名` （作成したと同時にブランチ切替）
+- `git branch ブランチ名` （作成のみ、ブランチ切替は行われない）
 
 # 状態を確認したい場合
 - `git status`  
