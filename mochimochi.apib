@@ -137,9 +137,9 @@ googleログイン後のコールバック処理
 + hard: 1 (number) - ゲームハード識別番号
 + title: MOCHIMOCHI (string) - ゲームタイトル名
 + capacity: 4 (number) - 制限人数
-+ text: もちもちしたい人集まれ～＞＜ (string) - 募集テキスト
-+ created: 4月5日 16時50分 (string) - ルーム作成日時
-+ start: 14時30分 (string) - ルーム開始時間
++ text: もちもちしたい人集まれ～＞＜一緒にもちもちしましょう！！！ (string) - 募集テキスト
++ created: 4/5 16:50 (string) - ルーム作成日時
++ start: 4/18 14:30~ (string, nullable) - ルーム開始時間
 
 # Group Room
 ## ルームリスト全取得 [GET /room/list]
@@ -172,14 +172,9 @@ googleログイン後のコールバック処理
     + Body
     ```
     [
-        {
-            "favorite": [
-                "モンスト",
-                "パズドラ",
-                "グラブル",
-                "ダー糞ウル（糞）"
-            ]
-        }
+        { "favorite": "パズドラ" },
+        { "favorite": "ダー糞ウル（糞）" },
+        { "favorite": "グラブル" }
     ]
     ```
 
@@ -190,14 +185,10 @@ googleログイン後のコールバック処理
     + Body
     ```
     [
-        {
-            "popular": [
-                "ダー糞ウル（糞）",
-                "パズドラ",
-                "モンスト",
-                "グラブル"
-            ]
-        }
+        { "popular": "ダー糞ウル（糞）" },
+        { "popular": "パズドラ" },
+        { "popular": "モンスト" },
+        { "popular": "グラブル" }
     ]
     ```
         
