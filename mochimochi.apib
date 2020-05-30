@@ -2,6 +2,131 @@ FORMAT: 1A
 
 # MochiMochi API
 
+# Group 認証
+## 認証処理のエンドポイント [/v1/auth]
+### Googleログイン [GET /v1/auth/google/login]
+googleログイン画面へリダイレクトさせる
+
++ Response 307 (text/html; charset=utf-8)
+    + Headers
+
+            Location: https://accounts.google.com/o/oauth2/auth
+
+### Googleコールバック [GET /v1/auth/google/callback]
+googleログイン後のコールバック処理
+
++ Response 307 (text/html; charset=utf-8)
+    + Headers
+
+            Location: ここをユーザー登録画面のURLに書き換えておいてください
+
+### トークンリフレッシュ [POST /v1/auth/refresh]
+リフレッシュトークンを用いてトークンを新しく発行する
+
++ Request (application/json)
+    + Attributes
+        + refresh_token: `リフレッシュトークン` (string, required)
+
++ Response 200 (application/json)
+    + Attributes
+        + access_token: `{アクセストークン}` (string) - 新しく発行されたアクセストークン
+        + refresh_token: `{リフレッシュトークン}` (string) - 新しく発行されたリフレッシュトークン
+        + expire_in: `1591033027` (string) - UNIX形式のリフレッシュトークンの有効期限
+
+# Group ユーザー　
+## ユーザー操作のエンドポイント [/v1/users]
+### ユーザー登録 [POST]
+新規ユーザを登録する
+
++ Request (application/json)
+    + Attributes
+        + user_name: `example name` (string, required) - ユーザ名
+        + email: `example@gmail.com` (string, required) - メールアドレス
+
++ Response 200 (application/json)
+    + Attributes
+        + access_token: `example token` (string) - アクセストークン
+        + refresh_token: `example token` (string) - リフレッシュトークン
+        + expires_in: `123456` (string) - UNIX形式のリフレッシュトークンの有効期限
+
+### ユーザー情報取得 [GET]
+自分のユーザ情報を取得する
+
++ Request (application/json)
+    + Headers
+        ```
+        Authorization: Bearer {token}
+        ```
++ Response 200 (application/json)
+    + Attributes
+        + user_id: `1234` (string) - ユーザーID
+        + user_name: `example name` (string) - ユーザーネーム
+        + icon: 1 (number) - ユーザーアイコン
+        + favorite_games (array[object], fixed-type) - お気に入り登録ゲーム
+            + (object)
+                + game_id: 1234 (string) - ゲームID
+                + game_title: example game (string) - ゲームタイトル
+
+### 他ユーザー情報取得 [GET /v1/users/{id}]
+他人のユーザ情報を取得する
+
++ Parameters
+    + id: 1 (string) - ユーザーID
+
++ Request (application/json)
+    + Headers
+        ```
+        Authorization: Bearer {token}
+        ```
++ Response 200 (application/json)
+    + Attributes
+        + user_id: `1234` (string) - ユーザーID
+        + user_name: `example name` (string) - ユーザーネーム
+        + icon: 1 (number) - ユーザーアイコン
+        + favorite_games (array[object], fixed-type) - お気に入り登録ゲーム
+            + (object)
+                + game_id: 1234 (string) - ゲームID
+                + game_title: example game (string) - ゲームタイトル
+
+### ユーザー情報更新 [PUT /v1/users/{id}]
+自分のユーザ情報を取得する
+
++ Parameters
+    + id: 1 (string) - ユーザーID
+
++ Request (application/json)
+    + Headers
+        ```
+        Authorization: Bearer {token}
+        ```
+    + Attributes
+        + user_name: `example name` (string, required) - ユーザーネーム
+        + icon: 1 (number, required) - ユーザーアイコン
+        + favorite_games (array[object], fixed-type, required) - お気に入り登録ゲーム
+            + (object)
+                + game_id: 1234 (string, required) - ゲームID
+                + game_title: example game (string, required) - ゲームタイトル
+
++ Response 200 (application/json)
+    + Attributes
+        + message: `ok` (string) - 処理メッセージ
+
+### ユーザー削除 [DELETE /v1/users/{id}]
+自分のユーザアカウントを削除する
+
++ Parameters
+    + id: 1 (string) - ユーザーID
+
++ Request (application/json)
+    + Headers
+        ```
+        Authorization: Bearer {token}
+        ```
++ Response 200 (application/json)
+    + Attributes
+        + message: `ok` (string) - 処理メッセージ
+
+
 # Data Structures
 
 ## Room (object)
