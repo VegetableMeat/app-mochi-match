@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 
 export default class FavoriteGames extends Component {
-  // componentDidMount() {
-  //   this.props.actions.getRoomReq()
-  // }
+  componentDidMount() {
+    this.props.actions.getFavoriteGamesReq()
+  }
   render() {
-    // const { data, loadingFlag } = this.props.data
+    const { data, loadingFlag } = this.props
+    console.log(data)
     return (
       <ul>
-        {/* {data.map((data, key) => (<li key={key}>
-            
-          </li>))} */}
-          <li>あああ</li>
-          <li>いいいい</li>
-          <li>ううう</li>
+        {data.map((value, key) => (<li key={key}>{value.favorite}</li>))}
       </ul>
     )
   }

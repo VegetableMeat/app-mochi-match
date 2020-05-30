@@ -11,7 +11,7 @@ import PageNation from './PageNation';
 import MenuHeader from './MenuHeader';
 import MenuInnerWrapper from './MenuInnerWrapper';
 import RoomContents from '../containers/RoomContentsContainer';
-import FavoriteGames from './FavoriteGames';
+import FavoriteGames from '../containers/FavoriteGamesContainer';
 import PopularGames from '../containers/PopularGamesContainer';
 import ShadowInputArea from './ShadowInputArea';
 import SerchButton from './SerchButton';

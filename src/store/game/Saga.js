@@ -10,7 +10,7 @@ import {
 } from './Action';
 
 const requestFavoriteGamesApi = () => {
-  const url = `http://192.168.1.42:3000/favorite-game/1`;
+  const url = `http://localhost:3000/favorite-game/1`;
   return axios
     .get(url)
     .then((res) => {
