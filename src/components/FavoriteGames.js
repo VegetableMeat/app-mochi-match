@@ -5,11 +5,10 @@ export default class FavoriteGames extends Component {
     this.props.actions.getFavoriteGamesReq()
   }
   render() {
-    const { data, loadingFlag } = this.props
-    console.log(data)
+    const { state } = this.props
     return (
       <ul>
-        {data.map((value, key) => (<li key={key}>{value.favorite}</li>))}
+        {state.data.map((value, key) => (<li key={key}>{value.favorite}</li>))}
       </ul>
     )
   }

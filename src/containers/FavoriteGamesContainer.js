@@ -6,8 +6,7 @@ import FavoriteGames from '../components/FavoriteGames';
 
 const mapStateToProps = (state) => {
   return {
-    data: state.favoriteGameState.data,
-    loadingFlag: state.favoriteGameState.loadingFlag
+    state: state.favoriteGameState
   }
 }
 

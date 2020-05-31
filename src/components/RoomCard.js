@@ -7,9 +7,9 @@ import Capacity from './Capacity';
 import RecrutimentText from './RecrutimentText';
 import RecrutimentTime from './RecrutimentTime';
 
-export default function RoomCard({ data, action }) {
+export default function RoomCard({ data, actions }) {
   return (
-    <div className="room-card" onClick={() => action.showModalTrue('TOP_ROOM_IN', data)}>
+    <div className="room-card" onClick={() => actions.showModalTrue('TOP_ROOM_IN', data)}>
       {data.start && <ReservationTime start={data.start}/>}
       <SimpleProfile icon={data.icon} name={data.name}/>
       <GamePlate hard={data.hard} title={data.title}/>

@@ -7,8 +7,7 @@ import RoomContents from '../components/RoomContents';
 
 const mapStateToProps = (state) => {
   return {
-    data: state.roomListState.data,
-    loaddingFlag: state.roomListState.loaddingFlag
+    state: state.roomListState
   }
 }
 

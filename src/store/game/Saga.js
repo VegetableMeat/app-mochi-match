@@ -9,6 +9,7 @@ import {
   getPopularGamesNg,
 } from './Action';
 
+// Favorite
 const requestFavoriteGamesApi = () => {
   const url = `http://localhost:3000/favorite-game/1`;
   return axios

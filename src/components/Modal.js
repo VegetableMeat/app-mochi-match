@@ -1,34 +1,16 @@
 import React from 'react';
 import './css/Modal.css';
+import ModalMold from './ModalMold';
 
-export default function Modal({ showFlag, category, data, actions }) {
-	if(!showFlag) {
+export default function Modal({ state, actions }) {
+	if(!state.showFlag) {
 		return null;
-	}
-
-	const showModalMolding = (category, data) => {
-		switch(category) {
-			case 'TOP_ROOM_IN':
-				return (
-					<div className="modal-body">
-						{data.name}のルームに参加しますか？
-						<button>
-							参加する
-						</button>
-						<button onClick={() => actions.showModalFalse()}>
-							キャンセル
-						</button>
-					</div>
-				);
-			default:
-				return '何もありません';
-		}
 	}
 	
 	return (
 		<div className="backdrop">
 			<div className="modal">
-				{showModalMolding(category, data)}
+				<ModalMold state={state} actions={actions}/>
 				<div className="modal-footer">
 					<button onClick={() => actions.showModalFalse()}>
 						Close

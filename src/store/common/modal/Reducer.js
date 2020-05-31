@@ -18,7 +18,9 @@ const modalState = (state = initiaState, action) => {
     case SHOW_MODAL_FALSE:
       return {
           ...state,
-          showFlag: false
+          showFlag: false,
+          category: action.category,
+          data: action.data
       }
     default: 
       return state

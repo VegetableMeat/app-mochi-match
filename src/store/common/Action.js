@@ -11,6 +11,8 @@ export const showModalTrue = (category, data) => {
 
 export const showModalFalse = () => {
   return {
-    type: SHOW_MODAL_FALSE
+    type: SHOW_MODAL_FALSE,
+    category: null,
+    data: {}
   }
 }
