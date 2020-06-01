@@ -4,4 +4,7 @@
     background-color: white;
     padding: 10px;
     border-radius: 8px;
+    border: solid black 0px;
+    overflow:scroll;
+    height: 100px;
 }

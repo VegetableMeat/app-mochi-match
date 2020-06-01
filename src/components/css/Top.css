@@ -20,6 +20,11 @@
     padding: 20px 12px;
 }
 
+.menu-wrapper-3 .menu-inner-wrapper {
+    border-radius: 0 0 22px 22px;
+    padding-bottom: 30px;
+}
+
 #top .shadow-input-area input {
     padding-right: 40px;
 }
