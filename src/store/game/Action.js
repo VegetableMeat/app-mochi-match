@@ -1,3 +1,4 @@
+// Favorite
 export const GET_FAVORITE_GAMES_REQ = 'GET_FAVORITE_GAMES_REQ';
 export const GET_FAVORITE_GAMES_OK = 'GET_FAVORITE_GAMES_OK';
 export const GET_FAVORITE_GAMES_NG = 'GET_FAVORITE_GAMES_NG';
@@ -23,7 +24,7 @@ export const getFavoriteGamesNg = (error) => {
   }
 }
 
-// popular
+// Popular
 export const GET_POPULAR_GAMES_REQ = 'GET_POPULAR_GAMES_REQ';
 export const GET_POPULAR_GAMES_OK = 'GET_POPULAR_GAMES_OK';
 export const GET_POPULAR_GAMES_NG = 'GET_POPULAR_GAMES_NG';

@@ -13,6 +13,7 @@ import MenuInnerWrapper from './MenuInnerWrapper';
 import RoomContents from '../containers/RoomContentsContainer';
 import FavoriteGames from '../containers/FavoriteGamesContainer';
 import PopularGames from '../containers/PopularGamesContainer';
+import Modal from '../containers/ModalContainer';
 import ShadowInputArea from './ShadowInputArea';
 import SerchButton from './SerchButton';
 import './css/Top.css';
@@ -50,6 +51,7 @@ export default function Top() {
       <CreateRoomButton />
       <PageNation />
       <Footer />
+      <Modal />
     </div>
   )
 }

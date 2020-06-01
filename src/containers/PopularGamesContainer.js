@@ -6,8 +6,7 @@ import PopularGames from '../components/PopularGames';
 
 const mapStateToProps = (state) => {
   return {
-    data: state.popularGameState.data,
-    loadingFlag: state.popularGameState.loadingFlag
+    state: state.popularGameState
   }
 }
 

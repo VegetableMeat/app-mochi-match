@@ -4,13 +4,13 @@ import './css/RoomContents.css';
 
 export default class RoomContents extends Component {
   componentDidMount() {
-    this.props.actions.getRoomReq()
+    this.props.roomActions.getRoomReq()
   }
   render() {
-    const { data, loadingFlag } = this.props
+    const { state, commonActions } = this.props
     return (
       <div className="room-contents">
-        {data.map((data) => (<RoomCard key={data.room_id} data={data} />))}
+        {state.data.map((data) => (<RoomCard key={data.room_id} data={data} actions={commonActions} />))}
       </div>
     )
   }
