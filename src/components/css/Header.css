@@ -4,6 +4,7 @@
   background-color: #A8A8A8;
   padding: 8px 20px;
   box-shadow: gray 0 0 10px;
+  position: relative;
 }
 
 .title {
@@ -13,5 +14,53 @@
   height: 28px;
   margin: auto;
   font-family: 'Noto Serif JP', serif;
-  
+}
+
+.header-menu-icon {
+  position: absolute;
+  top: 2px;
+  right: 32px;
+  cursor: pointer;
+  padding: 8px;
+  color: white;
+  transition: 0.2s color;
+}
+
+.header-menu-icon:hover, .header-menu-icon:active {
+  color: black;
+}
+
+.header-menu-icon i {
+  font-size: 28px;
+}
+
+.header-menu {
+  z-index: 10;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background-color: white;
+  width: 140px;
+  border-radius: 8px;
+}
+
+.header-menu ul {
+  padding: 12px 20px;
+  list-style: none;
+}
+
+.header-menu li {
+  cursor: pointer;
+  padding: 4px;
+  margin: 6px 0;
+  font-size: 14px;
+  color: #7d7d7d;
+  border-bottom: solid 1px #A8A8A8;
+  font-weight: bold;
+  transition: 0.2s color;
+}
+
+.header-menu li:hover, .header-menu li:active {
+  color: #4dcee6;
+  border-bottom: solid 1px black;
 }

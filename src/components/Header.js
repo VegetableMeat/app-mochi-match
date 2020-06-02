@@ -7,6 +7,18 @@ export default function Header() {
         <div className="title">
             もちまっちげーみんぐ
         </div>
+        <div className="header-menu-icon">
+            <i class="fas fa-user-circle"></i>
+        </div>
+        <div className="header-menu">
+            <ul className="header-menu-list">
+                <li>Login</li>
+                <li>Sign Up</li>
+                <li>Profile</li>
+                <li>Config</li>
+                <li>Play History</li>
+            </ul>
+        </div>
     </div>
   )
 }
