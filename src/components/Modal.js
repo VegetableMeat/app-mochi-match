@@ -11,10 +11,8 @@ export default function Modal({ state, actions }) {
 		<div className="backdrop">
 			<div className="modal">
 				<ModalMold state={state} actions={actions}/>
-				<div className="modal-footer">
-					<button onClick={() => actions.showModalFalse()}>
-						Close
-					</button>
+				<div className="modal-close-button" onClick={() => actions.showModalFalse()}>
+					<i class="fas fa-times"></i>
 				</div>
 			</div>
 		</div>

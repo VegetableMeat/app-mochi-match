@@ -5,11 +5,13 @@ export default function ModalMold({ state, actions }) {
 		case 'TOP_ROOM_IN':
 			return (
 				<div className="modal-body">
-					{state.data.name}のルームに参加しますか？
-					<button>
+					<div className="modal-text modal-header">
+						{state.data.name}のルームに参加しますか？
+					</div>
+					<button className="join-button">
 						参加する
 					</button>
-					<button onClick={() => actions.showModalFalse()}>
+					<button className="cancel-button" onClick={() => actions.showModalFalse()}>
 						キャンセル
 					</button>
 				</div>
