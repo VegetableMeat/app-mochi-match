@@ -33,3 +33,26 @@ export const showHeaderMenuFalse = () => {
     type: SHOW_HEADER_MENU_FALSE
   }
 }
+
+// Auth
+export const AUTH_REQ = 'AUTH_REQ';
+export const AUTH_OK = 'AUTH_OK';
+export const AUTH_NG = 'AUTH_NG';
+
+export const authReq = () => {
+	return {
+		type: AUTH_REQ
+	}
+}
+
+export const authOk = () => {
+	return {
+		type: AUTH_OK
+	}
+}
+
+export const authNg = () => {
+	return {
+		type: AUTH_NG
+	}
+}
