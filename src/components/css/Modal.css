@@ -62,9 +62,14 @@
 	width: 120px;
 	height: 32px;
 	border-radius: 8px;
-	margin: 4px;
+	margin: 4px 12px;
 }
 
 .modal button:focus{
     outline-style: none;
+}
+
+.footer-button-area {
+	width: 100%;
+	text-align: center;
 }

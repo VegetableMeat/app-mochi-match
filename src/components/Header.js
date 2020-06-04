@@ -12,11 +12,11 @@ export default function Header() {
         </div>
         <div className="header-menu">
             <ul className="header-menu-list">
-                <li>Login</li>
-                <li>Sign Up</li>
-                <li>Profile</li>
-                <li>Config</li>
-                <li>Play History</li>
+                <li><i class="fas fa-sign-in-alt"></i>Login</li>
+                <li><i class="fas fa-user-plus"></i>Sign Up</li>
+                <li><i class="far fa-id-card"></i>Profile</li>
+                <li><i class="fas fa-user-cog"></i>Setting</li>
+                <li><i class="fas fa-history"></i>Play History</li>
             </ul>
         </div>
     </div>

@@ -40,7 +40,7 @@
   top: 40px;
   right: 40px;
   background-color: white;
-  width: 140px;
+  width: 160px;
   border-radius: 8px;
 }
 
@@ -63,4 +63,8 @@
 .header-menu li:hover, .header-menu li:active {
   color: #4dcee6;
   border-bottom: solid 1px black;
+}
+
+.header-menu i {
+  width: 24px;
 }

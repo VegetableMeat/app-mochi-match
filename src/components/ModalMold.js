@@ -8,12 +8,14 @@ export default function ModalMold({ state, actions }) {
 					<div className="modal-text modal-header">
 						{state.data.name}のルームに参加しますか？
 					</div>
-					<button className="join-button">
-						参加する
-					</button>
-					<button className="cancel-button" onClick={() => actions.showModalFalse()}>
-						キャンセル
-					</button>
+					<div className="footer-button-area">
+						<button className="join-button">
+							参加する
+						</button>
+						<button className="cancel-button" onClick={() => actions.showModalFalse()}>
+							キャンセル
+						</button>
+					</div>
 				</div>
 			);
 		default:
