@@ -4,7 +4,10 @@ import { ClickAwayListener } from '@material-ui/core';
 export default function HeaderMenu({ state, actions }) {
 	return (
     <ClickAwayListener onClickAway={() => actions.showHeaderMenuFalse()}>
-      <div className="header-menu-wrapper" onClick={() => actions.showHeaderMenuTrue()} onMouseEnter={() => actions.showHeaderMenuTrue()} onMouseLeave={() => actions.showHeaderMenuFalse()}>
+			<div className="header-menu-wrapper" 
+				onClick={() => actions.showHeaderMenuTrue()} 
+				onMouseEnter={() => actions.showHeaderMenuTrue()} 
+				onMouseLeave={() => actions.showHeaderMenuFalse()}>
         <div className="header-menu-icon">
           <i class="fas fa-user-circle"></i>
         </div>
