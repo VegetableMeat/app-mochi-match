@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ClickAwayListener } from '@material-ui/core';
 
 export default function HeaderMenu({ state, actions }) {
@@ -14,7 +15,8 @@ export default function HeaderMenu({ state, actions }) {
         {state.showFlag ?
           <div className="header-menu">
             <ul className="header-menu-list">
-              <li>Login</li>
+              <Link to={'/login'}><li>Login</li></Link>
+			  <Link to={'/logout'}><li>Logout</li></Link>
               <li>Sign Up</li>
               <li>Profile</li>
               <li>Config</li>

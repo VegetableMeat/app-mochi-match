@@ -7,10 +7,11 @@ export default class Auth extends Component {
 	}
 
 	render() {
+		console.log(this.props)
 		return (
 			<div className="auth">
 				{this.props.state.init ?
-					null 
+					null
 					: 
 					this.props.state.loggedIn ?
 						this.props.children
