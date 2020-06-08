@@ -42,6 +42,7 @@
   background-color: white;
   width: 160px;
   border-radius: 8px;
+  box-shadow: gray 2px 2px 6px;
 }
 
 .header-menu ul {
