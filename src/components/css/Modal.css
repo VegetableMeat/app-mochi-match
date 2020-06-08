@@ -77,6 +77,28 @@
 	width: 100%;
 	text-align: center;
 	position: absolute;
-	bottom: 20px;
+	bottom: 50px;
 	left: 0;
+}
+
+.report-button {
+	width: 100px !important;
+	position: absolute;
+	bottom: 12px;
+	right: 0;
+	height: 20px !important;
+	font-size: 11px !important;
+	border-radius: 6px !important;
+}
+
+.color-blue {
+	background-color: blue !important;
+}
+
+.color-red {
+	background-color: red !important;
+}
+
+.color-yellow {
+	background-color: rgb(151, 151, 8) !important;
 }

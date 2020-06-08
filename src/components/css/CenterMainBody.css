@@ -1,0 +1,14 @@
+.center-main-body {
+    width: 600px;
+    height: 400px;
+    border-radius: 20px;
+    background-color: white;
+    margin: 0 calc((100% - 600px) / 2);
+}
+
+@media screen and (max-width: 750px) {
+    .center-main-body {
+        width: 90%;
+        margin: 0 5%;
+    }
+}

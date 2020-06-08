@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/Header.css';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -12,7 +13,7 @@ export default function Header() {
         </div>
         <div className="header-menu">
             <ul className="header-menu-list">
-                <li><i class="fas fa-sign-in-alt"></i>Login</li>
+                <li><Link to="/Login"><i class="fas fa-sign-in-alt"></i>Login</Link></li>
                 <li><i class="fas fa-user-plus"></i>Sign Up</li>
                 <li><i class="far fa-id-card"></i>Profile</li>
                 <li><i class="fas fa-user-cog"></i>Setting</li>
