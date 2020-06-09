@@ -2,6 +2,7 @@ import React from 'react';
 
 import HeaderMenu from '../containers/HeaderMenuContainer';
 import './css/Header.css';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
