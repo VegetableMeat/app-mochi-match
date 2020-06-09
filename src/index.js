@@ -6,9 +6,10 @@ import { Provider } from 'react-redux';
 import store from './Store';
 import Top from './components/Top';
 import GameCreate from './components/GameCreate';
-import Login from './components/Login';
+import Login from './containers/LoginContainer';
 import Logout from './components/Logout';
 import Auth from './containers/AuthContainer';
+import History from './components/History';
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -20,6 +21,7 @@ ReactDOM.render(
 				<Auth>
 					<Switch>
 						<Route exact path='/gameCreate' component={GameCreate} />
+						<Route exact path='/history' component={History} />
 					</Switch>
 				</Auth>
 			</Switch>

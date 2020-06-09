@@ -7,18 +7,18 @@ export default class Auth extends Component {
 	}
 
 	render() {
-		console.log(this.props)
+		if(this.props.state.loadingFlag) {
+			return ( null )
+		} else {
+			if(!this.props.state.loggedIn) {
+				return (
+					<Redirect to={'/login'} />
+				)
+			}
+		}
+
 		return (
-			<div className="auth">
-				{this.props.state.init ?
-					null
-					: 
-					this.props.state.loggedIn ?
-						this.props.children
-						:
-						<Redirect to={'/login'} />
-				}
-			</div>
+			this.props.children
 		)
 	}
 }

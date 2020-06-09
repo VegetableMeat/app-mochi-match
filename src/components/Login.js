@@ -2,25 +2,51 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from './Header';
-import Body from './Body';
 import Footer from './Footer';
+import Body from './Body';
+import CenterMainBody from './CenterMainBody';
+import Modal from '../containers/ModalContainer';
+import BodyHeader from './BodyHeader';
+import { Redirect } from 'react-router-dom';
+
+import './css/Login.css';
 
 export default class Login extends Component {
-	login = () =>  {
-		localStorage.setItem('jwt', 'aaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbb.cccccccccccccccccc')
+	componentDidMount() {
+		this.props.actions.authReq();
 	}
 
 	render() {
-		console.log(localStorage.getItem('jwt'))
-		console.log(this.props)
+		if(this.props.state.loadingFlag) {
+			return ( null )
+		} else {
+			if(this.props.state.loggedIn) {
+				return (
+					<Redirect to={'/'} />
+				)
+			}
+		}
+		
 		return (
 			<div id="login">
-				<Header />
-				<Body>
-					<h1>Login画面です</h1>
-					<Link to={'/'} onClick={() => this.login()}>ログインする</Link>
-				</ Body>
-				<Footer />
+			<Header />
+			<Body>
+				<CenterMainBody>
+				<BodyHeader>
+					ログイン
+				</BodyHeader>
+				<div className="button-area">
+					<button className="facebook">Facebookアカウントでログイン</button>
+					<button className="twitter">Twitterアカウントでログイン</button>
+					<button onClick={() => this.props.actions.loginReq()} className="google">Googleアカウントでログイン</button>
+				</div>
+				<div className="register-link-area">
+					<Link>新規登録</Link>はこちら
+				</div>
+				</CenterMainBody>
+			</Body>
+			<Footer />
+			<Modal />
 			</div>
 		)
 	}

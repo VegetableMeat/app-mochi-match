@@ -36,8 +36,6 @@ export const showHeaderMenuFalse = () => {
 
 // Auth
 export const AUTH_REQ = 'AUTH_REQ';
-export const AUTH_OK = 'AUTH_OK';
-export const AUTH_NG = 'AUTH_NG';
 
 export const authReq = () => {
 	return {
@@ -45,14 +43,39 @@ export const authReq = () => {
 	}
 }
 
-export const authOk = () => {
+// Login
+export const LOGIN_REQ = 'LOGIN_REQ';
+export const LOGIN_OK = 'LOGIN_OK';
+export const LOGIN_NG = 'LOGIn_NG';
+export const LOGOUT_REQ = 'LOGOUT_REQ';
+export const LOGOUT = 'LOGOUT';
+
+export const loginReq = () => {
 	return {
-		type: AUTH_OK
+		type: LOGIN_REQ
 	}
 }
 
-export const authNg = () => {
+export const loginOk = () => {
 	return {
-		type: AUTH_NG
+		type: LOGIN_OK
+	}
+}
+
+export const loginNg = () => {
+	return {
+		type: LOGIN_NG
+	}
+}
+
+export const logoutReq = () => {
+	return {
+		type: LOGOUT_REQ
+	}
+}
+
+export const logout = () => {
+	return {
+		type: LOGOUT
 	}
 }
