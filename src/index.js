@@ -9,6 +9,7 @@ import GameCreate from './components/GameCreate';
 import History from './components/History';
 import Login from './components/Login';
 import Register from './components/Register';
+import SignUp from './components/SignUp';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -18,6 +19,7 @@ ReactDOM.render(
       <Route exact path='/history' component={History} />
       <Route exact path='/login' component={Login} />
       <Route exact path='/register' component={Register} />
+      <Route exact path='/sign-up' component={SignUp} />
     </ BrowserRouter>
   </Provider>,
   document.getElementById('root')
