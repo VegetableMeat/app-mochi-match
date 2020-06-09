@@ -8,15 +8,21 @@ import MainBody from './MainBody';
 import SideMenu from './SideMenu';
 import MenuHeader from './MenuHeader';
 import MenuInnerWrapper from './MenuInnerWrapper';
+import UserIconSelectArea from './UserIconSelectArea';
+import FavoriteGameList from './FavoriteGameList';
+import FavoriteGameAddArea from './FavoriteGameAddArea';
+import UserIcon from './UserIcon';
+import GameNamePlate from './GameNamePlate';
+import HeadLine1 from './HeadLine1';
+import HeadLine2 from './HeadLine2';
+import HeadLine3 from './HeadLine3';
+import UnderLineInput from './UnderLineInput';
+import BodyHeader from './BodyHeader';
 import UnderLineList from './UnderLineList';
-import RadiusBodyHeader from './RadiusBodyHeader';
-import RadiusWhiteCard from './RadiusWhiteCard';
-import UserPlate from './UserPlate';
 
-
-export default function History() {
+export default function ProfileSetting() {
     return (
-        <div id="history">
+        <div id="profilesetting">
             <Header />
             <Body>
                 <SideMenu>
@@ -38,14 +44,21 @@ export default function History() {
                     <UnderLineList />
                 </SideMenu>
                 <MainBody>
-                    <RadiusBodyHeader />
-                    <RadiusWhiteCard>
-                        <UserPlate />
-                    </RadiusWhiteCard>
+                    <BodyHeader />
+                    <HeadLine1 />
+                    <UnderLineInput />
+                    <UserIconSelectArea>
+                        <UserIcon />
+                    </UserIconSelectArea>
+                    <HeadLine2 />
+                    <FavoriteGameList>
+                        <GameNamePlate />
+                    </FavoriteGameList>
+                    <HeadLine3 />
+                    <FavoriteGameAddArea />
                 </MainBody>
-                   
             </Body>
-            <Footer />
         </div>
+
     )
-} 
+}
