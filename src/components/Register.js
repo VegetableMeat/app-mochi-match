@@ -10,22 +10,22 @@ import BodyHeader from './BodyHeader';
 
 import './css/Sign.css';
 
-export default function Login() {
+export default function Register() {
   return (
-    <div id="login">
+    <div id="register">
       <Header />
       <Body>
         <CenterMainBody>
           <BodyHeader>
-            ログイン
+            新規登録
           </BodyHeader>
           <div className="button-area">
-            <button className="facebook">Facebookアカウントでログイン</button>
-            <button className="twitter">Twitterアカウントでログイン</button>
-            <button className="google">Googleアカウントでログイン</button>
+            <button className="facebook">Facebookアカウントで新規登録</button>
+            <button className="twitter">Twitterアカウントで新規登録</button>
+            <button className="google">Googleアカウントで新規登録</button>
           </div>
           <div className="link-area">
-            <Link to="/Register">新規登録</Link>はこちら
+            <Link to="/Login">ログイン</Link>はこちら
           </div>
         </CenterMainBody>
       </Body>

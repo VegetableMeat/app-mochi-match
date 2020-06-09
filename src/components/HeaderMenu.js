@@ -15,8 +15,8 @@ export default function HeaderMenu({ state, actions }) {
 		{state.showFlag ? 
 			<div className="header-menu">
 				<ul className="header-menu-list">
-					<li><Link to="/Login"><i class="fas fa-sign-in-alt"></i>Login</Link></li>
-					<li><i class="fas fa-user-plus"></i>Sign Up</li>
+					<Link to="/Login"><li><Link to="/Login"><i class="fas fa-sign-in-alt"></i>Login</Link></li></Link>
+					<Link to="/Register"><li><i class="fas fa-user-plus"></i>Sign Up</li></Link>
 					<li><i class="far fa-id-card"></i>Profile</li>
 					<li><i class="fas fa-user-cog"></i>Setting</li>
 					<li><i class="fas fa-history"></i>Play History</li>
