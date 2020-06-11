@@ -1,4 +1,4 @@
-#login .button-area button{
+#login .button-area button, #register .button-area button {
     border: none;
     font-size: 14px;
 	color: white;
@@ -8,27 +8,27 @@
 	margin: 0 0 20px;
 }
 
-#login .button-area {
+#login .button-area, #register .button-area {
     width: 280px;
     margin: 0 calc((100% - 280px) / 2);
 }
 
 @media screen and (max-width: 600px) {
-    #login .button-area {
+    #login .button-area, #register .button-area {
         width: 94%;
         margin: 12px 3%;
     }
-    #login .button-area button {
+    #login .button-area button, #register .button-area button {
         font-size: 11px;
     }
 
 }
 
-#login .button-area button:focus{
+#login .button-area button:focus, #register .button-area button:focus{
     outline-style: none;
 }
 
-.register-link-area {
+.link-area {
     text-align: center;
     margin: 40px 0 10px;
     font-size: 14px;

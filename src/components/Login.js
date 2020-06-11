@@ -9,7 +9,7 @@ import Modal from '../containers/ModalContainer';
 import BodyHeader from './BodyHeader';
 import { Redirect } from 'react-router-dom';
 
-import './css/Login.css';
+import './css/Sign.css';
 
 export default class Login extends Component {
 	componentDidMount() {
@@ -40,8 +40,8 @@ export default class Login extends Component {
 					<button className="twitter">Twitterアカウントでログイン</button>
 					<button onClick={() => this.props.actions.loginReq()} className="google">Googleアカウントでログイン</button>
 				</div>
-				<div className="register-link-area">
-					<Link>新規登録</Link>はこちら
+				<div className="link-area">
+					<Link to="/Register">新規登録</Link>はこちら
 				</div>
 				</CenterMainBody>
 			</Body>

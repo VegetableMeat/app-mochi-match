@@ -13,6 +13,7 @@ import RadiusBodyHeader from './RadiusBodyHeader';
 import RadiusWhiteCard from './RadiusWhiteCard';
 import UserPlate from './UserPlate';
 
+import './css/History.css';
 
 export default function History() {
     return (
@@ -21,18 +22,9 @@ export default function History() {
             <Body>
                 <SideMenu>
                     <div className="menu-wrapper menu-wrapper-1">
-                        <MenuHeader text="プロフィール" />
+                        <MenuHeader text="メニュー" />
                         <MenuInnerWrapper>
-                        </MenuInnerWrapper>
-                    </div>
-                    <div className="menu-wrapper menu-wrapper-2">
-                        <MenuHeader text="設定" />
-                        <MenuInnerWrapper>
-                        </MenuInnerWrapper>
-                    </div>
-                    <div className="menu-wrapper menu-wrapper-3">
-                        <MenuHeader text="プレイ履歴" />
-                        <MenuInnerWrapper>
+                            
                         </MenuInnerWrapper>
                     </div>
                     <UnderLineList />
