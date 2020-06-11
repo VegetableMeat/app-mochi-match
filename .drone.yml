@@ -5,7 +5,7 @@ steps:
   - name: discord notification
     image: appleboy/drone-discord
     settings:
-      username: app-mochi-matchを監視しているあずり
+      username: app-mochi-matchを監視しているはじめ
       avatar_url: https://cdn.discordapp.com/attachments/719600379725217903/720465090289336380/20200601_161405.jpg
       webhook_id:
         from_secret: DISCORD_WEBHOCK_ID
@@ -17,7 +17,6 @@ steps:
         {{else}}
          #{{build.number}} fuck off.
         {{/success}}
-      tts: true
 trigger:
   event:
     - push
