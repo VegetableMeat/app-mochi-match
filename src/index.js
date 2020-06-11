@@ -9,6 +9,8 @@ import GameCreate from './components/GameCreate';
 import History from './components/History';
 import Configuration from './components/Configuration';
 import Login from './components/Login';
+import RoomCreation from './components/RoomCreation';
+
 
 ReactDOM.render(
   <Provider store={store}>
@@ -18,6 +20,8 @@ ReactDOM.render(
       <Route exact path='/history' component={History} />
       <Route exact path='/configuration' component={Configuration} />
       <Route exact path='/login' component={Login} />
+      <Route exact path='/roomcreation' component={RoomCreation} />
+
     </ BrowserRouter>
   </Provider>,
   document.getElementById('root')
