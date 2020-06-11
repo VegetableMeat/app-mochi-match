@@ -15,6 +15,7 @@ steps:
         {{else}}
           build {{build.number}} failed. Fix me please.
         {{/success}}
+      tts: true
 trigger:
   event:
     - push
