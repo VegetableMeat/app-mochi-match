@@ -8,3 +8,24 @@ body {
         width: 320px;
     }
 }
+
+.menu-wrapper-1 {
+    transform: translateY(0px);
+}
+
+.menu-wrapper-2 {
+    transform: translateY(-20px);
+}
+
+.menu-wrapper-3 {
+    transform: translateY(-40px);
+}
+
+.menu-wrapper-3 .menu-inner-wrapper{
+    padding: 20px 12px;
+}
+
+.menu-wrapper-3 .menu-inner-wrapper {
+    border-radius: 0 0 22px 22px;
+    padding-bottom: 30px;
+}
