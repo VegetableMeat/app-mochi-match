@@ -10,6 +10,8 @@ import Login from './containers/LoginContainer';
 import Logout from './components/Logout';
 import Auth from './containers/AuthContainer';
 import History from './components/History';
+import Register from './components/Register';
+import SignUp from './components/SignUp';
 import ProfileSetting from './components/ProfileSettings'
 
 ReactDOM.render(
@@ -19,6 +21,8 @@ ReactDOM.render(
 				<Route exact path='/' component={Top} />
 				<Route exact path='/login' component={Login} />
 				<Route exact path='/logout' component={Logout} />
+				<Route exact path='/register' component={Register} />
+      			<Route exact path='/sign-up' component={SignUp} />
 				<Auth>
 					<Switch>
 						<Route exact path='/gameCreate' component={GameCreate} />
