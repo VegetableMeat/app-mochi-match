@@ -13,7 +13,7 @@ steps:
         from_secret: DISCORD_WEBHOCK_TOKEN
       message: > 
         {{#success build.status}} 
-          ✅  Build #{{build.number}} `{{repo.name}} / {{commit.branch}}` ビルドが成功！
+          ✅  Build #{{build.number}} `{{repo.name}}/{{commit.branch}}` ビルドが成功！
 
           📝 {{commit.author}} のコミットメッセージ
           ``` {{commit.message}} ```
@@ -21,7 +21,7 @@ steps:
 
            ✅ duration: {{duration build.started build.finished}}
         {{else}}
-         ❌  Build #{{build.number}} `{{repo.name}} / {{commit.branch}}` は？
+         ❌  Build #{{build.number}} `{{repo.name}}/{{commit.branch}}` は？
          
          📝 {{commit.author}} のコミットメッセージ
          ``` {{commit.message}} ```
