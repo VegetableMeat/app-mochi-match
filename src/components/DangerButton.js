@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default function HeadLine1(props) {
+export default function DangerButton(props) {
     return (
         <div>
             {/* {props.children} */}
