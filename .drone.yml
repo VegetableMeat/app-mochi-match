@@ -1,0 +1,20 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: discord notification
+    image: appleboy/drone-discord
+    settings:
+      webhook_id:
+        from_secret: DISCORD_WEBHOCK_ID
+      webhook_token:
+        from_secret: DISCORD_WEBHOCK_TOKEN
+      message: >
+        {{#success build.status}}
+          build {{build.number}} succeeded. Good job.
+        {{else}}
+          build {{build.number}} failed. Fix me please.
+        {{/success}}
+trigger:
+  event:
+    - push
