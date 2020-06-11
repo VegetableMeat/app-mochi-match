@@ -11,11 +11,11 @@ steps:
         from_secret: DISCORD_WEBHOCK_ID
       webhook_token:
         from_secret: DISCORD_WEBHOCK_TOKEN
-      message: >
-        {{#success build.status}}
-         #{{build.number}} 成功、やるやん
+      message: > 
+        {{#success build.status}} 
+          ✅  Build #{{build.number}} of `{{repo.name}}` succeeded.\n\n📝 Commit by {{commit.author}} on `{{commit.branch}}`:\n``` {{commit.message}} ```\n🌐 {{ build.link }}\n\n ✅ duration: {{duration build.started build.finished}} \n\n 
         {{else}}
-         #{{build.number}} fuck off.
+         ❌  Build #{{build.number}} of `{{repo.name}}` failed.\n\n📝 Commit by {{commit.author}} on `{{commit.branch}}`:\n``` {{commit.message}} ```\n🌐 {{ build.link }}\n\n ✅ duration: {{duration build.started build.finished}} \n\n 
         {{/success}}
 trigger:
   event:
