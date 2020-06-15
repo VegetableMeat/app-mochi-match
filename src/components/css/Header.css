@@ -68,7 +68,7 @@
 }
 
 .header-menu li:hover, .header-menu li:active {
-  color: #4dcee6;
+  color: #4dcee6 !important;
   border-bottom: solid 1px black;
 }
 

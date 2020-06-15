@@ -1,0 +1,6 @@
+.break-under-line {
+    width: 100%;
+    height: 1px;
+    background-color: rgb(219, 219, 219);
+    margin-bottom: 8px;
+}

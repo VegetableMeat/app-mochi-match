@@ -29,3 +29,40 @@ body {
     border-radius: 0 0 22px 22px;
     padding-bottom: 30px;
 }
+
+.account-side-menu .menu-inner-wrapper {
+    border-radius: 0 0 0 22px !important;
+}
+
+.account-side-menu .menu-inner-wrapper ul {
+    list-style: none;
+    padding: 0;
+}
+  
+.account-side-menu .menu-inner-wrapper li {
+    cursor: pointer;
+    padding: 4px;
+    margin: 6px 0;
+    font-size: 14px;
+    color: #7d7d7d;
+    border-bottom: solid 1px #A8A8A8;
+    font-weight: bold;
+    transition: 0.2s color;
+}
+.account-side-menu .menu-inner-wrapper li:hover, .account-side-menu .menu-inner-wrapper li:active {
+    color: #4dcee6;
+    border-bottom: solid 1px black;
+}
+
+.account-side-menu .menu-inner-wrapper i {
+    width: 24px;
+}
+
+@media screen and (max-width: 500px) {
+    .side-menu .account-side-menu li{
+        font-size: 11px !important;
+    }
+    .account-side-menu .menu-inner-wrapper i {
+        width: 16px;
+    }
+}
