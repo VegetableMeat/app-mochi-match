@@ -10,6 +10,8 @@ import History from './components/History';
 import Configuration from './components/Configuration';
 import Login from './components/Login';
 import RoomCreation from './components/RoomCreation';
+import InTheRoom from './components/InTheRoom';
+
 
 
 ReactDOM.render(
@@ -21,7 +23,7 @@ ReactDOM.render(
       <Route exact path='/configuration' component={Configuration} />
       <Route exact path='/login' component={Login} />
       <Route exact path='/roomcreation' component={RoomCreation} />
-
+      <Route exact path='/intheroom' component={InTheRoom} />
     </ BrowserRouter>
   </Provider>,
   document.getElementById('root')
