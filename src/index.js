@@ -10,7 +10,7 @@ import Login from './containers/LoginContainer';
 import Logout from './components/Logout';
 import Auth from './containers/AuthContainer';
 import History from './components/History';
-import Register from './components/Register';
+import Register from './containers/RegisterContainer';
 import SignUp from './components/SignUp';
 import ProfileSetting from './components/ProfileSettings'
 

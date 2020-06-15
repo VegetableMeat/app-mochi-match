@@ -16,6 +16,10 @@ export default class Login extends Component {
 		this.props.actions.authReq();
 	}
 
+	locationGoogle() {
+		window.location.replace('http://api.mochi-match.work/v1/auth/google/login');
+	}
+
 	render() {
 		if(this.props.state.loadingFlag) {
 			return ( null )
@@ -38,6 +42,7 @@ export default class Login extends Component {
 				<div className="button-area">
 					<button className="facebook">Facebookアカウントでログイン</button>
 					<button className="twitter">Twitterアカウントでログイン</button>
+					{/* <button onClick={() => this.locationGoogle()} className="google">Googleアカウントでログイン</button> */}
 					<button onClick={() => this.props.actions.loginReq()} className="google">Googleアカウントでログイン</button>
 				</div>
 				<div className="link-area">
