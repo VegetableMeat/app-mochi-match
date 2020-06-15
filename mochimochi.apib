@@ -2,7 +2,7 @@ FORMAT: 1A
 
 # MochiMochi API
 
-# Group 認証
+# Group Auth
 ## 認証処理のエンドポイント [/v1/auth]
 ### Googleログイン [GET /v1/auth/google/login]
 googleログイン画面へリダイレクトさせる
@@ -33,9 +33,9 @@ googleログイン後のコールバック処理
         + refresh_token: `{リフレッシュトークン}` (string) - 新しく発行されたリフレッシュトークン
         + expire_in: `1591033027` (string) - UNIX形式のリフレッシュトークンの有効期限
 
-# Group ユーザー　
+# Group User　
 ## ユーザー操作のエンドポイント [/v1/users]
-### ユーザー登録 [POST]
+### ユーザー登録 [POST /v1/users]
 新規ユーザを登録する
 
 + Request (application/json)
@@ -49,7 +49,7 @@ googleログイン後のコールバック処理
         + refresh_token: `example token` (string) - リフレッシュトークン
         + expires_in: `123456` (string) - UNIX形式のリフレッシュトークンの有効期限
 
-### ユーザー情報取得 [GET]
+### ユーザー情報取得 [GET /v1/users]
 自分のユーザ情報を取得する
 
 + Request (application/json)
@@ -88,11 +88,8 @@ googleログイン後のコールバック処理
                 + game_id: 1234 (string) - ゲームID
                 + game_title: example game (string) - ゲームタイトル
 
-### ユーザー情報更新 [PUT /v1/users/{id}]
+### ユーザー情報更新 [PUT /v1/users]
 自分のユーザ情報を取得する
-
-+ Parameters
-    + id: 1 (string) - ユーザーID
 
 + Request (application/json)
     + Headers
@@ -111,11 +108,8 @@ googleログイン後のコールバック処理
     + Attributes
         + message: `ok` (string) - 処理メッセージ
 
-### ユーザー削除 [DELETE /v1/users/{id}]
+### ユーザー削除 [DELETE /v1/users]
 自分のユーザアカウントを削除する
-
-+ Parameters
-    + id: 1 (string) - ユーザーID
 
 + Request (application/json)
     + Headers
@@ -125,6 +119,131 @@ googleログイン後のコールバック処理
 + Response 200 (application/json)
     + Attributes
         + message: `ok` (string) - 処理メッセージ
+
+# Group Room2
+## ルーム操作のエンドポイント [/v1/rooms]
+### ルーム取得 [GET /v1/rooms{?page}]
+現在立っているルームを指定されたページ数で取得、最大6件
+
++ Parameters
+    + page: 1 (number, required)  - ページ数
+
++ Request (application/json)
+    + Headers
+        ```
+        Authorization: Bearer {token}
+        ```
+
++ Response 200 (application/json)
+    + Attributes
+        + access_token: `example token` (string) - アクセストークン
+        + refresh_token: `example token` (string) - リフレッシュトークン
+        + expires_in: `123456` (string) - UNIX形式のリフレッシュトークンの有効期限
+
+### ルーム詳細取得 [GET /v1/rooms/{id}]
+ルーム詳細の取得
+
++ Parameters
+    + id: 1 (number, required)  - ルームID
+
++ Request (application/json)
+    + Headers
+        ```
+        Authorization: Bearer {token}
+        ```
+
++ Response 200 (application/json)
+    + Attributes
+        + access_token: `example token` (string) - アクセストークン
+        + refresh_token: `example token` (string) - リフレッシュトークン
+        + expires_in: `123456` (string) - UNIX形式のリフレッシュトークンの有効期限
+
+### ルーム作成 [POST /v1/rooms]
+ルーム詳細の取得
+
++ Request (application/json)
+    + Headers
+        ```
+        Authorization: Bearer {token}
+        ```
+
++ Response 200 (application/json)
+    + Attributes
+        + access_token: `example token` (string) - アクセストークン
+        + refresh_token: `example token` (string) - リフレッシュトークン
+        + expires_in: `123456` (string) - UNIX形式のリフレッシュトークンの有効期限
+
+### ルーム更新 [PUT /v1/rooms/{id}]
+ルーム情報の更新
+
++ Parameters
+    + id: 1 (number, required)  - ルームID
+
++ Request (application/json)
+    + Headers
+        ```
+        Authorization: Bearer {token}
+        ```
+
++ Response 200 (application/json)
+    + Attributes
+        + access_token: `example token` (string) - アクセストークン
+        + refresh_token: `example token` (string) - リフレッシュトークン
+        + expires_in: `123456` (string) - UNIX形式のリフレッシュトークンの有効期限
+
+### ルーム削除 [DELETE /v1/rooms/{id}]
+ルームの削除
+
++ Parameters
+    + id: 1 (number, required)  - ルームID
+
++ Request (application/json)
+    + Headers
+        ```
+        Authorization: Bearer {token}
+
++ Response 200 (application/json)
+    + Attributes
+        + access_token: `example token` (string) - アクセストークン
+        + refresh_token: `example token` (string) - リフレッシュトークン
+        + expires_in: `123456` (string) - UNIX形式のリフレッシュトークンの有効期限
+
+### ルーム参加 [POST /v1/rooms/{id}/join]
+ルームへの参加
+
++ Parameters
+    + id: 1 (number, required)  - ルームID
+
++ Request (application/json)
+    + Headers
+        ```
+        Authorization: Bearer {token}
+        ```
+
++ Response 200 (application/json)
+    + Attributes
+        + access_token: `example token` (string) - アクセストークン
+        + refresh_token: `example token` (string) - リフレッシュトークン
+        + expires_in: `123456` (string) - UNIX形式のリフレッシュトークンの有効期限
+
+### ルーム退室 [DELETE /v1/rooms/{id}/leave]
+ルームからの退室
+
++ Parameters
+    + id: 1 (number, required)  - ルームID
+
++ Request (application/json)
+    + Headers
+        ```
+        Authorization: Bearer {token}
+        ```
+
++ Response 200 (application/json)
+    + Attributes
+        + access_token: `example token` (string) - アクセストークン
+        + refresh_token: `example token` (string) - リフレッシュトークン
+        + expires_in: `123456` (string) - UNIX形式のリフレッシュトークンの有効期限
+
 
 
 # Data Structures
@@ -150,16 +269,17 @@ googleログイン後のコールバック処理
         + (Room)
         + (Room)
 
-## ルームリスト取得（ページ） [GET /room/list/{page}]
+## ルームリスト取得（ページ） [GET /rooms/{page}]
 現在立っているルームを指定されたページ数で取得、最大6件
 
 + Parameters
-    + page: 1 (number) - ページ数
+    + page: 1 (number)  - ページ数
 
 + Response 200 (application/json)
     + Attributes (array, fixed-type)
         + (Room)
         + (Room)
+
 
 # Group Game
 ## お気に入りゲーム取得 [GET /favorite-game/{id}]
