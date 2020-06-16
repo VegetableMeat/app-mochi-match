@@ -1,6 +1,7 @@
 import React from 'react';
 
-export default function UnderLineInput(props) {
+
+export default function HeadLine3(props) {
     return (
         <div>
             {/* {props.children} */}

@@ -1,0 +1,34 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: discord notification
+    image: appleboy/drone-discord
+    settings:
+      username: app-mochi-matchを監視しているはじめ
+      avatar_url: https://cdn.discordapp.com/attachments/719600379725217903/720465090289336380/20200601_161405.jpg
+      webhook_id:
+        from_secret: DISCORD_WEBHOCK_ID
+      webhook_token:
+        from_secret: DISCORD_WEBHOCK_TOKEN
+      message: > 
+        {{#success build.status}} 
+          ✅  Build #{{build.number}} `{{repo.name}}/{{commit.branch}}` ビルドが成功！
+
+          📝 {{commit.author}} のコミットメッセージ
+          ``` {{commit.message}} ```
+          🌐 {{ build.link }}
+
+           ✅ duration: {{duration build.started build.finished}}
+        {{else}}
+         ❌  Build #{{build.number}} `{{repo.name}}/{{commit.branch}}` は？
+         
+         📝 {{commit.author}} のコミットメッセージ
+         ``` {{commit.message}} ```
+         🌐 {{ build.link }}
+         
+          ✅ duration: {{duration build.started build.finished}}
+        {{/success}}
+trigger:
+  event:
+    - push

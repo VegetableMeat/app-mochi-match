@@ -1,11 +1,10 @@
 import React from 'react';
 
+import './css/BreakUnderLine.css';
 
-export default function BreakUnderLine(props) {
+export default function BreakUnderLine() {
     return (
-        <div>
-            {/* {props.children} */}
+        <div className="break-under-line">
         </div>
     )
 }
-
