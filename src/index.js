@@ -14,6 +14,7 @@ import Register from './containers/RegisterContainer';
 import SignUp from './components/SignUp';
 import ProfileSetting from './components/ProfileSettings'
 import Configuration from './components/Configuration';
+import RoomCreation from './components/RoomCreation';
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -30,6 +31,7 @@ ReactDOM.render(
 						<Route exact path='/history' component={History} />
 						<Route exact path='/profilesetting' component={ProfileSetting} />
 						<Route exact path='/configuration' component={Configuration} />
+						<Route exact path='/roomcreation' component={RoomCreation} />
 					</Switch>
 				</Auth>
 			</Switch>

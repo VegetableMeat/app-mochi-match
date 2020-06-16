@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default function HeadLine2(props) {
+export default function OneColumnBody(props) {
     return (
         <div>
             {/* {props.children} */}

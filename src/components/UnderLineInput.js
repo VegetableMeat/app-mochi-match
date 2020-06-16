@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-export default function UserLineInput(props) {
+export default function UnderLineInput(props) {
     return (
         <div>
             {/* {props.children} */}

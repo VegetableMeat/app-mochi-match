@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default function HeadLine2(props) {
+export default function Section(props) {
     return (
         <div>
             {/* {props.children} */}
