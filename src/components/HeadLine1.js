@@ -1,5 +1,6 @@
 import React from 'react';
 
+<<<<<<< HEAD
 import './css/HeadLine1.css';
 
 export default function HeadLine1(props) {
@@ -9,3 +10,13 @@ export default function HeadLine1(props) {
     </div>
   )
 }
+=======
+
+export default function HeadLine1(props) {
+    return (
+        <div>
+            {/* {props.children} */}
+        </div>
+    )
+}
+>>>>>>> shouji-configuration

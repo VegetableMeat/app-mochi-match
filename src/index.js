@@ -13,6 +13,7 @@ import History from './components/History';
 import Register from './containers/RegisterContainer';
 import SignUp from './components/SignUp';
 import ProfileSetting from './components/ProfileSettings'
+import Configuration from './components/Configuration';
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -28,6 +29,7 @@ ReactDOM.render(
 						<Route exact path='/gameCreate' component={GameCreate} />
 						<Route exact path='/history' component={History} />
 						<Route exact path='/profilesetting' component={ProfileSetting} />
+						<Route exact path='/configuration' component={Configuration} />
 					</Switch>
 				</Auth>
 			</Switch>
