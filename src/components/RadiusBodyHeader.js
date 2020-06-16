@@ -1,10 +1,11 @@
 import React from 'react';
 
+import './css/RadiusBodyHeader.css';
 
-export default function RadiusBodyHeader(props) {
+export default function RadiusBodyHeader({title}) {
     return (
-        <div>
-            {/* {props.children} */}
+        <div className="radius-body-header">
+            {title}
         </div>
     )
 }
