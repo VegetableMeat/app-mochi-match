@@ -13,6 +13,11 @@ import ChatArea from './ChatArea';
 import ChatDisplay from './ChatDisplay';
 import SimpleProfile from './SimpleProfile';
 import ExitButton from './ExitButton';
+import UserStatus from './UserStatus';
+import GamePlate from './GamePlate';
+import Capacity from './Capacity';
+import RecruitmentText from './RecruitmentText';
+import BreakUnderLine from './BreakUnderLine';
 
 export default function InTheRoom() {
     return (
@@ -20,19 +25,26 @@ export default function InTheRoom() {
             <Header />
             <Body>
                 <SideMenu>
-                    <MenuHeader />
+                    <MenuHeader text="メンバー" />
                     <MenuInnerWrappr>
+                        <UserStatus />
                         <UserPlate />
                     </MenuInnerWrappr>
-                    <MenuHeader />
-                    <MenuInnerWrappr />
-                    <MenuHeader />
-                    <MenuInnerWrappr />
-                    <MenuHeader />
-                    <MenuInnerWrappr />
-                    <MenuHeader />
-                    <MenuInnerWrappr />
+
+
+                    <MenuHeader text="ルーム情報" />
+                    <MenuInnerWrappr>
+                        <GamePlate />
+                        <BreakUnderLine />
+                        <Capacity />
+                        <BreakUnderLine />
+                        <RecruitmentText />
+                        <BreakUnderLine />
+                    </MenuInnerWrappr>
+
+
                 </SideMenu>
+
                 <MainBody>
                     <ChatArea>
                         <ChatDisplay>
