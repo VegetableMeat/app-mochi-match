@@ -17,12 +17,13 @@ export default function Login() {
       <Body>
         <CenterMainBody>
           <BodyHeader>
-            ログイン
+            ログイン・新規登録
           </BodyHeader>
+          <p>ログインまたは新規登録をするアカウントを選択してください</p>
           <div className="button-area">
-            <button className="facebook">Facebookアカウントでログイン</button>
-            <button className="twitter">Twitterアカウントでログイン</button>
-            <button className="google">Googleアカウントでログイン</button>
+            <button className="facebook"><i class="fab fa-facebook-f"></i>Facebookアカウント</button>
+            <button className="twitter"><i class="fab fa-twitter"></i>Twitterアカウント</button>
+            <button className="google"><i class="fab fa-google-plus-g"></i>Googleアカウント</button>
           </div>
           <div className="link-area">
             <Link to="/Register">新規登録</Link>はこちら
