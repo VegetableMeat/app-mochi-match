@@ -19,22 +19,16 @@ export default function Configuration() {
             <Header />
             <Body>
                 <SideMenu>
-                    <div className="menu-wrapper menu-wrapper-1">
-                        <MenuHeader text="プロフィール" />
+                    <div className="menu-wrapper menu-wrapper-1 account-side-menu">
+                        <MenuHeader text="メニュー" />
                         <MenuInnerWrapper>
+                        <ul>
+                            <Link to="/"><li><i class="far fa-id-card"></i>Profile</li></Link>
+                            <Link to="/"><li><i class="fas fa-user-cog"></i>Setting</li></Link>
+                            <Link to="/History"><li><i class="fas fa-history"></i>Play History</li></Link>
+                        </ul>
                         </MenuInnerWrapper>
                     </div>
-                    <div className="menu-wrapper menu-wrapper-2">
-                        <MenuHeader text="設定" />
-                        <MenuInnerWrapper>
-                        </MenuInnerWrapper>
-                    </div>
-                    <div className="menu-wrapper menu-wrapper-3">
-                        <MenuHeader text="プレイ履歴" />
-                        <MenuInnerWrapper>
-                        </MenuInnerWrapper>
-                    </div>
-                    <UnderLineList />
                 </SideMenu>
                 <MainBody>
                     <BodyHeader />
