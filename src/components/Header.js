@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <div id="header">
       <div className="title">
-        もちまっちげーみんぐ
+        <Link to="/">もちまっちげーみんぐ</Link>
       </div>
       <HeaderMenu />
     </div>

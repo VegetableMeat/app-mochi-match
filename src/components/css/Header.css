@@ -10,10 +10,19 @@
 #header .title {
   color: white;
   font-size: 22px;
-  width: 220px;
+  width: 260px;
+  text-align: center;
   height: 28px;
   margin: auto;
   font-family: 'Noto Serif JP', serif;
+}
+
+#header .title a {
+  color: white;
+}
+
+#header .title a:hover {
+  text-decoration: none;
 }
 
 @media screen and (max-width: 480px) {
