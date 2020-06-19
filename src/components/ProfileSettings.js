@@ -58,6 +58,7 @@ export default function ProfileSetting() {
                     <FavoriteGameAddArea />
                 </MainBody>
             </Body>
+			<Footer />
         </div>
 
     )
