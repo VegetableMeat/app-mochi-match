@@ -70,3 +70,38 @@ body {
 p {
     color: #7D7D7D;
 }
+
+/* ボタン共通デザイン */
+button {
+    background-color: gray;
+    border: none;
+    font-size: 16px;
+	color: white;
+	font-weight: bold;
+    border-radius: 8px;
+    padding: 4px 12px;
+	margin: 4px 12px;
+}
+button:focus{
+    outline-style: none;
+}
+
+/* ボタン背景色（青） */
+.color-blue {
+	background-color: #465AC7 !important;
+}
+
+/* ボタン背景色（赤） */
+.color-red {
+	background-color: #A54848 !important;
+}
+
+/* ボタン背景色（黄） */
+.color-yellow {
+	background-color: #937E0C !important;
+}
+
+/* コンテンツを横並びにするクラス */
+.line {
+    display: flex;
+}

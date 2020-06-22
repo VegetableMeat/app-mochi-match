@@ -34,7 +34,6 @@ export default function History() {
                         </ul>
                         </MenuInnerWrapper>
                     </div>
-                    <UnderLineList />
                 </SideMenu>
                 <MainBody>
                     <RadiusBodyHeader title="プレイ履歴" />

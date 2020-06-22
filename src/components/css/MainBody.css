@@ -7,6 +7,6 @@
 
 @media screen and (max-width: 480px) {
   .main-body {
-    width: calc(100vw - 4vw - 120px - 20px);
+    width: calc(100vw - 4vw - 120px - 12px);
   }
 }

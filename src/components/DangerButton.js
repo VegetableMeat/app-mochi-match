@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-export default function DangerButton(props) {
+export default function DangerButton({ text }) {
     return (
-        <div>
-            {/* {props.children} */}
-        </div>
+        <button className="danger-button color-red">
+            {text}
+        </button>
     )
 }

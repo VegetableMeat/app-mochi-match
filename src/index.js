@@ -15,17 +15,18 @@ import SignUp from './components/SignUp';
 import ProfileSetting from './components/ProfileSettings'
 import Configuration from './components/Configuration';
 import RoomCreation from './components/RoomCreation';
+import InTheRoom from './components/InTheRoom';
 import LoginDone from './containers/LoginDoneContainer';
 
 ReactDOM.render(
 	<Provider store={store}>
-    	<BrowserRouter>
+		<BrowserRouter>
 			<Switch>
 				<Route exact path='/' component={Top} />
 				<Route exact path='/login' component={Login} />
 				<Route exact path='/logout' component={Logout} />
 				<Route exact path='/register' component={Register} />
-      			<Route exact path='/sign-up' component={SignUp} />
+				<Route exact path='/sign-up' component={SignUp} />
 				<Route exact path='/login-done' component={LoginDone} />
 				<Auth>
 					<Switch>
@@ -34,10 +35,11 @@ ReactDOM.render(
 						<Route exact path='/profilesetting' component={ProfileSetting} />
 						<Route exact path='/configuration' component={Configuration} />
 						<Route exact path='/roomcreation' component={RoomCreation} />
+						<Route exact path='/intheroom' component={InTheRoom} />
 					</Switch>
 				</Auth>
 			</Switch>
-    	</ BrowserRouter>
-  	</Provider>,
-  document.getElementById('root')
+		</ BrowserRouter>
+	</Provider>,
+	document.getElementById('root')
 );

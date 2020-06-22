@@ -12,6 +12,9 @@ import UnderLineList from './UnderLineList';
 import BodyHeader from './BodyHeader';
 import HeadLine1 from './HeadLine1';
 import DangerButton from './DangerButton';
+import CenterMainBody from './CenterMainBody';
+
+import './css/Configuration.css';
 
 export default function Configuration() {
     return (
@@ -19,27 +22,27 @@ export default function Configuration() {
             <Header />
             <Body>
                 <SideMenu>
-                    <div className="menu-wrapper menu-wrapper-1">
-                        <MenuHeader text="プロフィール" />
+                    <div className="menu-wrapper menu-wrapper-1 account-side-menu">
+                        <MenuHeader text="メニュー" />
                         <MenuInnerWrapper>
+                        <ul>
+                            <Link to="/"><li><i class="far fa-id-card"></i>Profile</li></Link>
+                            <Link to="/"><li><i class="fas fa-user-cog"></i>Setting</li></Link>
+                            <Link to="/History"><li><i class="fas fa-history"></i>Play History</li></Link>
+                        </ul>
                         </MenuInnerWrapper>
                     </div>
-                    <div className="menu-wrapper menu-wrapper-2">
-                        <MenuHeader text="設定" />
-                        <MenuInnerWrapper>
-                        </MenuInnerWrapper>
-                    </div>
-                    <div className="menu-wrapper menu-wrapper-3">
-                        <MenuHeader text="プレイ履歴" />
-                        <MenuInnerWrapper>
-                        </MenuInnerWrapper>
-                    </div>
-                    <UnderLineList />
                 </SideMenu>
                 <MainBody>
-                    <BodyHeader />
-                    <HeadLine1 />
-                    <DangerButton />
+                    <div className="side-main-body">
+                        <CenterMainBody>
+                            <BodyHeader>設定</BodyHeader>
+                            <div className="line">
+                                <HeadLine1>アカウント削除</HeadLine1>
+                                <button className="danger-button color-red">アカウント削除</button>
+                            </div>
+                        </CenterMainBody>
+                    </div>
                 </MainBody>
             </Body>
             <Footer />
