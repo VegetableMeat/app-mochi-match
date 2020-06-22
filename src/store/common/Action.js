@@ -46,7 +46,7 @@ export const authReq = () => {
 // Login
 export const LOGIN_REQ = 'LOGIN_REQ';
 export const LOGIN_OK = 'LOGIN_OK';
-export const LOGIN_NG = 'LOGIn_NG';
+export const LOGIN_NG = 'LOGIN_NG';
 export const LOGOUT_REQ = 'LOGOUT_REQ';
 export const LOGOUT = 'LOGOUT';
 
