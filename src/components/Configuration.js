@@ -12,6 +12,9 @@ import UnderLineList from './UnderLineList';
 import BodyHeader from './BodyHeader';
 import HeadLine1 from './HeadLine1';
 import DangerButton from './DangerButton';
+import CenterMainBody from './CenterMainBody';
+
+import './css/Configuration.css';
 
 export default function Configuration() {
     return (
@@ -31,9 +34,15 @@ export default function Configuration() {
                     </div>
                 </SideMenu>
                 <MainBody>
-                    <BodyHeader />
-                    <HeadLine1 />
-                    <DangerButton />
+                    <div className="side-main-body">
+                        <CenterMainBody>
+                            <BodyHeader>設定</BodyHeader>
+                            <div className="line">
+                                <HeadLine1>アカウント削除</HeadLine1>
+                                <button className="danger-button color-red">アカウント削除</button>
+                            </div>
+                        </CenterMainBody>
+                    </div>
                 </MainBody>
             </Body>
             <Footer />
