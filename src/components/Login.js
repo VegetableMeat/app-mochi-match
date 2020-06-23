@@ -15,11 +15,7 @@ export default class Login extends Component {
 	componentDidMount() {
 		this.props.actions.authReq();
 	}
-
-	locationGoogle() {
-		window.location.replace('http://api.mochi-match.work/v1/auth/google/login');
-	}
-
+	
 	render() {
 		if(this.props.state.loadingFlag) {
 			return ( null )
