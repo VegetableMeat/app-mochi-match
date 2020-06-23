@@ -5,9 +5,20 @@
     display: inline-block;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
     .side-menu {
         width: 120px;
         margin: 0 12px 0 0;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .side-menu {
+      width: 0;
+      display: none;
+    }
+    #top .side-menu {
+        width: 120px;
+        display: block;
     }
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function UnderLineInput(props) {
+export default function UnderLineInput() {
     return (
         <div>
-            {/* {props.children} */}
+            <input type="text"></input>
         </div>
     )
 }

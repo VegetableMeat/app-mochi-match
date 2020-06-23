@@ -21,13 +21,17 @@ export default function SignUp() {
           <BodyHeader>
             新規登録
           </BodyHeader>
-          <div className="input-wrapper">
+          <div className="wrapper">
             <HeadLine1>ユーザー名</HeadLine1>
-            <ShadowTextArea />
+            <div className="left-space-wrapper">
+              <ShadowTextArea />
+            </div>
           </div>
-          <div className="input-wrapper">
+          <div className="wrapper">
             <HeadLine1>メールアドレス</HeadLine1>
-            <ShadowTextArea />
+            <div className="left-space-wrapper">
+              <ShadowTextArea />
+            </div>
           </div>
           <div className="accept-area">
             <p><Link>利用規約</Link>に同意のうえ、「利用規約に同意して登録」ボタンを押してください。</p>
