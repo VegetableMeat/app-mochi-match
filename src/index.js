@@ -16,7 +16,7 @@ import ProfileSetting from './components/ProfileSettings'
 import Configuration from './components/Configuration';
 import RoomCreation from './components/RoomCreation';
 import InTheRoom from './components/InTheRoom';
-
+import Admin from './containers/AdminContainer';
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -27,6 +27,7 @@ ReactDOM.render(
 				<Route exact path='/logout' component={Logout} />
 				<Route exact path='/register' component={Register} />
 				<Route exact path='/sign-up' component={SignUp} />
+				<Route exact path='/admin' component={Admin} />
 				<Auth>
 					<Switch>
 						<Route exact path='/gameCreate' component={GameCreate} />

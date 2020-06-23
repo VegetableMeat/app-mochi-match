@@ -5,13 +5,15 @@ import popularGameState from './game/popular/Reducer';
 import modalState from './common/modal/Reducer';
 import headerMenuState from './common/header-menu/Reducer';
 import loginState from './common/login/Reducer';
+import adminState from './common/admin/Reducer';
 const rootReducers = combineReducers({
   roomListState,
   favoriteGameState,
   popularGameState,
   modalState,
   headerMenuState,
-  loginState
+  loginState,
+  adminState
 })
 
 export default rootReducers;

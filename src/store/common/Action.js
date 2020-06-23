@@ -79,3 +79,53 @@ export const logout = () => {
 		type: LOGOUT
 	}
 }
+
+// Admin
+export const ADMIN_GAME_TITLE_GET_REQ = 'ADMIN_GAME_TITLE_GET_REQ';
+export const ADMIN_GAME_TITLE_GET_OK = 'ADMIN_GAME_TITLE_GET_OK';
+export const ADMIN_GAME_TITLE_GET_NG = 'ADMIN_GAME_TITLE_GET_NG';
+export const ADMIN_GAME_TITLE_ADD = 'ADMIN_GAME_TITLE_ADD';
+export const ADMIN_GAME_TITLE_DELETE = 'ADMIN_GAME_TITLE_DELETE';
+export const GAME_TITLE_CHECK = 'GAME_TITLE_CHECK';
+
+export const adminGameTitleGetReq = () => {
+	return {
+		type: ADMIN_GAME_TITLE_GET_REQ
+	}
+}
+
+export const adminGameTitleGetOk = (data) => {
+	return {
+		type: ADMIN_GAME_TITLE_GET_OK,
+		payload: data
+	}
+}
+
+export const adminGameTitleGetNg = (error) => {
+	return {
+		type: ADMIN_GAME_TITLE_GET_NG,
+		error: error
+	}
+}
+
+export const adminGameTitleAdd = (data) => {
+	return {
+		type: ADMIN_GAME_TITLE_ADD,
+		payload: data
+	}
+}
+
+export const adminGameTitleDelete = (data) => {
+	return {
+		type: ADMIN_GAME_TITLE_DELETE,
+		payload: data
+	}
+}
+
+export const gameTitleCheck = (data, toggle) => {
+	return {
+		type: GAME_TITLE_CHECK,
+		payload: data,
+		toggle: toggle
+	}
+}
