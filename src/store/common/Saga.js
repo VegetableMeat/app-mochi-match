@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { axios_instance } from '../axios/axios';
 import { put, call, takeLatest } from 'redux-saga/effects';
 import { 
 	AUTH_REQ,
@@ -62,26 +63,20 @@ export const authSaga = [takeLatest(AUTH_REQ, fetchAuth)];
 
 // Admin
 const resAdminGameTitleGet = () => {
-	// const url = `/v1/gamelist`;
-	// return axios
-	// .get(url)
-	// .then((res) => {
-	// 	const data = res.data;
-	// 	return { data }
-	// })
-	// .catch((error) => {
-	// 	return { error }
-	// })
-	const data = [
-		{primary: 1, game_title: "うんこ1"},
-		{primary: 2, game_title: "うんこ2"},
-		{primary: 3, game_title: "うんこ3"}
-	]
-	return { data }
+	const url = `/v1/gamelist`;
+	return axios_instance
+	.get(url)
+	.then((res) => {
+		const data = res.data;
+		return { data }
+	})
+	.catch((error) => {
+		return { error }
+	})
 }
 
 const resAdminGameTitleAdd = () => {
-	
+	// console.log()
 }
 
 const resAdminGameTitleDelete = () => {
