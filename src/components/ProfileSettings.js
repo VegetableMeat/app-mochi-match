@@ -91,6 +91,7 @@ export default function ProfileSetting() {
                     </div>
                 </MainBody>
             </Body>
+			<Footer />
         </div>
 
     )
