@@ -29,14 +29,14 @@ export const showModalReport = (category, data) => {
 	}
 }
 
-export const final_confirmation = (category, data) => {
+export const finalConfirmation = (category, data) => {
 	return {
 		type: SHOW_MODAL_TRUE,
 		category: category,
 		data: data
 	}
 }
-export const end_modal = (category, data) => {
+export const endModal = (category, data) => {
 	return {
 		type: SHOW_MODAL_TRUE,
 		category: category,
