@@ -32,18 +32,18 @@ export default class Login extends Component {
 			<Header />
 			<Body>
 				<CenterMainBody>
-				<BodyHeader>
-					ログイン
-				</BodyHeader>
-				<div className="button-area">
-					<button className="facebook">Facebookアカウントでログイン</button>
-					<button className="twitter">Twitterアカウントでログイン</button>
-					{/* <button onClick={() => this.locationGoogle()} className="google">Googleアカウントでログイン</button> */}
-					<button onClick={() => this.props.actions.loginReq()} className="google">Googleアカウントでログイン</button>
-				</div>
-				<div className="link-area">
-					<Link to="/Register">新規登録</Link>はこちら
-				</div>
+					<BodyHeader>
+						ログイン
+					</BodyHeader>
+					<div className="button-area">
+						<button className="facebook">Facebookアカウントでログイン</button>
+						<button className="twitter">Twitterアカウントでログイン</button>
+						{/* <button onClick={() => this.locationGoogle()} className="google">Googleアカウントでログイン</button> */}
+						<button onClick={() => this.props.actions.loginReq()} className="google">Googleアカウントでログイン</button>
+					</div>
+					<div className="link-area">
+						<Link to="/Register">新規登録</Link>はこちら
+					</div>
 				</CenterMainBody>
 			</Body>
 			<Footer />
