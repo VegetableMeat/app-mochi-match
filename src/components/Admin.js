@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-export default class Admin extends React.Component {
+export default class Admin extends Component {
     /**
-     * 関数内でthisが使えないのでバインドしてthisを使えるようにする
+     * 関数内（handleChangeとか）でthisが使えないのでバインドしてthisを使えるようにする
      */
 	constructor() {
 		super();
