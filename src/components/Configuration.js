@@ -26,9 +26,9 @@ export default function Configuration() {
                         <MenuHeader text="メニュー" />
                         <MenuInnerWrapper>
                         <ul>
-                            <Link to="/"><li><i class="far fa-id-card"></i>Profile</li></Link>
-                            <Link to="/"><li><i class="fas fa-user-cog"></i>Setting</li></Link>
-                            <Link to="/History"><li><i class="fas fa-history"></i>Play History</li></Link>
+                            <Link to="/profileSetting"><li><i class="far fa-id-card"></i>Profile</li></Link>
+                            <Link to="/configuration"><li><i class="fas fa-user-cog"></i>Setting</li></Link>
+                            <Link to="/history"><li><i class="fas fa-history"></i>Play History</li></Link>
                         </ul>
                         </MenuInnerWrapper>
                     </div>

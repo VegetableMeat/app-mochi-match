@@ -32,7 +32,7 @@ ReactDOM.render(
 					<Switch>
 						<Route exact path='/gameCreate' component={GameCreate} />
 						<Route exact path='/history' component={History} />
-						<Route exact path='/profilesetting' component={ProfileSetting} />
+						<Route exact path='/profileSetting' component={ProfileSetting} />
 						<Route exact path='/configuration' component={Configuration} />
 						<Route exact path='/roomcreation' component={RoomCreation} />
 						<Route exact path='/intheroom' component={InTheRoom} />
