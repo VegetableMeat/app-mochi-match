@@ -5,20 +5,20 @@ export const GET_ROOM_NG = 'GET_ROOM_NG';
 export const getRoomReq = () => {
   return {
     type: GET_ROOM_REQ,
-    payload: []
-  }
-}
+    payload: [],
+  };
+};
 
 export const getRoomOk = (payload) => {
   return {
     type: GET_ROOM_OK,
-    payload: payload
-  }
-}
+    payload: payload,
+  };
+};
 
 export const getRoomNg = (error) => {
   return {
     type: GET_ROOM_NG,
-    payload: error
-  }
-}
+    payload: error,
+  };
+};

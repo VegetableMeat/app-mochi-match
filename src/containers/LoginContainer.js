@@ -6,14 +6,14 @@ import Login from '../components/Login';
 
 const mapStateToProps = (state) => {
   return {
-    state: state.loginState
-  }
-}
+    state: state.loginState,
+  };
+};
 
 const mapDispatchProps = (dispatch) => {
-  return { 
-    actions: bindActionCreators(Actions, dispatch)
-  }
-}
+  return {
+    actions: bindActionCreators(Actions, dispatch),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchProps)(Login)
+export default connect(mapStateToProps, mapDispatchProps)(Login);

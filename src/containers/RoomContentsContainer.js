@@ -7,15 +7,15 @@ import RoomContents from '../components/RoomContents';
 
 const mapStateToProps = (state) => {
   return {
-    state: state.roomListState
-  }
-}
+    state: state.roomListState,
+  };
+};
 
 const mapDispatchProps = (dispatch) => {
-  return { 
+  return {
     roomActions: bindActionCreators(roomActions, dispatch),
-    commonActions: bindActionCreators(commonActions, dispatch)
-  }
-}
+    commonActions: bindActionCreators(commonActions, dispatch),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchProps)(RoomContents)
+export default connect(mapStateToProps, mapDispatchProps)(RoomContents);
