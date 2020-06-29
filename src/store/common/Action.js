@@ -84,8 +84,13 @@ export const logout = () => {
 export const ADMIN_GAME_TITLE_GET_REQ = 'ADMIN_GAME_TITLE_GET_REQ';
 export const ADMIN_GAME_TITLE_GET_OK = 'ADMIN_GAME_TITLE_GET_OK';
 export const ADMIN_GAME_TITLE_GET_NG = 'ADMIN_GAME_TITLE_GET_NG';
-export const ADMIN_GAME_TITLE_ADD = 'ADMIN_GAME_TITLE_ADD';
-export const ADMIN_GAME_TITLE_DELETE = 'ADMIN_GAME_TITLE_DELETE';
+export const ADMIN_GAME_TITLE_ADD_REQ = 'ADMIN_GAME_TITLE_ADD_REQ';
+export const ADMIN_GAME_TITLE_ADD_OK = 'ADMIN_GAME_TITLE_ADD_OK';
+export const ADMIN_GAME_TITLE_ADD_NG = 'ADMIN_GAME_TITLE_ADD_NG';
+export const ADMIN_GAME_TITLE_DELETE_REQ = 'ADMIN_GAME_TITLE_DELETE_REQ';
+export const ADMIN_GAME_TITLE_DELETE_OK = 'ADMIN_GAME_TITLE_DELETE_OK';
+export const ADMIN_GAME_TITLE_DELETE_NG = 'ADMIN_GAME_TITLE_DELETE_NG';
+export const GAME_TITLE_TEXT = 'GAME_TITLE_TEXT';
 export const GAME_TITLE_CHECK = 'GAME_TITLE_CHECK';
 
 export const adminGameTitleGetReq = () => {
@@ -108,17 +113,52 @@ export const adminGameTitleGetNg = (error) => {
 	}
 }
 
-export const adminGameTitleAdd = (data) => {
+export const adminGameTitleAddReq = (data) => {
 	return {
-		type: ADMIN_GAME_TITLE_ADD,
+		type: ADMIN_GAME_TITLE_ADD_REQ,
 		payload: data
 	}
 }
 
-export const adminGameTitleDelete = (data) => {
+export const adminGameTitleAddOk = (data) => {
 	return {
-		type: ADMIN_GAME_TITLE_DELETE,
+		type: ADMIN_GAME_TITLE_ADD_OK,
 		payload: data
+	}
+}
+
+export const adminGameTitleAddNg = (error) => {
+	return {
+		type: ADMIN_GAME_TITLE_ADD_NG,
+		error: error
+	}
+}
+
+export const adminGameTitleDeleteReq = (data) => {
+	return {
+		type: ADMIN_GAME_TITLE_DELETE_REQ,
+		payload: data
+	}
+}
+
+export const adminGameTitleDeleteOk = (data) => {
+	return {
+		type: ADMIN_GAME_TITLE_DELETE_OK,
+		payload: data
+	}
+}
+
+export const adminGameTitleDeleteNg = (error) => {
+	return {
+		type: ADMIN_GAME_TITLE_DELETE_NG,
+		error: error
+	}
+}
+
+export const gameTitleText = (data) => {
+	return {
+		type: GAME_TITLE_TEXT,
+		payload: data,
 	}
 }
 

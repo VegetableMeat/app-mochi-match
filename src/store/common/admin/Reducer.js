@@ -1,4 +1,16 @@
-import { ADMIN_GAME_TITLE_GET_REQ, ADMIN_GAME_TITLE_GET_OK, ADMIN_GAME_TITLE_GET_NG, ADMIN_GAME_TITLE_ADD, ADMIN_GAME_TITLE_DELETE, GAME_TITLE_CHECK } from '../Action';
+import {
+	ADMIN_GAME_TITLE_GET_REQ,
+	ADMIN_GAME_TITLE_GET_OK, 
+	ADMIN_GAME_TITLE_GET_NG, 
+	ADMIN_GAME_TITLE_ADD_REQ, 
+	ADMIN_GAME_TITLE_ADD_OK, 
+	ADMIN_GAME_TITLE_ADD_NG, 
+	ADMIN_GAME_TITLE_DELETE_REQ, 
+	ADMIN_GAME_TITLE_DELETE_OK,
+	ADMIN_GAME_TITLE_DELETE_NG,
+	GAME_TITLE_CHECK, 
+	GAME_TITLE_TEXT 
+} from '../Action';
 
 const initiaState = {
 	data: {
@@ -9,11 +21,26 @@ const initiaState = {
 		title: [],
 		hard: []
 	},
-	error: {
+	text: {
 		title: "",
 		hard: ""
 	},
-	result: ""
+	result: {
+		add: {
+			title: "",
+			hard: ""
+		}
+	},
+	error: {
+		get: {
+			title: "",
+			hard: ""
+		},
+		add: {
+			title: "",
+			hard: ""
+		}
+	},
 }
 
 const adminState = (state = initiaState, action) => {
@@ -21,18 +48,6 @@ const adminState = (state = initiaState, action) => {
 		case ADMIN_GAME_TITLE_GET_REQ:
 			return {
 				...state,
-				data: {
-					title: [],
-					hard: []
-				},
-				checked: {
-					title: [],
-					hard: []
-				},
-				error: {
-					title: "",
-					hard: ""
-				}
 			}
 		case ADMIN_GAME_TITLE_GET_OK:
 			return {
@@ -40,27 +55,86 @@ const adminState = (state = initiaState, action) => {
 				data: {
 					...state.data,
 					title: action.payload
-				}
+				},
+				result: {
+					add: {
+						title: "",
+						hard: ""
+					}
+				},
 			}
 		case ADMIN_GAME_TITLE_GET_NG:
 			return {
 				...state,
 				error: {
 					...state.error,
-					title: action.error
+					get: {
+						...state.error.get,
+						title: action.error
+					}
 				}
 			}
-		case ADMIN_GAME_TITLE_ADD:
+		case ADMIN_GAME_TITLE_ADD_REQ:
+			return {
+				...state,
+			}
+		case ADMIN_GAME_TITLE_ADD_OK:
+			return {
+				...state,
+				result: {
+					...state.result,
+					add: {
+						...state.result.add,
+						title: action.payload
+					}
+				},
+				error: {
+					get: {
+						title: "",
+						hard: ""
+					},
+					add: {
+						title: "",
+						hard: ""
+					}
+				},
+			}
+		case ADMIN_GAME_TITLE_ADD_NG:
+			return {
+				...state,
+				error: {
+					...state.error,
+					add: {
+						...state.error.add,
+						title: action.error
+					}
+				}
+			}
+		case ADMIN_GAME_TITLE_DELETE_REQ:
 			return {
 				// ...state,
 				// data: action.payload,
 				// result: action.payload
 			}
-		case ADMIN_GAME_TITLE_DELETE:
+		case ADMIN_GAME_TITLE_DELETE_OK:
 			return {
 				// ...state,
 				// data: action.payload,
 				// result: action.payload
+			}
+		case ADMIN_GAME_TITLE_DELETE_NG:
+			return {
+				// ...state,
+				// data: action.payload,
+				// result: action.payload
+			}
+		case GAME_TITLE_TEXT:
+			return {
+				...state,
+				text: {
+					...state.text,
+					title: action.payload
+				}
 			}
 		case GAME_TITLE_CHECK:
 			if(action.toggle) {

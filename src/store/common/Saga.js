@@ -7,11 +7,12 @@ import {
 	loginOk,
 	loginNg,
 	ADMIN_GAME_TITLE_GET_REQ,
-	ADMIN_GAME_TITLE_ADD,
+	ADMIN_GAME_TITLE_ADD_REQ,
 	ADMIN_GAME_TITLE_DELETE,
 	adminGameTitleGetOk,
 	adminGameTitleGetNg,
-	adminGameTitleAdd,
+	adminGameTitleAddOk,
+	adminGameTitleAddNg,
 	adminGameTitleDelete
 } from './Action';
 
@@ -62,21 +63,46 @@ function* fetchAuth() {
 export const authSaga = [takeLatest(AUTH_REQ, fetchAuth)];
 
 // Admin
+/**
+ * 管理画面でゲームタイトルを取得する処理
+ */
+const game_list_url = `/v1/gamelist`;
 const resAdminGameTitleGet = () => {
-	const url = `/v1/gamelist`;
 	return axios_instance
-	.get(url)
+	.get(game_list_url)
 	.then((res) => {
 		const data = res.data;
 		return { data }
 	})
-	.catch((error) => {
+	.catch((e) => {
+		const error = e.toString();
 		return { error }
 	})
 }
 
-const resAdminGameTitleAdd = () => {
-	// console.log()
+/**
+ * 管理画面でゲームタイトルを登録する処理
+ * @param {string} title - ゲームタイトル
+ */
+const resAdminGameTitleAdd = (title) => {
+	const game_title = title.payload || "入力しろや";
+	if(game_title != "入力しろや") {
+		return axios_instance
+		.post(game_list_url, {
+			game_title: title.payload
+		})
+		.then((res) => {
+			const data = res.data.message
+			return { data }
+		})
+		.catch((e) => {
+			const error = e.toString();
+			return { error }
+		})
+	}
+
+	const error = game_title.toString();
+	return { error }
 }
 
 const resAdminGameTitleDelete = () => {
@@ -89,11 +115,20 @@ function* fetchAdminGameTitleGet() {
 	if(data && !error) {
 		return yield put(adminGameTitleGetOk(data))
 	}
+
 	return yield put(adminGameTitleGetNg(error))
 }
 
-function* fetchAdminGameTitleAdd() {
-	
+function* fetchAdminGameTitleAdd(title) {
+	const { data, error } = yield call(resAdminGameTitleAdd, title)
+
+	if(data && !error) {
+		yield put(adminGameTitleAddOk(data))
+		window.location.reload()
+		return
+	}
+
+	return yield put(adminGameTitleAddNg(error))
 }
 
 function* fetchAdminGameTitleDelete() {
@@ -101,5 +136,5 @@ function* fetchAdminGameTitleDelete() {
 }
 
 export const adminGetSaga = [takeLatest(ADMIN_GAME_TITLE_GET_REQ, fetchAdminGameTitleGet)];
-export const adminAddSaga = [takeLatest(ADMIN_GAME_TITLE_ADD, fetchAdminGameTitleAdd)];
+export const adminAddSaga = [takeLatest(ADMIN_GAME_TITLE_ADD_REQ, fetchAdminGameTitleAdd)];
 export const adminDeleteSaga = [takeLatest(ADMIN_GAME_TITLE_DELETE, fetchAdminGameTitleDelete)];
