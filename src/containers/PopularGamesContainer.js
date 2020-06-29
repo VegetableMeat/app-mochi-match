@@ -6,14 +6,14 @@ import PopularGames from '../components/PopularGames';
 
 const mapStateToProps = (state) => {
   return {
-    state: state.popularGameState
-  }
-}
+    state: state.popularGameState,
+  };
+};
 
 const mapDispatchProps = (dispatch) => {
-  return { 
-    actions: bindActionCreators(Actions, dispatch)
-  }
-}
+  return {
+    actions: bindActionCreators(Actions, dispatch),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchProps)(PopularGames)
+export default connect(mapStateToProps, mapDispatchProps)(PopularGames);

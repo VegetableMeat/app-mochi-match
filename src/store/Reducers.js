@@ -11,7 +11,7 @@ const rootReducers = combineReducers({
   popularGameState,
   modalState,
   headerMenuState,
-  loginState
-})
+  loginState,
+});
 
 export default rootReducers;
