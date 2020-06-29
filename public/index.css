@@ -115,3 +115,7 @@ button:focus {
   width: calc(100% - 20px);
   padding-left: 20px;
 }
+
+input::placeholder {
+	color: rgb(214, 214, 214);
+}
