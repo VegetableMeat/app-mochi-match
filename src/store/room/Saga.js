@@ -1,10 +1,6 @@
 import axios from 'axios';
 import { put, call, takeLatest } from 'redux-saga/effects';
-import { 
-  GET_ROOM_REQ,
-  getRoomOk,
-  getRoomNg
-} from './Action';
+import { GET_ROOM_REQ, getRoomOk, getRoomNg } from './Action';
 
 const requestRoomListApi = () => {
   const url = `http://localhost:3000/room/list`;
@@ -12,20 +8,20 @@ const requestRoomListApi = () => {
     .get(url)
     .then((res) => {
       const data = res.data;
-      return { data }
+      return { data };
     })
     .catch((error) => {
-      return { error }
-    })
-}
+      return { error };
+    });
+};
 
 function* fetchRoomList() {
-  const { data, error } = yield call(requestRoomListApi)
-  
-  if(data) {
-    yield put(getRoomOk(data))
+  const { data, error } = yield call(requestRoomListApi);
+
+  if (data) {
+    yield put(getRoomOk(data));
   } else {
-    yield put(getRoomNg(error))
+    yield put(getRoomNg(error));
   }
 }
 
