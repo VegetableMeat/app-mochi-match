@@ -19,6 +19,8 @@ import Capacity from './Capacity';
 import RecruitmentText from './RecruitmentText';
 import BreakUnderLine from './BreakUnderLine';
 
+import './css/InTheRoom.css';
+
 export default function InTheRoom() {
   return (
     <div id="InTheRoom">
@@ -33,9 +35,9 @@ export default function InTheRoom() {
 
           <MenuHeader text="ルーム情報" />
           <MenuInnerWrappr>
-            <GamePlate />
+            <GamePlate hard="" title="タイトル" />
             <BreakUnderLine />
-            <Capacity />
+            <Capacity capacity="4" />
             <BreakUnderLine />
             <RecruitmentText />
             <BreakUnderLine />
