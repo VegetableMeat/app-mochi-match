@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { put, call, takeLatest } from 'redux-saga/effects';
-import { 
+import {
   GET_FAVORITE_GAMES_REQ,
   getFavoriteGamesOk,
   getFavoriteGamesNg,
@@ -16,20 +16,20 @@ const requestFavoriteGamesApi = () => {
     .get(url)
     .then((res) => {
       const data = res.data;
-      return { data }
+      return { data };
     })
     .catch((error) => {
-      return { error }
-    })
-}
+      return { error };
+    });
+};
 
 function* fetchFavoriteGames() {
-  const { data, error } = yield call(requestFavoriteGamesApi)
-  
-  if(data) {
-    yield put(getFavoriteGamesOk(data))
+  const { data, error } = yield call(requestFavoriteGamesApi);
+
+  if (data) {
+    yield put(getFavoriteGamesOk(data));
   } else {
-    yield put(getFavoriteGamesNg(error))
+    yield put(getFavoriteGamesNg(error));
   }
 }
 
@@ -42,20 +42,20 @@ const requestPopularGamesApi = () => {
     .get(url)
     .then((res) => {
       const data = res.data;
-      return { data }
+      return { data };
     })
     .catch((error) => {
-      return { error }
-    })
-}
+      return { error };
+    });
+};
 
 function* fetchPopularGames() {
-  const { data, error } = yield call(requestPopularGamesApi)
-  
-  if(data) {
-    yield put(getPopularGamesOk(data))
+  const { data, error } = yield call(requestPopularGamesApi);
+
+  if (data) {
+    yield put(getPopularGamesOk(data));
   } else {
-    yield put(getPopularGamesNg(error))
+    yield put(getPopularGamesNg(error));
   }
 }
 

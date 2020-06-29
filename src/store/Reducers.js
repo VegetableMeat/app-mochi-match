@@ -14,6 +14,6 @@ const rootReducers = combineReducers({
   headerMenuState,
   loginState,
   adminState
-})
+});
 
 export default rootReducers;

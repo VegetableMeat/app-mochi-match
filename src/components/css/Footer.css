@@ -1,7 +1,5 @@
 #footer {
   background-color: #A8A8A8;
-  position: absolute;
-  bottom: 0;
   width: 100vw;
   height: 90px;
 }
@@ -18,8 +16,6 @@
 
 .footer-bottom {
   background-color: #7B7B7B;
-  position: absolute;
-  bottom: 0px;
   width: 100vw;
   height: 30px;
 }

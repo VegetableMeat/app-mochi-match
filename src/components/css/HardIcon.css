@@ -2,6 +2,7 @@
     margin: 4px;
     display: inline;
     z-index: 1;
+    position: relative;
 }
 
 .hard-icon .icon {

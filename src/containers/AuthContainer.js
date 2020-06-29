@@ -5,15 +5,15 @@ import * as Actions from '../store/common/Action.js';
 import Auth from '../components/Auth';
 
 const mapStateToProps = (state) => {
-	return {
-		state: state.loginState
-	}
-}
+  return {
+    state: state.loginState,
+  };
+};
 
 const mapDispatchProps = (dispatch) => {
-	return { 
-		actions: bindActionCreators(Actions, dispatch)
-	}
-}
+  return {
+    actions: bindActionCreators(Actions, dispatch),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchProps)(Auth)
+export default connect(mapStateToProps, mapDispatchProps)(Auth);
