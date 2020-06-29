@@ -90,6 +90,9 @@ export const ADMIN_GAME_TITLE_ADD_NG = 'ADMIN_GAME_TITLE_ADD_NG';
 export const ADMIN_GAME_TITLE_DELETE_REQ = 'ADMIN_GAME_TITLE_DELETE_REQ';
 export const ADMIN_GAME_TITLE_DELETE_OK = 'ADMIN_GAME_TITLE_DELETE_OK';
 export const ADMIN_GAME_TITLE_DELETE_NG = 'ADMIN_GAME_TITLE_DELETE_NG';
+export const ADMIN_GAME_TITLE_UPDATE_REQ = 'ADMIN_GAME_TITLE_UPDATE_REQ';
+export const ADMIN_GAME_TITLE_UPDATE_OK = 'ADMIN_GAME_TITLE_UPDATE_OK';
+export const ADMIN_GAME_TITLE_UPDATE_NG = 'ADMIN_GAME_TITLE_UPDATE_NG';
 export const GAME_TITLE_TEXT = 'GAME_TITLE_TEXT';
 export const GAME_TITLE_CHECK = 'GAME_TITLE_CHECK';
 
@@ -156,6 +159,29 @@ export const adminGameTitleDeleteOk = (data) => {
 export const adminGameTitleDeleteNg = (error) => {
 	return {
 		type: ADMIN_GAME_TITLE_DELETE_NG,
+		error: error
+	}
+}
+
+export const adminGameTitleUpdateReq = (text, check) => {
+	return {
+		type: ADMIN_GAME_TITLE_UPDATE_REQ,
+		text: text,
+		check: check,
+		url: GAME_TITLE_LIST_URL,
+	}
+}
+
+export const adminGameTitleUpdateOk = (data) => {
+	return {
+		type: ADMIN_GAME_TITLE_UPDATE_OK,
+		payload: data
+	}
+}
+
+export const adminGameTitleUpdateNg = (error) => {
+	return {
+		type: ADMIN_GAME_TITLE_UPDATE_NG,
 		error: error
 	}
 }

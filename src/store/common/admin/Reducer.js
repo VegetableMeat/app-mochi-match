@@ -8,6 +8,9 @@ import {
 	ADMIN_GAME_TITLE_DELETE_REQ, 
 	ADMIN_GAME_TITLE_DELETE_OK,
 	ADMIN_GAME_TITLE_DELETE_NG,
+	ADMIN_GAME_TITLE_UPDATE_REQ, 
+	ADMIN_GAME_TITLE_UPDATE_OK,
+	ADMIN_GAME_TITLE_UPDATE_NG,
 	GAME_TITLE_CHECK, 
 	GAME_TITLE_TEXT 
 } from '../Action';
@@ -33,6 +36,10 @@ const initiaState = {
 		delete: {
 			title: "",
 			hard: ""
+		},
+		update: {
+			title: "",
+			hard: ""
 		}
 	},
 	error: {
@@ -48,6 +55,10 @@ const initiaState = {
 			title: "",
 			hard: ""
 		},
+		update: {
+			title: "",
+			hard: ""
+		}
 	},
 }
 
@@ -65,10 +76,6 @@ const adminState = (state = initiaState, action) => {
 					title: action.payload
 				},
 				result: {
-					// add: {
-					// 	title: "",
-					// 	hard: ""
-					// }
 					...state.result,
 				},
 			}
@@ -98,14 +105,6 @@ const adminState = (state = initiaState, action) => {
 					}
 				},
 				error: {
-					// get: {
-					// 	title: "",
-					// 	hard: ""
-					// },
-					// add: {
-					// 	title: "",
-					// 	hard: ""
-					// }
 					...state.error
 				},
 			}
@@ -145,6 +144,35 @@ const adminState = (state = initiaState, action) => {
 					...state.error,
 					delete: {
 						...state.error.delete,
+						title: action.error
+					}
+				}
+			}
+		case ADMIN_GAME_TITLE_UPDATE_REQ:
+			return {
+				...state,
+			}
+		case ADMIN_GAME_TITLE_UPDATE_OK:
+			return {
+				...state,
+				result: {
+					...state.result,
+					update: {
+						...state.result.update,
+						title: action.payload
+					}
+				},
+				error: {
+					...state.error,
+				},
+			}
+		case ADMIN_GAME_TITLE_UPDATE_NG:
+			return {
+				...state,
+				error: {
+					...state.error,
+					update: {
+						...state.error.update,
 						title: action.error
 					}
 				}
