@@ -93,9 +93,12 @@ export const ADMIN_GAME_TITLE_DELETE_NG = 'ADMIN_GAME_TITLE_DELETE_NG';
 export const GAME_TITLE_TEXT = 'GAME_TITLE_TEXT';
 export const GAME_TITLE_CHECK = 'GAME_TITLE_CHECK';
 
+const GAME_TITLE_LIST_URL = `/v1/gamelist`;
+
 export const adminGameTitleGetReq = () => {
 	return {
-		type: ADMIN_GAME_TITLE_GET_REQ
+		type: ADMIN_GAME_TITLE_GET_REQ,
+		url: GAME_TITLE_LIST_URL,
 	}
 }
 
@@ -116,7 +119,8 @@ export const adminGameTitleGetNg = (error) => {
 export const adminGameTitleAddReq = (data) => {
 	return {
 		type: ADMIN_GAME_TITLE_ADD_REQ,
-		payload: data
+		payload: data,
+		url: GAME_TITLE_LIST_URL,
 	}
 }
 
@@ -137,7 +141,8 @@ export const adminGameTitleAddNg = (error) => {
 export const adminGameTitleDeleteReq = (data) => {
 	return {
 		type: ADMIN_GAME_TITLE_DELETE_REQ,
-		payload: data
+		payload: data,
+		url: GAME_TITLE_LIST_URL,
 	}
 }
 

@@ -8,12 +8,13 @@ import {
 	loginNg,
 	ADMIN_GAME_TITLE_GET_REQ,
 	ADMIN_GAME_TITLE_ADD_REQ,
-	ADMIN_GAME_TITLE_DELETE,
+	ADMIN_GAME_TITLE_DELETE_REQ,
 	adminGameTitleGetOk,
 	adminGameTitleGetNg,
 	adminGameTitleAddOk,
 	adminGameTitleAddNg,
-	adminGameTitleDelete
+	adminGameTitleDeleteOk,
+	adminGameTitleDeleteNg,
 } from './Action';
 
 // Login
@@ -66,10 +67,9 @@ export const authSaga = [takeLatest(AUTH_REQ, fetchAuth)];
 /**
  * 管理画面でゲームタイトルを取得する処理
  */
-const game_list_url = `/v1/gamelist`;
-const resAdminGameTitleGet = () => {
+const resAdminGameTitleGet = (get) => {
 	return axios_instance
-	.get(game_list_url)
+	.get(get.url)
 	.then((res) => {
 		const data = res.data;
 		return { data }
@@ -82,17 +82,17 @@ const resAdminGameTitleGet = () => {
 
 /**
  * 管理画面でゲームタイトルを登録する処理
- * @param {string} title - ゲームタイトル
+ * @param {string} add - 追加したいゲームタイトル
  */
-const resAdminGameTitleAdd = (title) => {
-	const game_title = title.payload || "入力しろや";
+const resAdminGameTitleAdd = (add) => {
+	const game_title = add.payload || "入力しろや";
 	if(game_title != "入力しろや") {
 		return axios_instance
-		.post(game_list_url, {
-			game_title: title.payload
+		.post(add.url, {
+			game_title: add.payload
 		})
 		.then((res) => {
-			const data = res.data.message
+			const data = res.sdata.message
 			return { data }
 		})
 		.catch((e) => {
@@ -105,12 +105,35 @@ const resAdminGameTitleAdd = (title) => {
 	return { error }
 }
 
-const resAdminGameTitleDelete = () => {
+const resAdminGameTitleDelete = (del) => {
+	const check = del.payload[0] || "チェックしろや";
+	if(check != "チェックしろや") {
+		let query = "?id=" + check;
+		del.payload = del.payload.filter((id) => {
+			return id !== del.payload[0];
+		});
+		del.payload.forEach((id) => {
+			query += "&id=" + id;
+		});
+
+		return axios_instance
+		.delete(del.url + query)
+		.then((res) => {
+			const data = res.data.message
+			return { data }
+		})
+		.catch((e) => {
+			const error = e.toString();
+			return { error }
+		});
+	}
 	
+	const error = check.toString();
+	return { error }
 }
 
-function* fetchAdminGameTitleGet() {
-	const { data, error } = yield call(resAdminGameTitleGet)
+function* fetchAdminGameTitleGet(get) {
+	const { data, error } = yield call(resAdminGameTitleGet, get)
 
 	if(data && !error) {
 		return yield put(adminGameTitleGetOk(data))
@@ -119,8 +142,8 @@ function* fetchAdminGameTitleGet() {
 	return yield put(adminGameTitleGetNg(error))
 }
 
-function* fetchAdminGameTitleAdd(title) {
-	const { data, error } = yield call(resAdminGameTitleAdd, title)
+function* fetchAdminGameTitleAdd(add) {
+	const { data, error } = yield call(resAdminGameTitleAdd, add)
 
 	if(data && !error) {
 		yield put(adminGameTitleAddOk(data))
@@ -131,10 +154,22 @@ function* fetchAdminGameTitleAdd(title) {
 	return yield put(adminGameTitleAddNg(error))
 }
 
-function* fetchAdminGameTitleDelete() {
-	
+function* fetchAdminGameTitleDelete(del) {
+	const { data, error } = yield call(resAdminGameTitleDelete, del)
+
+	if(data && !error) {
+		yield put(adminGameTitleDeleteOk(data))
+		window.location.reload()
+		return
+	}
+
+	return yield put(adminGameTitleDeleteNg(error))
 }
 
-export const adminGetSaga = [takeLatest(ADMIN_GAME_TITLE_GET_REQ, fetchAdminGameTitleGet)];
-export const adminAddSaga = [takeLatest(ADMIN_GAME_TITLE_ADD_REQ, fetchAdminGameTitleAdd)];
-export const adminDeleteSaga = [takeLatest(ADMIN_GAME_TITLE_DELETE, fetchAdminGameTitleDelete)];
+export const adminTitleGetSaga = [takeLatest(ADMIN_GAME_TITLE_GET_REQ, fetchAdminGameTitleGet)];
+export const adminTitleAddSaga = [takeLatest(ADMIN_GAME_TITLE_ADD_REQ, fetchAdminGameTitleAdd)];
+export const adminTitleDeleteSaga = [takeLatest(ADMIN_GAME_TITLE_DELETE_REQ, fetchAdminGameTitleDelete)];
+
+// export const adminHardGetSaga = [takeLatest(ADMIN_GAME_TITLE_GET_REQ, fetchAdminGameTitleGet)];
+// export const adminHardAddSaga = [takeLatest(ADMIN_GAME_TITLE_ADD_REQ, fetchAdminGameTitleAdd)];
+// export const adminHardDeleteSaga = [takeLatest(ADMIN_GAME_TITLE_DELETE_REQ, fetchAdminDelete)];

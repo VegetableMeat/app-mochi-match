@@ -81,18 +81,19 @@ export default class Admin extends Component {
 	}
 	
 	render() {
-		const { data, error, result, text } = this.props.state
+		const { data, error, result, text, checked } = this.props.state
 		const { actions } = this.props
 		console.log(this.props.state)
 		const title_list = this.domCreate(data.title, error.get.title)
-		const game_error = this.error(result.add.title, error.add.title)
+		const add_error = this.error(result.add.title, error.add.title)
+		const delete_error = this.error(result.delete.title, error.delete.title)
 
 		return (
 			<div id="admin">
 				<input type="button" value="取得と言う名のReload" onClick={() => window.location.reload()} /><br />
 				<input type="text" onChange={this.insertText} name="title"/>
-				<input type="button" value="ゲームタイトルを追加" onClick={() => actions.adminGameTitleAddReq(text.title)}/>
-				<input type="button" value="削除" />
+				<input type="button" value="ゲームタイトルを追加" onClick={() => actions.adminGameTitleAddReq(text.title)} />
+				<input type="button" value="削除" onClick={() => actions.adminGameTitleDeleteReq(checked.title)} />
 				<input type="button" value="変更" /><br />
 				<input type="text" />
 				<input type="button" value="ゲームハードを追加" />
@@ -100,7 +101,7 @@ export default class Admin extends Component {
 				<input type="button" value="変更" /><br />
 				<div className="wrapper">
 					<div className="output-game-title">
-						<h2>ゲームタイトル</h2>{game_error}
+						<h2>ゲームタイトル</h2>{add_error}{delete_error}
 						{title_list}
 					</div>
 					<div className="output-game-hard">

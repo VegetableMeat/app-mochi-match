@@ -29,6 +29,10 @@ const initiaState = {
 		add: {
 			title: "",
 			hard: ""
+		},
+		delete: {
+			title: "",
+			hard: ""
 		}
 	},
 	error: {
@@ -39,7 +43,11 @@ const initiaState = {
 		add: {
 			title: "",
 			hard: ""
-		}
+		},
+		delete: {
+			title: "",
+			hard: ""
+		},
 	},
 }
 
@@ -57,10 +65,11 @@ const adminState = (state = initiaState, action) => {
 					title: action.payload
 				},
 				result: {
-					add: {
-						title: "",
-						hard: ""
-					}
+					// add: {
+					// 	title: "",
+					// 	hard: ""
+					// }
+					...state.result,
 				},
 			}
 		case ADMIN_GAME_TITLE_GET_NG:
@@ -89,14 +98,15 @@ const adminState = (state = initiaState, action) => {
 					}
 				},
 				error: {
-					get: {
-						title: "",
-						hard: ""
-					},
-					add: {
-						title: "",
-						hard: ""
-					}
+					// get: {
+					// 	title: "",
+					// 	hard: ""
+					// },
+					// add: {
+					// 	title: "",
+					// 	hard: ""
+					// }
+					...state.error
 				},
 			}
 		case ADMIN_GAME_TITLE_ADD_NG:
@@ -112,21 +122,32 @@ const adminState = (state = initiaState, action) => {
 			}
 		case ADMIN_GAME_TITLE_DELETE_REQ:
 			return {
-				// ...state,
-				// data: action.payload,
-				// result: action.payload
+				...state,
 			}
 		case ADMIN_GAME_TITLE_DELETE_OK:
 			return {
-				// ...state,
-				// data: action.payload,
-				// result: action.payload
+				...state,
+				result: {
+					...state.result,
+					delete: {
+						...state.result.delete,
+						title: action.payload
+					}
+				},
+				error: {
+					...state.error,
+				},
 			}
 		case ADMIN_GAME_TITLE_DELETE_NG:
 			return {
-				// ...state,
-				// data: action.payload,
-				// result: action.payload
+				...state,
+				error: {
+					...state.error,
+					delete: {
+						...state.error.delete,
+						title: action.error
+					}
+				}
 			}
 		case GAME_TITLE_TEXT:
 			return {
