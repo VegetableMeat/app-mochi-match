@@ -3,10 +3,9 @@
 }
 
 #InTheRoom .capacity * {
-    color: #7D7D7D;
-    text-align: left;
-    font-size: 14px;
-    margin: 8px 8px 4px 8px;
-    position: relative;
-
+	color: #7D7D7D;
+	text-align: left;
+	font-size: 14px;
+	margin: 8px 8px 4px 8px;
+	position: relative;
 }

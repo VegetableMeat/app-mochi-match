@@ -3,80 +3,80 @@
 }
 
 .section {
-    margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 .section .section-inner-wrapper {
-    padding: 8px 16px 0px;
+	padding: 8px 16px 0px;
 }
 
 .radio {
-    display: flex;
-    border-radius: 3px;
-    overflow: hidden;
-    border: 1px solid #b6b6b6;
-    margin-bottom: 20px;
+	display: flex;
+	border-radius: 3px;
+	overflow: hidden;
+	border: 1px solid #b6b6b6;
+	margin-bottom: 20px;
 }
 
 .radio div {
-    position: relative;
-    flex: 1;
+	position: relative;
+	flex: 1;
 }
 
 .radio input {
-    width: 100%;
-    height: 24px;
-    opacity: 0;
+	width: 100%;
+	height: 24px;
+	opacity: 0;
 }
 
 .radio label {
-    position: absolute;
-    top: 0; left: 0;
-    color: #b6b6b6;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    border-right: 1px solid #b6b6b6;
+	position: absolute;
+	top: 0; left: 0;
+	color: #b6b6b6;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	border-right: 1px solid #b6b6b6;
 }
 
 .radio div:last-child label {
-    border-right: 0;
+	border-right: 0;
 }
 
 .radio input:checked + label {
-    background: #66a8ff;
-    font-weight: 500;
-    color: #fff;
+	background: #66a8ff;
+	font-weight: 500;
+	color: #fff;
 }
 
 .time-designation-area {
-    display: flex;
+	display: flex;
 }
 
 .time-designation-area .shadow-text-area {
-    width: 40%;
-    margin-right: 5%;
+	width: 40%;
+	margin-right: 5%;
 }
 
 .textarea {
-    font-size: 12px;
-    color: #7d7d7d;
-    background-color: white;
-    padding: 10px;
-    border-radius: 8px;
-    border: 0px;
-    overflow: auto;
-    height: 100px;
-    box-shadow: grey 1px 1px 4px;
-    width: 100%;
+	font-size: 12px;
+	color: #7d7d7d;
+	background-color: white;
+	padding: 10px;
+	border-radius: 8px;
+	border: 0px;
+	overflow: auto;
+	height: 100px;
+	box-shadow: grey 1px 1px 4px;
+	width: 100%;
 }
 
 #room-creation .footer-button-area {
-    position: relative;
-    margin-top: 40px;
-    bottom: 0;
+	position: relative;
+	margin-top: 40px;
+	bottom: 0;
 }

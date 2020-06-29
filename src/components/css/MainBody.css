@@ -1,8 +1,8 @@
 .main-body {
-    width: calc(100vw - 6vw - 200px - 40px);
-    max-width: 720px;
-    display: inline-block;
-    position: relative;
+	width: calc(100vw - 6vw - 200px - 40px);
+	max-width: 720px;
+	display: inline-block;
+	position: relative;
 }
 
 @media screen and (max-width: 600px) {
