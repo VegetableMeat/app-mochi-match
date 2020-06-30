@@ -1,38 +1,69 @@
 // Modal
-export const SHOW_MODAL_TRUE = 'SHOW_MODAL_TRUE';
-export const SHOW_MODAL_FALSE = 'SHOW_MODAL_FALSE';
+export const SHOW_MODAL_TRUE = "SHOW_MODAL_TRUE";
+export const SHOW_MODAL_FALSE = "SHOW_MODAL_FALSE";
+// export const SHOW_MODAL_REPORT = 'SHOW_MODAL_REPORT';
+// export const FINAL_CONFIRMATION = "FINAL_CONFIRMATION";
+// export const END_MODAL = "END_MODAL";
+export const SHOW_MODAL_FRONT = "SHOW_MODAL_FRONT";
+export const SHOW_MODAL_BACK = "SHOW_MODAL_BACK";
+export const MODAL_CHECK = "MODAL_CHECK";
 
-export const showModalTrue = (category, data) => {
-  return {
-    type: SHOW_MODAL_TRUE,
-    category: category,
-    data: data
-  }
+export const showModalTrue = (category, key, data) => {
+	return {
+		type: SHOW_MODAL_TRUE,
+		category: category,
+		key: key,
+		payload: data,
+	}
 }
 
 export const showModalFalse = () => {
-  return {
-    type: SHOW_MODAL_FALSE,
-    category: null,
-    data: {}
-  }
+	return {
+		type: SHOW_MODAL_FALSE,
+		category: null,
+		payload: {},
+	}
 }
 
-// HeaderMenu
+export const showModalFront = (category, key, data) => {
+	return {
+		type: SHOW_MODAL_FRONT,
+		category: category,
+		key: key,
+		payload: data,
+	}
+}
+
+export const showModalBack = () => {
+	return {
+		type: SHOW_MODAL_BACK,
+	}
+}
+
+export const modalCheck = (data, toggle) => {
+	return {
+		type: MODAL_CHECK,
+		payload: data,
+		toggle: toggle,
+	}
+}
+
+//HeaderMenu
 export const SHOW_HEADER_MENU_TRUE = 'SHOW_HEADER_MENU_TRUE';
 export const SHOW_HEADER_MENU_FALSE = 'SHOW_HEADER_MENU_FALSE';
 
 export const showHeaderMenuTrue = () => {
-  return {
-    type: SHOW_HEADER_MENU_TRUE
-  }
+	return {
+		type: SHOW_HEADER_MENU_TRUE
+	}
 }
 
 export const showHeaderMenuFalse = () => {
-  return {
-    type: SHOW_HEADER_MENU_FALSE
-  }
+	return {
+		type: SHOW_HEADER_MENU_FALSE
+	}
 }
+
 
 // Auth
 export const AUTH_REQ = 'AUTH_REQ';
