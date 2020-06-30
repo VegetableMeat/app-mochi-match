@@ -18,19 +18,22 @@ import GamePlate from './GamePlate';
 import Capacity from './Capacity';
 import RecruitmentText from './RecruitmentText';
 import BreakUnderLine from './BreakUnderLine';
+import HeadLine2 from './HeadLine2';
 
 import './css/InTheRoom.css';
 
 export default function InTheRoom() {
   return (
-    <div id="InTheRoom">
+    <div id="in-the-room">
       <Header />
       <Body>
         <SideMenu>
           <MenuHeader text="メンバー" />
           <MenuInnerWrappr>
-            <UserStatus />
-            <UserPlate />
+            <UserPlate icon="" name="UserName" />
+            <UserPlate icon="" name="UserName" />
+            <UserPlate icon="" name="UserName" />
+            <UserPlate icon="" name="UserName" />
           </MenuInnerWrappr>
 
           <MenuHeader text="ルーム情報" />
@@ -39,17 +42,14 @@ export default function InTheRoom() {
             <BreakUnderLine />
             <Capacity capacity="4" />
             <BreakUnderLine />
+            <HeadLine2>募集テキスト</HeadLine2>
             <RecruitmentText />
             <BreakUnderLine />
           </MenuInnerWrappr>
         </SideMenu>
 
         <MainBody>
-          <ChatArea>
-            <ChatDisplay>
-              <SimpleProfile />
-            </ChatDisplay>
-          </ChatArea>
+          <ChatArea />
         </MainBody>
       </Body>
       <ExitButton />

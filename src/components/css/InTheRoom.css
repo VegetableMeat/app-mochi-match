@@ -1,11 +1,27 @@
-#InTheRoom {
+#in-the-room {
 
 }
 
-#InTheRoom .capacity * {
-	color: #7D7D7D;
-	text-align: left;
-	font-size: 14px;
-	margin: 8px 8px 4px 8px;
-	position: relative;
+#in-the-room .capacity * {
+    color: #7D7D7D;
+    text-align: left;
+    font-size: 14px;
+    margin: 8px 8px 4px 8px;
+    position: relative;
+
+}
+
+#in-the-room .head-line-2 {
+    color: #7D7D7D;
+    font-size: 14px;
+    margin: 8px 8px 4px 8px;
+    padding: 0;
+}
+
+#in-the-room .user-plate {
+    width: 100%;
+}
+
+#in-the-room .game-plate {
+    margin: 0 4px 4px;
 }
