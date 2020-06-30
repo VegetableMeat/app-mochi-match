@@ -1,43 +1,43 @@
 .room-card {
-    display: inline-block;
-    width: 30%;
-    min-height: 200px;
-    margin: 0 0 3% 3%;
-    border-radius: 0 16px 16px 16px;
-    padding: 8px 10px;
-    position: relative;
-    background-color: #a8a8a8;
+	display: inline-block;
+	width: 30%;
+	min-height: 200px;
+	margin: 0 0 3% 3%;
+	border-radius: 0 16px 16px 16px;
+	padding: 8px 10px;
+	position: relative;
+	background-color: #a8a8a8;
 }
 
 @media screen and (min-width: 1000px) {
-    .room-card {
-        width: 218px;
-        margin: 0 0 19px 19px;
-    }
+	.room-card {
+		width: 218px;
+		margin: 0 0 19px 19px;
+	}
 }
 
 @media screen and (max-width: 767px) {
-    .room-card {
-        width: 48%;
-        margin: 0 0 18px 2%;
-    }
+	.room-card {
+		width: 48%;
+		margin: 0 0 18px 2%;
+	}
 }
 
 @media screen and (max-width: 620px) {
-    .room-card {
-        width: 100%;
-        margin: 0 0 16px 0;
-    }
+	.room-card {
+		width: 100%;
+		margin: 0 0 16px 0;
+	}
 }
 
 .room-card .simple-profile {
-    margin: 14px 0 0;
+	margin: 14px 0 0;
 }
 
 .room-card .game-plate {
-    margin: 0;
+	margin: 0;
 }
 
 .room-card .recrutiment-text {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }

@@ -1,11 +1,11 @@
 .user-icon {
-    margin: 4px;
-    display: inline;
+	margin: 4px;
+	display: inline;
 }
 
 .user-icon .icon {
-    height: 20px;
-    width: 20px;
-    background-color: red;
-    border-radius: 20px;
+	height: 20px;
+	width: 20px;
+	background-color: red;
+	border-radius: 20px;
 }
