@@ -1,0 +1,15 @@
+.user-plate {
+    display: flex;
+    min-width: 80px;
+    max-width: 200px;
+    padding: 2px 4px;
+    margin: 8px 0;
+    background-color: white;
+    border-radius: 20px;
+    font-size: 12px;
+    box-shadow: grey 1px 1px 4px;
+  }
+
+  .user-plate .user-name {
+      color: #7D7D7D;
+  }

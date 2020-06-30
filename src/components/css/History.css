@@ -45,13 +45,3 @@
     display: inline-flex;
     flex-wrap: wrap;
 }
-
-.members-area .user-plate {
-    display: inline-block;
-    min-width: 80px;
-    padding: 2px 12px;
-    margin: 4px;
-    background-color: rgb(204, 204, 204);
-    border-radius: 20px;
-    font-size: 12px;
-}
