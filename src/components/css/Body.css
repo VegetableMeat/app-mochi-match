@@ -2,6 +2,7 @@
   width: 94vw;
   margin: 40px 3vw;
   display: flex;
+  min-height: calc(100vh - 100px);
 }
 
 @media screen and (min-width: 1000px) {
@@ -11,7 +12,7 @@
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   #body {
     width: 96vw;
     margin: 40px 2vw;

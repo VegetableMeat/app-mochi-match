@@ -1,61 +1,57 @@
 .history-cards{
-    margin-top: 60px;
+	margin-top: 60px;
 }
 
 @media screen and (max-width: 480px) {
-    .history-cards{
-        margin-top: 52px;
-    }
+	.history-cards{
+		margin-top: 52px;
+	}
 }
 
 .history-cards .head-line-1 {
-    width: 100px;
-    font-size: 14px;
-    color: rgb(109, 109, 109);
-    font-weight: bold;
+	width: 100px;
+	font-size: 14px;
+	color: rgb(109, 109, 109);
+	font-weight: bold;
 }
 
 .history-cards .inner-text {
-    font-size: 12px;
-    color: rgb(160, 160, 160);
-    width: calc(100% - 100px);
-    text-align: center;
-    padding-top: 8px;
-}
-
-.history-cards .line {
-    display: flex;
+	font-size: 12px;
+	color: rgb(160, 160, 160);
+	width: calc(100% - 100px);
+	text-align: center;
+	padding-top: 8px;
 }
 
 @media screen and (max-width: 700px) {
-    .history-cards .head-line-1 {
-        font-size: 10px;
-        width: 60px;
-    }
+	.history-cards .head-line-1 {
+		font-size: 10px;
+		width: 60px;
+	}
 
-    .history-cards .inner-text {
-        width: calc(100% - 60px);
-        font-size: 10px;
-        padding: 0;
-        margin-top: 4px;
-    }
+	.history-cards .inner-text {
+		width: calc(100% - 60px);
+		font-size: 10px;
+		padding: 0;
+		margin-top: 4px;
+	}
 
-    .history-cards .line {
-        display: flex;
-    }
+	.history-cards .line {
+		display: flex;
+	}
 }
 
 .members-area {
-    display: inline-flex;
-    flex-wrap: wrap;
+	display: inline-flex;
+	flex-wrap: wrap;
 }
 
 .members-area .user-plate {
-    display: inline-block;
-    min-width: 80px;
-    padding: 2px 12px;
-    margin: 4px;
-    background-color: rgb(204, 204, 204);
-    border-radius: 20px;
-    font-size: 12px;
+	display: inline-block;
+	min-width: 80px;
+	padding: 2px 12px;
+	margin: 4px;
+	background-color: rgb(204, 204, 204);
+	border-radius: 20px;
+	font-size: 12px;
 }

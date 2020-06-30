@@ -79,7 +79,7 @@ const modalState = (state = initiaState, action) => {
     default:
       return state
   }
-}
+};
 
 function checkedFilter(state, pay) {
 	return state.filter((data) => {

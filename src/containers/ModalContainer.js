@@ -6,14 +6,14 @@ import Modal from '../components/Modal';
 
 const mapStateToProps = (state) => {
   return {
-    state: state.modalState
-  }
-}
+    state: state.modalState,
+  };
+};
 
 const mapDispatchProps = (dispatch) => {
-  return { 
-    actions: bindActionCreators(Actions, dispatch)
-  }
-}
+  return {
+    actions: bindActionCreators(Actions, dispatch),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchProps)(Modal)
+export default connect(mapStateToProps, mapDispatchProps)(Modal);

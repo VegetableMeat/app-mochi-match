@@ -1,11 +1,11 @@
 .shadow-input-area  input{
-    height: 28px;
-    border-radius: 28px;
-    box-shadow: 1px 2px 6px 0px #ccccee;
-    border: none;
-    width: 100%;
-    padding: 6px 12px;
-    font-size: 12px;
+	height: 28px;
+	border-radius: 28px;
+	box-shadow: 1px 2px 6px 0px #ccccee;
+	border: none;
+	width: 100%;
+	padding: 6px 12px;
+	font-size: 12px;
 }
 
 .shadow-input-area input:focus, .shadow-input-area textarea:focus {

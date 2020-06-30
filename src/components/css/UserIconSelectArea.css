@@ -1,0 +1,24 @@
+.user-icon-select-area {
+	display: flex;
+	margin: 8px 0;
+}
+
+.user-icon-select-area .user-icon {
+	position: relative;
+}
+
+.user-icon-select-area .select {
+	width: 28px;
+	height: 28px;
+	border: 2px solid rgb(119, 119, 119);
+	border-radius: 4px;
+	background-color: rgba(0,0,0,0);
+	z-index: 0;
+	position: absolute;
+	top: -4px;
+	left: -4px;
+}
+
+.user-icon-select-area .icon {
+	z-index: 1;
+}

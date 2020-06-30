@@ -2,30 +2,30 @@ import { GET_FAVORITE_GAMES_REQ, GET_FAVORITE_GAMES_OK, GET_FAVORITE_GAMES_NG } 
 
 const initiaState = {
   data: [],
-  loadingFlag: false
-}
+  loadingFlag: false,
+};
 
 const favoriteGamesState = (state = initiaState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case GET_FAVORITE_GAMES_REQ:
       return {
-          ...state,
-          loadingFlag: true
-      }
+        ...state,
+        loadingFlag: true,
+      };
     case GET_FAVORITE_GAMES_OK:
       return {
-          ...state,
-          data: action.payload,
-          loadingFlag: false
-      }
+        ...state,
+        data: action.payload,
+        loadingFlag: false,
+      };
     case GET_FAVORITE_GAMES_NG:
       return {
-          ...state,
-          loadingFlag: false
-      }
-    default: 
-      return state
+        ...state,
+        loadingFlag: false,
+      };
+    default:
+      return state;
   }
-}
+};
 
 export default favoriteGamesState;

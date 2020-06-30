@@ -1,0 +1,15 @@
+.head-line-2 {
+    font-size: 14px;
+    padding: 4px;
+    color: rgb(155, 155, 155);
+    height: 24px;
+    margin: 4px;
+}
+
+@media screen and (max-width: 700px) {
+    .head-line-2 {
+        font-size: 12px;
+        padding: 4px 2px;
+        margin: 4px 2px;
+    }
+}

@@ -6,14 +6,14 @@ import HeaderMenu from '../components/HeaderMenu';
 
 const mapStateToProps = (state) => {
   return {
-    state: state.headerMenuState
-  }
-}
+    state: state.headerMenuState,
+  };
+};
 
 const mapDispatchProps = (dispatch) => {
-  return { 
-    actions: bindActionCreators(Actions, dispatch)
-  }
-}
+  return {
+    actions: bindActionCreators(Actions, dispatch),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchProps)(HeaderMenu)
+export default connect(mapStateToProps, mapDispatchProps)(HeaderMenu);
