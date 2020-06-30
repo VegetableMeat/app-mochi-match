@@ -2,7 +2,7 @@ import React from 'react';
 import './css/HardIcon.css';
 
 export default function HardIcon({ selectFlg }) {
-  if(selectFlg == "true") {
+  if(selectFlg === "true") {
     return (
       <div className="hard-icon">
         <div className="select"></div>
