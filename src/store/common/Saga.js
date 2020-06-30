@@ -89,7 +89,7 @@ const resAdminGet = (get) => {
  */
 const resAdminAdd = (add) => {
 	const game_title = add.payload || "入力しろや";
-	if(game_title != "入力しろや") {
+	if(game_title !== "入力しろや") {
 		return axios_instance
 		.post(add.url, {
 			game_title: add.payload
@@ -110,7 +110,7 @@ const resAdminAdd = (add) => {
 
 const resAdminDelete = (del) => {
 	const check = del.payload[0] || "チェックしろや";
-	if(check != "チェックしろや") {
+	if(check !== "チェックしろや") {
 		let query = "/?id=" + check;
 		del.payload = del.payload.filter((id) => {
 			return id !== del.payload[0];
