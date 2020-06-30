@@ -3,7 +3,8 @@ import { SHOW_MODAL_TRUE, SHOW_MODAL_FALSE, SHOW_MODAL_REPORT, FINAL_CONFIRMATIO
 const initiaState = {
   showFlag: false,
   category: null,
-  data: {}
+  data: {}//選択されたデータ
+  
 }
 
 const modalState = (state = initiaState, action) => {

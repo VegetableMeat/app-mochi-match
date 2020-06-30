@@ -1,7 +1,6 @@
 import React from 'react';
-import { final } from '../store/common/Action';
-
 export default function ModalMold({ state, actions }) {
+	console.log(actions)
 	switch (state.category) {
 		case 'TOP_ROOM_IN':
 			return (
@@ -24,37 +23,42 @@ export default function ModalMold({ state, actions }) {
 			);
 		case 'report':
 			return (
-				<form action="" method="post">
+				<form>
+
 					<div className="modal-body">
 						<div className="modal-text modal-header">
 							どのような違反ですか？
-					</div>
-						<input type="checkbox" name="checkbox1" value="1" />性的な表現がされている<br />
-						<input type="checkbox" name="checkbox2" value="2" />出会い,異性交際を希望している<br />
-						<input type="checkbox" name="checkbox3" value="3" />各種法令違反している<br />
-						<input type="checkbox" name="checkbox4" value="4" />差別、罵倒、誹謗中傷などしている<br />
-						<input type="checkbox" name="checkbox5" value="5" />その他<br />
+						</div>
+
+						<input type="checkbox" id="checkbox1" value="1" onChange="1" />性的な表現がされている<br />
+						<input type="checkbox" id="checkbox2" value="2" onChange="2" />出会い,異性交際を希望している<br />
+						<input type="checkbox" id="checkbox3" value="3" onChange="3" />各種法令違反している<br />
+						<input type="checkbox" id="checkbox4" value="4" onChange="4" />差別、罵倒、誹謗中傷などしている<br />
+						<input type="checkbox" id="checkbox5" value="5" onChange="5" />その他<br />
 						<div className="footer-button-area"></div>
-						<input type="submit" onClick={() => actions.final_confirmation('final_confirmation')} value="違反報告" ></input>
+						<input type="submit" onClick={() => actions.finalConfirmation('final_confirmation')} value="違反報告" ></input>
+
+
 					</div>
 				</form>
 			);
+
+
 		case 'final_confirmation':
 			return (
-				<form >
-					<div className="modal-body">
-						<div className="modal-text modal-header">
-							本当に下記の内容で報告しますか？
-						</div>
-						
-						<div className="footer-button-area">
-							<input type="button" onClick={() => actions.end_modal('end_modal')} value="はい"></input>
-							<button className="cancel-button color-bulue" onClick={() => actions.showModalFalse()}>
-								キャンセル
-						</button>
-						</div>
+				<div className="modal-body">
+					<div className="modal-text modal-header">
+						本当に下記の内容で報告しますか？
 					</div>
-				</form>
+
+					<div className="footer-button-area">
+						<input type="button" onClick={() => actions.endModal('end_modal')} value="はい"></input>
+						<button className="cancel-button color-bulue" onClick={() => actions.showModalFalse()}>
+							キャンセル
+						</button>
+					</div>
+				</div>
+
 			);
 		case 'end_modal':
 			return (
@@ -63,13 +67,16 @@ export default function ModalMold({ state, actions }) {
 						ご協力ありがとうございました！
 					</div>
 					<div className="footer-button-area">
-						<input type="button" onClick={() => actions.colse()}></input>
+						<input type="button" onClick={() => window.location.reload()}></input>
 					</div>
 				</div>
-
 			)
 
 		default:
 			return '何もありません';
 	}
 }
+
+
+
+
