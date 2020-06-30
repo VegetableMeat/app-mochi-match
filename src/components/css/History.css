@@ -45,3 +45,13 @@
     display: inline-flex;
     flex-wrap: wrap;
 }
+
+#history .user-plate {
+    padding: 0px 8px;
+    margin: 4px 6px;
+    max-width: 300px;
+}
+
+#history .user-plate .user-name {
+    font-size: 11px;
+}

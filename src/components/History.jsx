@@ -69,12 +69,10 @@ export default function History() {
               <div className="multi-line">
                 <HeadeLine1>メンバー</HeadeLine1>
                 <div className="members-area">
-                  <div className="user-plate">TestPlate</div>
-                  <div className="user-plate">TestPlate</div>
-                  <div className="user-plate">TestPlate</div>
-                  <div className="user-plate">TestPlate</div>
-                  <div className="user-plate">TestPlate</div>
-                  <div className="user-plate">TestPlate</div>
+                  <UserPlate icon="" name="TestName" />
+                  <UserPlate icon="" name="TestName" />
+                  <UserPlate icon="" name="TestName" />
+                  <UserPlate icon="" name="TestName" />
                 </div>
               </div>
             </RadiusWhiteCard>
