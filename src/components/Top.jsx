@@ -48,9 +48,7 @@ export default function Top() {
           <RoomContents />
         </MainBody>
       </Body>
-      <Link to="/gameCreate">
-        <CreateRoomButton />
-      </Link>
+      <CreateRoomButton />
       <PageNation />
       <Footer />
       <Modal />

@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 
 import store from './Store';
 import Top from './components/Top';
-import GameCreate from './components/GameCreate';
 import Login from './containers/LoginContainer';
 import Logout from './components/Logout';
 import Auth from './containers/AuthContainer';
@@ -27,12 +26,11 @@ ReactDOM.render(
         <Route exact path="/login" component={Login} />
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/register" component={Register} />
-				<Route exact path="/admin" component={Admin} />
+		    <Route exact path="/admin" component={Admin} />
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/login-done" component={LoginDone} />
         <Auth>
           <Switch>
-            <Route exact path="/gameCreate" component={GameCreate} />
             <Route exact path="/history" component={History} />
             <Route exact path="/profileSetting" component={ProfileSetting} />
             <Route exact path="/configuration" component={Configuration} />
