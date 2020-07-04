@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import store from './Store';
-import Top from './components/Top';
+import Top from './containers/TopContainer';
 import Login from './containers/LoginContainer';
 import Logout from './components/Logout';
 import Auth from './containers/AuthContainer';
@@ -14,7 +14,7 @@ import SignUp from './components/SignUp';
 import ProfileSetting from './components/ProfileSettings';
 import Configuration from './components/Configuration';
 import RoomCreation from './components/RoomCreation';
-import InTheRoom from './components/InTheRoom';
+import InTheRoom from './containers/InTheRoomContainer';
 import Admin from './containers/AdminContainer';
 import LoginDone from './containers/LoginDoneContainer';
 
@@ -26,7 +26,7 @@ ReactDOM.render(
         <Route exact path="/login" component={Login} />
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/register" component={Register} />
-		    <Route exact path="/admin" component={Admin} />
+        <Route exact path="/admin" component={Admin} />
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/login-done" component={LoginDone} />
         <Auth>

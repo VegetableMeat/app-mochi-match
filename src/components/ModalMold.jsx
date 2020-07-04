@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
-export default class ModalMold extends Component {
+import PropTypes from 'prop-types'
+import { withRouter } from 'react-router'
+class ModalMold extends Component {
 	constructor() {
 		super();
 		this.check = this.check.bind(this);
+	}
+
+	static propTypes = {
+		match: PropTypes.object.isRequired,
+		location: PropTypes.object.isRequired,
+		history: PropTypes.object.isRequired
 	}
 
 	check(e) {
 		this.props.actions.modalCheck(e.target.value, e.target.checked);
 	}
 
+	callback = () => {
+		this.props.history.push("/intheroom")
+	}
+
 	render() {
 		const { state, actions } = this.props;
-		console.log(state)
 		switch (state.category) {
 			case 'TOP_ROOM_IN':
 				return (
@@ -20,7 +31,7 @@ export default class ModalMold extends Component {
 							{state.data.room.name}のルームに参加しますか？
 						</div>
 						<div className="footer-button-area">
-							<button className="join-button color-blue">
+							<button className="join-button color-blue" onClick={() => actions.joinRoomRequest(state.data.room, this.callback)}>
 								参加する
 							</button>
 							<button className="cancel-button color-red" onClick={() => actions.showModalFalse()}>
@@ -37,7 +48,7 @@ export default class ModalMold extends Component {
 				state.report.forEach((text, key) => {
 					check_box.push(<div key={key}><input type="checkbox" value={key} onChange={this.check} defaultChecked={state.data.check.includes(key.toString()) ? true : false} />{text}</div>);
 				});
-	
+
 				return (
 					<div className="modal-body">
 						<div className="modal-text modal-header">
@@ -54,7 +65,7 @@ export default class ModalMold extends Component {
 						<div className="modal-text modal-header">
 							本当に下記の内容で報告しますか？
 						</div>
-	
+
 						<div className="footer-button-area">
 							<input type="button" onClick={() => actions.showModalFront("end_modal")} value="はい"></input>
 							<button className="cancel-button color-bulue" onClick={() => actions.showModalBack("REPORT")}>
@@ -62,7 +73,7 @@ export default class ModalMold extends Component {
 							</button>
 						</div>
 					</div>
-	
+
 				);
 			case 'end_modal':
 				return (
@@ -75,9 +86,11 @@ export default class ModalMold extends Component {
 						</div>
 					</div>
 				)
-	
+
 			default:
 				return '何もありません';
 		}
 	}
 }
+
+export default withRouter(ModalMold)
