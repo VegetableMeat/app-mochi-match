@@ -27,13 +27,14 @@ export default class RoomCreation extends Component {
   render() {
     const { actions } = this.props;
     const { data } = this.props.state;
-    const hard = data.hard_list.map((d) => {
+    const title = [];
+    const hard = [];
+    hard = data.hard_list.map((d) => {
       if (d.hard_icon === data.select_hard) {
         return <HardIcon id={d.hard_icon} click={actions.selectGameHard} select_flg={true} />;
       }
       return <HardIcon id={d.hard_icon} click={actions.selectGameHard} />;
     });
-    console.log(data.select_hard_flg);
     return (
       <div id="room-creation">
         <Header />

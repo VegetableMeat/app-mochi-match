@@ -24,6 +24,12 @@ export const getRoomNg = (error) => {
 };
 
 // RoomCreation
+export const GET_GAME_TITLE_REQ = 'GET_GAME_TITLE_REQ';
+export const GET_GAME_TITLE_OK = 'GET_GAME_TITLE_OK';
+export const GET_GAME_TITLE_NG = 'GET_GAME_TITLE_NG';
+export const GET_GAME_HARD_REQ = 'GET_GAME_HARD_REQ';
+export const GET_GAME_HARD_OK = 'GET_GAME_HARD_OK';
+export const GET_GAME_HARD_NG = 'GET_GAME_HARD_NG';
 export const POST_ROOM_CREATION_REQ = 'POST_ROOM_CREATION_REQ';
 export const POST_ROOM_CREATION_OK = 'POST_ROOM_CREATION_OK';
 export const POST_ROOM_CREATION_NG = 'POST_ROOM_CREATION_NG';
@@ -32,7 +38,30 @@ export const SELECT_GAME_HARD = 'SELECT_GAME_HARD';
 export const SELECT_START_TIME = 'SELECT_START_TIME';
 export const INPUT_TEXT = 'INPUT_TEXT';
 
-const POST_ROOM_CREATION_URL = ``;
+const POST_ROOM_CREATION_URL = '';
+const GET_GAME_TITLE_URL = `/v1/gamelist`;
+const GET_GAME_HARD_URL = '';
+
+export const getGameTitleReq = () => {
+  return {
+    type: GET_ROOM_CREATION_REQ,
+    url: GET_GAME_TITLE_URL,
+  };
+};
+
+export const getGameTitleOk = (data) => {
+  return {
+    type: GET_ROOM_CREATION_REQ,
+    payload: data,
+  };
+};
+
+export const getGameTitleNg = (error) => {
+  return {
+    type: GET_ROOM_CREATION_REQ,
+    error: error,
+  };
+};
 
 export const postRoomCreationReq = (data) => {
   return {

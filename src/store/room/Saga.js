@@ -43,6 +43,19 @@ const resRoomCreation = () => {
   // .catch();
 };
 
+const getGameTitle = (data) => {
+  return axios_instance
+    .post(data.url)
+    .then((res) => {
+      const data = res.data.message;
+      return { data };
+    })
+    .catch((e) => {
+      const error = e.toString();
+      return { error };
+    });
+};
+
 function* fetchRoomCreation(data) {
   // const { data, error } = yield call(resRoomCreation);
   console.log('入ったよ');
@@ -55,4 +68,9 @@ function* fetchRoomCreation(data) {
   // return yield put();
 }
 
+function* fetchRoomCreationTitle(data) {
+  const { res, error } = yield call(getGameTitle, data);
+}
+
 export const roomCreationSaga = [takeLatest(POST_ROOM_CREATION_REQ, fetchRoomCreation)];
+export const roomCreationTitleSaga = [takeLatest(POST_ROOM_CREATION_REQ, fetchRoomCreation)];

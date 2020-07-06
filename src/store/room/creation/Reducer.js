@@ -1,4 +1,7 @@
 import {
+  GET_GAME_TITLE_REQ,
+  GET_GAME_TITLE_OK,
+  GET_GAME_TITLE_NG,
   POST_ROOM_CREATION_REQ,
   POST_ROOM_CREATION_OK,
   POST_ROOM_CREATION_NG,
@@ -10,18 +13,60 @@ import {
 
 const initiaState = {
   data: {
-    title_list: '',
-    hard_list: [{ hard_icon: 0 }, { hard_icon: 1 }, { hard_icon: 2 }, { hard_icon: 3 }],
-    select_title: '',
-    select_hard: null,
-    select_hard_flg: null,
-    select_start: null,
-    select_text: '',
+    get_data: {
+      title: [],
+      hard: [{ hard_icon: 0 }, { hard_icon: 1 }, { hard_icon: 2 }, { hard_icon: 3 }],
+    },
+    error: {
+      title: '',
+      hard: '',
+    },
+    select: {
+      title: '',
+      hard: null,
+      hard_flg: null,
+      start: null,
+      text: '',
+    },
   },
 };
 
 const roomCreationState = (state = initiaState, action) => {
   switch (action.type) {
+    case GET_GAME_TITLE_REQ:
+      return {
+        ...state,
+      };
+    case GET_GAME_TITLE_OK:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          get_data: {
+            ...state.data.get_data,
+            title: action.payload,
+          },
+          error: {
+            ...state.data.error,
+            title: initiaState.data.error.title,
+          },
+        },
+      };
+    case GET_GAME_TITLE_NG:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          get_data: {
+            ...state.data.get_data,
+            title: initiaState.data.get_data.title,
+          },
+          error: {
+            ...state.data.error,
+            title: action.error,
+          },
+        },
+      };
     case POST_ROOM_CREATION_REQ:
       return {
         ...state,
@@ -39,7 +84,9 @@ const roomCreationState = (state = initiaState, action) => {
         ...state,
         data: {
           ...state.data,
-          select_title: action.payload,
+          select: {
+            title: action.payload,
+          },
         },
       };
     case SELECT_GAME_HARD:
@@ -47,8 +94,11 @@ const roomCreationState = (state = initiaState, action) => {
         ...state,
         data: {
           ...state.data,
-          select_hard: action.payload,
-          select_hard_flg: action.payload,
+          select: {
+            ...state.data.select,
+            hard: action.payload,
+            hard_flg: action.payload,
+          },
         },
       };
     case SELECT_START_TIME:
@@ -58,7 +108,10 @@ const roomCreationState = (state = initiaState, action) => {
         ...state,
         data: {
           ...state.data,
-          select_text: action.payload,
+          select: {
+            ...state.data.select,
+            text: action.payload,
+          },
         },
       };
     default:
