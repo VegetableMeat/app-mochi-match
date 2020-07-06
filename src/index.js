@@ -13,7 +13,7 @@ import Register from './containers/RegisterContainer';
 import SignUp from './components/SignUp';
 import ProfileSetting from './components/ProfileSettings';
 import Configuration from './components/Configuration';
-import RoomCreation from './components/RoomCreation';
+import RoomCreation from './containers/RoomCreationContainer';
 import InTheRoom from './components/InTheRoom';
 import Admin from './containers/AdminContainer';
 import LoginDone from './containers/LoginDoneContainer';
@@ -26,7 +26,7 @@ ReactDOM.render(
         <Route exact path="/login" component={Login} />
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/register" component={Register} />
-		    <Route exact path="/admin" component={Admin} />
+        <Route exact path="/admin" component={Admin} />
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/login-done" component={LoginDone} />
         <Auth>

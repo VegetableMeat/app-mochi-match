@@ -48,7 +48,9 @@ export default function Top() {
           <RoomContents />
         </MainBody>
       </Body>
-      <CreateRoomButton />
+      <Link to="/roomcreation">
+        <CreateRoomButton />
+      </Link>
       <PageNation />
       <Footer />
       <Modal />

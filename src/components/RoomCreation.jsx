@@ -25,6 +25,15 @@ import './css/RoomCreation.css';
 
 export default class RoomCreation extends Component {
   render() {
+    const { actions } = this.props;
+    const { data } = this.props.state;
+    const hard = data.hard_list.map((d) => {
+      if (d.hard_icon === data.select_hard) {
+        return <HardIcon id={d.hard_icon} click={actions.selectGameHard} select_flg={true} />;
+      }
+      return <HardIcon id={d.hard_icon} click={actions.selectGameHard} />;
+    });
+    console.log(data.select_hard_flg);
     return (
       <div id="room-creation">
         <Header />
@@ -36,13 +45,10 @@ export default class RoomCreation extends Component {
               <div className="section-inner-wrapper">
                 <HeadLine2>お気に入りゲーム</HeadLine2>
                 <div className="favorite-games-area">
-                  <GameNamePlate title="タイトル" />
-                  <GameNamePlate title="タイトル" />
-                  <GameNamePlate title="タイトル" />
-                  <GameNamePlate title="タイトル" />
+                  <GameNamePlate title="タイトル" click={actions.selectGameTitle} />
                 </div>
                 <HeadLine2>その他</HeadLine2>
-                <ShadowTextArea placeholder="ゲームタイトル" />
+                <ShadowTextArea placeholder="ゲームタイトル" actions={actions.selectGameTitle} />
               </div>
             </div>
             <BreakUnderLine />
@@ -50,12 +56,7 @@ export default class RoomCreation extends Component {
             <div className="section">
               <HeadLine1>ハード選択</HeadLine1>
               <div className="section-inner-wrapper">
-                <HardSelectArea>
-                  <HardIcon />
-                  <HardIcon selectFlg="true" />
-                  <HardIcon />
-                  <HardIcon />
-                </HardSelectArea>
+                <HardSelectArea>{hard}</HardSelectArea>
               </div>
             </div>
             <BreakUnderLine />
@@ -88,7 +89,10 @@ export default class RoomCreation extends Component {
             <div className="section">
               <HeadLine1>募集テキスト</HeadLine1>
               <div className="section-inner-wrapper">
-                <textarea className="textarea"></textarea>
+                <textarea
+                  className="textarea"
+                  onChange={(e) => actions.inputText(e.target.value)}
+                />
               </div>
             </div>
 
