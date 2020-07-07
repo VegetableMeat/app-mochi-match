@@ -35,7 +35,7 @@ export default class RoomCreation extends Component {
   gameHardIconCreate(hard, action, select) {
     return hard.map((d) => {
       if (d.hard_icon === select) {
-        return <HardIcon id={d.hard_icon} click={action} select_flg={true} />;
+        return <HardIcon id={d.hard_icon} select_flg={true} />;
       }
       return <HardIcon id={d.hard_icon} click={action} />;
     });
@@ -63,8 +63,10 @@ export default class RoomCreation extends Component {
                 <HeadLine2>その他</HeadLine2>
                 <ShadowTextArea
                   placeholder="ゲームタイトル"
-                  actions={actions.selectGameTitle}
+                  auto_flg={true}
+                  value="game_title"
                   data_list={get_data.title}
+                  actions={actions.selectGameTitle}
                 />
               </div>
               <div className="title-error">{title_error}</div>
