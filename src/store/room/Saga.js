@@ -8,6 +8,9 @@ import {
   POST_ROOM_CREATION_REQ,
   postRoomCreationOk,
   postRoomCreationNg,
+  GET_GAME_TITLE_REQ,
+  getGameTitleOk,
+  getGameTitleNg,
 } from './Action';
 
 const resRoomList = () => {
@@ -43,12 +46,11 @@ const resRoomCreation = () => {
   // .catch();
 };
 
-const getGameTitle = (data) => {
+const getGameTitle = (req) => {
   return axios_instance
-    .post(data.url)
+    .get(req.url)
     .then((res) => {
-      const data = res.data.message;
-      return { data };
+      return { res };
     })
     .catch((e) => {
       const error = e.toString();
@@ -68,9 +70,15 @@ function* fetchRoomCreation(data) {
   // return yield put();
 }
 
-function* fetchRoomCreationTitle(data) {
-  const { res, error } = yield call(getGameTitle, data);
+function* fetchRoomCreationTitle(req) {
+  const { res, error } = yield call(getGameTitle, req);
+  if (res.status === 200 && !error) {
+    return yield put(getGameTitleOk(res.data));
+  }
+  return yield put(getGameTitleNg(error));
 }
 
-export const roomCreationSaga = [takeLatest(POST_ROOM_CREATION_REQ, fetchRoomCreation)];
-export const roomCreationTitleSaga = [takeLatest(POST_ROOM_CREATION_REQ, fetchRoomCreation)];
+export const roomCreationSaga = [
+  takeLatest(POST_ROOM_CREATION_REQ, fetchRoomCreation),
+  takeLatest(GET_GAME_TITLE_REQ, fetchRoomCreationTitle),
+];

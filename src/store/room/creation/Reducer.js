@@ -10,7 +10,7 @@ import {
   SELECT_START_TIME,
   INPUT_TEXT,
 } from '../Action';
-
+// TODO エラー処理
 const initiaState = {
   data: {
     get_data: {
@@ -18,12 +18,14 @@ const initiaState = {
       hard: [{ hard_icon: 0 }, { hard_icon: 1 }, { hard_icon: 2 }, { hard_icon: 3 }],
     },
     error: {
-      title: '',
-      hard: '',
+      get_title: '',
+      get_hard: '',
+      in_title: false,
+      in_hard: true,
     },
     select: {
       title: '',
-      hard: null,
+      hard: '選択してください',
       hard_flg: null,
       start: null,
       text: '',
@@ -48,7 +50,7 @@ const roomCreationState = (state = initiaState, action) => {
           },
           error: {
             ...state.data.error,
-            title: initiaState.data.error.title,
+            get_title: initiaState.data.error.title,
           },
         },
       };
@@ -63,7 +65,7 @@ const roomCreationState = (state = initiaState, action) => {
           },
           error: {
             ...state.data.error,
-            title: action.error,
+            get_title: action.error,
           },
         },
       };
@@ -85,6 +87,7 @@ const roomCreationState = (state = initiaState, action) => {
         data: {
           ...state.data,
           select: {
+            ...state.data.select,
             title: action.payload,
           },
         },

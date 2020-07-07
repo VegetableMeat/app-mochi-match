@@ -24,17 +24,31 @@ import BodyHeader from './BodyHeader';
 import './css/RoomCreation.css';
 
 export default class RoomCreation extends Component {
+  componentDidMount() {
+    this.props.actions.getGameTitleReq();
+  }
+
+  gameNamePlateCreate(title, action) {
+    return title.map((d) => <GameNamePlate title={d.game_title} click={action} />);
+  }
+
+  gameHardIconCreate(hard, action, select) {
+    return hard.map((d) => {
+      if (d.hard_icon === select) {
+        return <HardIcon id={d.hard_icon} click={action} select_flg={true} />;
+      }
+      return <HardIcon id={d.hard_icon} click={action} />;
+    });
+  }
+
   render() {
     const { actions } = this.props;
-    const { data } = this.props.state;
-    const title = [];
-    const hard = [];
-    hard = data.hard_list.map((d) => {
-      if (d.hard_icon === data.select_hard) {
-        return <HardIcon id={d.hard_icon} click={actions.selectGameHard} select_flg={true} />;
-      }
-      return <HardIcon id={d.hard_icon} click={actions.selectGameHard} />;
-    });
+    const { get_data, error, select } = this.props.state.data;
+    console.log(this.props.state.data);
+    const title = this.gameNamePlateCreate(get_data.title, actions.selectGameTitle);
+    const hard = this.gameHardIconCreate(get_data.hard, actions.selectGameHard, select.hard);
+    const title_error = error.in_title ? select.title : null;
+    const hard_error = error.in_hard ? select.hard : null;
     return (
       <div id="room-creation">
         <Header />
@@ -45,12 +59,15 @@ export default class RoomCreation extends Component {
               <HeadLine1>ゲーム選択</HeadLine1>
               <div className="section-inner-wrapper">
                 <HeadLine2>お気に入りゲーム</HeadLine2>
-                <div className="favorite-games-area">
-                  <GameNamePlate title="タイトル" click={actions.selectGameTitle} />
-                </div>
+                <div className="favorite-games-area">{title}</div>
                 <HeadLine2>その他</HeadLine2>
-                <ShadowTextArea placeholder="ゲームタイトル" actions={actions.selectGameTitle} />
+                <ShadowTextArea
+                  placeholder="ゲームタイトル"
+                  actions={actions.selectGameTitle}
+                  data_list={get_data.title}
+                />
               </div>
+              <div className="title-error">{title_error}</div>
             </div>
             <BreakUnderLine />
 
@@ -59,6 +76,7 @@ export default class RoomCreation extends Component {
               <div className="section-inner-wrapper">
                 <HardSelectArea>{hard}</HardSelectArea>
               </div>
+              <div className="hard-error">{hard_error}</div>
             </div>
             <BreakUnderLine />
 
@@ -73,10 +91,6 @@ export default class RoomCreation extends Component {
                   <div>
                     <input type="radio" name="time"></input>
                     <label>時間指定</label>
-                  </div>
-                  <div>
-                    <input type="radio" name="time"></input>
-                    <label>未定</label>
                   </div>
                 </div>
                 <div className="time-designation-area">

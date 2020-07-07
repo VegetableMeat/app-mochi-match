@@ -44,21 +44,21 @@ const GET_GAME_HARD_URL = '';
 
 export const getGameTitleReq = () => {
   return {
-    type: GET_ROOM_CREATION_REQ,
+    type: GET_GAME_TITLE_REQ,
     url: GET_GAME_TITLE_URL,
   };
 };
 
 export const getGameTitleOk = (data) => {
   return {
-    type: GET_ROOM_CREATION_REQ,
+    type: GET_GAME_TITLE_OK,
     payload: data,
   };
 };
 
 export const getGameTitleNg = (error) => {
   return {
-    type: GET_ROOM_CREATION_REQ,
+    type: GET_GAME_TITLE_NG,
     error: error,
   };
 };
