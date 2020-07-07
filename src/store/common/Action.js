@@ -112,6 +112,7 @@ export const logout = () => {
 }
 
 // Admin
+//ゲームタイトル
 export const ADMIN_GAME_TITLE_GET_REQ = 'ADMIN_GAME_TITLE_GET_REQ';
 export const ADMIN_GAME_TITLE_GET_OK = 'ADMIN_GAME_TITLE_GET_OK';
 export const ADMIN_GAME_TITLE_GET_NG = 'ADMIN_GAME_TITLE_GET_NG';
@@ -126,8 +127,24 @@ export const ADMIN_GAME_TITLE_UPDATE_OK = 'ADMIN_GAME_TITLE_UPDATE_OK';
 export const ADMIN_GAME_TITLE_UPDATE_NG = 'ADMIN_GAME_TITLE_UPDATE_NG';
 export const GAME_TITLE_TEXT = 'GAME_TITLE_TEXT';
 export const GAME_TITLE_CHECK = 'GAME_TITLE_CHECK';
+//ゲームハード
+export const ADMIN_GAME_HARD_GET_REQ = 'ADMIN_GAME_HARD_GET_REQ';
+export const ADMIN_GAME_HARD_GET_OK = 'ADMIN_GAME_HARD_GET_OK';
+export const ADMIN_GAME_HARD_GET_NG = 'ADMIN_GAME_HARD_GET_NG';
+export const ADMIN_GAME_HARD_ADD_REQ = 'ADMIN_GAME_HARD_ADD_REQ';
+export const ADMIN_GAME_HARD_ADD_OK = 'ADMIN_GAME_HARD_ADD_OK';
+export const ADMIN_GAME_HARD_ADD_NG = 'ADMIN_GAME_HARD_ADD_NG';
+export const ADMIN_GAME_HARD_DELETE_REQ = 'ADMIN_GAME_HARD_DELETE_REQ';
+export const ADMIN_GAME_HARD_DELETE_OK = 'ADMIN_GAME_HARD_DELETE_OK';
+export const ADMIN_GAME_HARD_DELETE_NG = 'ADMIN_GAME_HARD_DELETE_NG';
+export const ADMIN_GAME_HARD_UPDATE_REQ = 'ADMIN_GAME_HARD_UPDATE_REQ';
+export const ADMIN_GAME_HARD_UPDATE_OK = 'ADMIN_GAME_HARD_UPDATE_OK';
+export const ADMIN_GAME_HARD_UPDATE_NG = 'ADMIN_GAME_HARD_UPDATE_NG';
+export const GAME_HARD_CHECK = 'GAME_HARD_CHECK';
+export const GAME_HARD_TEXT = 'GAME_HARD_TEXT';
 
 const GAME_TITLE_LIST_URL = `/v1/gamelist`;
+const GAME_HARD_LIST_URL = `/v1/gamehard`;
 
 export const adminGameTitleGetReq = () => {
 	return {
@@ -227,6 +244,109 @@ export const gameTitleText = (data) => {
 export const gameTitleCheck = (data, toggle) => {
 	return {
 		type: GAME_TITLE_CHECK,
+		payload: data,
+		toggle: toggle
+	}
+}
+//
+export const adminGameHardGetReq = () => {
+	return {
+		type: ADMIN_GAME_HARD_GET_REQ,
+		url: GAME_HARD_LIST_URL,
+	}
+}
+
+export const adminGameHardGetOk = (data) => {
+	return {
+		type: ADMIN_GAME_HARD_GET_OK,
+		payload: data
+	}
+}
+
+export const adminGameHardGetNg = (error) => {
+	return {
+		type: ADMIN_GAME_HARD_GET_NG,
+		error: error
+	}
+}
+
+export const adminGameHardAddReq = (data) => {
+	return {
+		type: ADMIN_GAME_HARD_ADD_REQ,
+		payload: data,
+		url: GAME_HARD_LIST_URL,
+	}
+}
+
+export const adminGameHardAddOk = (data) => {
+	return {
+		type: ADMIN_GAME_HARD_ADD_OK,
+		payload: data
+	}
+}
+
+export const adminGameHardAddNg = (error) => {
+	return {
+		type: ADMIN_GAME_HARD_ADD_NG,
+		error: error
+	}
+}
+
+export const adminGameHardDeleteReq = (data) => {
+	return {
+		type: ADMIN_GAME_HARD_DELETE_REQ,
+		payload: data,
+		url: GAME_HARD_LIST_URL,
+	}
+}
+
+export const adminGameHardDeleteOk = (data) => {
+	return {
+		type: ADMIN_GAME_HARD_DELETE_OK,
+		payload: data
+	}
+}
+
+export const adminGameHardDeleteNg = (error) => {
+	return {
+		type: ADMIN_GAME_HARD_DELETE_NG,
+		error: error
+	}
+}
+
+export const adminGameHardUpdateReq = (text, check) => {
+	return {
+		type: ADMIN_GAME_HARD_UPDATE_REQ,
+		text: text,
+		check: check,
+		url: GAME_HARD_LIST_URL,
+	}
+}
+
+export const adminGameHardUpdateOk = (data) => {
+	return {
+		type: ADMIN_GAME_HARD_UPDATE_OK,
+		payload: data
+	}
+}
+
+export const adminGameHardUpdateNg = (error) => {
+	return {
+		type: ADMIN_GAME_HARD_UPDATE_NG,
+		error: error
+	}
+}
+
+export const gameHardText = (data) => {
+	return {
+		type: GAME_HARD_TEXT,
+		payload: data,
+	}
+}
+
+export const gameHardCheck = (data, toggle) => {
+	return {
+		type: GAME_HARD_CHECK,
 		payload: data,
 		toggle: toggle
 	}
