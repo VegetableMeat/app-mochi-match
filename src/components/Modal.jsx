@@ -6,7 +6,6 @@ export default function Modal({ state, actions }) {
   if (!state.showFlag) {
     return null;
   }
-
   return (
     <div className="backdrop">
       <div className="modal">
