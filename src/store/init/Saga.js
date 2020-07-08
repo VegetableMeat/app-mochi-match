@@ -7,7 +7,7 @@ function* initProduct(action) {
   yield call(fetchRoomList)
   // TODO トークンがあれば
   yield call(handleGetMeRequest)
-  yield call(handleCheckEntryRequest, action)
+  yield call(handleCheckEntryRequest, action.payload)
 }
 
 export function* watchInit() {

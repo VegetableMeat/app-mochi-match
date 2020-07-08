@@ -70,9 +70,9 @@ export function* watchCheckEntryRequest(action) {
  * ルーム参加状況チェックサクセス
  */
 export function* handleCheckEntrySuccess(action) {
-
   if (action.payload.data.room) {
     yield put(alreadyEntry(action.payload.data.room))
+    action.history.push("/intheroom")
   } else {
   }
 }

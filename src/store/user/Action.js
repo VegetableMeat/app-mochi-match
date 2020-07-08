@@ -37,7 +37,7 @@ export const checkEntrySuccess = (payload, action) => {
   return {
     type: CHECK_ENTRY_SUCCESS,
     payload: payload,
-    history: action.payload,
+    history: action,
   };
 };
 
