@@ -3,6 +3,7 @@ export const GET_ROOM_OK = 'GET_ROOM_OK';
 export const GET_ROOM_NG = 'GET_ROOM_NG';
 
 export const getRoomReq = () => {
+  console.log("getRoomReq")
   return {
     type: GET_ROOM_REQ,
     payload: [],
@@ -28,6 +29,7 @@ export const JOIN_ROOM_SUCCESS = "JOIN_ROOM_SUCCESS"
 export const JOIN_ROOM_ERROR = "JOIN_ROOM_ERROR"
 
 export const joinRoomRequest = (data, callback) => {
+  console.log("join")
   return {
     type: JOIN_ROOM_REQUEST,
     payload: {
@@ -105,3 +107,11 @@ export const getRoomDetailError = (data) => {
   };
 };
 
+export const ALREADY_ENTRY = "ALREADY_ENTRY"
+
+export const alreadyEntry = (data) => {
+  return {
+    type: ALREADY_ENTRY,
+    payload: data
+  };
+};

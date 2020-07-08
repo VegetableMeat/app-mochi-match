@@ -16,6 +16,9 @@ import Admin from './../containers/AdminContainer';
 import LoginDone from './../containers/LoginDoneContainer';
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.actions.init()
+  }
   render() {
     return (
       <BrowserRouter>
