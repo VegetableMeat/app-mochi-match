@@ -1,5 +1,5 @@
 import { all, fork, call } from 'redux-saga/effects';
-import { watchGetRoomListRequest, watchRoomJoinRequest, handleRoomJoinSuccess, handleRoomLeaveRequest } from './room/Saga';
+import { watchGetRoomListRequest, watchRoomJoinRequest, handleRoomJoinSuccess, watchRoomLeaveRequest } from './room/Saga';
 import { favoriteGamesSaga, popularGamesSaga } from './game/Saga';
 import { loginSaga, authSaga, adminTitleSaga, adminHardSaga } from './common/Saga';
 import { watchInit } from './init/Saga'
@@ -17,7 +17,7 @@ export default function* rootSaga() {
     call(watchGetRoomListRequest),
     call(watchRoomJoinRequest),
     call(handleRoomJoinSuccess),
-    call(handleRoomLeaveRequest),
+    call(watchRoomLeaveRequest),
     call(watchCheckEntryRequest),
     call(watchCheckEntrySuccess),
   ]);

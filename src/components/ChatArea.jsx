@@ -20,7 +20,7 @@ class ChatArea extends Component {
   }
 
   render() {
-    console.log(this.props.history)
+    console.log(this.props)
     const { state, actions } = this.props;
     return (
       <div className="chat-wrapper" >
@@ -41,7 +41,7 @@ class ChatArea extends Component {
           <button className="message-send-button">送信</button>
         </div>
         <div>
-          <button className="message-send-button" onClick={() => actions.leaveRoomRequest(state.room, this.callback)}>
+          <button className="message-send-button" onClick={() => actions.leaveRoomRequest(state.room, this.props.history)}>
             仮の退室ボターン
           </button>
         </div>

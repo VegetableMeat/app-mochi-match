@@ -1,5 +1,5 @@
 import { axios_instance } from '../axios/axios';
-import { take, put, call, takeEvery, takeLatest } from 'redux-saga/effects';
+import { take, put, call, takeEvery, fork } from 'redux-saga/effects';
 import {
   GET_ROOM_REQ,
   getRoomOk,
@@ -83,18 +83,6 @@ export function* watchRoomJoinRequest() {
   yield takeEvery(JOIN_ROOM_REQUEST, handleRoomJoinRequest);
 }
 
-const leaveRoomReqApi = (room_id) => {
-  const url = `https://api.mochi-match.work/v1/rooms/${room_id}/leave`;
-  return axios_instance
-    .delete(url)
-    .then((res) => {
-      return { res };
-    })
-    .catch((error) => {
-      return { error };
-    });
-};
-
 
 const getRoomDetailReqApi = (room_id) => {
   const url = `https://api.mochi-match.work/v1/rooms/${room_id}`;
@@ -107,8 +95,6 @@ const getRoomDetailReqApi = (room_id) => {
       return { error };
     });
 };
-
-
 
 export function* handleRoomJoinSuccess() {
   while (true) {
@@ -127,24 +113,37 @@ export function* handleRoomJoinSuccess() {
     action.payload.callback()
   }
 }
+/**
+ * ルーム退室リクエスト
+ */
+const leaveRoomReqApi = (room_id) => {
+  const url = `https://api.mochi-match.work/v1/rooms/${room_id}/leave`;
+  return axios_instance
+    .delete(url)
+    .then((res) => {
+      return { res };
+    })
+    .catch((error) => {
+      return { error };
+    });
+};
 
-export function* handleRoomLeaveRequest() {
-  while (true) {
-    const action = yield take(LEAVE_ROOM_REQUEST);
-    console.log("leave req")
-    const room_id = action.payload.room.room_id
+export function* handleRoomLeaveRequest(action) {
+  const room_id = action.payload.room.room_id
 
-    const { res, error } = yield call(leaveRoomReqApi, room_id);
+  const { res, error } = yield call(leaveRoomReqApi, room_id);
+  if (!error) {
+    action.history.push("/")
+    yield put(leaveRoomSocket(room_id))
+    yield put(leaveRoomSuccess(room_id))
 
-    if (res.status === 200 && !error) {
-      yield put(leaveRoomSocket(room_id))
-      yield put(leaveRoomSuccess(room_id, action.payload.callback))
-      console.log("action2=", action)
-      action.payload.callback()
-    } else {
-      yield put(leaveRoomError())
-    }
+  } else {
+    yield put(leaveRoomError())
+    action.history.push("/")
   }
 }
 
+export function* watchRoomLeaveRequest() {
+  yield takeEvery(LEAVE_ROOM_REQUEST, handleRoomLeaveRequest);
+}
 

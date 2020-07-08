@@ -29,7 +29,6 @@ export const JOIN_ROOM_SUCCESS = "JOIN_ROOM_SUCCESS"
 export const JOIN_ROOM_ERROR = "JOIN_ROOM_ERROR"
 
 export const joinRoomRequest = (data, callback) => {
-  console.log("join")
   return {
     type: JOIN_ROOM_REQUEST,
     payload: {
@@ -57,13 +56,13 @@ export const LEAVE_ROOM_REQUEST = "LEAVE_ROOM_REQUEST"
 export const LEAVE_ROOM_SUCCESS = "LEAVE_ROOM_SUCCESS"
 export const LEAVE_ROOM_ERROR = "LEAVE_ROOM_ERROR"
 
-export const leaveRoomRequest = (data, callback) => {
+export const leaveRoomRequest = (data, history) => {
   return {
     type: LEAVE_ROOM_REQUEST,
     payload: {
       room: data,
-      callback: callback
-    }
+    },
+    history: history
   };
 };
 

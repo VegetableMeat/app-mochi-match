@@ -74,6 +74,7 @@ export function* handleCheckEntrySuccess(action) {
     yield put(alreadyEntry(action.payload.data.room))
     action.history.push("/intheroom")
   } else {
+    action.history.push("/")
   }
 }
 

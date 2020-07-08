@@ -8,6 +8,7 @@ import {
   GET_ROOM_DETAIL_REQUEST,
   GET_ROOM_DETAIL_SUCCESS,
   GET_ROOM_DETAIL_ERROR,
+  ALREADY_ENTRY,
 } from './../Action';
 
 const initialState = {
@@ -85,6 +86,25 @@ const roomState = (state = initialState, action) => {
     case GET_ROOM_DETAIL_ERROR:
       return {
         ...state,
+      };
+    case ALREADY_ENTRY:
+      console.log(action)
+      return {
+        ...state,
+        room: {
+          ...state.room,
+          room_id: action.payload.room_id,
+          owner_id: action.payload.owner_id,
+          hard: action.payload.hard,
+          title: action.payload.title,
+          capacity: action.payload.capacity,
+          count: action.payload.count,
+          text: action.payload.text,
+        },
+        join_users: [
+          ...state.join_users,
+          ...action.payload.join_users
+        ]
       };
     default:
       return state;
