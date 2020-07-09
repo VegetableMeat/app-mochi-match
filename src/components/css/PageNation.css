@@ -1,21 +1,44 @@
 .pagenation {
-    display: block;
-    width: 94vw;
-    height: 60px;
-    margin: 0 3vw;
-    padding: 20px 0 180px;
+  display: flex;
+  width: 94vw;
+  height: 30px;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 0 0 60px;
 }
 
-  @media screen and (min-width: 1000px) {
-    .pagenation {
-        width: 960px;
-        margin: 0 calc((100% - 960px) / 2);
-      }
-  }
+.pagenation button {
+  color: rgb(110, 110, 110);
+  padding: 4px;
+  font-size: 16px;
+  margin: 0 12px;
+  background-color: #ebebeb;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  box-shadow: 6px 6px 12px #c3c3c3, -6px -6px 12px #ffffff;
+}
 
-  @media screen and (max-width: 480px) {
-    .pagenation {
-      width: 96vw;
-      margin: 40px 2vw;
-    }
+.pagenation button:not(.select):hover {
+  background-color: rgb(189, 189, 189);
+}
+
+.pagenation .select {
+  background-color: rgb(194, 194, 194);
+  color: #7d7d7d;
+}
+
+@media screen and (min-width: 1000px) {
+  .pagenation {
+    width: 960px;
+    margin: 0 calc((100% - 960px) / 2);
   }
+}
+
+@media screen and (max-width: 480px) {
+  .pagenation {
+    width: 96vw;
+    margin: 40px 2vw;
+  }
+}

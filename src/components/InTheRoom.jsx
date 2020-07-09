@@ -25,27 +25,30 @@ import './css/InTheRoom.css';
 export default function InTheRoom() {
   return (
     <div id="in-the-room">
-      <Header />
+      <Header room="inTheRoom" />
       <Body>
         <SideMenu>
-          <MenuHeader text="メンバー" />
-          <MenuInnerWrappr>
-            <UserPlate icon="" name="UserName" />
-            <UserPlate icon="" name="UserName" />
-            <UserPlate icon="" name="UserName" />
-            <UserPlate icon="" name="UserName" />
-          </MenuInnerWrappr>
-
-          <MenuHeader text="ルーム情報" />
-          <MenuInnerWrappr>
-            <GamePlate hard="" title="タイトル" />
-            <BreakUnderLine />
-            <Capacity capacity="4" />
-            <BreakUnderLine />
-            <HeadLine2>募集テキスト</HeadLine2>
-            <RecruitmentText />
-            <BreakUnderLine />
-          </MenuInnerWrappr>
+          <div className="menu-wrapper menu-wrapper-1">
+            <MenuHeader text="メンバー" />
+            <MenuInnerWrappr>
+              <UserPlate icon="" name="UserName" />
+              <UserPlate icon="" name="UserName" />
+              <UserPlate icon="" name="UserName" />
+              <UserPlate icon="" name="UserName" />
+            </MenuInnerWrappr>
+          </div>
+          <div className="menu-wrapper menu-wrapper-2 menu-wrapper-last">
+            <MenuHeader text="ルーム情報" />
+            <MenuInnerWrappr>
+              <GamePlate hard="" title="タイトル" />
+              <BreakUnderLine />
+              <Capacity capacity="4" />
+              <BreakUnderLine />
+              <HeadLine2>募集テキスト</HeadLine2>
+              <RecruitmentText />
+              <BreakUnderLine />
+            </MenuInnerWrappr>
+          </div>
         </SideMenu>
 
         <MainBody>

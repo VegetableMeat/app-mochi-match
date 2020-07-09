@@ -1,16 +1,15 @@
 .serch-button {
-    position: absolute;
-    top: 23px;
-    right: 22px;
-    background-color: rgba(0,0,0,0);
-    border: none;
-    font-size: 14px;
-    color: #7d7d7d;
-    padding: 0;
-    margin: 0;
+  position: absolute;
+  top: 23px;
+  right: 22px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  font-size: 14px;
+  color: #a8a8a8;
+  padding: 0;
+  margin: 0;
 }
 
-.serch-button:focus{
-    font-weight: bold;
-    outline-style: none;
+.serch-button:focus {
+  outline-style: none;
 }
