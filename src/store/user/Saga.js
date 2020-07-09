@@ -1,20 +1,16 @@
 import { axios_instance } from '../axios/axios';
-import { takeLatest, put, call, take, takeEvery } from 'redux-saga/effects';
+import { put, call, takeEvery } from 'redux-saga/effects';
+import { getChatpostListRequest } from './../room/Action'
+import { alreadyEntry } from './../room/Action'
 import {
   GET_ME_REQUEST,
-  CHECK_ENTRY_SUCCESS,
   getMeSuccess,
   getMeError,
+  CHECK_ENTRY_SUCCESS,
   CHECK_ENTRY_REQUEST,
   checkEntrySuccess,
   checkEntryError,
 } from './Action';
-
-import { getChatpostListRequest } from './../room/Action'
-
-import history from './../../history/history'
-
-import { alreadyEntry } from './../room/Action'
 
 /**
  * ユーザー情報取得処理
@@ -24,8 +20,8 @@ const requestGetMeApi = () => {
   return axios_instance
     .get(url)
     .then((res) => {
-      const data = res.data;
-      return { data };
+      console.log("res", res)
+      return { res }
     })
     .catch((error) => {
       return { error };
@@ -33,7 +29,13 @@ const requestGetMeApi = () => {
 };
 
 export function* handleGetMeRequest() {
-  const { data, error } = yield call(requestGetMeApi);
+  // TODO :
+  const { res, error } = yield call(requestGetMeApi);
+  if (!error) {
+    yield put(getMeSuccess(res))
+  } else {
+    yield put(getMeError(error))
+  }
 }
 
 export function* watchGetMeRequest() {

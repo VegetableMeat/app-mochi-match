@@ -12,7 +12,9 @@ const initialState = {
     user_id: null,
     user_name: null,
     icon: null,
+    favorite_games: []
   },
+  socketConnected: false
 }
 
 const userState = (state = initialState, action) => {
@@ -26,9 +28,10 @@ const userState = (state = initialState, action) => {
         ...state,
         user: {
           ...state.user,
-          user_id: action.payload.data.user_id,
+          user_id: action.payload.data.id,
           user_name: action.payload.data.user_name,
-          icon: action.payload.data.user_name,
+          icon: action.payload.data.icon,
+          favorite_games: action.payload.data.favorite_games
         }
       }
     case GET_ME_ERROR:

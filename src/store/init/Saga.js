@@ -1,12 +1,12 @@
-import { takeLatest, put, call, take, fork, takeEvery } from 'redux-saga/effects';
-import { fetchRoomList } from './../room/Saga'
+import { put, call, takeEvery } from 'redux-saga/effects';
+import { getRoomReq } from './../room/Action'
 import { handleCheckEntryRequest, handleGetMeRequest } from './../user/Saga'
 import { INIT } from './Action'
 import { openSocket } from './../socket/Action'
 
 function* initProduct(action) {
   yield put(openSocket())
-  yield call(fetchRoomList)
+  yield put(getRoomReq())
   // TODO トークンがあれば
   yield call(handleGetMeRequest)
   yield call(handleCheckEntryRequest, action.payload)
@@ -15,5 +15,3 @@ function* initProduct(action) {
 export function* watchInit() {
   yield takeEvery(INIT, initProduct);
 }
-
-

@@ -10,7 +10,7 @@ import { createdChatpost } from './../store/room/Action'
 
 import io from 'socket.io-client'
 
-var socket
+let socket
 
 const socketMiddleware = store => next => action => {
   // socket通信の開始
@@ -45,7 +45,7 @@ const socketMiddleware = store => next => action => {
 
     socket.emit('join_req', {
       room_id: room_id,
-      user: { user_name: userState.user.user_name },
+      user: { user_name: userState.user_name },
     });
   }
 

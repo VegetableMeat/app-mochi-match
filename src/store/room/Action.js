@@ -3,17 +3,15 @@ export const GET_ROOM_OK = 'GET_ROOM_OK';
 export const GET_ROOM_NG = 'GET_ROOM_NG';
 
 export const getRoomReq = () => {
-  console.log("getRoomReq")
   return {
     type: GET_ROOM_REQ,
-    payload: [],
   };
 };
 
-export const getRoomOk = (payload) => {
+export const getRoomOk = (data) => {
   return {
     type: GET_ROOM_OK,
-    payload: payload,
+    payload: data,
   };
 };
 
@@ -80,13 +78,13 @@ export const leaveRoomError = (data) => {
   };
 };
 
-export const GET_ROOM_DETAIL_REQUEST = "GET_ROOM_REQUEST"
-export const GET_ROOM_DETAIL_SUCCESS = "GET_ROOM_SUCCESS"
-export const GET_ROOM_DETAIL_ERROR = "GET_ROOM_ERROR"
+export const GET_ROOM_DETAIL_REQUEST = "GET_ROOM_DETAIL_REQUEST"
+export const GET_ROOM_DETAIL_SUCCESS = "GET_ROOM_DETAIL_SUCCESS"
+export const GET_ROOM_DETAIL_ERROR = "GET_ROOM_DETAIL_ERROR"
 
 export const getRoomDetailRequest = (data) => {
   return {
-    type: JOIN_ROOM_REQUEST,
+    type: GET_ROOM_DETAIL_REQUEST,
     payload: {
       room_id: data
     }
@@ -154,7 +152,6 @@ export const CREATE_CHATPOSTLIST_SUCCESS = "CREATE_CHATPOSTLIST_SUCCESS"
 export const CREATE_CHATPOSTLIST_ERROR = "CREATE_CHATPOSTLIST_ERROR"
 
 export const createChatpostListRequest = (room_id, message) => {
-  console.log(room_id, message)
   return {
     type: CREATE_CHATPOSTLIST_REQUEST,
     payload: {

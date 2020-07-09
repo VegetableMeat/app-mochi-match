@@ -1,4 +1,8 @@
-import { GET_ROOM_REQ, GET_ROOM_OK, GET_ROOM_NG } from '../Action';
+import {
+  GET_ROOM_REQ,
+  GET_ROOM_OK,
+  GET_ROOM_NG
+} from '../Action';
 
 const initiaState = {
   data: [],

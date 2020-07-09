@@ -7,7 +7,7 @@ import roomState from './room/room/Reducer';
 import headerMenuState from './common/header-menu/Reducer';
 import loginState from './common/login/Reducer';
 import adminState from './common/admin/Reducer';
-import userState from './common/user/Reducer';
+import userState from './user/Reducer';
 import socketState from './socket/Reducer';
 
 const rootReducers = combineReducers({

@@ -1,6 +1,6 @@
-export const GET_ME_REQUEST = 'GET_ROOM_REQ';
-export const GET_ME_SUCCESS = 'GET_ROOM_OK';
-export const GET_ME_ERROR = 'GET_ROOM_NG';
+export const GET_ME_REQUEST = 'GET_ME_REQUEST';
+export const GET_ME_SUCCESS = 'GET_ME_SUCCESS';
+export const GET_ME_ERROR = 'GET_ME_ERROR';
 
 export const getMeRequest = () => {
   return {
@@ -9,7 +9,6 @@ export const getMeRequest = () => {
 };
 
 export const getMeSuccess = (payload) => {
-  console.log(payload)
   return {
     type: GET_ME_SUCCESS,
     payload: payload,
@@ -47,4 +46,3 @@ export const checkEntryError = (error) => {
     payload: error,
   };
 };
-

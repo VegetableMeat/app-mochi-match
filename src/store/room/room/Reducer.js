@@ -32,7 +32,6 @@ const initialState = {
 const roomState = (state = initialState, action) => {
   switch (action.type) {
     case CREATED_CHATPOST:
-      console.log("CREATED_CHATPOST", action)
       return {
         ...state,
         chatLog: [
@@ -67,7 +66,6 @@ const roomState = (state = initialState, action) => {
         ...state,
       };
     case GET_ROOM_DETAIL_SUCCESS:
-      console.log(action)
       return {
         ...state,
         room: {

@@ -1,5 +1,5 @@
 import { axios_instance } from '../axios/axios';
-import { take, put, call, takeEvery, fork } from 'redux-saga/effects';
+import { take, put, call, takeEvery } from 'redux-saga/effects';
 import {
   GET_ROOM_REQ,
   getRoomOk,
@@ -16,13 +16,7 @@ import {
   GET_CHATPOSTLIST_REQUEST,
   getChatpostListRequest,
   getChatpostListSuccess,
-  getChatpostListError,
   CREATE_CHATPOSTLIST_REQUEST,
-  CREATE_CHATPOSTLIST_SUCCESS,
-  CREATE_CHATPOSTLIST_ERROR,
-  createChatpostListRequest,
-  createChatpostListSuccess,
-  createChatpostListError,
 } from './Action';
 import {
   showModalFalse
@@ -49,7 +43,6 @@ const requestRoomListApi = () => {
 
 export function* fetchRoomList() {
   const { data, error } = yield call(requestRoomListApi);
-
   if (data) {
     yield put(getRoomOk(data));
   } else {
@@ -125,6 +118,7 @@ export function* handleRoomJoinSuccess() {
     action.payload.callback()
   }
 }
+
 /**
  * ルーム退室リクエスト
  */

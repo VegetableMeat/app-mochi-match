@@ -1,4 +1,4 @@
-export const INIT = 'GET_ROOM_NG';
+export const INIT = 'INIT';
 
 export const init = (history) => {
   return {
