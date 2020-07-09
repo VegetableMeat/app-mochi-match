@@ -19,21 +19,35 @@ class ChatArea extends Component {
     this.props.history.push("/")
   }
 
+
   render() {
-    console.log(this.props)
     const { state, actions } = this.props;
+    var chatLog = [];
+    for (var i in state.chatLog) {
+      chatLog.push(
+        <div className="message-wrapper" key={state.chatLog[i].created_at}>
+          <UserIcon />
+          <UserName name={state.chatLog[i].name} />
+          <div className="message bg-green">{state.chatLog[i].message}</div>
+        </div>
+      );
+    }
+    chatLog.sort(function (a, b) {
+      if (a.key < b.key) {
+        return -1;
+      }
+      if (a.key > b.key) {
+        return 1;
+      }
+      return 0;
+    });
+
     return (
       <div className="chat-wrapper" >
         <div className="chat-area">
           <div className="chat-text-area">
             <p className="chat-start-message">チャットが開始されました</p>
-            {state.chatLog.map((data) => (
-              <div className="message-wrapper" key={data.created_at}>
-                <UserIcon />
-                <UserName name={data.user} />
-                <div className="message bg-green">{data.message}</div>
-              </div>
-            ))}
+            {chatLog}
           </div>
         </div>
         <div className="chat-send-area">

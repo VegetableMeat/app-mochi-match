@@ -9,6 +9,10 @@ import {
   GET_ROOM_DETAIL_SUCCESS,
   GET_ROOM_DETAIL_ERROR,
   ALREADY_ENTRY,
+  CREATED_CHATPOST,
+  GET_CHATPOSTLIST_REQUEST,
+  GET_CHATPOSTLIST_SUCCESS,
+  GET_CHATPOSTLIST_ERROR
 } from './../Action';
 
 const initialState = {
@@ -22,22 +26,20 @@ const initialState = {
     text: null,
   },
   join_users: [],
-  chatLog: [
-    {
-      message: "aaa",
-      user: "yaa",
-      created_at: "2020/01/01"
-    },
-    {
-      message: "aassasdafa",
-      user: "yafwa",
-      created_at: "2020/01/01"
-    }
-  ],
+  chatLog: [],
 }
 
 const roomState = (state = initialState, action) => {
   switch (action.type) {
+    case CREATED_CHATPOST:
+      console.log("CREATED_CHATPOST", action)
+      return {
+        ...state,
+        chatLog: [
+          ...state.chatLog,
+          action.payload
+        ]
+      };
     case JOIN_ROOM_REQUEST:
       return {
         ...state,
@@ -88,7 +90,6 @@ const roomState = (state = initialState, action) => {
         ...state,
       };
     case ALREADY_ENTRY:
-      console.log(action)
       return {
         ...state,
         room: {
@@ -105,6 +106,22 @@ const roomState = (state = initialState, action) => {
           ...state.join_users,
           ...action.payload.join_users
         ]
+      };
+    case GET_CHATPOSTLIST_REQUEST:
+      return {
+        ...state,
+      };
+    case GET_CHATPOSTLIST_SUCCESS:
+      return {
+        ...state,
+        chatLog: [
+          ...state.chatLog,
+          ...action.payload
+        ],
+      };
+    case GET_CHATPOSTLIST_ERROR:
+      return {
+        ...state,
       };
     default:
       return state;

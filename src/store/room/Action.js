@@ -114,3 +114,38 @@ export const alreadyEntry = (data) => {
     payload: data
   };
 };
+
+export const CREATED_CHATPOST = "CREATED_CHATPOST"
+
+export const createdChatpost = (data) => {
+  console.log("createdChatpost", data)
+  return {
+    type: CREATED_CHATPOST,
+    payload: data
+  };
+};
+
+export const GET_CHATPOSTLIST_REQUEST = "GET_CHATPOSTLIST"
+export const GET_CHATPOSTLIST_SUCCESS = "GET_CHATPOSTLIST_SUCCESS"
+export const GET_CHATPOSTLIST_ERROR = "GET_CHATPOSTLIST_ERROR"
+
+export const getChatpostListRequest = (room_id) => {
+  return {
+    type: GET_CHATPOSTLIST_REQUEST,
+    payload: room_id
+  };
+};
+
+export const getChatpostListSuccess = (data) => {
+  return {
+    type: GET_CHATPOSTLIST_SUCCESS,
+    payload: data
+  };
+};
+
+export const getChatpostListError = (err) => {
+  return {
+    type: GET_CHATPOSTLIST_ERROR,
+    payload: err
+  };
+};
