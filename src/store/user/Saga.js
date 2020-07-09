@@ -10,6 +10,8 @@ import {
   checkEntryError,
 } from './Action';
 
+import { getChatpostListRequest } from './../room/Action'
+
 import history from './../../history/history'
 
 import { alreadyEntry } from './../room/Action'
@@ -72,6 +74,7 @@ export function* watchCheckEntryRequest(action) {
 export function* handleCheckEntrySuccess(action) {
   if (action.payload.data.room) {
     yield put(alreadyEntry(action.payload.data.room))
+    yield put(getChatpostListRequest(action.payload.data.room.room_id))
     action.history.push("/intheroom")
   } else {
     action.history.push("/")

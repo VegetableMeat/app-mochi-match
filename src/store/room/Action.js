@@ -118,7 +118,6 @@ export const alreadyEntry = (data) => {
 export const CREATED_CHATPOST = "CREATED_CHATPOST"
 
 export const createdChatpost = (data) => {
-  console.log("createdChatpost", data)
   return {
     type: CREATED_CHATPOST,
     payload: data
@@ -146,6 +145,35 @@ export const getChatpostListSuccess = (data) => {
 export const getChatpostListError = (err) => {
   return {
     type: GET_CHATPOSTLIST_ERROR,
+    payload: err
+  };
+};
+
+export const CREATE_CHATPOSTLIST_REQUEST = "CREATE_CHATPOSTLIST_REQUEST"
+export const CREATE_CHATPOSTLIST_SUCCESS = "CREATE_CHATPOSTLIST_SUCCESS"
+export const CREATE_CHATPOSTLIST_ERROR = "CREATE_CHATPOSTLIST_ERROR"
+
+export const createChatpostListRequest = (room_id, message) => {
+  console.log(room_id, message)
+  return {
+    type: CREATE_CHATPOSTLIST_REQUEST,
+    payload: {
+      room_id: room_id,
+      message: message,
+    }
+  };
+};
+
+export const createChatpostListSuccess = (data) => {
+  return {
+    type: CREATE_CHATPOSTLIST_SUCCESS,
+    payload: data
+  };
+};
+
+export const createChatpostListError = (err) => {
+  return {
+    type: CREATE_CHATPOSTLIST_ERROR,
     payload: err
   };
 };

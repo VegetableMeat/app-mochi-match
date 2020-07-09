@@ -9,19 +9,28 @@ import { withRouter } from 'react-router'
 import './css/ChatArea.css';
 
 class ChatArea extends Component {
+  constructor() {
+    super()
+    this.state = {
+      value: ''
+    };
+  }
+
   static propTypes = {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
   }
 
+  handleChangeValue = e => this.setState({ value: e.target.value });
+
   callback = () => {
     this.props.history.push("/")
   }
 
-
   render() {
     const { state, actions } = this.props;
+
     var chatLog = [];
     for (var i in state.chatLog) {
       chatLog.push(
@@ -32,6 +41,7 @@ class ChatArea extends Component {
         </div>
       );
     }
+
     chatLog.sort(function (a, b) {
       if (a.key < b.key) {
         return -1;
@@ -51,11 +61,21 @@ class ChatArea extends Component {
           </div>
         </div>
         <div className="chat-send-area">
-          <ShadowInputArea placeholder="メッセージ" />
-          <button className="message-send-button">送信</button>
+          <ShadowInputArea
+            placeholder="メッセージ"
+            value={this.state.value}
+            onChangeValue={this.handleChangeValue}
+          />
+          <button
+            className="message-send-button"
+            onClick={() => actions.createChatpostListRequest(state.room.room_id, this.state.value)}>
+            送信
+            </button>
         </div>
         <div>
-          <button className="message-send-button" onClick={() => actions.leaveRoomRequest(state.room, this.props.history)}>
+          <button
+            className="message-send-button"
+            onClick={() => actions.leaveRoomRequest(state.room, this.props.history)}>
             仮の退室ボターン
           </button>
         </div>

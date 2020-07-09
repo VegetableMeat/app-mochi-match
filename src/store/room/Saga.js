@@ -16,7 +16,13 @@ import {
   GET_CHATPOSTLIST_REQUEST,
   getChatpostListRequest,
   getChatpostListSuccess,
-  getChatpostListError
+  getChatpostListError,
+  CREATE_CHATPOSTLIST_REQUEST,
+  CREATE_CHATPOSTLIST_SUCCESS,
+  CREATE_CHATPOSTLIST_ERROR,
+  createChatpostListRequest,
+  createChatpostListSuccess,
+  createChatpostListError,
 } from './Action';
 import {
   showModalFalse
@@ -181,4 +187,37 @@ export function* handleGetChatpostRequest(action) {
 
 export function* watchGetChatpostRequest() {
   yield takeEvery(GET_CHATPOSTLIST_REQUEST, handleGetChatpostRequest);
+}
+
+/**
+ * チャットポスト作成リクエスト
+ */
+const createChatpostReqApi = (room_id, message) => {
+  const url = `https://api.mochi-match.work/v1/rooms/${room_id}/messages`;
+  const data = { message: message };
+
+  return axios_instance
+    .post(url, data)
+    .then((res) => {
+      return { res };
+    })
+    .catch((error) => {
+      return { error };
+    });
+};
+
+export function* handleCreateChatpostRequest(action) {
+  const room_id = action.payload.room_id
+  const message = action.payload.message
+
+  const { res, error } = yield call(createChatpostReqApi, room_id, message);
+  if (!error) {
+    console.log(res)
+  } else {
+    console.log(error)
+  }
+}
+
+export function* watchCreateChatpostRequest() {
+  yield takeEvery(CREATE_CHATPOSTLIST_REQUEST, handleCreateChatpostRequest);
 }
