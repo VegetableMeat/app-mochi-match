@@ -1,7 +1,7 @@
-import { SHOW_MODAL_TRUE, SHOW_MODAL_FALSE, SHOW_MODAL_FRONT, SHOW_MODAL_BACK, MODAL_CHECK } from '../Action';
+import { SHOW_MODAL_TRUE, SHOW_MODAL_FALSE, SHOW_MODAL_FRONT, SHOW_MODAL_BACK, MODAL_CHECK, JOIN_ROOM } from '../Action';
 
 const initiaState = {
-  showFlag: false,
+	showFlag: false,
 	category: null,
 	history_category: null,
 	data: {},
@@ -9,27 +9,27 @@ const initiaState = {
 }
 
 const modalState = (state = initiaState, action) => {
-  switch (action.type) {
-    case SHOW_MODAL_TRUE:
-      return {
-        ...state,
-        showFlag: true,
+	switch (action.type) {
+		case SHOW_MODAL_TRUE:
+			return {
+				...state,
+				showFlag: true,
 				category: action.category,
-        data: {
+				data: {
 					...state.data,
 					[action.key]: action.payload
 				}
-      }
-    case SHOW_MODAL_FALSE:
-      return {
-        ...state,
-        showFlag: false,
+			}
+		case SHOW_MODAL_FALSE:
+			return {
+				...state,
+				showFlag: false,
 				category: action.category,
 				history_category: action.category,
-        data: action.paylaod
-      }
+				data: action.paylaod
+			}
 		case SHOW_MODAL_FRONT: {
-			if(action.key) {
+			if (action.key) {
 				return {
 					...state,
 					history_category: state.category,
@@ -42,11 +42,11 @@ const modalState = (state = initiaState, action) => {
 			}
 			return {
 				...state,
-					history_category: state.category,
-					category: action.category,
-					data: {
-						...state.data,
-					}
+				history_category: state.category,
+				category: action.category,
+				data: {
+					...state.data,
+				}
 			}
 		}
 		case SHOW_MODAL_BACK: {
@@ -56,7 +56,7 @@ const modalState = (state = initiaState, action) => {
 			}
 		}
 		case MODAL_CHECK:
-			if(action.toggle) {
+			if (action.toggle) {
 				return {
 					...state,
 					data: {
@@ -76,9 +76,9 @@ const modalState = (state = initiaState, action) => {
 					check: checkedFilter(state.data.check, action.payload)
 				}
 			}
-    default:
-      return state
-  }
+		default:
+			return state
+	}
 };
 
 function checkedFilter(state, pay) {
