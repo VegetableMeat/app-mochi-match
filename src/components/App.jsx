@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Top from './../containers/TopContainer';
 import Login from './../containers/LoginContainer';
@@ -15,23 +15,11 @@ import InTheRoom from './../containers/InTheRoomContainer';
 import Admin from './../containers/AdminContainer';
 import LoginDone from './../containers/LoginDoneContainer';
 
-import PropTypes from 'prop-types'
-import { withRouter } from 'react-router'
-
 class App extends React.Component {
 
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  }
-
   componentDidMount() {
-    this.props.actions.init(this.props.history)
-  }
-
-  callback = () => {
-    this.props.history.push("/intheroom")
+    const { actions, history } = this.props;
+    actions.init(history)
   }
 
   render() {
@@ -58,4 +46,4 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App)
+export default App

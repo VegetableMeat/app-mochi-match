@@ -24,7 +24,7 @@ import './css/InTheRoom.css';
 
 export default class InTheRoom extends Component {
   render() {
-    const { state, actions } = this.props;
+    const { state } = this.props;
     return (
       <div id="in-the-room" >
         <Header />
@@ -47,7 +47,6 @@ export default class InTheRoom extends Component {
               <BreakUnderLine />
             </MenuInnerWrappr>
           </SideMenu>
-
           <MainBody>
             <ChatArea />
           </MainBody>
