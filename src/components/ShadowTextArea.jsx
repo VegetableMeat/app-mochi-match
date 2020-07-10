@@ -18,7 +18,7 @@ export default function ShadowTextArea({
           name={value}
           placeholder={placeholder}
           onChange={(e) => inputValidation({ value: e.target.value, name: e.target.name }, actions)}
-          autocomplete="on"
+          autoComplete="on"
           list="list"
         />
         <div className="shadow-underline"></div>
