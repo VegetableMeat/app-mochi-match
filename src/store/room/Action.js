@@ -5,14 +5,13 @@ export const GET_ROOM_NG = 'GET_ROOM_NG';
 export const getRoomReq = () => {
   return {
     type: GET_ROOM_REQ,
-    payload: [],
   };
 };
 
-export const getRoomOk = (payload) => {
+export const getRoomOk = (data) => {
   return {
     type: GET_ROOM_OK,
-    payload: payload,
+    payload: data,
   };
 };
 
@@ -55,13 +54,13 @@ export const LEAVE_ROOM_REQUEST = "LEAVE_ROOM_REQUEST"
 export const LEAVE_ROOM_SUCCESS = "LEAVE_ROOM_SUCCESS"
 export const LEAVE_ROOM_ERROR = "LEAVE_ROOM_ERROR"
 
-export const leaveRoomRequest = (data, callback) => {
+export const leaveRoomRequest = (data, history) => {
   return {
     type: LEAVE_ROOM_REQUEST,
     payload: {
       room: data,
-      callback: callback
-    }
+    },
+    history: history
   };
 };
 
@@ -79,13 +78,13 @@ export const leaveRoomError = (data) => {
   };
 };
 
-export const GET_ROOM_DETAIL_REQUEST = "GET_ROOM_REQUEST"
-export const GET_ROOM_DETAIL_SUCCESS = "GET_ROOM_SUCCESS"
-export const GET_ROOM_DETAIL_ERROR = "GET_ROOM_ERROR"
+export const GET_ROOM_DETAIL_REQUEST = "GET_ROOM_DETAIL_REQUEST"
+export const GET_ROOM_DETAIL_SUCCESS = "GET_ROOM_DETAIL_SUCCESS"
+export const GET_ROOM_DETAIL_ERROR = "GET_ROOM_DETAIL_ERROR"
 
 export const getRoomDetailRequest = (data) => {
   return {
-    type: JOIN_ROOM_REQUEST,
+    type: GET_ROOM_DETAIL_REQUEST,
     payload: {
       room_id: data
     }
@@ -105,3 +104,73 @@ export const getRoomDetailError = (data) => {
   };
 };
 
+export const ALREADY_ENTRY = "ALREADY_ENTRY"
+
+export const alreadyEntry = (data) => {
+  return {
+    type: ALREADY_ENTRY,
+    payload: data
+  };
+};
+
+export const CREATED_CHATPOST = "CREATED_CHATPOST"
+
+export const createdChatpost = (data) => {
+  return {
+    type: CREATED_CHATPOST,
+    payload: data
+  };
+};
+
+export const GET_CHATPOSTLIST_REQUEST = "GET_CHATPOSTLIST"
+export const GET_CHATPOSTLIST_SUCCESS = "GET_CHATPOSTLIST_SUCCESS"
+export const GET_CHATPOSTLIST_ERROR = "GET_CHATPOSTLIST_ERROR"
+
+export const getChatpostListRequest = (room_id) => {
+  return {
+    type: GET_CHATPOSTLIST_REQUEST,
+    payload: room_id
+  };
+};
+
+export const getChatpostListSuccess = (data) => {
+  return {
+    type: GET_CHATPOSTLIST_SUCCESS,
+    payload: data
+  };
+};
+
+export const getChatpostListError = (err) => {
+  return {
+    type: GET_CHATPOSTLIST_ERROR,
+    payload: err
+  };
+};
+
+export const CREATE_CHATPOSTLIST_REQUEST = "CREATE_CHATPOSTLIST_REQUEST"
+export const CREATE_CHATPOSTLIST_SUCCESS = "CREATE_CHATPOSTLIST_SUCCESS"
+export const CREATE_CHATPOSTLIST_ERROR = "CREATE_CHATPOSTLIST_ERROR"
+
+export const createChatpostListRequest = (room_id, message) => {
+  return {
+    type: CREATE_CHATPOSTLIST_REQUEST,
+    payload: {
+      room_id: room_id,
+      message: message,
+    }
+  };
+};
+
+export const createChatpostListSuccess = (data) => {
+  return {
+    type: CREATE_CHATPOSTLIST_SUCCESS,
+    payload: data
+  };
+};
+
+export const createChatpostListError = (err) => {
+  return {
+    type: CREATE_CHATPOSTLIST_ERROR,
+    payload: err
+  };
+};

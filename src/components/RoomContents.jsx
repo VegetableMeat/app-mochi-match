@@ -3,9 +3,6 @@ import RoomCard from './RoomCard';
 import './css/RoomContents.css';
 
 export default class RoomContents extends Component {
-  componentDidMount() {
-    this.props.roomActions.getRoomReq();
-  }
   render() {
     const { state, commonActions } = this.props;
     return (

@@ -20,10 +20,6 @@ import './css/Top.css';
 import { render } from '@testing-library/react';
 
 class Top extends React.Component {
-  componentDidMount() {
-    this.props.actions.openSocket()
-  }
-
   render() {
     return (
       <div id="top">

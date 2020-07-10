@@ -6,14 +6,29 @@ import {
   updateSocketObject
 } from './../store/socket/Action'
 
+import { createdChatpost } from './../store/room/Action'
+
 import io from 'socket.io-client'
 
-var socket
+let socket
 
 const socketMiddleware = store => next => action => {
   // socket通信の開始
   if (action.type === OPEN_SOCKET) {
     socket = io('wss://mochi-match.work/chatroom')
+    socket.on('notify_entry', function (data) {
+      console.log(data);
+    });
+    socket.on('user_input_start', function (data) {
+      console.log(data);
+    });
+    socket.on('user_input_stop', function (data) {
+      console.log(data);
+    });
+    socket.on('msg', function (data) {
+      store.dispatch(createdChatpost(data))
+      console.log("msg", data);
+    });
     store.dispatch(updateSocketObject(socket))
   }
 
@@ -30,7 +45,7 @@ const socketMiddleware = store => next => action => {
 
     socket.emit('join_req', {
       room_id: room_id,
-      user: { user_name: userState.user.user_name },
+      user: { user_name: userState.user_name },
     });
   }
 
