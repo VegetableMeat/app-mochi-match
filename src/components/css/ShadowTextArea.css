@@ -1,9 +1,9 @@
 .shadow-text-area input{
-    height: 28px;
-    border: none;
-    width: 100%;
-    padding: 2px 12px;
-    font-size: 16px;
+	height: 28px;
+	border: none;
+	width: 100%;
+	padding: 2px 12px;
+	font-size: 16px;
 }
 
 .shadow-text-area input:focus, .shadow-text-area textarea:focus {
@@ -11,9 +11,9 @@
 }
 
 .shadow-underline {
-    height: 1px;
-    width: 100% !important;
-    margin-left: 0 !important;
-    background-color: rgba(168, 168, 168, 0.8);
-    filter: drop-shadow(1px 2px 2px gray);
+	height: 1px;
+	width: 100% !important;
+	margin-left: 0 !important;
+	background-color: rgba(168, 168, 168, 0.8);
+	filter: drop-shadow(1px 2px 2px gray);
 }

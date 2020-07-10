@@ -1,15 +1,15 @@
 .radius-white-card {
-    width: 100%;
-    min-height: 100px;
-    background-color: white;
-    border-radius: 12px;
-    padding: 28px 18px;
-    margin: 12px 0;
-    box-shadow: grey 1px 1px 4px;
+	width: 100%;
+	min-height: 100px;
+	background-color: white;
+	border-radius: 12px;
+	padding: 28px 18px;
+	margin: 12px 0;
+	box-shadow: grey 1px 1px 4px;
 }
 
 @media screen and (max-width: 480px) {
-    .radius-white-card {
-        padding: 20px 10px;
-    }
+	.radius-white-card {
+		padding: 20px 10px;
+	}
 }
