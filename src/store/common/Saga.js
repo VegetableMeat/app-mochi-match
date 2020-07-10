@@ -62,7 +62,7 @@ export const loginSaga = [takeLatest(LOGIN_REQ, fetchLogin)];
  * ローカルストレージの jwt の中身を見て、存在していたなら Login フラグを true にする処理
  */
 const responseAuth = () => {
-  if (localStorage.getItem('jwt')) {
+  if (localStorage.getItem('access_token')) {
     return true;
   }
   return false;
