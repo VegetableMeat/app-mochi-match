@@ -1,5 +1,13 @@
 import React from 'react';
 
-export default function ExitButton(props) {
-  return <div>{/* {props.children} */}</div>;
+import './css/ExitButton.css';
+
+export default function ExitButton() {
+  return (
+    <div className="exit-button">
+      <button>
+        <i class="fas fa-external-link-alt"></i>
+      </button>
+    </div>
+  );
 }

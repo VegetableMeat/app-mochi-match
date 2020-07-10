@@ -33,7 +33,7 @@ export default class InTheRoom extends Component {
             <MenuHeader text="メンバー" />
             <MenuInnerWrappr>
               {state.join_users.map((data) => (
-                < UserPlate key={data.user_id} icon={data.icon} name={data.user_name} />
+                <UserPlate key={data.user_id} icon={data.icon} name={data.user_name} />
               ))}
             </MenuInnerWrappr>
             <MenuHeader text="ルーム情報" />

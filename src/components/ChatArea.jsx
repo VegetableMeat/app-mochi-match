@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ShadowInputArea from './ShadowInputArea';
-import AddButton from './AddButton';
 import UserIcon from './UserIcon';
 import UserName from './UserName';
 import { withRouter } from 'react-router';
