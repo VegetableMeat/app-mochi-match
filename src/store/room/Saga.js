@@ -187,6 +187,7 @@ export function* watchGetChatpostRequest() {
  * チャットポスト作成リクエスト
  */
 const createChatpostReqApi = (room_id, message) => {
+  console.log(room_id, message)
   const url = `https://api.mochi-match.work/v1/rooms/${room_id}/messages`;
   const data = { message: message };
 

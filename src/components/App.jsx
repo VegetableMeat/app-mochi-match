@@ -26,12 +26,14 @@ class App extends React.Component {
     history: PropTypes.object.isRequired
   }
 
-  callback = () => {
-    this.props.history.push("/intheroom")
-  }
   componentDidMount() {
     this.props.actions.init(this.props.history)
   }
+
+  callback = () => {
+    this.props.history.push("/intheroom")
+  }
+
   render() {
     return (
       <Switch>
