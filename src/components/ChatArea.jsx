@@ -3,21 +3,14 @@ import ShadowInputArea from './ShadowInputArea';
 import AddButton from './AddButton';
 import UserIcon from './UserIcon';
 import UserName from './UserName';
-import PropTypes from 'prop-types'
-import { withRouter } from 'react-router'
-
+import { withRouter } from 'react-router';
 import './css/ChatArea.css';
 
 class ChatArea extends Component {
 
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  }
-
   constructor() {
     super()
+    this.ref = React.createRef();
     this.state = {
       value: ''
     };
@@ -28,6 +21,16 @@ class ChatArea extends Component {
 
   callback = () =>
     this.props.history.push("/")
+
+  componentDidUpdate() {
+    // TODO やり方が雑いから要修正
+    if (this.ref.current.scrollTop === 0) {
+      this.ref.current.scrollTop = 99999;
+    }
+    if (this.ref.current.scrollHeight - this.ref.current.scrollTop < 1500) {
+      this.ref.current.scrollTop = 99999;
+    }
+  }
 
   render() {
     const { state, actions, history } = this.props;
@@ -42,7 +45,6 @@ class ChatArea extends Component {
         </div>
       );
     }
-
     chatLog.sort(function (a, b) {
       if (a.key < b.key) {
         return -1;
@@ -55,7 +57,7 @@ class ChatArea extends Component {
 
     return (
       <div className="chat-wrapper" >
-        <div className="chat-area">
+        <div className="chat-area" ref={this.ref}>
           <div className="chat-text-area">
             <p className="chat-start-message">チャットが開始されました</p>
             {chatLog}
