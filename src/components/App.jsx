@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Top from './../containers/TopContainer';
@@ -15,11 +15,12 @@ import InTheRoom from './../containers/InTheRoomContainer';
 import Admin from './../containers/AdminContainer';
 import LoginDone from './../containers/LoginDoneContainer';
 
-const App = ({ actions, history }) => {
+const App = ({ actions, history, state }) => {
 
   useEffect(() => {
     actions.init(history)
   }, [actions, history]);
+
 
   return (
     <Switch>

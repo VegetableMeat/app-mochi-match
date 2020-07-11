@@ -27,6 +27,7 @@ const initialState = {
   },
   join_users: [],
   chatLog: [],
+  isEntry: false
 }
 
 const roomState = (state = initialState, action) => {
@@ -46,6 +47,7 @@ const roomState = (state = initialState, action) => {
     case JOIN_ROOM_SUCCESS:
       return {
         ...state,
+        isEntry: true
       };
     case JOIN_ROOM_ERROR:
       return {
@@ -56,7 +58,10 @@ const roomState = (state = initialState, action) => {
         ...state,
       };
     case LEAVE_ROOM_SUCCESS:
-      return initialState
+      return {
+        ...state,
+        isEntry: false
+      };
     case LEAVE_ROOM_ERROR:
       return {
         ...state,

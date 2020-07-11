@@ -20,7 +20,6 @@ const requestGetMeApi = () => {
   return axios_instance
     .get(url)
     .then((res) => {
-      console.log("res", res)
       return { res }
     })
     .catch((error) => {
@@ -79,7 +78,6 @@ export function* handleCheckEntrySuccess(action) {
     yield put(getChatpostListRequest(action.payload.data.room.room_id))
     action.history.push("/intheroom")
   } else {
-    action.history.push("/")
   }
 }
 

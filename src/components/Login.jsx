@@ -12,42 +12,43 @@ import { Redirect } from 'react-router-dom';
 import './css/Sign.css';
 
 export default class Login extends Component {
+
 	componentDidMount() {
 		this.props.actions.authReq();
 	}
-	
+
 	render() {
-		if(this.props.state.loadingFlag) {
-			return ( null )
+		if (this.props.state.loadingFlag) {
+			return (null)
 		} else {
-			if(this.props.state.loggedIn) {
+			if (this.props.state.loggedIn) {
 				return (
 					<Redirect to={'/'} />
 				)
 			}
 		}
-		
+
 		return (
 			<div id="login">
-			<Header />
-			<Body>
-				<CenterMainBody>
-					<BodyHeader>
-						ログイン
+				<Header />
+				<Body>
+					<CenterMainBody>
+						<BodyHeader>
+							ログイン
 					</BodyHeader>
-					<div className="button-area">
-						<button className="facebook">Facebookアカウントでログイン</button>
-						<button className="twitter">Twitterアカウントでログイン</button>
-						{/* <button onClick={() => this.locationGoogle()} className="google">Googleアカウントでログイン</button> */}
-						<button onClick={() => this.props.actions.loginReq()} className="google">Googleアカウントでログイン</button>
+						<div className="button-area">
+							<button className="facebook">Facebookアカウントでログイン</button>
+							<button className="twitter">Twitterアカウントでログイン</button>
+							{/* <button onClick={() => this.locationGoogle()} className="google">Googleアカウントでログイン</button> */}
+							<button onClick={() => this.props.actions.loginReq()} className="google">Googleアカウントでログイン</button>
+						</div>
+						<div className="link-area">
+							<Link to="/Register">新規登録</Link>はこちら
 					</div>
-					<div className="link-area">
-						<Link to="/Register">新規登録</Link>はこちら
-					</div>
-				</CenterMainBody>
-			</Body>
-			<Footer />
-			<Modal />
+					</CenterMainBody>
+				</Body>
+				<Footer />
+				<Modal />
 			</div>
 		)
 	}

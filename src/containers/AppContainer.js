@@ -9,7 +9,7 @@ import App from './../components/App';
 
 const mapStateToProps = (state) => {
   return {
-    state: state.adminState,
+    state: state,
   };
 };
 
