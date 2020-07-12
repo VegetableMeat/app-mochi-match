@@ -85,7 +85,7 @@ const ModalMold = ({ state, actions, history }) => {
 					</div>
 				</div>
 			);
-		case 'test2':
+		case 'ROOM_LEAVE_AND_JOIN':
 			return (
 				<div className="modal-body">
 					<div className="modal-text modal-header">

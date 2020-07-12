@@ -31,4 +31,3 @@ const RoomContents = ({ state, actions, history }) => {
 };
 
 export default RoomContents;
-
