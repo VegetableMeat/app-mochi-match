@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Header from './Header';
 import Footer from './Footer';
 import Body from './Body';
@@ -18,10 +17,11 @@ import Capacity from './Capacity';
 import RecruitmentText from './RecruitmentText';
 import BreakUnderLine from './BreakUnderLine';
 import HeadLine2 from './HeadLine2';
-
 import './css/InTheRoom.css';
 
 const InTheRoom = ({ state }) => {
+
+  const { room, join_users } = state;
 
   return (
     <div id="in-the-room" >
@@ -30,7 +30,7 @@ const InTheRoom = ({ state }) => {
         <SideMenu>
           <MenuHeader text="メンバー" />
           <MenuInnerWrappr>
-            {state.join_users.map((data) => (
+            {join_users.map((data) => (
               <UserPlate
                 key={data.user_id}
                 icon={data.icon}
@@ -41,14 +41,14 @@ const InTheRoom = ({ state }) => {
           <MenuInnerWrappr>
             <GamePlate
               hard=""
-              title={state.room.title} />
+              title={room.title} />
             <BreakUnderLine />
             <Capacity
-              capacity={state.room.capacity}
-              count={state.room.count} />
+              capacity={room.capacity}
+              count={room.count} />
             <BreakUnderLine />
             <HeadLine2>
-              {state.room.text}
+              {room.text}
             </HeadLine2>
             <RecruitmentText />
             <BreakUnderLine />

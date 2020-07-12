@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { withRouter } from 'react-router';
-
 import ShadowInputArea from './ShadowInputArea';
 import UserIcon from './UserIcon';
 import UserName from './UserName';
@@ -9,6 +8,7 @@ import './css/ChatArea.css';
 const ChatArea = ({ actions, history, state }) => {
 
   const { roomState, userState } = state;
+  const { room, chatLog } = roomState;
 
   /**
    * チャットログのElementの定義
@@ -27,18 +27,18 @@ const ChatArea = ({ actions, history, state }) => {
   /**
    * チャットログのソートとレンダリング
    */
-  let chatLog = [];
-  for (let i in roomState.chatLog) {
-    chatLog.push(
-      <div className="message-wrapper" key={roomState.chatLog[i].created_at}>
+  let chatLogs = [];
+  for (let i in chatLog) {
+    chatLogs.push(
+      <div className="message-wrapper" key={chatLog[i].created_at}>
         <UserIcon />
         <UserName name={roomState.chatLog[i].name} />
-        <div className="message bg-green">{roomState.chatLog[i].message}</div>
+        <div className="message bg-green">{chatLog[i].message}</div>
       </div>
     );
   };
 
-  chatLog.sort(function (a, b) {
+  chatLogs.sort(function (a, b) {
     if (a.key < b.key) return -1;
     if (a.key > b.key) return 1;
     return 0;
@@ -51,39 +51,37 @@ const ChatArea = ({ actions, history, state }) => {
   const textEl = useRef(null);
   const [text, setText] = useState("");
 
-  const onTextChange = () => {
-    setText(textEl.current.value);
-  };
+  const onTextChange = () => { setText(textEl.current.value); };
 
   const sendChatpost = (room_id, text) => {
-    if (text === "") return;
+    if (text === "") { return };
     actions.createChatpostListRequest(room_id, text);
     setText("");
   };
 
   const handleKeyDown = (e) => {
-    if (e.keyCode === 13) { sendChatpost(roomState.room.room_id, text) };
+    if (e.keyCode === 13) { sendChatpost(room.room_id, text) };
   };
 
   /**
    * ルーム退室ボタン押下時のハンドリング
    */
   const onLeaveButtonClick = () => {
-    if (roomState.room.owner_id === userState.user.user_id) {
-      actions.showModalTrue("ROOM_DELETION", "room", roomState.room);
-    } else {
-      actions.leaveRoomRequest(state.room, history);
-    };
+    room.owner_id === userState.user.user_id ?
+      actions.showModalTrue("ROOM_DELETION", "room", room) :
+      actions.leaveRoomRequest(room, history);
   };
 
   return (
     <div className="chat-wrapper" >
-      <div className="chat-area" ref={chatlogEl}>
+      <div
+        className="chat-area"
+        ref={chatlogEl}>
         <div className="chat-text-area">
           <p className="chat-start-message">
             チャットが開始されました
           </p>
-          {chatLog}
+          {chatLogs}
         </div>
       </div>
       <div className="chat-send-area">
@@ -95,7 +93,7 @@ const ChatArea = ({ actions, history, state }) => {
           ref={textEl} />
         <button
           className="message-send-button"
-          onClick={() => sendChatpost(roomState.room.room_id, text)}>
+          onClick={() => sendChatpost(room.room_id, text)}>
           送信
         </button>
       </div>

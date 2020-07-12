@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ReservationTime from './ReservationTime';
 import SimpleProfile from './SimpleProfile';
 import GamePlate from './GamePlate';
@@ -8,27 +7,27 @@ import RecrutimentText from './RecrutimentText';
 import RecrutimentTime from './RecrutimentTime';
 import './css/RoomCard.css';
 
-const RoomCard = ({ data, actions, onCardClick }) => {
+const RoomCard = ({ room, onCardClick }) => {
 
-  const d = new Date(data.created);
+  const d = new Date(room.created);
   const formatteDate = `
   ${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()} ${d.getHours()}:${d.getMinutes()}
   `.replace(/\n|\r/g, '');
 
   return (
-    <div className="room-card" onClick={() => onCardClick(data)}>
-      {data.start && <ReservationTime start={data.start} />}
+    <div className="room-card" onClick={() => onCardClick(room)}>
+      {room.start && <ReservationTime start={room.start} />}
       <SimpleProfile
-        icon={data.icon}
-        name={data.name} />
+        icon={room.icon}
+        name={room.name} />
       <GamePlate
-        hard={data.hard}
-        title={data.title} />
+        hard={room.hard}
+        title={room.title} />
       <Capacity
-        capacity={data.capacity}
-        count={data.count} />
+        capacity={room.capacity}
+        count={room.count} />
       <RecrutimentText
-        text={data.text} />
+        text={room.text} />
       <RecrutimentTime
         created={formatteDate} />
     </div>

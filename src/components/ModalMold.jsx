@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 const ModalMold = ({ state, actions, history }) => {
 
 	const { modalState } = state;
+	const { room } = modalState.data;
 
 	const handleCheck = (e) => {
 		actions.modalCheck(e.target.value, e.target.checked);
@@ -18,12 +19,12 @@ const ModalMold = ({ state, actions, history }) => {
 			return (
 				<div className="modal-body">
 					<div className="modal-text modal-header">
-						{modalState.data.room.name}のルームに参加しますか？
+						{room.name}のルームに参加しますか？
 					</div>
 					<div className="footer-button-area">
 						<button
 							className="join-button color-blue"
-							onClick={() => actions.joinRoomRequest(modalState.data.room, callback)}>
+							onClick={() => actions.joinRoomRequest(room, callback)}>
 							参加する
 						</button>
 						<button
@@ -48,7 +49,7 @@ const ModalMold = ({ state, actions, history }) => {
 					<div className="footer-button-area">
 						<button
 							className="join-button color-blue"
-							onClick={() => actions.deleteRoomRequest(modalState.data.room, history)}>
+							onClick={() => actions.deleteRoomRequest(room, history)}>
 							解散する
 						</button>
 						<button
@@ -69,12 +70,12 @@ const ModalMold = ({ state, actions, history }) => {
 					<div className="footer-button-area">
 						<button
 							className="join-button color-blue"
-							onClick={() => actions.deleteRoomRequest(modalState.data.room, history)}>
+							onClick={() => actions.deleteRoomRequest(room, history)}>
 							解散して参加する
 						</button>
 						<button
 							className="join-button color-blue"
-							onClick={() => actions.deleteRoomRequest(modalState.data.room, history)}>
+							onClick={() => actions.deleteRoomRequest(room, history)}>
 							以前のルームに戻る
 						</button>
 						<button
@@ -95,12 +96,12 @@ const ModalMold = ({ state, actions, history }) => {
 					<div className="footer-button-area">
 						<button
 							className="join-button color-blue"
-							onClick={() => actions.deleteRoomRequest(modalState.data.room, history)}>
+							onClick={() => actions.deleteRoomRequest(room, history)}>
 							退室して参加する
 						</button>
 						<button
 							className="join-button color-blue"
-							onClick={() => actions.deleteRoomRequest(modalState.data.room, history)}>
+							onClick={() => actions.deleteRoomRequest(room, history)}>
 							以前のルームに戻る
 						</button>
 						<button
