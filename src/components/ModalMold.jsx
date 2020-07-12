@@ -43,6 +43,25 @@ class ModalMold extends Component {
 						</button>
 					</div>
 				);
+			case 'TOP_ROM_IN':
+				return (
+					<div className="modal-body">
+						<div className="modal-text modal-header">
+							{state.data.room.name}のルームに参加しますか？
+							</div>
+						<div className="footer-button-area">
+							<button className="join-button color-blue" onClick={() => actions.joinRoomRequest(state.data.room, this.callback)}>
+								参加する
+								</button>
+							<button className="cancel-button color-red" onClick={() => actions.showModalFalse()}>
+								キャンセル
+								</button>
+						</div>
+						<button className="report-button color-yellow" onClick={() => actions.showModalFront("REPORT", "check", [])}>
+							違反報告
+							</button>
+					</div>
+				);
 			case 'REPORT':
 				let check_box = [];
 				state.report.forEach((text, key) => {
@@ -86,11 +105,10 @@ class ModalMold extends Component {
 						</div>
 					</div>
 				)
-
 			default:
 				return '何もありません';
-		}
-	}
-}
+		};
+	};
+};
 
-export default withRouter(ModalMold)
+export default withRouter(ModalMold);

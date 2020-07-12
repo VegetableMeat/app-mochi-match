@@ -7,14 +7,16 @@ import RoomContents from '../components/RoomContents';
 
 const mapStateToProps = (state) => {
   return {
-    state: state.roomListState,
+    state: state,
   };
 };
 
 const mapDispatchProps = (dispatch) => {
   return {
-    roomActions: bindActionCreators(roomActions, dispatch),
-    commonActions: bindActionCreators(commonActions, dispatch),
+    actions: bindActionCreators({
+      ...roomActions,
+      ...commonActions,
+    }, dispatch),
   };
 };
 

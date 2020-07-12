@@ -58,10 +58,7 @@ const roomState = (state = initialState, action) => {
         ...state,
       };
     case LEAVE_ROOM_SUCCESS:
-      return {
-        ...state,
-        isEntry: false
-      };
+      return initialState;
     case LEAVE_ROOM_ERROR:
       return {
         ...state,

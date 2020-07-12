@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -17,46 +16,45 @@ import Modal from '../containers/ModalContainer';
 import ShadowInputArea from './ShadowInputArea';
 import SerchButton from './SerchButton';
 import './css/Top.css';
-import { render } from '@testing-library/react';
 
-class Top extends React.Component {
-  render() {
-    return (
-      <div id="top">
-        <Header />
-        <Body>
-          <SideMenu>
-            <div className="menu-wrapper menu-wrapper-1">
-              <MenuHeader text="検索" />
-              <MenuInnerWrapper>
-                <ShadowInputArea />
-                <SerchButton />
-              </MenuInnerWrapper>
-            </div>
-            <div className="menu-wrapper menu-wrapper-2">
-              <MenuHeader text="お気に入りゲーム" />
-              <MenuInnerWrapper>
-                <FavoriteGames />
-              </MenuInnerWrapper>
-            </div>
-            <div className="menu-wrapper menu-wrapper-3">
-              <MenuHeader text="人気ゲーム" />
-              <MenuInnerWrapper>
-                <PopularGames />
-              </MenuInnerWrapper>
-            </div>
-          </SideMenu>
-          <MainBody>
-            <RoomContents />
-          </MainBody>
-        </Body>
-        <CreateRoomButton />
-        <PageNation />
-        <Footer />
-        <Modal />
-      </div>
-    );
-  }
-}
+const Top = () => {
+
+  return (
+    <div id="top">
+      <Header />
+      <Body>
+        <SideMenu>
+          <div className="menu-wrapper menu-wrapper-1">
+            <MenuHeader text="検索" />
+            <MenuInnerWrapper>
+              <ShadowInputArea />
+              <SerchButton />
+            </MenuInnerWrapper>
+          </div>
+          <div className="menu-wrapper menu-wrapper-2">
+            <MenuHeader text="お気に入りゲーム" />
+            <MenuInnerWrapper>
+              <FavoriteGames />
+            </MenuInnerWrapper>
+          </div>
+          <div className="menu-wrapper menu-wrapper-3">
+            <MenuHeader text="人気ゲーム" />
+            <MenuInnerWrapper>
+              <PopularGames />
+            </MenuInnerWrapper>
+          </div>
+        </SideMenu>
+        <MainBody>
+          <RoomContents />
+        </MainBody>
+      </Body>
+      <CreateRoomButton />
+      <PageNation />
+      <Footer />
+      <Modal />
+    </div>
+  );
+
+};
 
 export default Top;

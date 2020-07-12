@@ -7,15 +7,15 @@ import Capacity from './Capacity';
 import RecrutimentText from './RecrutimentText';
 import RecrutimentTime from './RecrutimentTime';
 
-export default function RoomCard({ data, actions }) {
+const RoomCard = ({ data, actions, onCardClick }) => {
 
-  const d = new Date(data.created)
+  const d = new Date(data.created);
   const formatteDate = `
   ${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()} ${d.getHours()}:${d.getMinutes()}
   `.replace(/\n|\r/g, '');
 
   return (
-    <div className="room-card" onClick={() => actions.showModalTrue("TOP_ROOM_IN", "room", data)}>
+    <div className="room-card" onClick={() => onCardClick(data)}>
       {data.start && <ReservationTime start={data.start} />}
       <SimpleProfile
         icon={data.icon}
@@ -37,4 +37,7 @@ export default function RoomCard({ data, actions }) {
       />
     </div>
   );
-}
+
+};
+
+export default RoomCard;
