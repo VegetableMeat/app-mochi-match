@@ -3,7 +3,8 @@ import {
   watchGetRoomListRequest,
   watchRoomJoinRequest,
   handleRoomJoinSuccess,
-  watchRoomLeaveRequest,
+  watchLeaveRoomRequest,
+  watchDeleteRoomRequest,
   watchGetChatpostRequest,
   watchCreateChatpostRequest
 } from './room/Saga';
@@ -26,7 +27,8 @@ export default function* rootSaga() {
     call(handleRoomJoinSuccess),
     call(watchGetChatpostRequest),
     call(watchCreateChatpostRequest),
-    call(watchRoomLeaveRequest),
+    call(watchLeaveRoomRequest),
+    call(watchDeleteRoomRequest),
     call(watchCheckEntryRequest),
     call(watchCheckEntrySuccess),
   ]);

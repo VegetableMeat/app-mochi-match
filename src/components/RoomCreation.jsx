@@ -20,7 +20,6 @@ import InlineArea from './InlineArea';
 import ShadowTextArea from './ShadowTextArea';
 import CenterMainBody from './CenterMainBody';
 import BodyHeader from './BodyHeader';
-
 import './css/RoomCreation.css';
 
 export default class RoomCreation extends Component {

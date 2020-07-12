@@ -1,18 +1,24 @@
 import React from 'react';
+
 import RoomCard from './RoomCard';
 import './css/RoomContents.css';
 
-const RoomContents = ({ state, actions }) => {
+const RoomContents = ({ state, actions, history }) => {
+
+  const { roomState } = state;
 
   const onCardClick = (data) => {
-    if (state.roomState.isEntry) {
+    if (roomState.room.room_id === data.room_id) {
+      history.push("intheroom");
+      actions.showModalFalse();
+    } else if (roomState.isEntry) {
       data.owner_id === state.userState.user.user_id ?
-        console.log("既に立てているルームを解散するか確認") :
-        console.log("前のルームを抜けるか確認")
+        actions.showModalTrue("ROOM_DELETION_AND_JOIN", "room", data) :
+        actions.showModalTrue("ROOM_LEAVE_AND_JOIN", "room", data)
     } else {
-      actions.showModalTrue("TOP_ROOM_IN", "room", data)
-    }
-  }
+      actions.showModalTrue("TOP_ROOM_IN", "room", data);
+    };
+  };
 
   return (
     <div className="room-contents">

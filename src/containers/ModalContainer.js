@@ -7,7 +7,7 @@ import Modal from '../components/Modal';
 
 const mapStateToProps = (state) => {
   return {
-    state: state.modalState,
+    state: state,
   };
 };
 

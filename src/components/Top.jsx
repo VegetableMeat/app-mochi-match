@@ -17,7 +17,7 @@ import ShadowInputArea from './ShadowInputArea';
 import SerchButton from './SerchButton';
 import './css/Top.css';
 
-const Top = () => {
+const Top = ({ history }) => {
 
   return (
     <div id="top">
@@ -45,7 +45,7 @@ const Top = () => {
           </div>
         </SideMenu>
         <MainBody>
-          <RoomContents />
+          <RoomContents history={history} />
         </MainBody>
       </Body>
       <CreateRoomButton />

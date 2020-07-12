@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { withRouter } from 'react-router';
+
 import ShadowInputArea from './ShadowInputArea';
 import UserIcon from './UserIcon';
 import UserName from './UserName';
-import { withRouter } from 'react-router';
 import './css/ChatArea.css';
 
 const ChatArea = ({ actions, history, state }) => {
@@ -49,6 +50,7 @@ const ChatArea = ({ actions, history, state }) => {
    */
   const textEl = useRef(null);
   const [text, setText] = useState("");
+
   const onTextChange = () => {
     setText(textEl.current.value);
   };

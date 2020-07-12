@@ -6,7 +6,7 @@ import FavoriteGames from '../components/FavoriteGames';
 
 const mapStateToProps = (state) => {
   return {
-    state: state.userState,
+    state: state,
   };
 };
 

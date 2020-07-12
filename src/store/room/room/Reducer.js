@@ -105,7 +105,8 @@ const roomState = (state = initialState, action) => {
         join_users: [
           ...state.join_users,
           ...action.payload.join_users
-        ]
+        ],
+        isEntry: true
       };
     case GET_CHATPOSTLIST_REQUEST:
       return {

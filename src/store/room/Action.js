@@ -78,6 +78,34 @@ export const leaveRoomError = (data) => {
   };
 };
 
+export const DELETE_ROOM_REQUEST = "DELETE_ROOM_REQUEST"
+export const DELETE_ROOM_SUCCESS = "DELETE_ROOM_SUCCESS"
+export const DELETE_ROOM_ERROR = "DELETE_ROOM_ERROR"
+
+export const deleteRoomRequest = (data, history) => {
+  return {
+    type: DELETE_ROOM_REQUEST,
+    payload: {
+      room: data,
+    },
+    history: history
+  };
+};
+
+export const deleteRoomSuccess = (data, callback) => {
+  return {
+    type: DELETE_ROOM_SUCCESS,
+    payload: { room_id: data, callback: callback }
+  };
+};
+
+export const deleteRoomError = (data) => {
+  return {
+    type: DELETE_ROOM_ERROR,
+    payload: { data: data }
+  };
+};
+
 export const GET_ROOM_DETAIL_REQUEST = "GET_ROOM_DETAIL_REQUEST"
 export const GET_ROOM_DETAIL_SUCCESS = "GET_ROOM_DETAIL_SUCCESS"
 export const GET_ROOM_DETAIL_ERROR = "GET_ROOM_DETAIL_ERROR"

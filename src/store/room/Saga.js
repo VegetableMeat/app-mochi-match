@@ -2,6 +2,7 @@ import { axios_instance } from '../axios/axios';
 import { take, put, call, takeEvery } from 'redux-saga/effects';
 import {
   GET_ROOM_REQ,
+  getRoomReq,
   getRoomOk,
   getRoomNg,
   JOIN_ROOM_REQUEST,
@@ -9,8 +10,10 @@ import {
   joinRoomSuccess,
   joinRoomError,
   LEAVE_ROOM_REQUEST,
+  leaveRoomRequest,
   leaveRoomSuccess,
   leaveRoomError,
+  DELETE_ROOM_REQUEST,
   getRoomDetailSuccess,
   getRoomDetailError,
   GET_CHATPOSTLIST_REQUEST,
@@ -134,23 +137,57 @@ const leaveRoomReqApi = (room_id) => {
     });
 };
 
-export function* handleRoomLeaveRequest(action) {
+export function* handleLeaveRoomRequest(action) {
   const room_id = action.payload.room.room_id
 
   const { res, error } = yield call(leaveRoomReqApi, room_id);
+
   if (!error) {
     action.history.push("/")
     yield put(leaveRoomSocket(room_id))
     yield put(leaveRoomSuccess(room_id))
-
   } else {
     yield put(leaveRoomError())
     action.history.push("/")
   }
 }
 
-export function* watchRoomLeaveRequest() {
-  yield takeEvery(LEAVE_ROOM_REQUEST, handleRoomLeaveRequest);
+export function* watchLeaveRoomRequest() {
+  yield takeEvery(LEAVE_ROOM_REQUEST, handleLeaveRoomRequest);
+}
+
+/**
+ * ルーム削除リクエスト
+ */
+const deleteRoomReqApi = (room_id) => {
+  const url = `https://api.mochi-match.work/v1/rooms/${room_id}`;
+  return axios_instance
+    .delete(url)
+    .then((res) => {
+      return { res };
+    })
+    .catch((error) => {
+      return { error };
+    });
+};
+
+export function* handleDeleteRoomRequest(action) {
+  const room_id = action.payload.room.room_id
+
+  yield put(showModalFalse())
+  yield put(leaveRoomRequest(action.payload.room, action.history))
+
+  const { res, error } = yield call(deleteRoomReqApi, room_id);
+  if (!error) {
+    console.log(res)
+    yield put(getRoomReq())
+  } else {
+    console.log(error)
+  }
+}
+
+export function* watchDeleteRoomRequest() {
+  yield takeEvery(DELETE_ROOM_REQUEST, handleDeleteRoomRequest);
 }
 
 /**

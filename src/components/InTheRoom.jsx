@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -22,38 +21,48 @@ import HeadLine2 from './HeadLine2';
 
 import './css/InTheRoom.css';
 
-export default class InTheRoom extends Component {
-  render() {
-    const { state } = this.props;
-    return (
-      <div id="in-the-room" >
-        <Header />
-        <Body>
-          <SideMenu>
-            <MenuHeader text="メンバー" />
-            <MenuInnerWrappr>
-              {state.join_users.map((data) => (
-                <UserPlate key={data.user_id} icon={data.icon} name={data.user_name} />
-              ))}
-            </MenuInnerWrappr>
-            <MenuHeader text="ルーム情報" />
-            <MenuInnerWrappr>
-              <GamePlate hard="" title={state.room.title} />
-              <BreakUnderLine />
-              <Capacity capacity={state.room.capacity} count={state.room.count} />
-              <BreakUnderLine />
-              <HeadLine2>{state.room.text}</HeadLine2>
-              <RecruitmentText />
-              <BreakUnderLine />
-            </MenuInnerWrappr>
-          </SideMenu>
-          <MainBody>
-            <ChatArea />
-          </MainBody>
-        </Body>
-        <ExitButton />
-        <Footer />
-      </div>
-    );
-  }
-}
+const InTheRoom = ({ state }) => {
+
+  return (
+    <div id="in-the-room" >
+      <Header />
+      <Body>
+        <SideMenu>
+          <MenuHeader text="メンバー" />
+          <MenuInnerWrappr>
+            {state.join_users.map((data) => (
+              <UserPlate
+                key={data.user_id}
+                icon={data.icon}
+                name={data.user_name} />
+            ))}
+          </MenuInnerWrappr>
+          <MenuHeader text="ルーム情報" />
+          <MenuInnerWrappr>
+            <GamePlate
+              hard=""
+              title={state.room.title} />
+            <BreakUnderLine />
+            <Capacity
+              capacity={state.room.capacity}
+              count={state.room.count} />
+            <BreakUnderLine />
+            <HeadLine2>
+              {state.room.text}
+            </HeadLine2>
+            <RecruitmentText />
+            <BreakUnderLine />
+          </MenuInnerWrappr>
+        </SideMenu>
+        <MainBody>
+          <ChatArea />
+        </MainBody>
+      </Body>
+      <ExitButton />
+      <Footer />
+    </div>
+  );
+
+};
+
+export default InTheRoom;
