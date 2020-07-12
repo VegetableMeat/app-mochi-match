@@ -43,23 +43,20 @@ class ModalMold extends Component {
 						</button>
 					</div>
 				);
-			case 'TOP_ROM_IN':
+			case 'ROOM_DELETION':
 				return (
 					<div className="modal-body">
 						<div className="modal-text modal-header">
-							{state.data.room.name}のルームに参加しますか？
+							このルームを解散しますか？
 							</div>
 						<div className="footer-button-area">
 							<button className="join-button color-blue" onClick={() => actions.joinRoomRequest(state.data.room, this.callback)}>
-								参加する
+								解散する
 								</button>
 							<button className="cancel-button color-red" onClick={() => actions.showModalFalse()}>
 								キャンセル
 								</button>
 						</div>
-						<button className="report-button color-yellow" onClick={() => actions.showModalFront("REPORT", "check", [])}>
-							違反報告
-							</button>
 					</div>
 				);
 			case 'REPORT':

@@ -68,7 +68,7 @@ const ChatArea = ({ actions, history, state }) => {
    */
   const onLeaveButtonClick = () => {
     if (roomState.room.owner_id === userState.user.user_id) {
-      actions.showModalTrue("TOP_ROOM_IN", "room", roomState.room);
+      actions.showModalTrue("ROOM_DELETION", "room", roomState.room);
     } else {
       actions.leaveRoomRequest(state.room, history);
     };
