@@ -32,7 +32,7 @@ const ChatArea = ({ actions, history, state }) => {
     chatLogs.push(
       <div className="message-wrapper" key={chatLog[i].created_at}>
         <UserIcon />
-        <UserName name={roomState.chatLog[i].name} />
+        <UserName name={chatLog[i].name} />
         <div className="message bg-green">{chatLog[i].message}</div>
       </div>
     );

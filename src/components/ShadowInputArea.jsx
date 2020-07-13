@@ -11,8 +11,8 @@ const ShadowInputArea = React.forwardRef(({ placeholder, value, onChangeValue, h
         value={value}
         onChange={onChangeValue}
         onKeyDown={(e) => handleKeyDown(e)}
-        ref={ref}
-      ></input>
+        ref={ref}>
+      </input>
     </div>
   );
 
