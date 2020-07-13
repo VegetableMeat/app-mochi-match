@@ -19,7 +19,7 @@ function gameHardValidation(value) {
 
 export const inputValidation = (name = null, value = null, action = null) => {
   switch (name) {
-    case 'title':
+    case 'game_title':
       return gameTitleValidation(value, action);
     case 'hard':
       return gameHardValidation(value, action);

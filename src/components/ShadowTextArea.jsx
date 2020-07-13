@@ -2,7 +2,16 @@ import React from 'react';
 import { inputValidation } from '../store/validation/Validation';
 import './css/ShadowTextArea.css';
 
-// TODO データストア
+/**
+ * 影付きテキストエリアを表示するコンポーネント
+ * auto_flgがtrueの場合、オートコンプリートをONにする
+ *
+ * @param {string}  	placeholder	- テキストエリアに表示するプレースホルダ
+ * @param {boolean} 	auto_flg		- オートコンプリートを許可するか否かのフラグ
+ * @param {string} 		value				- inputタグのnameに設定する値
+ * @param {object} 		data_list		- オートコンプリートで表示するデータリスト
+ * @param {function}	actions			- テキストエリアに入力されるたびに発火されるアクション
+ */
 export default function ShadowTextArea({
   placeholder,
   auto_flg = false,
