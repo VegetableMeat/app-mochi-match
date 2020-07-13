@@ -1,30 +1,29 @@
-import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import Body from './Body';
-import MainBody from './MainBody';
-import SideMenu from './SideMenu';
-import MenuHeader from './MenuHeader';
-import MenuInnerWrappr from './MenuInnerWrapper';
-import UserPlate from './UserPlate';
-import ChatArea from './../containers/ChatAreaContainer';
-import ChatDisplay from './ChatDisplay';
-import SimpleProfile from './SimpleProfile';
-import ExitButton from './ExitButton';
-import UserStatus from './UserStatus';
-import GamePlate from './GamePlate';
-import Capacity from './Capacity';
-import RecruitmentText from './RecruitmentText';
-import BreakUnderLine from './BreakUnderLine';
-import HeadLine2 from './HeadLine2';
-import './css/InTheRoom.css';
+import React from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import Body from "./Body";
+import MainBody from "./MainBody";
+import SideMenu from "./SideMenu";
+import MenuHeader from "./MenuHeader";
+import MenuInnerWrappr from "./MenuInnerWrapper";
+import UserPlate from "./UserPlate";
+import ChatArea from "./../containers/ChatAreaContainer";
+import ChatDisplay from "./ChatDisplay";
+import SimpleProfile from "./SimpleProfile";
+import ExitButton from "./ExitButton";
+import UserStatus from "./UserStatus";
+import GamePlate from "./GamePlate";
+import Capacity from "./Capacity";
+import RecruitmentText from "./RecruitmentText";
+import BreakUnderLine from "./BreakUnderLine";
+import HeadLine2 from "./HeadLine2";
+import "./css/InTheRoom.css";
 
 const InTheRoom = ({ state }) => {
-
   const { room, join_users } = state;
 
   return (
-    <div id="in-the-room" >
+    <div id="in-the-room">
       <Header />
       <Body>
         <SideMenu>
@@ -34,22 +33,17 @@ const InTheRoom = ({ state }) => {
               <UserPlate
                 key={data.user_id}
                 icon={data.icon}
-                name={data.user_name} />
+                name={data.user_name}
+              />
             ))}
           </MenuInnerWrappr>
           <MenuHeader text="ルーム情報" />
           <MenuInnerWrappr>
-            <GamePlate
-              hard=""
-              title={room.title} />
+            <GamePlate hard="" title={room.title} />
             <BreakUnderLine />
-            <Capacity
-              capacity={room.capacity}
-              count={room.count} />
+            <Capacity capacity={room.capacity} count={room.count} />
             <BreakUnderLine />
-            <HeadLine2>
-              {room.text}
-            </HeadLine2>
+            <HeadLine2>{room.text}</HeadLine2>
             <RecruitmentText />
             <BreakUnderLine />
           </MenuInnerWrappr>
@@ -62,7 +56,6 @@ const InTheRoom = ({ state }) => {
       <Footer />
     </div>
   );
-
 };
 
 export default InTheRoom;

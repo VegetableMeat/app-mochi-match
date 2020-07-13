@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { axios_instance } from '../axios/axios';
-import { put, call, takeLatest } from 'redux-saga/effects';
+import axios from "axios";
+import { axios_instance } from "../axios/axios";
+import { put, call, takeLatest } from "redux-saga/effects";
 import {
   AUTH_REQ,
   LOGIN_REQ,
@@ -30,7 +30,7 @@ import {
   adminGameHardDeleteNg,
   adminGameHardUpdateOk,
   adminGameHardUpdateNg,
-} from './Action';
+} from "./Action";
 
 // Login
 const responseLogin = () => {
@@ -62,7 +62,7 @@ export const loginSaga = [takeLatest(LOGIN_REQ, fetchLogin)];
  * ローカルストレージの jwt の中身を見て、存在していたなら Login フラグを true にする処理
  */
 const responseAuth = () => {
-  if (localStorage.getItem('access_token')) {
+  if (localStorage.getItem("access_token")) {
     return true;
   }
   return false;
@@ -114,8 +114,8 @@ const resAdminHardGet = (get) => {
  * @param {string} add - 追加したいゲームタイトル
  */
 const resAdminAdd = (add) => {
-  const game_title = add.payload || '入力しろや';
-  if (game_title !== '入力しろや') {
+  const game_title = add.payload || "入力しろや";
+  if (game_title !== "入力しろや") {
     return axios_instance
       .post(add.url, {
         game_title: add.payload,
@@ -138,8 +138,8 @@ const resAdminAdd = (add) => {
  * @param {string} add - 追加したいゲームハード
  */
 const resAdminHardAdd = (add) => {
-  const game_hard = add.payload || '入力しろや';
-  if (game_hard !== '入力しろや') {
+  const game_hard = add.payload || "入力しろや";
+  if (game_hard !== "入力しろや") {
     return axios_instance
       .post(add.url, {
         hard_name: add.payload,
@@ -156,14 +156,14 @@ const resAdminHardAdd = (add) => {
 };
 //管理画面でゲームタイトルを削除する処理
 const resAdminDelete = (del) => {
-  const check = del.payload[0] || 'チェックしろや';
-  if (check !== 'チェックしろや') {
-    let query = '/?id=' + check;
+  const check = del.payload[0] || "チェックしろや";
+  if (check !== "チェックしろや") {
+    let query = "/?id=" + check;
     del.payload = del.payload.filter((id) => {
       return id !== del.payload[0];
     });
     del.payload.forEach((id) => {
-      query += '&id=' + id;
+      query += "&id=" + id;
     });
 
     return axios_instance
@@ -185,14 +185,14 @@ const resAdminDelete = (del) => {
 //管理画面でゲームハードを削除する処理
 
 const resAdminHardDelete = (del) => {
-  const check = del.payload[0] || 'チェックしろや';
-  if (check !== 'チェックしろや') {
-    let query = '/?id=' + check;
+  const check = del.payload[0] || "チェックしろや";
+  if (check !== "チェックしろや") {
+    let query = "/?id=" + check;
     del.payload = del.payload.filter((id) => {
       return id !== del.payload[0];
     });
     del.payload.forEach((id) => {
-      query += '&id=' + id;
+      query += "&id=" + id;
     });
 
     return axios_instance
@@ -212,9 +212,11 @@ const resAdminHardDelete = (del) => {
 };
 //管理画面でゲームタイトルを更新する処理
 const resAdminUpdate = (up) => {
-  const check = (up.text && up.check.length === 1) || 'チェック数が１つでないか、未入力です';
-  if (check !== 'チェック数が１つでないか、未入力です') {
-    const url = up.url + '/' + up.check;
+  const check =
+    (up.text && up.check.length === 1) ||
+    "チェック数が１つでないか、未入力です";
+  if (check !== "チェック数が１つでないか、未入力です") {
+    const url = up.url + "/" + up.check;
     return axios_instance
       .put(url, {
         game_title: up.text,
@@ -234,9 +236,11 @@ const resAdminUpdate = (up) => {
 };
 //管理画面でゲームハードを更新する処理
 const resAdminHardUpdate = (up) => {
-  const check = (up.text && up.check.length === 1) || 'チェック数が１つでないか、未入力です';
-  if (check !== 'チェック数が１つでないか、未入力です') {
-    const url = up.url + '/' + up.check;
+  const check =
+    (up.text && up.check.length === 1) ||
+    "チェック数が１つでないか、未入力です";
+  if (check !== "チェック数が１つでないか、未入力です") {
+    const url = up.url + "/" + up.check;
     return axios_instance
       .put(url, {
         hard_name: up.text,

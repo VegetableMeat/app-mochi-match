@@ -1,5 +1,5 @@
-import React from 'react';
-import './css/MenuHeader.css';
+import React from "react";
+import "./css/MenuHeader.css";
 
 export default function MenuHeader({ text }) {
   return (

@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './Store';
-import App from './containers/AppContainer';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./Store";
+import App from "./containers/AppContainer";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -13,5 +13,5 @@ ReactDOM.render(
       </Switch>
     </BrowserRouter>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

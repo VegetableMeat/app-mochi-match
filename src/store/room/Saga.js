@@ -1,5 +1,5 @@
-import { axios_instance } from '../axios/axios';
-import { take, put, call, takeEvery } from 'redux-saga/effects';
+import { axios_instance } from "../axios/axios";
+import { take, put, call, takeEvery } from "redux-saga/effects";
 import {
   GET_ROOM_REQ,
   getRoomReq,
@@ -20,19 +20,16 @@ import {
   getChatpostListRequest,
   getChatpostListSuccess,
   CREATE_CHATPOSTLIST_REQUEST,
-} from './Action';
-import {
-  showModalFalse
-} from './../common/Action'
+} from "./Action";
+import { showModalFalse } from "./../common/Action";
 
-import { joinRoomSocket, leaveRoomSocket } from './../socket/Action'
-
+import { joinRoomSocket, leaveRoomSocket } from "./../socket/Action";
 
 /**
  * ルームリスト取得リクエスト
  */
 const requestRoomListApi = () => {
-  const url = 'https://api.mochi-match.work/v1/rooms?page=1';
+  const url = "https://api.mochi-match.work/v1/rooms?page=1";
   return axios_instance
     .get(url)
     .then((res) => {
@@ -73,16 +70,16 @@ const joinRoomReqApi = (room_id) => {
 };
 
 function* handleRoomJoinRequest(action) {
-  yield put(showModalFalse())
-  const room_id = action.payload.room.room_id
+  yield put(showModalFalse());
+  const room_id = action.payload.room.room_id;
   const { res, error } = yield call(joinRoomReqApi, room_id);
 
   if (res.status === 200 && !error) {
-    yield put(joinRoomSocket(room_id))
-    yield put(joinRoomSuccess(room_id, action.payload.callback))
-    yield put(getChatpostListRequest(room_id))
+    yield put(joinRoomSocket(room_id));
+    yield put(joinRoomSuccess(room_id, action.payload.callback));
+    yield put(getChatpostListRequest(room_id));
   } else {
-    yield put(joinRoomError())
+    yield put(joinRoomError());
   }
 }
 
@@ -108,17 +105,16 @@ const getRoomDetailReqApi = (room_id) => {
 export function* handleRoomJoinSuccess() {
   while (true) {
     const action = yield take(JOIN_ROOM_SUCCESS);
-    const room_id = action.payload.room_id
+    const room_id = action.payload.room_id;
 
     const { res, error } = yield call(getRoomDetailReqApi, room_id);
 
     if (res.status === 200 && !error) {
-      yield put(getRoomDetailSuccess(res))
-
+      yield put(getRoomDetailSuccess(res));
     } else {
-      yield put(getRoomDetailError(error))
+      yield put(getRoomDetailError(error));
     }
-    action.payload.callback()
+    action.payload.callback();
   }
 }
 
@@ -138,17 +134,17 @@ const leaveRoomReqApi = (room_id) => {
 };
 
 export function* handleLeaveRoomRequest(action) {
-  const room_id = action.payload.room.room_id
+  const room_id = action.payload.room.room_id;
 
   const { res, error } = yield call(leaveRoomReqApi, room_id);
 
   if (!error) {
-    action.history.push("/")
-    yield put(leaveRoomSocket(room_id))
-    yield put(leaveRoomSuccess(room_id))
+    action.history.push("/");
+    yield put(leaveRoomSocket(room_id));
+    yield put(leaveRoomSuccess(room_id));
   } else {
-    yield put(leaveRoomError())
-    action.history.push("/")
+    yield put(leaveRoomError());
+    action.history.push("/");
   }
 }
 
@@ -172,17 +168,17 @@ const deleteRoomReqApi = (room_id) => {
 };
 
 export function* handleDeleteRoomRequest(action) {
-  const room_id = action.payload.room.room_id
+  const room_id = action.payload.room.room_id;
 
-  yield put(showModalFalse())
-  yield put(leaveRoomRequest(action.payload.room, action.history))
+  yield put(showModalFalse());
+  yield put(leaveRoomRequest(action.payload.room, action.history));
 
   const { res, error } = yield call(deleteRoomReqApi, room_id);
   if (!error) {
-    console.log(res)
-    yield put(getRoomReq())
+    console.log(res);
+    yield put(getRoomReq());
   } else {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -206,13 +202,13 @@ const getChatpostReqApi = (room_id) => {
 };
 
 export function* handleGetChatpostRequest(action) {
-  const room_id = action.payload
+  const room_id = action.payload;
 
   const { res, error } = yield call(getChatpostReqApi, room_id);
   if (!error) {
-    yield put(getChatpostListSuccess(res.data))
+    yield put(getChatpostListSuccess(res.data));
   } else {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -224,7 +220,7 @@ export function* watchGetChatpostRequest() {
  * チャットポスト作成リクエスト
  */
 const createChatpostReqApi = (room_id, message) => {
-  console.log(room_id, message)
+  console.log(room_id, message);
   const url = `https://api.mochi-match.work/v1/rooms/${room_id}/messages`;
   const data = { message: message };
 
@@ -239,14 +235,14 @@ const createChatpostReqApi = (room_id, message) => {
 };
 
 export function* handleCreateChatpostRequest(action) {
-  const room_id = action.payload.room_id
-  const message = action.payload.message
+  const room_id = action.payload.room_id;
+  const message = action.payload.message;
 
   const { res, error } = yield call(createChatpostReqApi, room_id, message);
   if (!error) {
-    console.log(res)
+    console.log(res);
   } else {
-    console.log(error)
+    console.log(error);
   }
 }
 

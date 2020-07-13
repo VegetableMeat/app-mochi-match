@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import Header from './Header';
-import Body from './Body';
-import Footer from './Footer';
+import Header from "./Header";
+import Body from "./Body";
+import Footer from "./Footer";
 
 export default class Logout extends Component {
   logout = () => {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem("jwt");
   };
 
   render() {
@@ -16,7 +16,7 @@ export default class Logout extends Component {
         <Header />
         <Body>
           <h1>Logout画面です</h1>
-          <Link to={'/'} onClick={() => this.logout()}>
+          <Link to={"/"} onClick={() => this.logout()}>
             ログアウトする
           </Link>
         </Body>

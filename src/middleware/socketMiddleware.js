@@ -3,37 +3,37 @@ import {
   CLOSE_SOCKET,
   JOIN_ROOM_SOCKET,
   LEAVE_ROOM_SOCKET,
-  updateSocketObject
-} from './../store/socket/Action'
-import { createdChatpost } from './../store/room/Action'
-import io from 'socket.io-client'
+  updateSocketObject,
+} from "./../store/socket/Action";
+import { createdChatpost } from "./../store/room/Action";
+import io from "socket.io-client";
 
-let socket
+let socket;
 
-const socketMiddleware = store => next => action => {
+const socketMiddleware = (store) => (next) => (action) => {
   // socket通信の開始
   if (action.type === OPEN_SOCKET) {
-    socket = io('wss://mochi-match.work/chatroom')
-    socket.on('notify_entry', function (data) {
+    socket = io("wss://mochi-match.work/chatroom");
+    socket.on("notify_entry", function (data) {
       console.log(data);
     });
-    socket.on('user_input_start', function (data) {
+    socket.on("user_input_start", function (data) {
       console.log(data);
     });
-    socket.on('user_input_stop', function (data) {
+    socket.on("user_input_stop", function (data) {
       console.log(data);
     });
-    socket.on('msg', function (data) {
-      store.dispatch(createdChatpost(data))
+    socket.on("msg", function (data) {
+      store.dispatch(createdChatpost(data));
       console.log("msg", data);
     });
-    store.dispatch(updateSocketObject(socket))
+    store.dispatch(updateSocketObject(socket));
   }
 
   // socket通信の切断
   if (action.type === CLOSE_SOCKET) {
     socket.disconnect();
-    console.log('close socket')
+    console.log("close socket");
   }
 
   // socketルームへの参加
@@ -41,17 +41,19 @@ const socketMiddleware = store => next => action => {
     var userState = store.getState().userState;
     var room_id = action.payload.room_id;
 
-    socket.emit('join_req', {
+    socket.emit("join_req", {
       room_id: room_id,
-      user: { user_name: userState.user_name },
+      user: {
+        user_name: userState.user_name,
+      },
     });
   }
 
   // socketルームからの切断
   if (action.type === LEAVE_ROOM_SOCKET) {
-    socket.emit('leave');
+    socket.emit("leave");
   }
   next(action);
-}
+};
 
-export default socketMiddleware
+export default socketMiddleware;

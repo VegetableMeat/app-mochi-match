@@ -1,22 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import Header from './Header';
-import Footer from './Footer';
-import Body from './Body';
-import MainBody from './MainBody';
-import SideMenu from './SideMenu';
-import MenuHeader from './MenuHeader';
-import MenuInnerWrapper from './MenuInnerWrapper';
-import UnderLineList from './UnderLineList';
-import RadiusBodyHeader from './RadiusBodyHeader';
-import RadiusWhiteCard from './RadiusWhiteCard';
-import UserPlate from './UserPlate';
-import HeadeLine1 from './HeadLine1';
-import InnerText from './InnerText';
-import BreakUnderLine from './BreakUnderLine';
+import Header from "./Header";
+import Footer from "./Footer";
+import Body from "./Body";
+import MainBody from "./MainBody";
+import SideMenu from "./SideMenu";
+import MenuHeader from "./MenuHeader";
+import MenuInnerWrapper from "./MenuInnerWrapper";
+import UnderLineList from "./UnderLineList";
+import RadiusBodyHeader from "./RadiusBodyHeader";
+import RadiusWhiteCard from "./RadiusWhiteCard";
+import UserPlate from "./UserPlate";
+import HeadeLine1 from "./HeadLine1";
+import InnerText from "./InnerText";
+import BreakUnderLine from "./BreakUnderLine";
 
-import './css/History.css';
+import "./css/History.css";
 
 export default function History() {
   return (

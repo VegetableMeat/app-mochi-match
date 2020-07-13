@@ -1,5 +1,5 @@
-import React from 'react';
-import './css/GameNamePlate.css';
+import React from "react";
+import "./css/GameNamePlate.css";
 
 export default function GameNamePlate({ title }) {
   return (

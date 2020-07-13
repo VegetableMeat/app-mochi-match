@@ -1,8 +1,8 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from '../store/game/Action.js';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as Actions from "../store/game/Action.js";
 
-import FavoriteGames from '../components/FavoriteGames';
+import FavoriteGames from "../components/FavoriteGames";
 
 const mapStateToProps = (state) => {
   return {

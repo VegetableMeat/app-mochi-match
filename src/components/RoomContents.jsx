@@ -1,9 +1,8 @@
-import React from 'react';
-import RoomCard from './RoomCard';
-import './css/RoomContents.css';
+import React from "react";
+import RoomCard from "./RoomCard";
+import "./css/RoomContents.css";
 
 const RoomContents = ({ state, actions, history }) => {
-
   const { roomState, roomListState, userState } = state;
   const { room, isEntry } = roomState;
 
@@ -14,9 +13,9 @@ const RoomContents = ({ state, actions, history }) => {
       return;
     }
     if (isEntry) {
-      data.owner_id === userState.user.user_id ?
-        actions.showModalTrue("ROOM_DELETION_AND_JOIN", "room", data) :
-        actions.showModalTrue("ROOM_LEAVE_AND_JOIN", "room", data)
+      data.owner_id === userState.user.user_id
+        ? actions.showModalTrue("ROOM_DELETION_AND_JOIN", "room", data)
+        : actions.showModalTrue("ROOM_LEAVE_AND_JOIN", "room", data);
       return;
     }
     actions.showModalTrue("TOP_ROOM_IN", "room", data);
@@ -29,11 +28,11 @@ const RoomContents = ({ state, actions, history }) => {
           key={data.room_id}
           room={data}
           actions={actions}
-          onCardClick={onCardClick} />
+          onCardClick={onCardClick}
+        />
       ))}
     </div>
   );
-
 };
 
 export default RoomContents;

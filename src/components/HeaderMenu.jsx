@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ClickAwayListener } from '@material-ui/core';
+import React from "react";
+import { Link } from "react-router-dom";
+import { ClickAwayListener } from "@material-ui/core";
 
 export default function HeaderMenu({ state, actions }) {
   return (

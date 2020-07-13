@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Header from './Header';
-import Footer from './Footer';
-import Body from './Body';
-import Sction from './Section';
-import HeadLine1 from './HeadLine1';
-import HeadLine2 from './HeadLine2';
-import OneColumnBody from './OneColumnBody';
-import InnerSection from './InnerSection';
-import GameSelectArea from './GameSelectArea';
-import GameNamePlate from './GameNamePlate';
-import UnderLineInput from './UnderLineInput';
-import BreakUnderLine from './BreakUnderLine';
-import HardSelectArea from './HardSelectArea';
-import HardIcon from './HardIcon';
-import OtherButton from './OtherButton';
-import InlineArea from './InlineArea';
-import ShadowTextArea from './ShadowTextArea';
-import CenterMainBody from './CenterMainBody';
-import BodyHeader from './BodyHeader';
-import './css/RoomCreation.css';
+import Header from "./Header";
+import Footer from "./Footer";
+import Body from "./Body";
+import Sction from "./Section";
+import HeadLine1 from "./HeadLine1";
+import HeadLine2 from "./HeadLine2";
+import OneColumnBody from "./OneColumnBody";
+import InnerSection from "./InnerSection";
+import GameSelectArea from "./GameSelectArea";
+import GameNamePlate from "./GameNamePlate";
+import UnderLineInput from "./UnderLineInput";
+import BreakUnderLine from "./BreakUnderLine";
+import HardSelectArea from "./HardSelectArea";
+import HardIcon from "./HardIcon";
+import OtherButton from "./OtherButton";
+import InlineArea from "./InlineArea";
+import ShadowTextArea from "./ShadowTextArea";
+import CenterMainBody from "./CenterMainBody";
+import BodyHeader from "./BodyHeader";
+import "./css/RoomCreation.css";
 
 export default class RoomCreation extends Component {
   render() {

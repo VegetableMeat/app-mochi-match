@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Admin extends Component {
   /**
@@ -26,9 +26,9 @@ export default class Admin extends Component {
    * @param {element} e - クリックされたDOM要素
    */
   handleChange(e) {
-    if (e.target.name === 'title') {
+    if (e.target.name === "title") {
       this.props.actions.gameTitleCheck(e.target.value, e.target.checked);
-    } else if (e.target.name === 'hard') {
+    } else if (e.target.name === "hard") {
       this.props.actions.gameHardCheck(e.target.value, e.target.checked);
     }
   }
@@ -42,7 +42,12 @@ export default class Admin extends Component {
     if (data && !error) {
       return data.map((data, index) => (
         <div key={index}>
-          <input type="checkbox" onChange={this.handleChange} value={data.id} name="title" />
+          <input
+            type="checkbox"
+            onChange={this.handleChange}
+            value={data.id}
+            name="title"
+          />
           {data.game_title}
         </div>
       ));
@@ -60,7 +65,12 @@ export default class Admin extends Component {
     if (data && !error) {
       return data.map((data, index) => (
         <div key={index}>
-          <input type="checkbox" onChange={this.handleChange} value={data.id} name="hard" />
+          <input
+            type="checkbox"
+            onChange={this.handleChange}
+            value={data.id}
+            name="hard"
+          />
           {data.hard_name}
         </div>
       ));
@@ -79,9 +89,9 @@ export default class Admin extends Component {
    * @param {element} e - クリックされたDOM要素
    */
   insertText(e) {
-    if (e.target.name === 'title') {
+    if (e.target.name === "title") {
       this.props.actions.gameTitleText(e.target.value);
-    } else if (e.target.name === 'hard') {
+    } else if (e.target.name === "hard") {
       console.log(e.target.value);
       this.props.actions.gameHardText(e.target.value);
     }
@@ -118,8 +128,14 @@ export default class Admin extends Component {
 
     const hard_list = this.domCreate_Hard(data.hard, error.get.hard);
     const add_hard_result = this.result(result.add.hard, error.add.hard);
-    const delete_hard_result = this.result(result.delete.hard, error.delete.hard);
-    const update_hard_result = this.result(result.update.hard, error.update.hard);
+    const delete_hard_result = this.result(
+      result.delete.hard,
+      error.delete.hard
+    );
+    const update_hard_result = this.result(
+      result.update.hard,
+      error.update.hard
+    );
 
     return (
       <div id="admin">
@@ -143,7 +159,9 @@ export default class Admin extends Component {
         <input
           type="button"
           value="変更"
-          onClick={() => actions.adminGameTitleUpdateReq(text.title, checked.title)}
+          onClick={() =>
+            actions.adminGameTitleUpdateReq(text.title, checked.title)
+          }
         />
         <br />
 
@@ -162,7 +180,9 @@ export default class Admin extends Component {
         <input
           type="button"
           value="変更"
-          onClick={() => actions.adminGameHardUpdateReq(text.hard, checked.hard)}
+          onClick={() =>
+            actions.adminGameHardUpdateReq(text.hard, checked.hard)
+          }
         />
         <br />
         <div className="wrapper">

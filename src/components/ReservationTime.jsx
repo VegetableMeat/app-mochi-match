@@ -1,5 +1,5 @@
-import React from 'react';
-import './css/ReservationTime.css';
+import React from "react";
+import "./css/ReservationTime.css";
 
 export default function ReservationTime({ start }) {
   return (

@@ -1,9 +1,9 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as commonActionCreaters from '../store/common/Action.js';
-import * as roomActionsCreaters from '../store/room/Action.js';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as commonActionCreaters from "../store/common/Action.js";
+import * as roomActionsCreaters from "../store/room/Action.js";
 
-import Modal from '../components/Modal';
+import Modal from "../components/Modal";
 
 const mapStateToProps = (state) => {
   return {
@@ -13,10 +13,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchProps = (dispatch) => {
   return {
-    actions: bindActionCreators({
-      ...commonActionCreaters,
-      ...roomActionsCreaters,
-    }, dispatch),
+    actions: bindActionCreators(
+      {
+        ...commonActionCreaters,
+        ...roomActionsCreaters,
+      },
+      dispatch
+    ),
   };
 };
 
