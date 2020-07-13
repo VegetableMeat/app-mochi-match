@@ -24,6 +24,7 @@ export default class Login extends Component {
         return <Redirect to={"/"} />;
       }
     }
+    console.log(this.props);
 
     return (
       <div id="login">
