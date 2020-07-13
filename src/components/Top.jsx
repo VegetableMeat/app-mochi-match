@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Body from './Body';
@@ -18,6 +18,16 @@ import './css/Top.css';
 
 const Top = ({ history }) => {
 
+  const textEl = useRef(null);
+  const [text, setText] = useState("");
+
+  // TODO
+  const onTextChange = () => { setText(textEl.current.value); };
+
+  // TODO
+  const handleKeyDown = (e) => { };
+
+
   return (
     <div id="top">
       <Header />
@@ -26,7 +36,11 @@ const Top = ({ history }) => {
           <div className="menu-wrapper menu-wrapper-1">
             <MenuHeader text="検索" />
             <MenuInnerWrapper>
-              <ShadowInputArea />
+              <ShadowInputArea
+                value={text}
+                onChangeValue={onTextChange}
+                handleKeyDown={handleKeyDown}
+                ref={textEl} />
               <SerchButton />
             </MenuInnerWrapper>
           </div>

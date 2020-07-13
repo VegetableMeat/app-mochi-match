@@ -7,8 +7,7 @@ const FavoriteGames = ({ state }) => {
   return (
     <ul>
       {favorite_games.map((data) => (
-        <li
-          key={data.created_at}>
+        <li key={data.created_at}>
           {data.game_title}
         </li>
       ))}
