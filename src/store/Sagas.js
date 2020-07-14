@@ -17,6 +17,7 @@ import {
 } from "./common/Saga";
 import { watchInit } from "./init/Saga";
 import { watchCheckEntryRequest, watchCheckEntrySuccess } from "./user/Saga";
+import { watchTokenRefleshRequest } from "./auth/Saga";
 
 export default function* rootSaga() {
   yield all([
@@ -36,5 +37,6 @@ export default function* rootSaga() {
     call(watchDeleteRoomRequest),
     call(watchCheckEntryRequest),
     call(watchCheckEntrySuccess),
+    call(watchTokenRefleshRequest),
   ]);
 }

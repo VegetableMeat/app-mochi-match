@@ -1,5 +1,5 @@
 import { axios_instance } from "../axios/axios";
-import { put, call, takeEvery } from "redux-saga/effects";
+import { take, put, call, takeEvery } from "redux-saga/effects";
 import { getChatpostListRequest } from "./../room/Action";
 import { alreadyEntry } from "./../room/Action";
 import {
@@ -11,6 +11,7 @@ import {
   checkEntrySuccess,
   checkEntryError,
 } from "./Action";
+import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "./../auth/Action";
 
 /**
  * ユーザー情報取得処理
@@ -33,8 +34,11 @@ export function* handleGetMeRequest() {
   if (!error) {
     yield put(getMeSuccess(res));
   } else {
-    // TODO レスポンスのコードでエラーハンドリングを行うように修正予定
-    if (error.response.data.message === "Token is expired") {
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      console.log(TOKEN_REFRESH_SUCCESS);
+      yield put(handleGetMeRequest);
     }
   }
 }
