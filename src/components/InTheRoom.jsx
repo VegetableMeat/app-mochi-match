@@ -16,7 +16,7 @@ import ExitButton from './ExitButton';
 import UserStatus from './UserStatus';
 import GamePlate from './GamePlate';
 import Capacity from './Capacity';
-import RecruitmentText from './RecruitmentText';
+import RecrutimentText from './RecrutimentText';
 import BreakUnderLine from './BreakUnderLine';
 import HeadLine2 from './HeadLine2';
 
@@ -45,7 +45,7 @@ export default function InTheRoom() {
               <Capacity capacity="4" />
               <BreakUnderLine />
               <HeadLine2>募集テキスト</HeadLine2>
-              <RecruitmentText />
+              <RecrutimentText />
               <BreakUnderLine />
             </MenuInnerWrappr>
           </div>
