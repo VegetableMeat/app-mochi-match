@@ -14,7 +14,7 @@ import ExitButton from "./ExitButton";
 import UserStatus from "./UserStatus";
 import GamePlate from "./GamePlate";
 import Capacity from "./Capacity";
-import RecruitmentText from "./RecruitmentText";
+import RecrutimentText from "./RecrutimentText";
 import BreakUnderLine from "./BreakUnderLine";
 import HeadLine2 from "./HeadLine2";
 import "./css/InTheRoom.css";
@@ -43,8 +43,8 @@ const InTheRoom = ({ state }) => {
             <BreakUnderLine />
             <Capacity capacity={room.capacity} count={room.count} />
             <BreakUnderLine />
-            <HeadLine2>{room.text}</HeadLine2>
-            <RecruitmentText />
+            <HeadLine2>募集テキスト</HeadLine2>
+            <RecrutimentText>{room.text}</RecrutimentText>
             <BreakUnderLine />
           </MenuInnerWrappr>
         </SideMenu>

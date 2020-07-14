@@ -129,3 +129,21 @@ button:focus {
 input::placeholder {
   color: rgb(214, 214, 214);
 }
+
+#header,
+.menu-header,
+#footer,
+.room-card,
+.chat-send-area,
+.body-header,
+.radius-body-header {
+  background-color: rgb(123, 216, 245) !important;
+}
+
+.footer-bottom,
+.reservation-time {
+  background-color: rgb(61, 113, 129) !important;
+}
+
+body {
+}
