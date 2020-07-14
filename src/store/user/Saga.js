@@ -33,7 +33,9 @@ export function* handleGetMeRequest() {
   if (!error) {
     yield put(getMeSuccess(res));
   } else {
-    yield put(getMeError(error));
+    // TODO レスポンスのコードでエラーハンドリングを行うように修正予定
+    if (error.response.data.message === "Token is expired") {
+    }
   }
 }
 
