@@ -1,8 +1,8 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from '../store/common/Action.js';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as Actions from "../store/common/Action.js";
 
-import Register from '../components/Register';
+import Register from "../components/Register";
 
 const mapStateToProps = (state) => {
   return {

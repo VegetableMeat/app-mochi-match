@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import './css/ExitButton.css';
+import "./css/ExitButton.css";
 
 export default function ExitButton() {
   return (

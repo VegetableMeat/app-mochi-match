@@ -1,5 +1,5 @@
-import React from 'react';
-import './css/ShadowTextArea.css';
+import React from "react";
+import "./css/ShadowTextArea.css";
 
 export default function ShadowTextArea({ placeholder }) {
   return (

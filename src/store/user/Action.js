@@ -1,10 +1,10 @@
-export const GET_ME_REQUEST = 'GET_ME_REQUEST';
-export const GET_ME_SUCCESS = 'GET_ME_SUCCESS';
-export const GET_ME_ERROR = 'GET_ME_ERROR';
+export const GET_ME_REQUEST = "GET_ME_REQUEST";
+export const GET_ME_SUCCESS = "GET_ME_SUCCESS";
+export const GET_ME_ERROR = "GET_ME_ERROR";
 
 export const getMeRequest = () => {
   return {
-    type: GET_ME_REQUEST
+    type: GET_ME_REQUEST,
   };
 };
 
@@ -22,13 +22,13 @@ export const getMeError = (error) => {
   };
 };
 
-export const CHECK_ENTRY_REQUEST = 'CHECK_ENTRY_REQUEST';
-export const CHECK_ENTRY_SUCCESS = 'CHECK_ENTRY_SUCCESS';
-export const CHECK_ENTRY_ERROR = 'CHECK_ENTRY_ERROR';
+export const CHECK_ENTRY_REQUEST = "CHECK_ENTRY_REQUEST";
+export const CHECK_ENTRY_SUCCESS = "CHECK_ENTRY_SUCCESS";
+export const CHECK_ENTRY_ERROR = "CHECK_ENTRY_ERROR";
 
 export const checkEntryRequest = () => {
   return {
-    type: CHECK_ENTRY_REQUEST
+    type: CHECK_ENTRY_REQUEST,
   };
 };
 

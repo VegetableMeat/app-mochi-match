@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React from "react";
 
-export default class FavoriteGames extends Component {
-  render() {
-    const { state } = this.props;
-    return (
-      <ul>
-        {state.user.favorite_games.map((data) => (
-          <li key={data.created_at}>{data.game_title}</li>
-        ))}
-      </ul>
+const FavoriteGames = ({ state }) => {
+  const { favorite_games } = state.userState.user;
+
+  let favoriteGames = [];
+  for (let i in favorite_games) {
+    favoriteGames.push(
+      <li key={favorite_games[i].created_at}>{favorite_games[i].game_title}</li>
     );
   }
-}
+
+  return <ul>{favoriteGames}</ul>;
+};
+
+export default FavoriteGames;

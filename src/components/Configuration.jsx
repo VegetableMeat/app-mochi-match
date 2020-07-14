@@ -1,20 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import Header from './Header';
-import Footer from './Footer';
-import Body from './Body';
-import MainBody from './MainBody';
-import SideMenu from './SideMenu';
-import MenuHeader from './MenuHeader';
-import MenuInnerWrapper from './MenuInnerWrapper';
-import UnderLineList from './UnderLineList';
-import BodyHeader from './BodyHeader';
-import HeadLine1 from './HeadLine1';
-import DangerButton from './DangerButton';
-import CenterMainBody from './CenterMainBody';
+import Header from "./Header";
+import Footer from "./Footer";
+import Body from "./Body";
+import MainBody from "./MainBody";
+import SideMenu from "./SideMenu";
+import MenuHeader from "./MenuHeader";
+import MenuInnerWrapper from "./MenuInnerWrapper";
+import UnderLineList from "./UnderLineList";
+import BodyHeader from "./BodyHeader";
+import HeadLine1 from "./HeadLine1";
+import DangerButton from "./DangerButton";
+import CenterMainBody from "./CenterMainBody";
 
-import './css/Configuration.css';
+import "./css/Configuration.css";
 
 export default function Configuration() {
   return (
@@ -51,7 +51,9 @@ export default function Configuration() {
               <BodyHeader>設定</BodyHeader>
               <div className="line">
                 <HeadLine1>アカウント削除</HeadLine1>
-                <button className="danger-button color-red">アカウント削除</button>
+                <button className="danger-button color-red">
+                  アカウント削除
+                </button>
               </div>
             </CenterMainBody>
           </div>

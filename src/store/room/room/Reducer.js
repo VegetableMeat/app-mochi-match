@@ -12,8 +12,8 @@ import {
   CREATED_CHATPOST,
   GET_CHATPOSTLIST_REQUEST,
   GET_CHATPOSTLIST_SUCCESS,
-  GET_CHATPOSTLIST_ERROR
-} from './../Action';
+  GET_CHATPOSTLIST_ERROR,
+} from "./../Action";
 
 const initialState = {
   room: {
@@ -27,17 +27,15 @@ const initialState = {
   },
   join_users: [],
   chatLog: [],
-}
+  isEntry: false,
+};
 
 const roomState = (state = initialState, action) => {
   switch (action.type) {
     case CREATED_CHATPOST:
       return {
         ...state,
-        chatLog: [
-          ...state.chatLog,
-          action.payload
-        ]
+        chatLog: [...state.chatLog, action.payload],
       };
     case JOIN_ROOM_REQUEST:
       return {
@@ -46,6 +44,7 @@ const roomState = (state = initialState, action) => {
     case JOIN_ROOM_SUCCESS:
       return {
         ...state,
+        isEntry: true,
       };
     case JOIN_ROOM_ERROR:
       return {
@@ -56,7 +55,7 @@ const roomState = (state = initialState, action) => {
         ...state,
       };
     case LEAVE_ROOM_SUCCESS:
-      return initialState
+      return initialState;
     case LEAVE_ROOM_ERROR:
       return {
         ...state,
@@ -78,10 +77,7 @@ const roomState = (state = initialState, action) => {
           count: action.payload.data.count,
           text: action.payload.data.text,
         },
-        join_users: [
-          ...state.join_users,
-          ...action.payload.data.join_users
-        ]
+        join_users: [...state.join_users, ...action.payload.data.join_users],
       };
     case GET_ROOM_DETAIL_ERROR:
       return {
@@ -100,10 +96,8 @@ const roomState = (state = initialState, action) => {
           count: action.payload.count,
           text: action.payload.text,
         },
-        join_users: [
-          ...state.join_users,
-          ...action.payload.join_users
-        ]
+        join_users: [...state.join_users, ...action.payload.join_users],
+        isEntry: true,
       };
     case GET_CHATPOSTLIST_REQUEST:
       return {
@@ -112,10 +106,7 @@ const roomState = (state = initialState, action) => {
     case GET_CHATPOSTLIST_SUCCESS:
       return {
         ...state,
-        chatLog: [
-          ...state.chatLog,
-          ...action.payload
-        ],
+        chatLog: [...state.chatLog, ...action.payload],
       };
     case GET_CHATPOSTLIST_ERROR:
       return {

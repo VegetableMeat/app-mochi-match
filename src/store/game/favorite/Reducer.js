@@ -1,4 +1,8 @@
-import { GET_FAVORITE_GAMES_REQ, GET_FAVORITE_GAMES_OK, GET_FAVORITE_GAMES_NG } from '../Action';
+import {
+  GET_FAVORITE_GAMES_REQ,
+  GET_FAVORITE_GAMES_OK,
+  GET_FAVORITE_GAMES_NG,
+} from "../Action";
 
 const initiaState = {
   data: [],

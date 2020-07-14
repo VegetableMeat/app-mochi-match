@@ -1,16 +1,22 @@
-import { all, fork, call } from 'redux-saga/effects';
+import { all, fork, call } from "redux-saga/effects";
 import {
   watchGetRoomListRequest,
   watchRoomJoinRequest,
   handleRoomJoinSuccess,
-  watchRoomLeaveRequest,
+  watchLeaveRoomRequest,
+  watchDeleteRoomRequest,
   watchGetChatpostRequest,
-  watchCreateChatpostRequest
-} from './room/Saga';
-import { favoriteGamesSaga, popularGamesSaga } from './game/Saga';
-import { loginSaga, authSaga, adminTitleSaga, adminHardSaga } from './common/Saga';
-import { watchInit } from './init/Saga'
-import { watchCheckEntryRequest, watchCheckEntrySuccess } from './user/Saga'
+  watchCreateChatpostRequest,
+} from "./room/Saga";
+import { favoriteGamesSaga, popularGamesSaga } from "./game/Saga";
+import {
+  loginSaga,
+  authSaga,
+  adminTitleSaga,
+  adminHardSaga,
+} from "./common/Saga";
+import { watchInit } from "./init/Saga";
+import { watchCheckEntryRequest, watchCheckEntrySuccess } from "./user/Saga";
 
 export default function* rootSaga() {
   yield all([
@@ -26,7 +32,8 @@ export default function* rootSaga() {
     call(handleRoomJoinSuccess),
     call(watchGetChatpostRequest),
     call(watchCreateChatpostRequest),
-    call(watchRoomLeaveRequest),
+    call(watchLeaveRoomRequest),
+    call(watchDeleteRoomRequest),
     call(watchCheckEntryRequest),
     call(watchCheckEntrySuccess),
   ]);

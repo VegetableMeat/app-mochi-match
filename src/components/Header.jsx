@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import HeaderMenu from '../containers/HeaderMenuContainer';
-import ExitButton from './ExitButton';
-import './css/Header.css';
-import { Link } from 'react-router-dom';
+import HeaderMenu from "../containers/HeaderMenuContainer";
+import ExitButton from "./ExitButton";
+import "./css/Header.css";
+import { Link } from "react-router-dom";
 
 export default function Header({ room }) {
-  if (room === 'inTheRoom') {
+  if (room === "inTheRoom") {
     return (
       <div id="header">
         <ExitButton />

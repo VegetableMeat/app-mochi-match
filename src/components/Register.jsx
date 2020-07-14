@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 
-import Header from './Header';
-import Footer from './Footer';
-import Body from './Body';
-import CenterMainBody from './CenterMainBody';
-import Modal from '../containers/ModalContainer';
-import BodyHeader from './BodyHeader';
+import Header from "./Header";
+import Footer from "./Footer";
+import Body from "./Body";
+import CenterMainBody from "./CenterMainBody";
+import Modal from "../containers/ModalContainer";
+import BodyHeader from "./BodyHeader";
 
-import './css/Sign.css';
+import "./css/Sign.css";
 
 export default class Register extends Component {
   componentDidMount() {
@@ -16,7 +16,7 @@ export default class Register extends Component {
   }
 
   locationGoogle() {
-    window.location.replace('http://api.mochi-match.work/v1/auth/google/login');
+    window.location.replace("http://api.mochi-match.work/v1/auth/google/login");
   }
 
   render() {
@@ -25,7 +25,7 @@ export default class Register extends Component {
       return null;
     } else {
       if (this.props.state.loggedIn) {
-        return <Redirect to={'/'} />;
+        return <Redirect to={"/"} />;
       }
     }
 

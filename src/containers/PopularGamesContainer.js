@@ -1,8 +1,8 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from '../store/game/Action.js';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as Actions from "../store/game/Action.js";
 
-import PopularGames from '../components/PopularGames';
+import PopularGames from "../components/PopularGames";
 
 const mapStateToProps = (state) => {
   return {

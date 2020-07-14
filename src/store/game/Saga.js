@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { put, call, takeLatest } from 'redux-saga/effects';
+import axios from "axios";
+import { put, call, takeLatest } from "redux-saga/effects";
 import {
   GET_FAVORITE_GAMES_REQ,
   getFavoriteGamesOk,
@@ -7,7 +7,7 @@ import {
   GET_POPULAR_GAMES_REQ,
   getPopularGamesOk,
   getPopularGamesNg,
-} from './Action';
+} from "./Action";
 
 // Favorite
 const requestFavoriteGamesApi = () => {
@@ -33,7 +33,9 @@ function* fetchFavoriteGames() {
   }
 }
 
-export const favoriteGamesSaga = [takeLatest(GET_FAVORITE_GAMES_REQ, fetchFavoriteGames)];
+export const favoriteGamesSaga = [
+  takeLatest(GET_FAVORITE_GAMES_REQ, fetchFavoriteGames),
+];
 
 // Popular
 const requestPopularGamesApi = () => {
@@ -59,4 +61,6 @@ function* fetchPopularGames() {
   }
 }
 
-export const popularGamesSaga = [takeLatest(GET_POPULAR_GAMES_REQ, fetchPopularGames)];
+export const popularGamesSaga = [
+  takeLatest(GET_POPULAR_GAMES_REQ, fetchPopularGames),
+];

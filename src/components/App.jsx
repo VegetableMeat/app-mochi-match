@@ -1,24 +1,22 @@
-import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
-
-import Top from './../containers/TopContainer';
-import Login from './../containers/LoginContainer';
-import Logout from './Logout';
-import Auth from './../containers/AuthContainer';
-import History from './History';
-import Register from './../containers/RegisterContainer';
-import SignUp from './SignUp';
-import ProfileSetting from './ProfileSettings';
-import Configuration from './Configuration';
-import RoomCreation from './RoomCreation';
-import InTheRoom from './../containers/InTheRoomContainer';
-import Admin from './../containers/AdminContainer';
-import LoginDone from './../containers/LoginDoneContainer';
+import React, { useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
+import Top from "./../containers/TopContainer";
+import Login from "./../containers/LoginContainer";
+import Logout from "./Logout";
+import Auth from "./../containers/AuthContainer";
+import History from "./History";
+import Register from "./../containers/RegisterContainer";
+import SignUp from "./SignUp";
+import ProfileSetting from "./ProfileSettings";
+import Configuration from "./Configuration";
+import RoomCreation from "./RoomCreation";
+import InTheRoom from "./../containers/InTheRoomContainer";
+import Admin from "./../containers/AdminContainer";
+import LoginDone from "./../containers/LoginDoneContainer";
 
 const App = ({ actions, history }) => {
-
   useEffect(() => {
-    actions.init(history)
+    actions.init(history);
   }, [actions, history]);
 
   return (
@@ -40,7 +38,7 @@ const App = ({ actions, history }) => {
         </Switch>
       </Auth>
     </Switch>
-  )
-}
+  );
+};
 
-export default App
+export default App;
