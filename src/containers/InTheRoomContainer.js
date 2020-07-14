@@ -1,12 +1,12 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as Actions from '../store/game/Action.js';
+import * as Actions from '../store/room/Action.js';
 
-import FavoriteGames from '../components/FavoriteGames';
+import InTheRoom from '../components/InTheRoom.jsx';
 
 const mapStateToProps = (state) => {
   return {
-    state: state.userState,
+    state: state.roomState,
   };
 };
 
@@ -16,4 +16,4 @@ const mapDispatchProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchProps)(FavoriteGames);
+export default connect(mapStateToProps, mapDispatchProps)(InTheRoom);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from './Header';
@@ -9,7 +9,7 @@ import SideMenu from './SideMenu';
 import MenuHeader from './MenuHeader';
 import MenuInnerWrappr from './MenuInnerWrapper';
 import UserPlate from './UserPlate';
-import ChatArea from './ChatArea';
+import ChatArea from './../containers/ChatAreaContainer';
 import ChatDisplay from './ChatDisplay';
 import SimpleProfile from './SimpleProfile';
 import ExitButton from './ExitButton';
@@ -22,41 +22,38 @@ import HeadLine2 from './HeadLine2';
 
 import './css/InTheRoom.css';
 
-export default function InTheRoom() {
-  return (
-    <div id="in-the-room">
-      <Header room="inTheRoom" />
-      <Body>
-        <SideMenu>
-          <div className="menu-wrapper menu-wrapper-1">
+export default class InTheRoom extends Component {
+  render() {
+    const { state } = this.props;
+    return (
+      <div id="in-the-room">
+        <Header />
+        <Body>
+          <SideMenu>
             <MenuHeader text="メンバー" />
             <MenuInnerWrappr>
-              <UserPlate icon="" name="UserName" />
-              <UserPlate icon="" name="UserName" />
-              <UserPlate icon="" name="UserName" />
-              <UserPlate icon="" name="UserName" />
+              {state.join_users.map((data) => (
+                <UserPlate key={data.user_id} icon={data.icon} name={data.user_name} />
+              ))}
             </MenuInnerWrappr>
-          </div>
-          <div className="menu-wrapper menu-wrapper-2 menu-wrapper-last">
             <MenuHeader text="ルーム情報" />
             <MenuInnerWrappr>
-              <GamePlate hard="" title="タイトル" />
+              <GamePlate hard="" title={state.room.title} />
               <BreakUnderLine />
-              <Capacity capacity="4" />
+              <Capacity capacity={state.room.capacity} count={state.room.count} />
               <BreakUnderLine />
               <HeadLine2>募集テキスト</HeadLine2>
-              <RecrutimentText />
+              <RecrutimentText>{state.room.text}</RecrutimentText>
               <BreakUnderLine />
             </MenuInnerWrappr>
-          </div>
-        </SideMenu>
-
-        <MainBody>
-          <ChatArea />
-        </MainBody>
-      </Body>
-      <ExitButton />
-      <Footer />
-    </div>
-  );
+          </SideMenu>
+          <MainBody>
+            <ChatArea />
+          </MainBody>
+        </Body>
+        <ExitButton />
+        <Footer />
+      </div>
+    );
+  }
 }
