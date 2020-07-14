@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import './css/PageNation.css';
+import "./css/PageNation.css";
 
 export default function PageNation() {
   return (

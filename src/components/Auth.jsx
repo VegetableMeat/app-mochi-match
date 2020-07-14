@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 export default class Auth extends Component {
   componentDidMount() {
@@ -11,7 +11,7 @@ export default class Auth extends Component {
       return null;
     } else {
       if (!this.props.state.loggedIn) {
-        return <Redirect to={'/login'} />;
+        return <Redirect to={"/login"} />;
       }
     }
 

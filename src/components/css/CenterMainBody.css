@@ -1,29 +1,29 @@
 .center-main-body {
-	position: relative;
-	width: 600px;
-	min-height: 400px;
-	border-radius: 20px;
-	background-color: white;
-	margin: 0 calc((100% - 600px) / 2);
-	box-shadow: grey 2px 2px 8px;
-	padding: 100px 40px 40px;
+  position: relative;
+  width: 600px;
+  min-height: 400px;
+  border-radius: 20px;
+  background-color: white;
+  margin: 0 calc((100% - 600px) / 2);
+  box-shadow: grey 2px 2px 8px;
+  padding: 100px 40px 40px;
 }
 
 @media screen and (max-width: 900px) {
-	.center-main-body {
-		width: 90%;
-		margin: 0 5%;
-	}
+  .center-main-body {
+    width: 90%;
+    margin: 0 5%;
+  }
 }
 
 @media screen and (max-width: 600px) {
-	.center-main-body {
-		padding: 80px 20px 20px;
-		border-radius: 12px;
-	}
+  .center-main-body {
+    padding: 80px 20px 20px;
+    border-radius: 12px;
+  }
 }
 
 .side-main-body .center-main-body {
-	width: 100%;
-	margin: 0;
+  width: 100%;
+  margin: 0;
 }

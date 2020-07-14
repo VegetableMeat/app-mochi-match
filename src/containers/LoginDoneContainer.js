@@ -1,8 +1,8 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from '../store/common/Action.js';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as Actions from "../store/common/Action.js";
 
-import LoginDone from '../components/LoginDone';
+import LoginDone from "../components/LoginDone";
 
 const mapDispatchProps = (dispatch) => {
   return {

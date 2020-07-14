@@ -1,30 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import Header from './Header';
-import Footer from './Footer';
-import Body from './Body';
-import MainBody from './MainBody';
-import SideMenu from './SideMenu';
-import MenuHeader from './MenuHeader';
-import MenuInnerWrapper from './MenuInnerWrapper';
-import UserIconSelectArea from './UserIconSelectArea';
-import FavoriteGameList from './FavoriteGameList';
-import FavoriteGameAddArea from './FavoriteGameAddArea';
-import UserIcon from './UserIcon';
-import GameNamePlate from './GameNamePlate';
-import HeadLine1 from './HeadLine1';
-import HeadLine2 from './HeadLine2';
-import HeadLine3 from './HeadLine3';
-import UnderLineInput from './UnderLineInput';
-import BodyHeader from './BodyHeader';
-import UnderLineList from './UnderLineList';
-import CenterMainBody from './CenterMainBody';
-import ShadowTextArea from './ShadowTextArea';
-import BreakUnderLine from './BreakUnderLine';
-import AddButton from './AddButton';
+import Header from "./Header";
+import Footer from "./Footer";
+import Body from "./Body";
+import MainBody from "./MainBody";
+import SideMenu from "./SideMenu";
+import MenuHeader from "./MenuHeader";
+import MenuInnerWrapper from "./MenuInnerWrapper";
+import UserIconSelectArea from "./UserIconSelectArea";
+import FavoriteGameList from "./FavoriteGameList";
+import FavoriteGameAddArea from "./FavoriteGameAddArea";
+import UserIcon from "./UserIcon";
+import GameNamePlate from "./GameNamePlate";
+import HeadLine1 from "./HeadLine1";
+import HeadLine2 from "./HeadLine2";
+import HeadLine3 from "./HeadLine3";
+import UnderLineInput from "./UnderLineInput";
+import BodyHeader from "./BodyHeader";
+import UnderLineList from "./UnderLineList";
+import CenterMainBody from "./CenterMainBody";
+import ShadowTextArea from "./ShadowTextArea";
+import BreakUnderLine from "./BreakUnderLine";
+import AddButton from "./AddButton";
 
-import './css/ProfileSetting.css';
+import "./css/ProfileSetting.css";
 
 export default function ProfileSetting() {
   return (

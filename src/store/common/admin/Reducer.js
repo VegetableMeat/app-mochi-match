@@ -27,7 +27,7 @@ import {
   ADMIN_GAME_HARD_UPDATE_NG,
   GAME_HARD_CHECK,
   GAME_HARD_TEXT,
-} from '../Action';
+} from "../Action";
 
 const initiaState = {
   data: {
@@ -39,39 +39,39 @@ const initiaState = {
     hard: [],
   },
   text: {
-    title: '',
-    hard: '',
+    title: "",
+    hard: "",
   },
   result: {
     add: {
-      title: '',
-      hard: '',
+      title: "",
+      hard: "",
     },
     delete: {
-      title: '',
-      hard: '',
+      title: "",
+      hard: "",
     },
     update: {
-      title: '',
-      hard: '',
+      title: "",
+      hard: "",
     },
   },
   error: {
     get: {
-      title: '',
-      hard: '',
+      title: "",
+      hard: "",
     },
     add: {
-      title: '',
-      hard: '',
+      title: "",
+      hard: "",
     },
     delete: {
-      title: '',
-      hard: '',
+      title: "",
+      hard: "",
     },
     update: {
-      title: '',
-      hard: '',
+      title: "",
+      hard: "",
     },
   },
 };

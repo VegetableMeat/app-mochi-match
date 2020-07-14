@@ -1,4 +1,4 @@
-import { LOGIN_REQ, LOGIN_OK, LOGIN_NG } from '../Action';
+import { LOGIN_REQ, LOGIN_OK, LOGIN_NG } from "../Action";
 
 const initiaState = {
   loadingFlag: true,
