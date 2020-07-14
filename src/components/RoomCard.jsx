@@ -5,15 +5,12 @@ import GamePlate from "./GamePlate";
 import Capacity from "./Capacity";
 import RecrutimentText from "./RecrutimentText";
 import RecrutimentTime from "./RecrutimentTime";
+import moment from "moment";
+import "moment/locale/ja";
 import "./css/RoomCard.css";
 
 const RoomCard = ({ room, onCardClick }) => {
-  const d = new Date(room.created);
-  const formatteDate = `
-  ${d.getFullYear()}/${
-    d.getMonth() + 1
-  }/${d.getDate()} ${d.getHours()}:${d.getMinutes()}
-  `.replace(/\n|\r/g, "");
+  var from = moment(room.created).fromNow();
 
   return (
     <div className="room-card" onClick={() => onCardClick(room)}>
@@ -22,7 +19,7 @@ const RoomCard = ({ room, onCardClick }) => {
       <GamePlate hard={room.hard} title={room.title} />
       <Capacity capacity={room.capacity} count={room.count} />
       <RecrutimentText text={room.text} />
-      <RecrutimentTime created={formatteDate} />
+      <RecrutimentTime created={from} />
     </div>
   );
 };
