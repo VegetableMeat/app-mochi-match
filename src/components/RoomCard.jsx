@@ -10,8 +10,6 @@ import "moment/locale/ja";
 import "./css/RoomCard.css";
 
 const RoomCard = ({ room, onCardClick }) => {
-  var from = moment(room.created).fromNow();
-
   return (
     <div className="room-card" onClick={() => onCardClick(room)}>
       {room.start && <ReservationTime start={room.start} />}
@@ -19,7 +17,7 @@ const RoomCard = ({ room, onCardClick }) => {
       <GamePlate hard={room.hard} title={room.title} />
       <Capacity capacity={room.capacity} count={room.count} />
       <RecrutimentText text={room.text} />
-      <RecrutimentTime created={from} />
+      <RecrutimentTime created={moment(room.created).fromNow()} />
     </div>
   );
 };

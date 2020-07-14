@@ -21,7 +21,7 @@ import {
   getChatpostListSuccess,
   CREATE_CHATPOSTLIST_REQUEST,
 } from "./Action";
-import { showModalFalse } from "./../common/Action";
+import { showModalFalse, showModalTrue } from "./../common/Action";
 
 import { joinRoomSocket, leaveRoomSocket } from "./../socket/Action";
 
@@ -143,8 +143,7 @@ export function* handleLeaveRoomRequest(action) {
     yield put(leaveRoomSocket(room_id));
     yield put(leaveRoomSuccess(room_id));
   } else {
-    yield put(leaveRoomError());
-    action.history.push("/");
+    yield put(showModalTrue("SERVER_ERROR"));
   }
 }
 

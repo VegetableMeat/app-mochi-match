@@ -96,7 +96,7 @@ const ModalMold = ({ state, actions, history }) => {
       return (
         <div className="modal-body">
           <div className="modal-text modal-header">
-            既に入室しているルームがあります。
+            既に入室しているルームがあります
             <br />
             ルーム退室をしてこちらに参加しますか？
           </div>
@@ -183,6 +183,24 @@ const ModalMold = ({ state, actions, history }) => {
               ype="button"
               onClick={() => window.location.reload()}
             ></input>
+          </div>
+        </div>
+      );
+    case "SERVER_ERROR":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            サーバーエラーが発生しました
+            <br />
+            もう一度お試し下さい
+          </div>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => actions.showModalFalse()}
+            >
+              OK
+            </button>
           </div>
         </div>
       );
