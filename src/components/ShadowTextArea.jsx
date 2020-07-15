@@ -12,14 +12,14 @@ import "./css/ShadowTextArea.css";
  * @param {object} 		data_list		- オートコンプリートで表示するデータリスト
  * @param {function}	actions			- テキストエリアに入力されるたびに発火されるアクション
  */
-export default function ShadowTextArea({
+const ShadowTextArea = ({
   placeholder,
   auto_flg = false,
   name,
   data_list,
   actions,
   value,
-}) {
+}) => {
   if (auto_flg) {
     return (
       <div className="shadow-text-area">
@@ -57,6 +57,6 @@ export default function ShadowTextArea({
       <div className="shadow-underline"></div>
     </div>
   );
-}
+};
 
 export default ShadowTextArea;

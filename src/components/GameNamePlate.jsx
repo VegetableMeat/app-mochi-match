@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/GameNamePlate.css";
 
-export default function GameNamePlate({ title, value, click = null }) {
+const GameNamePlate = ({ title, value, click = null }) => {
   if (click) {
     return (
       <div className="game-name-plate" onClick={() => click(value)}>
@@ -15,6 +15,6 @@ export default function GameNamePlate({ title, value, click = null }) {
       <div className="game-title">{title}</div>
     </div>
   );
-}
+};
 
 export default GameNamePlate;
