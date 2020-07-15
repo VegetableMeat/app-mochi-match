@@ -1,12 +1,13 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as roomActionCreaters from '../store/room/Action.js';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as roomActionCreaters from "../store/room/Action.js";
 
-import RoomCreation from '../components/RoomCreation';
+import RoomCreation from "../components/RoomCreation";
 
 const mapStateToProps = (state) => {
   return {
-    state: state.roomCreationState,
+    roomCreation: state.roomCreationState,
+    user: state.userState,
   };
 };
 

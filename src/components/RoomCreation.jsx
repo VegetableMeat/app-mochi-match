@@ -1,34 +1,65 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import Select from "react-select";
+import { Link } from "react-router-dom";
 
-import Header from './Header';
-import Footer from './Footer';
-import Body from './Body';
-import Sction from './Section';
-import HeadLine1 from './HeadLine1';
-import HeadLine2 from './HeadLine2';
-import OneColumnBody from './OneColumnBody';
-import InnerSection from './InnerSection';
-import GameSelectArea from './GameSelectArea';
-import GameNamePlate from './GameNamePlate';
-import UnderLineInput from './UnderLineInput';
-import BreakUnderLine from './BreakUnderLine';
-import HardSelectArea from './HardSelectArea';
-import HardIcon from './HardIcon';
-import OtherButton from './OtherButton';
-import InlineArea from './InlineArea';
-import ShadowTextArea from './ShadowTextArea';
-import CenterMainBody from './CenterMainBody';
-import BodyHeader from './BodyHeader';
+import Header from "./Header";
+import Footer from "./Footer";
+import Body from "./Body";
+import Sction from "./Section";
+import HeadLine1 from "./HeadLine1";
+import HeadLine2 from "./HeadLine2";
+import OneColumnBody from "./OneColumnBody";
+import InnerSection from "./InnerSection";
+import GameSelectArea from "./GameSelectArea";
+import GameNamePlate from "./GameNamePlate";
+import UnderLineInput from "./UnderLineInput";
+import BreakUnderLine from "./BreakUnderLine";
+import HardSelectArea from "./HardSelectArea";
+import HardIcon from "./HardIcon";
+import OtherButton from "./OtherButton";
+import InlineArea from "./InlineArea";
+import ShadowTextArea from "./ShadowTextArea";
+import CenterMainBody from "./CenterMainBody";
+import BodyHeader from "./BodyHeader";
 
-import './css/RoomCreation.css';
+import { inputValidation } from "../store/validation/Validation";
 
-export default function RoomCreation({ state, actions }) {
+import "./css/RoomCreation.css";
+import { roomCreationSaga } from "../store/room/Saga";
+import { selectStartDate, postRoomCreationReq } from "../store/room/Action";
+
+export default function RoomCreation({ roomCreation, user, actions }) {
   useEffect(() => {
     actions.getGameTitleReq();
+    actions.getGameHardReq();
   }, [actions]);
 
-  const { get_data, error, select } = state.data;
+  const { get_data, error, select } = roomCreation.data;
+  const options = [];
+
+  for (let i = 2; i <= 200; i++) {
+    options.push({ value: i, label: i });
+  }
+  if (select.start && !error.input_date && !error.input_time) {
+    const test_date = new Date(select.date + " " + select.time).toISOString();
+    // console.log(test_date);
+  }
+
+  // const result_date =
+  //   test_date.getFullYear() +
+  //   "-" +
+  //   ("0" + (test_date.getMonth() + 1)).slice(-2) +
+  //   "-" +
+  //   ("0" + test_date.getDate()).slice(-2) +
+  //   "T" +
+  //   ("0" + test_date.getHours()).slice(-2) +
+  //   ":" +
+  //   ("0" + test_date.getMinutes()).slice(-2) +
+  //   ":" +
+  //   ("0" + test_date.getSeconds()).slice(-2) +
+  //   ".000000Z";
+  // console.log(select);
+  // console.log(user);
   return (
     <div id="room-creation">
       <Header />
@@ -42,19 +73,26 @@ export default function RoomCreation({ state, actions }) {
               <div className="favorite-games-area">
                 {get_data.title &&
                   get_data.title.map((d) => (
-                    <GameNamePlate title={d.game_title} click={actions.selectGameTitle} />
+                    <GameNamePlate
+                      title={d.game_title}
+                      value={d.id}
+                      click={actions.clickSelectGameTitle}
+                    />
                   ))}
               </div>
               <HeadLine2>その他</HeadLine2>
               <ShadowTextArea
                 placeholder="ゲームタイトル"
                 auto_flg={true}
-                value="game_title"
+                name="game_title"
                 data_list={get_data.title}
-                actions={actions.selectGameTitle}
+                actions={actions.inputSelectGameTitle}
+                value={select.input_title}
               />
             </div>
-            <div className="title-error">{error.in_title ? select.title : null}</div>
+            <div className="error">
+              {error.input_title ? select.title : null}
+            </div>
           </div>
           <BreakUnderLine />
 
@@ -64,35 +102,110 @@ export default function RoomCreation({ state, actions }) {
               <HardSelectArea>
                 {get_data.hard &&
                   get_data.hard.map((d) =>
-                    d.hard_icon === select.hard ? (
-                      <HardIcon id={d.hard_icon} select_flg={true} />
+                    d.id === select.hard ? (
+                      <HardIcon id={d.id} select_flg={true} />
                     ) : (
-                      <HardIcon id={d.hard_icon} click={actions.selectGameHard} />
+                      <HardIcon
+                        id={d.id}
+                        actions={actions.selectGameHard}
+                        data={get_data.hard}
+                        name="game_hard"
+                      />
                     )
                   )}
               </HardSelectArea>
             </div>
-            <div className="hard-error">{error.in_hard ? select.hard : null}</div>
+            <div className="error">{error.input_hard ? select.hard : null}</div>
+
+            <HeadLine1>定員選択</HeadLine1>
+            <div className="section-inner-wrapper">
+              {/* TODO: 後で消す */}
+              {/* <div class="selectdiv">
+                <label>
+                  <select>
+                    <option selected>2</option>
+                    {capacity}
+                  </select>
+                </label>
+              </div> */}
+              <Select
+                options={options}
+                defaultValue={{
+                  value: select.capacity,
+                  label: select.capacity,
+                }}
+                onChange={(e) => actions.selectCapacity(e.value)}
+              />
+            </div>
           </div>
           <BreakUnderLine />
 
           <div className="section">
             <HeadLine1>開始時間選択</HeadLine1>
             <div className="section-inner-wrapper">
-              <div class="radio">
+              <div className="radio">
                 <div>
-                  <input type="radio" name="time"></input>
+                  <input
+                    type="radio"
+                    name="time"
+                    defaultChecked={!select.start}
+                    onClick={() => actions.selectStart(false)}
+                  ></input>
                   <label>即時</label>
                 </div>
                 <div>
-                  <input type="radio" name="time"></input>
+                  <input
+                    type="radio"
+                    name="time"
+                    defaultChecked={select.start}
+                    onClick={() => actions.selectStart(true)}
+                  ></input>
                   <label>時間指定</label>
                 </div>
               </div>
               <div className="time-designation-area">
-                <ShadowTextArea placeholder="日付" />
-                <ShadowTextArea placeholder="時間" />
+                {!select.start ? (
+                  <div className="select-start-time">
+                    <input
+                      className="select-date"
+                      name="date"
+                      type="date"
+                      onChange={(e) => actions.selectStartDate(e.target.value)}
+                      disabled={!select.start}
+                    />
+                    <input
+                      className="select-time"
+                      name="time"
+                      type="time"
+                      onChange={(e) => actions.selectStartTime(e.target.value)}
+                      disabled={!select.start}
+                    />
+                  </div>
+                ) : (
+                  <div className="select-start-time">
+                    <input
+                      className="select-date"
+                      name="date"
+                      type="date"
+                      // value={select.date}
+                      onChange={(e) => actions.selectStartDate(e.target.value)}
+                    />
+                    <input
+                      className="select-time"
+                      name="time"
+                      type="time"
+                      // value={select.time}
+                      onChange={(e) => actions.selectStartTime(e.target.value)}
+                    />
+                  </div>
+                )}
               </div>
+            </div>
+            <div className="error">
+              {select.start && error.input_date ? select.date : null}
+            </div>
+            <div className="error">
+              {select.start && error.input_time ? select.time : null}
             </div>
           </div>
           <BreakUnderLine />
@@ -100,12 +213,29 @@ export default function RoomCreation({ state, actions }) {
           <div className="section">
             <HeadLine1>募集テキスト</HeadLine1>
             <div className="section-inner-wrapper">
-              <textarea className="textarea" onChange={(e) => actions.inputText(e.target.value)} />
+              <textarea
+                className="textarea"
+                value={select.text}
+                onChange={(e) =>
+                  inputValidation(
+                    { value: e.target.value, name: "rec_text" },
+                    actions.inputText
+                  )
+                }
+              />
+            </div>
+            <div className="error">
+              {error.input_text ? error.rec_text_msg : null}
             </div>
           </div>
 
           <div className="footer-button-area">
-            <button className="color-blue">ルーム作成</button>
+            <button
+              className="color-blue"
+              onClick={() => actions.postRoomCreationReq(select)}
+            >
+              ルーム作成
+            </button>
             <button className="color-red">キャンセル</button>
           </div>
         </CenterMainBody>

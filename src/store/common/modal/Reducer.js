@@ -4,7 +4,8 @@ import {
   SHOW_MODAL_FRONT,
   SHOW_MODAL_BACK,
   MODAL_CHECK,
-} from '../Action';
+  JOIN_ROOM,
+} from "../Action";
 
 const initiaState = {
   showFlag: false,
@@ -12,11 +13,11 @@ const initiaState = {
   history_category: null,
   data: {},
   report: [
-    '性的な表現がされている',
-    '出会い、異性交際を希望している',
-    '各種法令違反している',
-    '差別、罵倒、誹謗中傷などしている',
-    'その他',
+    "性的な表現がされている",
+    "出会い、異性交際を希望している",
+    "各種法令違反している",
+    "差別、罵倒、誹謗中傷などしている",
+    "その他",
   ],
 };
 

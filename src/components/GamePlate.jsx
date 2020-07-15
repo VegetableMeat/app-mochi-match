@@ -1,7 +1,7 @@
-import React from 'react';
-import './css/GamePlate.css';
-import HardIcon from './HardIcon';
-import GameNamePlate from './GameNamePlate';
+import React from "react";
+import "./css/GamePlate.css";
+import HardIcon from "./HardIcon";
+import GameNamePlate from "./GameNamePlate";
 
 export default function GamePlate({ hard, title }) {
   return (

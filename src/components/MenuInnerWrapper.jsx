@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import './css/MenuInnerWrapper.css';
+import "./css/MenuInnerWrapper.css";
 
 export default function MenuInnerWrapper(props, { id }) {
   return (

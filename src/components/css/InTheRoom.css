@@ -1,27 +1,66 @@
 #in-the-room {
-
 }
 
 #in-the-room .capacity * {
-    color: #7D7D7D;
-    text-align: left;
-    font-size: 14px;
-    margin: 8px 8px 4px 8px;
-    position: relative;
-
+  color: #7d7d7d;
+  text-align: left;
+  font-size: 14px;
+  margin: 8px 8px 4px 8px;
+  position: relative;
 }
 
 #in-the-room .head-line-2 {
-    color: #7D7D7D;
-    font-size: 14px;
-    margin: 8px 8px 4px 8px;
-    padding: 0;
+  color: #7d7d7d;
+  font-size: 14px;
+  margin: 8px 8px 4px 8px;
+  padding: 0;
 }
 
 #in-the-room .user-plate {
-    width: 100%;
+  width: 100%;
 }
 
 #in-the-room .game-plate {
-    margin: 0 4px 4px;
+  margin: 0 4px 4px;
+}
+
+#in-the-room .main-body {
+  width: 100%;
+}
+
+#in-the-room .side-menu {
+  width: 400px;
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  #in-the-room .side-menu {
+    display: block;
+  }
+
+  #in-the-room .side-menu {
+    width: 240px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #in-the-room .main-body {
+    width: 90%;
+    margin: 0 5% 40px;
+  }
+
+  #in-the-room .side-menu {
+    display: block;
+    width: 90%;
+    margin: 0 5% 40px;
+  }
+
+  #in-the-room #body {
+    display: block;
+  }
+}
+
+#in-the-room .recrutiment-text {
+  overflow: unset;
+  height: auto;
 }

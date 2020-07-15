@@ -1,7 +1,14 @@
-import React from 'react';
-import './css/HardIcon.css';
+import React from "react";
+import { inputValidation } from "../store/validation/Validation";
+import "./css/HardIcon.css";
 
-export default function HardIcon({ id, click, select_flg = false }) {
+export default function HardIcon({
+  id,
+  actions,
+  data,
+  name,
+  select_flg = false,
+}) {
   if (select_flg) {
     return (
       <div className="hard-icon">
@@ -12,7 +19,12 @@ export default function HardIcon({ id, click, select_flg = false }) {
   }
   return (
     <div className="hard-icon">
-      <div className="icon" onClick={() => click(id)}></div>
+      <div
+        className="icon"
+        onClick={() =>
+          inputValidation({ value: id, name: name }, actions, data)
+        }
+      ></div>
     </div>
   );
 }

@@ -1,18 +1,25 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from '../store/common/Action.js';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as commonActionCreaters from "../store/common/Action.js";
+import * as roomActionsCreaters from "../store/room/Action.js";
 
-import Modal from '../components/Modal';
+import Modal from "../components/Modal";
 
 const mapStateToProps = (state) => {
   return {
-    state: state.modalState,
+    state: state,
   };
 };
 
 const mapDispatchProps = (dispatch) => {
   return {
-    actions: bindActionCreators(Actions, dispatch),
+    actions: bindActionCreators(
+      {
+        ...commonActionCreaters,
+        ...roomActionsCreaters,
+      },
+      dispatch
+    ),
   };
 };
 

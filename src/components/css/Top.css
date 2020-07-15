@@ -1,8 +1,26 @@
 #top {
-	position: relative;
-	min-height: 100vh;
+  position: relative;
+  min-height: 100vh;
 }
 
 #top .shadow-input-area input {
-	padding-right: 40px;
+  padding-right: 40px;
+}
+
+@media screen and (max-width: 600px) {
+  #top .shadow-input-area input {
+    padding-right: 20px;
+  }
+
+  #top .menu-inner-wrapper .shadow-input-area input {
+    height: 20px;
+    font-size: 10px;
+  }
+
+  #top .menu-inner-wrapper .serch-button {
+    font-size: 10px;
+    font-weight: 100;
+    top: 23px;
+    right: 16px;
+  }
 }

@@ -1,16 +1,15 @@
 .menu-inner-wrapper {
-    background-color: white;
-    padding: 20px 12px 40px;
-    position: relative;
+  background-color: white;
+  padding: 20px 12px 40px;
+  position: relative;
 }
 
-@media screen and (max-width: 480px) {
-    .menu-inner-wrapper {
-        
-        font-size: 10px;
-    }
-    .menu-inner-wrapper ul, .menu-inner-wrapper ol {
-        padding-inline-start: 12px;
-    }
-
+@media screen and (max-width: 600px) {
+  .menu-inner-wrapper {
+    font-size: 10px;
+  }
+  .menu-inner-wrapper ul,
+  .menu-inner-wrapper ol {
+    padding-inline-start: 12px;
+  }
 }

@@ -1,4 +1,8 @@
-import { GET_POPULAR_GAMES_REQ, GET_POPULAR_GAMES_OK, GET_POPULAR_GAMES_NG } from '../Action';
+import {
+  GET_POPULAR_GAMES_REQ,
+  GET_POPULAR_GAMES_OK,
+  GET_POPULAR_GAMES_NG,
+} from "../Action";
 
 const initiaState = {
   data: [],

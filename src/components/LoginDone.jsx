@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 export default class LoginDone extends Component {
   componentDidMount() {
@@ -9,9 +9,15 @@ export default class LoginDone extends Component {
         withCredentials: true,
       })
       .then((res) => {
-        localStorage.setItem('jwt', JSON.stringify(res.data));
+        console.log(res);
+        localStorage.setItem("access_token", res.data.access_token);
+        localStorage.setItem("refresh_token", res.data.refresh_token);
+        localStorage.setItem("expires_in", res.data.expires_in);
         this.props.actions.loginOk();
-        window.location.replace('/profilesetting');
+        window.location.replace("/profilesetting");
+      })
+      .catch((e) => {
+        console.log("error", e);
       });
   }
   render() {

@@ -1,14 +1,15 @@
-import React from 'react';
-import './css/Capacity.css';
-import { tsPropertySignature } from '@babel/types';
+import React from "react";
+import "./css/Capacity.css";
 
-export default function Capacity({ capacity }) {
+const Capacity = ({ capacity, count }) => {
   return (
     <div className="capacity">
       <div className="label">定員：</div>
       <div className="value">
-        {capacity}/{capacity}
+        {count}/{capacity}
       </div>
     </div>
   );
-}
+};
+
+export default Capacity;

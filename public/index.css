@@ -1,12 +1,17 @@
 body {
   background-color: #ebebeb;
   margin: 0 !important;
+  min-height: 100vh;
 }
 
 @media screen and (max-width: 320px) {
   body {
     width: 320px;
   }
+}
+
+.menu-inner-wrapper li {
+  color: #7d7d7d;
 }
 
 .menu-wrapper-1 {
@@ -26,6 +31,11 @@ body {
 }
 
 .menu-wrapper-3 .menu-inner-wrapper {
+  border-radius: 0 0 22px 22px;
+  padding-bottom: 30px;
+}
+
+.menu-wrapper-last .menu-inner-wrapper {
   border-radius: 0 0 22px 22px;
   padding-bottom: 30px;
 }
@@ -59,7 +69,7 @@ body {
   width: 24px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .side-menu .account-side-menu li {
     font-size: 11px !important;
   }
@@ -117,5 +127,23 @@ button:focus {
 }
 
 input::placeholder {
-	color: rgb(214, 214, 214);
+  color: rgb(214, 214, 214);
+}
+
+#header,
+.menu-header,
+#footer,
+.room-card,
+.chat-send-area,
+.body-header,
+.radius-body-header {
+  background-color: rgb(123, 216, 245) !important;
+}
+
+.footer-bottom,
+.reservation-time {
+  background-color: rgb(61, 113, 129) !important;
+}
+
+body {
 }

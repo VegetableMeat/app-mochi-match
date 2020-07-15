@@ -1,6 +1,6 @@
-import React from 'react';
-import { inputValidation } from '../store/validation/Validation';
-import './css/ShadowTextArea.css';
+import React from "react";
+import { inputValidation } from "../store/validation/Validation";
+import "./css/ShadowTextArea.css";
 
 /**
  * 影付きテキストエリアを表示するコンポーネント
@@ -15,25 +15,33 @@ import './css/ShadowTextArea.css';
 export default function ShadowTextArea({
   placeholder,
   auto_flg = false,
-  value,
+  name,
   data_list,
   actions,
+  value,
 }) {
   if (auto_flg) {
     return (
       <div className="shadow-text-area">
         <input
           type="text"
-          name={value}
+          name={name}
           placeholder={placeholder}
-          onChange={(e) => inputValidation({ value: e.target.value, name: e.target.name }, actions)}
+          onChange={(e) =>
+            inputValidation(
+              (value = { value: e.target.value, name: e.target.name }),
+              actions,
+              data_list
+            )
+          }
           autoComplete="on"
           list="list"
+          value={value}
         />
         <div className="shadow-underline"></div>
         <datalist id="list">
           {data_list.map((d, i) => (
-            <option key={i}>{d[value]}</option>
+            <option key={i}>{d[name]}</option>
           ))}
         </datalist>
       </div>
@@ -41,7 +49,11 @@ export default function ShadowTextArea({
   }
   return (
     <div className="shadow-text-area">
-      <input type="text" placeholder={placeholder} onChange={(e) => actions(e.target.value)} />
+      <input
+        type="text"
+        placeholder={placeholder}
+        onChange={(e) => actions(e.target.value)}
+      />
       <div className="shadow-underline"></div>
     </div>
   );
