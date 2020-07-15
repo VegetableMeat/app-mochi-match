@@ -1,13 +1,15 @@
 import React from "react";
-import "./css/GamePlate.css";
 import HardIcon from "./HardIcon";
 import GameNamePlate from "./GameNamePlate";
+import "./css/GamePlate.css";
 
-export default function GamePlate({ hard, title }) {
+const GamePlate = ({ hard, title }) => {
   return (
     <div className="game-plate">
       <HardIcon hard={hard} />
       <GameNamePlate title={title} />
     </div>
   );
-}
+};
+
+export default GamePlate;

@@ -4,11 +4,13 @@ import UserName from "./UserName";
 import DetailsButton from "./DetailsButton";
 import "./css/UserPlate.css";
 
-export default function UserPlate({ icon, name }) {
+const UserPlate = ({ icon, name }) => {
   return (
     <div className="user-plate">
       <UserIcon icon={icon} />
       <UserName name={name} />
     </div>
   );
-}
+};
+
+export default UserPlate;

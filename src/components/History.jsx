@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import Header from "./Header";
 import Footer from "./Footer";
 import Body from "./Body";
@@ -15,10 +14,9 @@ import UserPlate from "./UserPlate";
 import HeadeLine1 from "./HeadLine1";
 import InnerText from "./InnerText";
 import BreakUnderLine from "./BreakUnderLine";
-
 import "./css/History.css";
 
-export default function History() {
+const History = () => {
   return (
     <div id="history">
       <Header />
@@ -30,17 +28,17 @@ export default function History() {
               <ul>
                 <Link to="/">
                   <li>
-                    <i class="far fa-id-card"></i>Profile
+                    <i className="far fa-id-card"></i>Profile
                   </li>
                 </Link>
                 <Link to="/">
                   <li>
-                    <i class="fas fa-user-cog"></i>Setting
+                    <i className="fas fa-user-cog"></i>Setting
                   </li>
                 </Link>
                 <Link to="/History">
                   <li>
-                    <i class="fas fa-history"></i>Play History
+                    <i className="fas fa-history"></i>Play History
                   </li>
                 </Link>
               </ul>
@@ -82,4 +80,6 @@ export default function History() {
       <Footer />
     </div>
   );
-}
+};
+
+export default History;

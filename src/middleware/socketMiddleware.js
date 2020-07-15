@@ -1,3 +1,5 @@
+import io from "socket.io-client";
+import { createdChatpost } from "./../store/room/Action";
 import {
   OPEN_SOCKET,
   CLOSE_SOCKET,
@@ -5,8 +7,6 @@ import {
   LEAVE_ROOM_SOCKET,
   updateSocketObject,
 } from "./../store/socket/Action";
-import { createdChatpost } from "./../store/room/Action";
-import io from "socket.io-client";
 
 let socket;
 

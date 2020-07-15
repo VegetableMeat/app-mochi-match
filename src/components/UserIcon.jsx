@@ -1,8 +1,7 @@
 import React from "react";
 import "./css/UserIcon.css";
-import { select } from "redux-saga/effects";
 
-export default function UserIcon({ selectFlg }) {
+const UserIcon = ({ selectFlg }) => {
   if (selectFlg === "true") {
     return (
       <div className="user-icon">
@@ -17,4 +16,6 @@ export default function UserIcon({ selectFlg }) {
       </div>
     );
   }
-}
+};
+
+export default UserIcon;

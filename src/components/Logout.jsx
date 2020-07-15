@@ -1,27 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-
 import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
 
-export default class Logout extends Component {
-  logout = () => {
-    localStorage.removeItem("jwt");
+const Logout = () => {
+  const logout = () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("expires_in");
   };
 
-  render() {
-    return (
-      <div id="logout">
-        <Header />
-        <Body>
-          <h1>Logout画面です</h1>
-          <Link to={"/"} onClick={() => this.logout()}>
-            ログアウトする
-          </Link>
-        </Body>
-        <Footer />
-      </div>
-    );
-  }
-}
+  return (
+    <div id="logout">
+      <Header />
+      <Body>
+        <h1>Logout画面です</h1>
+        <Link to={"/"} onClick={() => logout()}>
+          ログアウトする
+        </Link>
+      </Body>
+      <Footer />
+    </div>
+  );
+};
+
+export default Logout;

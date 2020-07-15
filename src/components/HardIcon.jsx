@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/HardIcon.css";
 
-export default function HardIcon({ selectFlg }) {
+const HardIcon = ({ selectFlg }) => {
   if (selectFlg === "true") {
     return (
       <div className="hard-icon">
@@ -16,4 +16,6 @@ export default function HardIcon({ selectFlg }) {
       </div>
     );
   }
-}
+};
+
+export default HardIcon;

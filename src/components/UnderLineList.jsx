@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function UnderLineList(props) {
+const UnderLineList = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default UnderLineList;

@@ -1,8 +1,7 @@
 import React from "react";
-
 import "./css/ExitButton.css";
 
-export default function ExitButton() {
+const ExitButton = () => {
   return (
     <div className="exit-button">
       <button>
@@ -10,4 +9,6 @@ export default function ExitButton() {
       </button>
     </div>
   );
-}
+};
+
+export default ExitButton;

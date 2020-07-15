@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import Header from "./Header";
 import Footer from "./Footer";
 import Body from "./Body";
@@ -9,10 +8,9 @@ import Modal from "../containers/ModalContainer";
 import BodyHeader from "./BodyHeader";
 import ShadowTextArea from "./ShadowTextArea";
 import HeadLine1 from "./HeadLine1";
-
 import "./css/SignUp.css";
 
-export default function SignUp() {
+const SignUp = () => {
   return (
     <div id="sign-up">
       <Header />
@@ -44,4 +42,6 @@ export default function SignUp() {
       <Modal />
     </div>
   );
-}
+};
+
+export default SignUp;

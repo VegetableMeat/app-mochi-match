@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function InnerArea(props) {
+const InnerArea = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default InnerArea;

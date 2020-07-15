@@ -186,11 +186,29 @@ const ModalMold = ({ state, actions, history }) => {
           </div>
         </div>
       );
+    case "ROOM_CAPACITY_OVER":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            ルームの定員上限に達しています
+            <br />
+            もう一度お試し下さい
+          </div>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => actions.showModalFalse()}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      );
     case "SERVER_ERROR":
       return (
         <div className="modal-body">
           <div className="modal-text modal-header">
-            サーバーエラーが発生しました
+            サーバーでエラーが発生しています
             <br />
             もう一度お試し下さい
           </div>

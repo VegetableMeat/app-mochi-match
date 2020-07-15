@@ -1,5 +1,4 @@
 import React from "react";
-
 import ModalMold from "./ModalMold";
 import "./css/Modal.css";
 
@@ -16,7 +15,7 @@ const Modal = ({ state, actions }) => {
           className="modal-close-button"
           onClick={() => actions.showModalFalse()}
         >
-          <i class="fas fa-times"></i>
+          <i className="fas fa-times"></i>
         </div>
       </div>
     </div>

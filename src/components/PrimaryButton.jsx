@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function PrimaryButton(props) {
+const PrimaryButton = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default PrimaryButton;

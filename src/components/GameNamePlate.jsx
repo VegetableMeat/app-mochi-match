@@ -1,10 +1,12 @@
 import React from "react";
 import "./css/GameNamePlate.css";
 
-export default function GameNamePlate({ title }) {
+const GameNamePlate = ({ title }) => {
   return (
     <div className="game-name-plate">
       <div className="game-title">{title}</div>
     </div>
   );
-}
+};
+
+export default GameNamePlate;

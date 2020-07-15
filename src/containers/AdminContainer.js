@@ -6,7 +6,7 @@ import Admin from "../components/Admin";
 
 const mapStateToProps = (state) => {
   return {
-    state: state.adminState,
+    state: state,
   };
 };
 

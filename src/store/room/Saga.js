@@ -87,6 +87,14 @@ function* handleRoomJoinRequest(action) {
       yield put(tokenRefleshRequest());
       yield take(TOKEN_REFRESH_SUCCESS);
       yield call(handleRoomJoinRequest, action);
+    } else {
+      switch (error.response.data.code) {
+        case 5:
+          yield put(showModalTrue("ROOM_CAPACITY_OVER", "room", null));
+          break;
+        default:
+          yield put(showModalTrue("SERVER_ERROR", "room", null));
+      }
     }
   }
 }
