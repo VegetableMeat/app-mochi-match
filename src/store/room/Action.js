@@ -22,6 +22,147 @@ export const getRoomNg = (error) => {
   };
 };
 
+// RoomCreation
+export const GET_GAME_TITLE_REQ = "GET_GAME_TITLE_REQ";
+export const GET_GAME_TITLE_OK = "GET_GAME_TITLE_OK";
+export const GET_GAME_TITLE_NG = "GET_GAME_TITLE_NG";
+export const GET_GAME_HARD_REQ = "GET_GAME_HARD_REQ";
+export const GET_GAME_HARD_OK = "GET_GAME_HARD_OK";
+export const GET_GAME_HARD_NG = "GET_GAME_HARD_NG";
+export const POST_ROOM_CREATION_REQ = "POST_ROOM_CREATION_REQ";
+export const POST_ROOM_CREATION_OK = "POST_ROOM_CREATION_OK";
+export const POST_ROOM_CREATION_NG = "POST_ROOM_CREATION_NG";
+export const INPUT_SELECT_GAME_TITLE = "INPUT_SELECT_GAME_TITLE";
+export const CLICK_SELECT_GAME_TITLE = "CLICK_SELECT_GAME_TITLE";
+export const SELECT_GAME_HARD = "SELECT_GAME_HARD";
+export const SELECT_CAPACITY = "SELECT_CAPACITY";
+export const SELECT_START = "SELECT_START";
+export const SELECT_START_DATE = "SELECT_START_DATE";
+export const SELECT_START_TIME = "SELECT_START_TIME";
+export const INPUT_TEXT = "INPUT_TEXT";
+
+const POST_ROOM_CREATION_URL = `/v1/rooms`;
+const GET_GAME_TITLE_URL = `/v1/gamelist`;
+const GET_GAME_HARD_URL = `/v1/gamehard`;
+
+export const getGameTitleReq = () => {
+  return {
+    type: GET_GAME_TITLE_REQ,
+    url: GET_GAME_TITLE_URL,
+  };
+};
+
+export const getGameTitleOk = (data) => {
+  return {
+    type: GET_GAME_TITLE_OK,
+    payload: data,
+  };
+};
+
+export const getGameTitleNg = (error) => {
+  return {
+    type: GET_GAME_TITLE_NG,
+    error: error,
+  };
+};
+
+export const getGameHardReq = () => {
+  return {
+    type: GET_GAME_HARD_REQ,
+    url: GET_GAME_HARD_URL,
+  };
+};
+
+export const getGameHardOk = (data) => {
+  return {
+    type: GET_GAME_HARD_OK,
+    payload: data,
+  };
+};
+
+export const getGameHardNg = (error) => {
+  return {
+    type: GET_GAME_HARD_NG,
+    error: error,
+  };
+};
+
+export const postRoomCreationReq = (data) => {
+  return {
+    type: POST_ROOM_CREATION_REQ,
+    payload: data,
+    url: POST_ROOM_CREATION_URL,
+  };
+};
+
+export const postRoomCreationOk = () => {
+  return {
+    type: POST_ROOM_CREATION_OK,
+  };
+};
+
+export const postRoomCreationNg = () => {
+  return {
+    type: POST_ROOM_CREATION_NG,
+  };
+};
+
+export const inputSelectGameTitle = (data) => {
+  return {
+    type: INPUT_SELECT_GAME_TITLE,
+    payload: data,
+  };
+};
+
+export const clickSelectGameTitle = (data) => {
+  return {
+    type: CLICK_SELECT_GAME_TITLE,
+    payload: data,
+  };
+};
+
+export const selectGameHard = (data) => {
+  return {
+    type: SELECT_GAME_HARD,
+    payload: data,
+  };
+};
+
+export const selectCapacity = (data) => {
+  return {
+    type: SELECT_CAPACITY,
+    payload: data,
+  };
+};
+
+export const selectStart = (data) => {
+  return {
+    type: SELECT_START,
+    payload: data,
+  };
+};
+
+export const selectStartDate = (data) => {
+  return {
+    type: SELECT_START_DATE,
+    payload: data,
+  };
+};
+
+export const selectStartTime = (data) => {
+  return {
+    type: SELECT_START_TIME,
+    payload: data,
+  };
+};
+
+export const inputText = (data) => {
+  return {
+    type: INPUT_TEXT,
+    payload: data,
+  };
+};
+
 export const JOIN_ROOM_REQUEST = "JOIN_ROOM_REQUEST";
 export const JOIN_ROOM_SUCCESS = "JOIN_ROOM_SUCCESS";
 export const JOIN_ROOM_ERROR = "JOIN_ROOM_ERROR";

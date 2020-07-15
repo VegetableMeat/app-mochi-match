@@ -1,15 +1,15 @@
 .head-line-1 {
-    font-size: 18px;
-    padding: 4px;
-    color: #7D7D7D;
-    height: 32px;
-    margin: 4px;
+  font-size: 18px;
+  padding: 4px;
+  color: #7d7d7d;
+  height: 32px;
+  margin: 4px;
 }
 
 @media screen and (max-width: 700px) {
-    .head-line-1 {
-        font-size: 14px;
-        padding: 4px 2px;
-        margin: 4px 2px;
-    }
+  .head-line-1 {
+    font-size: 14px;
+    padding: 4px 2px;
+    margin: 4px 2px;
+  }
 }

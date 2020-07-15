@@ -1,5 +1,6 @@
 import { all, fork, call } from "redux-saga/effects";
 import {
+  roomCreationSaga,
   watchGetRoomListRequest,
   watchRoomJoinRequest,
   watchRoomJoinSuccess,
@@ -27,6 +28,7 @@ export default function* rootSaga() {
     ...authSaga,
     ...adminTitleSaga,
     ...adminHardSaga,
+    ...roomCreationSaga,
     call(watchInit),
     call(watchGetRoomListRequest),
     call(watchRoomJoinRequest),

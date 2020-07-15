@@ -1,16 +1,16 @@
 .create-room-button {
-    position: fixed;
-    bottom: 120px;
-    right: 5%;
+  position: fixed;
+  bottom: 120px;
+  right: 5%;
 }
 
 .create-room-button button {
-    height: 50px;
-    width: 50px;
-    background-color: #2176FF;
-    border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  background-color: #2176ff;
+  border-radius: 50px;
 }
 
 .create-room-button button i {
-    color: white;
+  color: white;
 }
