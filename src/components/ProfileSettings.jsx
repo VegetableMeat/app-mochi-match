@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import Header from "./Header";
 import Footer from "./Footer";
 import Body from "./Body";
@@ -23,10 +22,9 @@ import CenterMainBody from "./CenterMainBody";
 import ShadowTextArea from "./ShadowTextArea";
 import BreakUnderLine from "./BreakUnderLine";
 import AddButton from "./AddButton";
-
 import "./css/ProfileSetting.css";
 
-export default function ProfileSetting() {
+const ProfileSetting = () => {
   return (
     <div id="profile-setting">
       <Header />
@@ -38,17 +36,17 @@ export default function ProfileSetting() {
               <ul>
                 <Link to="/profileSetting">
                   <li>
-                    <i class="far fa-id-card"></i>Profile
+                    <i className="far fa-id-card"></i>Profile
                   </li>
                 </Link>
                 <Link to="/configuration">
                   <li>
-                    <i class="fas fa-user-cog"></i>Setting
+                    <i className="fas fa-user-cog"></i>Setting
                   </li>
                 </Link>
                 <Link to="/history">
                   <li>
-                    <i class="fas fa-history"></i>Play History
+                    <i className="fas fa-history"></i>Play History
                   </li>
                 </Link>
               </ul>
@@ -106,4 +104,6 @@ export default function ProfileSetting() {
       <Footer />
     </div>
   );
-}
+};
+
+export default ProfileSetting;

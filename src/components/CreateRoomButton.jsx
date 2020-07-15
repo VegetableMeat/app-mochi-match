@@ -1,8 +1,7 @@
 import React from "react";
-
 import "./css/CreateRoomButton.css";
 
-export default function CreateRoomButton() {
+const CreateRoomButton = () => {
   return (
     <div className="create-room-button">
       <button>
@@ -10,4 +9,6 @@ export default function CreateRoomButton() {
       </button>
     </div>
   );
-}
+};
+
+export default CreateRoomButton;

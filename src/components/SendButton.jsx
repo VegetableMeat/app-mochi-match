@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function SendButton(props) {
+const SendButton = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default SendButton;

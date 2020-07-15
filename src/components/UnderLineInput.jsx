@@ -1,9 +1,11 @@
 import React from "react";
 
-export default function UnderLineInput() {
+const UnderLineInput = () => {
   return (
     <div>
       <input type="text"></input>
     </div>
   );
-}
+};
+
+export default UnderLineInput;

@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function SendTime(props) {
+const SendTime = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default SendTime;

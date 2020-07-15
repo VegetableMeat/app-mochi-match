@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function MessageText(props) {
+const MessageText = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default MessageText;

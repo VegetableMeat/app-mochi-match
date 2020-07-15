@@ -65,6 +65,22 @@ const roomState = (state = initialState, action) => {
         ...state,
       };
     case GET_ROOM_DETAIL_SUCCESS:
+      if (action.payload.data.join_users == null) {
+        return {
+          ...state,
+          room: {
+            ...state.room,
+            room_id: action.payload.data.room_id,
+            owner_id: action.payload.data.owner_id,
+            hard: action.payload.data.hard,
+            title: action.payload.data.title,
+            capacity: action.payload.data.capacity,
+            count: action.payload.data.count,
+            text: action.payload.data.text,
+          },
+          join_users: [],
+        };
+      }
       return {
         ...state,
         room: {
@@ -84,6 +100,23 @@ const roomState = (state = initialState, action) => {
         ...state,
       };
     case ALREADY_ENTRY:
+      if (action.payload.join_users == null) {
+        return {
+          ...state,
+          room: {
+            ...state.room,
+            room_id: action.payload.room_id,
+            owner_id: action.payload.owner_id,
+            hard: action.payload.hard,
+            title: action.payload.title,
+            capacity: action.payload.capacity,
+            count: action.payload.count,
+            text: action.payload.text,
+          },
+          join_users: [],
+          isEntry: true,
+        };
+      }
       return {
         ...state,
         room: {

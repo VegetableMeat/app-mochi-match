@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function InnerSection(props) {
+const InnerSection = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default InnerSection;

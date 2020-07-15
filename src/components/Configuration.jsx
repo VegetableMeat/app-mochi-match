@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import Header from "./Header";
 import Footer from "./Footer";
 import Body from "./Body";
@@ -13,10 +12,9 @@ import BodyHeader from "./BodyHeader";
 import HeadLine1 from "./HeadLine1";
 import DangerButton from "./DangerButton";
 import CenterMainBody from "./CenterMainBody";
-
 import "./css/Configuration.css";
 
-export default function Configuration() {
+const Configuration = () => {
   return (
     <div id="configuration">
       <Header />
@@ -28,17 +26,17 @@ export default function Configuration() {
               <ul>
                 <Link to="/profileSetting">
                   <li>
-                    <i class="far fa-id-card"></i>Profile
+                    <i className="far fa-id-card"></i>Profile
                   </li>
                 </Link>
                 <Link to="/configuration">
                   <li>
-                    <i class="fas fa-user-cog"></i>Setting
+                    <i className="fas fa-user-cog"></i>Setting
                   </li>
                 </Link>
                 <Link to="/history">
                   <li>
-                    <i class="fas fa-history"></i>Play History
+                    <i className="fas fa-history"></i>Play History
                   </li>
                 </Link>
               </ul>
@@ -62,4 +60,6 @@ export default function Configuration() {
       <Footer />
     </div>
   );
-}
+};
+
+export default Configuration;

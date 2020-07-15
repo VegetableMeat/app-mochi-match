@@ -58,3 +58,5 @@ export default function ShadowTextArea({
     </div>
   );
 }
+
+export default ShadowTextArea;

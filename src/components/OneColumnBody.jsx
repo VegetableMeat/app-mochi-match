@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function OneColumnBody(props) {
+const OneColumnBody = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default OneColumnBody;

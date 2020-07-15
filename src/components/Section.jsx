@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function Section(props) {
+const Section = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default Section;

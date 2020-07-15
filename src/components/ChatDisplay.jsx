@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function ChatDisplay(props) {
+const ChatDisplay = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default ChatDisplay;

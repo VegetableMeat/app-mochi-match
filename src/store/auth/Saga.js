@@ -1,6 +1,5 @@
-import axios from "axios";
 import { axios_instance } from "../axios/axios";
-import { select, put, call, takeEvery } from "redux-saga/effects";
+import { put, call, takeEvery } from "redux-saga/effects";
 import { TOKEN_REFRESH_REQUEST, tokenRefleshSuccess } from "./Action";
 
 /**
@@ -29,6 +28,7 @@ export function* handleTokenRefreshRequest() {
     localStorage.setItem("expires_in", res.data.expires_in);
     yield put(tokenRefleshSuccess());
   } else {
+    // TODO
     console.log(error);
   }
 }

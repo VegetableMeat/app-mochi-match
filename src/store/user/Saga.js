@@ -75,7 +75,7 @@ export function* handleCheckEntryRequest(action) {
   }
 }
 
-export function* watchCheckEntryRequest(action) {
+export function* watchCheckEntryRequest() {
   yield takeEvery(CHECK_ENTRY_REQUEST, handleCheckEntryRequest);
 }
 
@@ -83,10 +83,11 @@ export function* watchCheckEntryRequest(action) {
  * ルーム参加状況チェックサクセス
  */
 export function* handleCheckEntrySuccess(action) {
+  console.log(action);
   if (action.payload.data.room) {
+    yield action.history.push("/intheroom");
     yield put(alreadyEntry(action.payload.data.room));
     yield put(getChatpostListRequest(action.payload.data.room.room_id));
-    action.history.push("/intheroom");
   } else {
   }
 }

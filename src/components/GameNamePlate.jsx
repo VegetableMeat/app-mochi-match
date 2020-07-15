@@ -16,3 +16,5 @@ export default function GameNamePlate({ title, value, click = null }) {
     </div>
   );
 }
+
+export default GameNamePlate;

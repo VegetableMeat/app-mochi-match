@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function GameSelectArea(props) {
+const GameSelectArea = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default GameSelectArea;

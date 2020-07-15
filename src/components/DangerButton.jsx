@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function DangerButton({ text }) {
+const DangerButton = ({ text }) => {
   return <button className="danger-button color-red">{text}</button>;
-}
+};
+
+export default DangerButton;

@@ -1,11 +1,10 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import HeaderMenu from "../containers/HeaderMenuContainer";
 import ExitButton from "./ExitButton";
 import "./css/Header.css";
-import { Link } from "react-router-dom";
 
-export default function Header({ room }) {
+const Header = ({ room }) => {
   if (room === "inTheRoom") {
     return (
       <div id="header">
@@ -26,4 +25,6 @@ export default function Header({ room }) {
       </div>
     );
   }
-}
+};
+
+export default Header;

@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function HeadLine3(props) {
+const HeadLine3 = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default HeadLine3;

@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function UserStatus(props) {
+const UserStatus = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default UserStatus;

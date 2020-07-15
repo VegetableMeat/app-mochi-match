@@ -178,6 +178,14 @@ function* handleRoomJoinRequest(action) {
       yield put(tokenRefleshRequest());
       yield take(TOKEN_REFRESH_SUCCESS);
       yield call(handleRoomJoinRequest, action);
+    } else {
+      switch (error.response.data.code) {
+        case 5:
+          yield put(showModalTrue("ROOM_CAPACITY_OVER", "room", null));
+          break;
+        default:
+          yield put(showModalTrue("SERVER_ERROR", "room", null));
+      }
     }
   }
 }
@@ -212,7 +220,7 @@ export function* handleRoomJoinSuccess(action) {
     if (error.response.status === 401) {
       yield put(tokenRefleshRequest());
       yield take(TOKEN_REFRESH_SUCCESS);
-      yield call(handleRoomJoinSuccess(action));
+      yield call(handleRoomJoinSuccess, action);
     }
   }
   action.payload.callback();
@@ -285,7 +293,11 @@ export function* handleDeleteRoomRequest(action) {
     console.log(res);
     yield put(getRoomReq());
   } else {
-    console.log(error);
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(handleDeleteRoomRequest, action);
+    }
   }
 }
 
@@ -315,7 +327,11 @@ export function* handleGetChatpostRequest(action) {
   if (!error) {
     yield put(getChatpostListSuccess(res.data));
   } else {
-    console.log(error);
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(handleGetChatpostRequest, action);
+    }
   }
 }
 
@@ -349,7 +365,11 @@ export function* handleCreateChatpostRequest(action) {
   if (!error) {
     console.log(res);
   } else {
-    console.log(error);
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(handleCreateChatpostRequest, action);
+    }
   }
 }
 

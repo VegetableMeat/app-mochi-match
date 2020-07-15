@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function OtherButton(props) {
+const OtherButton = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default OtherButton;

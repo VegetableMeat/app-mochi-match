@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function FavoriteGameList(props) {
+const FavoriteGameList = () => {
   return <div>{/* {props.children} */}</div>;
-}
+};
+
+export default FavoriteGameList;
