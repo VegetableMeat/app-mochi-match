@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import Body from "./Body";
@@ -62,7 +63,9 @@ const Top = ({ history }) => {
           <RoomContents history={history} />
         </MainBody>
       </Body>
-      <CreateRoomButton />
+      <Link to="/roomcreation">
+        <CreateRoomButton />
+      </Link>
       <PageNation />
       <Footer />
       <Modal />

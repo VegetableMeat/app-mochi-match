@@ -1,10 +1,19 @@
 import { axios_instance } from "../axios/axios";
-import { take, put, call, takeEvery } from "redux-saga/effects";
+import { take, put, call, takeLatest, takeEvery } from "redux-saga/effects";
 import {
   GET_ROOM_REQ,
   getRoomReq,
   getRoomOk,
   getRoomNg,
+  GET_GAME_TITLE_REQ,
+  getGameTitleOk,
+  getGameTitleNg,
+  GET_GAME_HARD_REQ,
+  getGameHardOk,
+  getGameHardNg,
+  POST_ROOM_CREATION_REQ,
+  postRoomCreationOk,
+  postRoomCreationNg,
   JOIN_ROOM_REQUEST,
   JOIN_ROOM_SUCCESS,
   joinRoomSuccess,
@@ -49,6 +58,88 @@ export function* fetchRoomList() {
     yield put(getRoomNg(error));
   }
 }
+
+export const roomListSaga = [takeLatest(GET_ROOM_REQ, fetchRoomList)];
+
+// RoomCreation
+// TODO: 後で色々やる
+const resRoomCreation = (post) => {
+  console.log("post", post);
+  return axios_instance
+    .post(post.url, {
+      room_text: post.payload.text,
+      game_list_id: post.payload.title,
+      game_hard_id: post.payload.hard,
+      capacity: post.payload.capacity,
+      start: new Date(
+        post.payload.date + " " + post.payload.time
+      ).toISOString(),
+    })
+    .then((res) => {
+      return { res };
+    })
+    .catch((e) => {
+      const error = e.data;
+      console.log(e.data);
+      return { error };
+    });
+};
+
+const getGameTitle = (get) => {
+  return axios_instance
+    .get(get.url)
+    .then((res) => {
+      return { res };
+    })
+    .catch((e) => {
+      const error = e.toString();
+      return { error };
+    });
+};
+
+const getGameHard = (get) => {
+  return axios_instance
+    .get(get.url)
+    .then((res) => {
+      return { res };
+    })
+    .catch((e) => {
+      const error = e.toString();
+      return { error };
+    });
+};
+
+function* fetchRoomCreation(post) {
+  const { res, error } = yield call(resRoomCreation, post);
+  console.log("resssssss", res.data);
+  if (res.data === 200 && !error) {
+    return yield put(postRoomCreationOk());
+  }
+
+  return yield put(postRoomCreationNg());
+}
+
+function* fetchTitleRoomCreation(get) {
+  const { res, error } = yield call(getGameTitle, get);
+  if (res.status === 200 && !error) {
+    return yield put(getGameTitleOk(res.data));
+  }
+  return yield put(getGameTitleNg(error));
+}
+
+function* fetchHardRoomCreation(get) {
+  const { res, error } = yield call(getGameHard, get);
+  if (res.status === 200 && !error) {
+    return yield put(getGameHardOk(res.data));
+  }
+  return yield put(getGameHardNg(error));
+}
+
+export const roomCreationSaga = [
+  takeLatest(POST_ROOM_CREATION_REQ, fetchRoomCreation),
+  takeLatest(GET_GAME_TITLE_REQ, fetchTitleRoomCreation),
+  takeLatest(GET_GAME_HARD_REQ, fetchHardRoomCreation),
+];
 
 export function* watchGetRoomListRequest() {
   yield takeEvery(GET_ROOM_REQ, fetchRoomList);

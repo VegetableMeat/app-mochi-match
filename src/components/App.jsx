@@ -9,7 +9,7 @@ import Register from "./../containers/RegisterContainer";
 import SignUp from "./SignUp";
 import ProfileSetting from "./ProfileSettings";
 import Configuration from "./Configuration";
-import RoomCreation from "./RoomCreation";
+import RoomCreation from "./../containers/RoomCreationContainer";
 import InTheRoom from "./../containers/InTheRoomContainer";
 import Admin from "./../containers/AdminContainer";
 import LoginDone from "./../containers/LoginDoneContainer";

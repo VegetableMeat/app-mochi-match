@@ -1,24 +1,24 @@
 .hard-select-area {
-    display: flex;
-    margin: 8px 0;
+  display: flex;
+  margin: 8px 0;
 }
 
 .hard-select-area .user-icon {
-    position: relative;
+  position: relative;
 }
 
 .hard-select-area .select {
-    width: 30px;
-    height: 30px;
-    border: 2px solid rgb(119, 119, 119);
-    border-radius: 4px;
-    background-color: rgba(0,0,0,0);
-    z-index: 0;
-    position: absolute;
-    top: -3px;
-    left: -3px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgb(119, 119, 119);
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 0;
+  position: absolute;
+  top: -3px;
+  left: -3px;
 }
 
 .hard-select-area .icon {
-    z-index: 1;
+  z-index: 1;
 }
