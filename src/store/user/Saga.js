@@ -1,9 +1,10 @@
 import { axios_instance } from "../axios/axios";
-import { put, call, takeEvery } from "redux-saga/effects";
+import { take, put, call, takeEvery } from "redux-saga/effects";
 import { getChatpostListRequest } from "./../room/Action";
 import { alreadyEntry } from "./../room/Action";
 import {
   GET_ME_REQUEST,
+  getMeRequest,
   getMeSuccess,
   getMeError,
   CHECK_ENTRY_SUCCESS,
@@ -11,6 +12,7 @@ import {
   checkEntrySuccess,
   checkEntryError,
 } from "./Action";
+import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "./../auth/Action";
 
 /**
  * ユーザー情報取得処理
@@ -28,12 +30,16 @@ const requestGetMeApi = () => {
 };
 
 export function* handleGetMeRequest() {
-  // TODO :
+  console.log("handleGetMeRequest");
   const { res, error } = yield call(requestGetMeApi);
   if (!error) {
     yield put(getMeSuccess(res));
   } else {
-    yield put(getMeError(error));
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(handleGetMeRequest);
+    }
   }
 }
 
@@ -58,10 +64,14 @@ const requestCheckEntryApi = () => {
 
 export function* handleCheckEntryRequest(action) {
   const { res, error } = yield call(requestCheckEntryApi);
-  if (res.status === 200 && !error) {
+  if (!error) {
     yield put(checkEntrySuccess(res, action));
   } else {
-    yield put(checkEntryError(error));
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield put(handleCheckEntryRequest);
+    }
   }
 }
 
