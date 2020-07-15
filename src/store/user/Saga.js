@@ -4,6 +4,7 @@ import { getChatpostListRequest } from "./../room/Action";
 import { alreadyEntry } from "./../room/Action";
 import {
   GET_ME_REQUEST,
+  getMeRequest,
   getMeSuccess,
   getMeError,
   CHECK_ENTRY_SUCCESS,
@@ -29,7 +30,7 @@ const requestGetMeApi = () => {
 };
 
 export function* handleGetMeRequest() {
-  // TODO :
+  console.log("handleGetMeRequest");
   const { res, error } = yield call(requestGetMeApi);
   if (!error) {
     yield put(getMeSuccess(res));
@@ -37,8 +38,7 @@ export function* handleGetMeRequest() {
     if (error.response.status === 401) {
       yield put(tokenRefleshRequest());
       yield take(TOKEN_REFRESH_SUCCESS);
-      console.log(TOKEN_REFRESH_SUCCESS);
-      yield put(handleGetMeRequest);
+      yield call(handleGetMeRequest);
     }
   }
 }
@@ -64,10 +64,14 @@ const requestCheckEntryApi = () => {
 
 export function* handleCheckEntryRequest(action) {
   const { res, error } = yield call(requestCheckEntryApi);
-  if (res.status === 200 && !error) {
+  if (!error) {
     yield put(checkEntrySuccess(res, action));
   } else {
-    yield put(checkEntryError(error));
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield put(handleCheckEntryRequest);
+    }
   }
 }
 

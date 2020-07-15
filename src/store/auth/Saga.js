@@ -29,8 +29,8 @@ export function* handleTokenRefreshRequest() {
     localStorage.setItem("expires_in", res.data.expires_in);
     yield put(tokenRefleshSuccess());
   } else {
+    console.log(error);
   }
-  return res, error;
 }
 
 export function* watchTokenRefleshRequest() {

@@ -2,7 +2,7 @@ import { all, fork, call } from "redux-saga/effects";
 import {
   watchGetRoomListRequest,
   watchRoomJoinRequest,
-  handleRoomJoinSuccess,
+  watchRoomJoinSuccess,
   watchLeaveRoomRequest,
   watchDeleteRoomRequest,
   watchGetChatpostRequest,
@@ -30,7 +30,7 @@ export default function* rootSaga() {
     call(watchInit),
     call(watchGetRoomListRequest),
     call(watchRoomJoinRequest),
-    call(handleRoomJoinSuccess),
+    call(watchRoomJoinSuccess),
     call(watchGetChatpostRequest),
     call(watchCreateChatpostRequest),
     call(watchLeaveRoomRequest),

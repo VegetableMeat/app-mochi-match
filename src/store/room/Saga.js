@@ -22,8 +22,8 @@ import {
   CREATE_CHATPOSTLIST_REQUEST,
 } from "./Action";
 import { showModalFalse, showModalTrue } from "./../common/Action";
-
 import { joinRoomSocket, leaveRoomSocket } from "./../socket/Action";
+import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "./../auth/Action";
 
 /**
  * ルームリスト取得リクエスト
@@ -46,7 +46,11 @@ export function* fetchRoomList() {
   if (data) {
     yield put(getRoomOk(data));
   } else {
-    yield put(getRoomNg(error));
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(fetchRoomList);
+    }
   }
 }
 
@@ -74,12 +78,16 @@ function* handleRoomJoinRequest(action) {
   const room_id = action.payload.room.room_id;
   const { res, error } = yield call(joinRoomReqApi, room_id);
 
-  if (res.status === 200 && !error) {
+  if (!error) {
     yield put(joinRoomSocket(room_id));
     yield put(joinRoomSuccess(room_id, action.payload.callback));
     yield put(getChatpostListRequest(room_id));
   } else {
-    yield put(joinRoomError());
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(handleRoomJoinRequest, action);
+    }
   }
 }
 
@@ -102,20 +110,25 @@ const getRoomDetailReqApi = (room_id) => {
     });
 };
 
-export function* handleRoomJoinSuccess() {
-  while (true) {
-    const action = yield take(JOIN_ROOM_SUCCESS);
-    const room_id = action.payload.room_id;
+export function* handleRoomJoinSuccess(action) {
+  const room_id = action.payload.room_id;
 
-    const { res, error } = yield call(getRoomDetailReqApi, room_id);
+  const { res, error } = yield call(getRoomDetailReqApi, room_id);
 
-    if (res.status === 200 && !error) {
-      yield put(getRoomDetailSuccess(res));
-    } else {
-      yield put(getRoomDetailError(error));
+  if (!error) {
+    yield put(getRoomDetailSuccess(res));
+  } else {
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(handleRoomJoinSuccess(action));
     }
-    action.payload.callback();
   }
+  action.payload.callback();
+}
+
+export function* watchRoomJoinSuccess() {
+  yield takeEvery(JOIN_ROOM_SUCCESS, handleRoomJoinSuccess);
 }
 
 /**
@@ -143,7 +156,11 @@ export function* handleLeaveRoomRequest(action) {
     yield put(leaveRoomSocket(room_id));
     yield put(leaveRoomSuccess(room_id));
   } else {
-    yield put(showModalTrue("SERVER_ERROR"));
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(handleLeaveRoomRequest, action);
+    }
   }
 }
 
