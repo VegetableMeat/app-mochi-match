@@ -21,10 +21,10 @@
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
-  -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
-  animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+  -webkit-animation: loadAnimation 1.7s infinite ease, round 1.7s infinite ease;
+  animation: loadAnimation 1.7s infinite ease, round 1.7s infinite ease;
 }
-@-webkit-keyframes load6 {
+@-webkit-keyframes loadAnimation {
   0% {
     box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
       0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
@@ -55,7 +55,7 @@
       0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
   }
 }
-@keyframes load6 {
+@keyframes loadAnimation {
   0% {
     box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
       0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
