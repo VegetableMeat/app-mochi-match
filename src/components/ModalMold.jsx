@@ -92,6 +92,36 @@ const ModalMold = ({ state, actions, history }) => {
           </div>
         </div>
       );
+    case "ROOM_DELETION_AND_CREATE":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            既にルームが立てられています。
+            <br />
+            以前のルームを解散してルーム作成しますか？
+          </div>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => actions.deleteRoomRequest(room, history)}
+            >
+              解散して作成する
+            </button>
+            <button
+              className="join-button color-blue"
+              onClick={() => actions.deleteRoomRequest(room, history)}
+            >
+              以前のルームに戻る
+            </button>
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              キャンセル
+            </button>
+          </div>
+        </div>
+      );
     case "ROOM_LEAVE_AND_JOIN":
       return (
         <div className="modal-body">
@@ -192,7 +222,7 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="modal-text modal-header">
             ルームの定員上限に達しています
             <br />
-            もう一度お試し下さい
+            しばらくして、もう一度お試し下さい
           </div>
           <div className="footer-button-area">
             <button

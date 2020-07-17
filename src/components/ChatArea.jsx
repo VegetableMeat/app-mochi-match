@@ -47,6 +47,7 @@ const ChatArea = ({ actions, history, state }) => {
     }
     const diffScrollHeight =
       chatlogEl.current.scrollHeight - beforeScrollHeight;
+
     chatlogEl.current.scrollTop = diffScrollHeight;
   }, [roomState.chatLog]);
 
@@ -57,7 +58,7 @@ const ChatArea = ({ actions, history, state }) => {
     }
   }, [scrollTop]);
 
-  /** console.log(scrollTop);
+  /**
    * チャットログのソートとレンダリング
    */
   let chatLogs = [];
