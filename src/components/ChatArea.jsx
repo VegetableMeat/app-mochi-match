@@ -14,6 +14,7 @@ const ChatArea = ({ actions, history, state }) => {
   const [scrollTop, setScrollTop] = useState(1);
   const [beforeScrollHeight, setBeforeScrollHeight] = useState(0);
   const [beforeChatLogLength, setBeforeChatLogLength] = useState(0);
+  const [latestMessageID, setLatestMessageID] = useState("");
   const [text, setText] = useState("");
 
   const chatlogEl = useRef(null);
@@ -39,16 +40,22 @@ const ChatArea = ({ actions, history, state }) => {
       setIsLast(true);
       return;
     }
-    setBeforeChatLogLength(roomState.chatLog.length);
     if (!chatLogMounted) {
       chatlogEl.current.scrollTop = 99999;
+      setLatestMessageID(chatLog.slice(-1)[0].id);
       setChatLogMounted(true);
       return;
     }
-    const diffScrollHeight =
-      chatlogEl.current.scrollHeight - beforeScrollHeight;
-
-    chatlogEl.current.scrollTop = diffScrollHeight;
+    setBeforeChatLogLength(chatLog.length);
+    if (latestMessageID === chatLog.slice(-1)[0].id) {
+      const diffScrollHeight =
+        chatlogEl.current.scrollHeight - beforeScrollHeight;
+      chatlogEl.current.scrollTop = diffScrollHeight;
+      return;
+    }
+    if (chatlogEl.current.scrollHeight - chatlogEl.current.scrollTop < 1000) {
+      chatlogEl.current.scrollTop = 99999;
+    }
   }, [roomState.chatLog]);
 
   useEffect(() => {
