@@ -295,10 +295,14 @@ export const GET_CHATPOSTLIST_REQUEST = "GET_CHATPOSTLIST";
 export const GET_CHATPOSTLIST_SUCCESS = "GET_CHATPOSTLIST_SUCCESS";
 export const GET_CHATPOSTLIST_ERROR = "GET_CHATPOSTLIST_ERROR";
 
-export const getChatpostListRequest = (room_id) => {
+export const getChatpostListRequest = (room_id, limit, offset) => {
   return {
     type: GET_CHATPOSTLIST_REQUEST,
-    payload: room_id,
+    payload: {
+      room_id: room_id,
+      limit: limit,
+      offset: offset,
+    },
   };
 };
 

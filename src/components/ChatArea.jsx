@@ -9,21 +9,55 @@ const ChatArea = ({ actions, history, state }) => {
   const { roomState, userState } = state;
   const { room, chatLog } = roomState;
 
+  const [isLast, setIsLast] = useState(false);
+  const [chatLogMounted, setChatLogMounted] = useState(false);
+  const [scrollTop, setScrollTop] = useState(1);
+  const [beforeScrollHeight, setBeforeScrollHeight] = useState(0);
+  const [beforeChatLogLength, setBeforeChatLogLength] = useState(0);
+  const [text, setText] = useState("");
+
+  const chatlogEl = useRef(null);
+  const textEl = useRef(null);
+
   /**
    * チャットログのElementの定義
    * チャットログの自動スクロール
    */
-  const chatlogEl = useRef(null);
+  const onScroll = () => {
+    setScrollTop(chatlogEl.current.scrollTop);
+  };
+
   useEffect(() => {
-    if (chatlogEl.current.scrollTop === 0) {
-      chatlogEl.current.scrollTop = 99999;
+    if (roomState.room.room_id == null) return;
+    actions.getChatpostListRequest(room.room_id, 20, null);
+  }, [roomState.room.room_id]);
+
+  useEffect(() => {
+    chatlogEl.current.addEventListener("scroll", onScroll);
+    if (roomState.chatLog.length === 0) return;
+    if (beforeChatLogLength >= roomState.chatLog.length) {
+      setIsLast(true);
+      return;
     }
-    if (chatlogEl.current.scrollHeight - chatlogEl.current.scrollTop < 1000) {
+    setBeforeChatLogLength(roomState.chatLog.length);
+    if (!chatLogMounted) {
       chatlogEl.current.scrollTop = 99999;
+      setChatLogMounted(true);
+      return;
     }
+    const diffScrollHeight =
+      chatlogEl.current.scrollHeight - beforeScrollHeight;
+    chatlogEl.current.scrollTop = diffScrollHeight;
   }, [roomState.chatLog]);
 
-  /**
+  useEffect(() => {
+    if (scrollTop === 0 && !isLast) {
+      setBeforeScrollHeight(chatlogEl.current.scrollHeight);
+      actions.getChatpostListRequest(room.room_id, 20, chatLog[0].created_at);
+    }
+  }, [scrollTop]);
+
+  /** console.log(scrollTop);
    * チャットログのソートとレンダリング
    */
   let chatLogs = [];
@@ -37,19 +71,10 @@ const ChatArea = ({ actions, history, state }) => {
     );
   }
 
-  chatLogs.sort(function (a, b) {
-    if (a.key < b.key) return -1;
-    if (a.key > b.key) return 1;
-    return 0;
-  });
-
   /**
    * チャットメッセージのElementとStateの定義
    * チャットメッセージ作成時のハンドリング
    */
-  const textEl = useRef(null);
-  const [text, setText] = useState("");
-
   const onTextChange = () => {
     setText(textEl.current.value);
   };

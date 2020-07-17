@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -17,9 +17,13 @@ import ShadowInputArea from "./ShadowInputArea";
 import SerchButton from "./SerchButton";
 import "./css/Top.css";
 
-const Top = ({ history }) => {
+const Top = ({ actions, history }, props) => {
   const textEl = useRef(null);
   const [text, setText] = useState("");
+
+  useEffect(() => {
+    actions.getRoomReq();
+  }, [props.count]);
 
   // TODO
   const onTextChange = () => {

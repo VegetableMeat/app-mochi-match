@@ -30,9 +30,9 @@ import {
   getChatpostListSuccess,
   CREATE_CHATPOSTLIST_REQUEST,
 } from "./Action";
-import { showModalFalse, showModalTrue } from "./../common/Action";
-import { joinRoomSocket, leaveRoomSocket } from "./../socket/Action";
-import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "./../auth/Action";
+import { showModalFalse, showModalTrue } from "../common/Action";
+import { joinRoomSocket, leaveRoomSocket } from "../socket/Action";
+import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "../auth/Action";
 
 /**
  * ルームリスト取得リクエスト
@@ -172,7 +172,6 @@ function* handleRoomJoinRequest(action) {
   if (!error) {
     yield put(joinRoomSocket(room_id));
     yield put(joinRoomSuccess(room_id, action.payload.callback));
-    yield put(getChatpostListRequest(room_id));
   } else {
     if (error.response.status === 401) {
       yield put(tokenRefleshRequest());
@@ -308,10 +307,29 @@ export function* watchDeleteRoomRequest() {
 /**
  * チャットポスト取得リクエスト
  */
-const getChatpostReqApi = (room_id) => {
+const getChatpostReqApi = (room_id, limit, offset) => {
   const url = `https://api.mochi-match.work/v1/rooms/${room_id}/messages`;
+  if (offset == null) {
+    return axios_instance
+      .get(url, {
+        params: {
+          limit: limit,
+        },
+      })
+      .then((res) => {
+        return { res };
+      })
+      .catch((error) => {
+        return { error };
+      });
+  }
   return axios_instance
-    .get(url)
+    .get(url, {
+      params: {
+        limit: limit,
+        offset: offset,
+      },
+    })
     .then((res) => {
       return { res };
     })
@@ -321,9 +339,10 @@ const getChatpostReqApi = (room_id) => {
 };
 
 export function* handleGetChatpostRequest(action) {
-  const room_id = action.payload;
+  const { room_id, limit, offset } = action.payload;
 
-  const { res, error } = yield call(getChatpostReqApi, room_id);
+  const { res, error } = yield call(getChatpostReqApi, room_id, limit, offset);
+
   if (!error) {
     yield put(getChatpostListSuccess(res.data));
   } else {

@@ -137,9 +137,15 @@ const roomState = (state = initialState, action) => {
         ...state,
       };
     case GET_CHATPOSTLIST_SUCCESS:
+      const newState = [...state.chatLog, ...action.payload];
+      newState.sort(function (a, b) {
+        if (a.created_at < b.created_at) return -1;
+        if (a.created_at > b.created_at) return 1;
+        return 0;
+      });
       return {
         ...state,
-        chatLog: [...state.chatLog, ...action.payload],
+        chatLog: newState,
       };
     case GET_CHATPOSTLIST_ERROR:
       return {

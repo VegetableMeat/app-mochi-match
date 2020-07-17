@@ -6,10 +6,10 @@ import { openSocket } from "./../socket/Action";
 
 function* initProduct(action) {
   yield put(openSocket());
+  yield put(getRoomReq());
   // TODO トークンがあれば
   const token = localStorage.getItem("access_token");
   if (token != null) {
-    yield put(getRoomReq());
     yield call(handleGetMeRequest);
     yield call(handleCheckEntryRequest, action.payload);
   }
