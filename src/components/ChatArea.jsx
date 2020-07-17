@@ -18,6 +18,9 @@ const ChatArea = ({ actions, history, state }) => {
   const [text, setText] = useState("");
   const [newMessageflg, setNewMessageflg] = useState(false);
 
+  const [newMessageCnt, setNewMessageCnt] = useState(0);
+  const [beforeMessageCnt, setBeforeMessageCnt] = useState(0);
+
   const chatlogEl = useRef(null);
   const textEl = useRef(null);
 
@@ -36,27 +39,35 @@ const ChatArea = ({ actions, history, state }) => {
 
   useEffect(() => {
     chatlogEl.current.addEventListener("scroll", onScroll);
+    // 初期遷移時判定
     if (roomState.chatLog.length === 0) return;
+    // chatLog書き換え時にlengthが変わらなかったらメッセージ取得終了
     if (beforeChatLogLength >= roomState.chatLog.length) {
       setIsLast(true);
       return;
     }
+    // 最初にchatLogにデータが入ってきた際にスクロールを動かす
     if (!chatLogMounted) {
       chatlogEl.current.scrollTop = 99999;
       setLatestMessageID(chatLog.slice(-1)[0].id);
       setChatLogMounted(true);
       return;
     }
-    setBeforeChatLogLength(chatLog.length);
+
+    // 過去メッセージ取得
     if (latestMessageID === chatLog.slice(-1)[0].id) {
+      setBeforeMessageCnt(chatLog.length - newMessageCnt);
       const diffScrollHeight =
         chatlogEl.current.scrollHeight - beforeScrollHeight;
       chatlogEl.current.scrollTop = diffScrollHeight;
       return;
+      //　新しいメッセージの取得
     } else {
+      setNewMessageCnt(chatLog.length - beforeMessageCnt);
       setLatestMessageID(chatLog.slice(-1)[0].id);
       setNewMessageflg(true);
     }
+    // 新しいメッセージの取得時のスクロール処理
     if (chatlogEl.current.scrollHeight - chatlogEl.current.scrollTop < 1000) {
       chatlogEl.current.scrollTop = 99999;
     }
@@ -64,6 +75,8 @@ const ChatArea = ({ actions, history, state }) => {
 
   useEffect(() => {
     if (scrollTop > chatlogEl.current.scrollHeight - 620) {
+      setNewMessageCnt(0);
+      setBeforeMessageCnt(chatLog.length);
       setNewMessageflg(false);
       return;
     }
@@ -124,8 +137,18 @@ const ChatArea = ({ actions, history, state }) => {
           {chatLogs}
         </div>
       </div>
-      {newMessageflg && <p>新しいメッセージがあります</p>}
+
       <div className="chat-send-area">
+        {newMessageflg && (
+          <p
+            className="new-chatlog-message"
+            onClick={() => (chatlogEl.current.scrollTop = 99999)}
+          >
+            新しいメッセージが{newMessageCnt}件あります
+            <div className="arrow1"></div>
+          </p>
+        )}
+
         <ShadowInputArea
           placeholder="メッセージ"
           value={text}
