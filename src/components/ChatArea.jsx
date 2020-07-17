@@ -16,6 +16,7 @@ const ChatArea = ({ actions, history, state }) => {
   const [beforeChatLogLength, setBeforeChatLogLength] = useState(0);
   const [latestMessageID, setLatestMessageID] = useState("");
   const [text, setText] = useState("");
+  const [newMessageflg, setNewMessageflg] = useState(false);
 
   const chatlogEl = useRef(null);
   const textEl = useRef(null);
@@ -52,6 +53,9 @@ const ChatArea = ({ actions, history, state }) => {
         chatlogEl.current.scrollHeight - beforeScrollHeight;
       chatlogEl.current.scrollTop = diffScrollHeight;
       return;
+    } else {
+      setLatestMessageID(chatLog.slice(-1)[0].id);
+      setNewMessageflg(true);
     }
     if (chatlogEl.current.scrollHeight - chatlogEl.current.scrollTop < 1000) {
       chatlogEl.current.scrollTop = 99999;
@@ -59,6 +63,10 @@ const ChatArea = ({ actions, history, state }) => {
   }, [roomState.chatLog]);
 
   useEffect(() => {
+    if (scrollTop > chatlogEl.current.scrollHeight - 620) {
+      setNewMessageflg(false);
+      return;
+    }
     if (scrollTop === 0 && !isLast) {
       setBeforeScrollHeight(chatlogEl.current.scrollHeight);
       actions.getChatpostListRequest(room.room_id, 20, chatLog[0].created_at);
@@ -116,6 +124,7 @@ const ChatArea = ({ actions, history, state }) => {
           {chatLogs}
         </div>
       </div>
+      {newMessageflg && <p>新しいメッセージがあります</p>}
       <div className="chat-send-area">
         <ShadowInputArea
           placeholder="メッセージ"
