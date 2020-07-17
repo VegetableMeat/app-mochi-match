@@ -137,7 +137,6 @@ const allErrorCheck = (post) => {
 function* fetchRoomCreation(post) {
   const { error_flg } = yield call(allErrorCheck, post.payload);
   if (!error_flg) {
-    console.log("エラーなし！ヨシ！！");
     const { res, error } = yield call(resRoomCreation, post);
     if (!error) {
       yield put(postRoomCreationOk());

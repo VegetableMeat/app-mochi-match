@@ -42,7 +42,7 @@ export default function RoomCreation({ state, actions }) {
   for (let i = 2; i <= 200; i++) {
     options.push({ value: i, label: i });
   }
-  // console.log(favorite_games);
+
   return (
     <div id="room-creation">
       <Header />
@@ -153,14 +153,12 @@ export default function RoomCreation({ state, actions }) {
                       className="select-date"
                       name="date"
                       type="date"
-                      // onChange={(e) => actions.selectStartDate(e.target.value)}
                       disabled={!select.start}
                     />
                     <input
                       className="select-time"
                       name="time"
                       type="time"
-                      // onChange={(e) => actions.selectStartTime(e.target.value)}
                       disabled={!select.start}
                     />
                   </div>
@@ -170,14 +168,12 @@ export default function RoomCreation({ state, actions }) {
                       className="select-date"
                       name="date"
                       type="date"
-                      // value={select.date}
                       onChange={(e) => actions.selectStartDate(e.target.value)}
                     />
                     <input
                       className="select-time"
                       name="time"
                       type="time"
-                      // value={select.time}
                       onChange={(e) => actions.selectStartTime(e.target.value)}
                     />
                   </div>
