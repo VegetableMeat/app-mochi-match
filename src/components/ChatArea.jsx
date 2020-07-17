@@ -39,35 +39,28 @@ const ChatArea = ({ actions, history, state }) => {
 
   useEffect(() => {
     chatlogEl.current.addEventListener("scroll", onScroll);
-    // 初期遷移時判定
     if (roomState.chatLog.length === 0) return;
-    // chatLog書き換え時にlengthが変わらなかったらメッセージ取得終了
     if (beforeChatLogLength >= roomState.chatLog.length) {
       setIsLast(true);
       return;
     }
-    // 最初にchatLogにデータが入ってきた際にスクロールを動かす
     if (!chatLogMounted) {
       chatlogEl.current.scrollTop = 99999;
       setLatestMessageID(chatLog.slice(-1)[0].id);
       setChatLogMounted(true);
       return;
     }
-
-    // 過去メッセージ取得
     if (latestMessageID === chatLog.slice(-1)[0].id) {
       setBeforeMessageCnt(chatLog.length - newMessageCnt);
       const diffScrollHeight =
         chatlogEl.current.scrollHeight - beforeScrollHeight;
       chatlogEl.current.scrollTop = diffScrollHeight;
       return;
-      //　新しいメッセージの取得
     } else {
       setNewMessageCnt(chatLog.length - beforeMessageCnt);
       setLatestMessageID(chatLog.slice(-1)[0].id);
       setNewMessageflg(true);
     }
-    // 新しいメッセージの取得時のスクロール処理
     if (chatlogEl.current.scrollHeight - chatlogEl.current.scrollTop < 1000) {
       chatlogEl.current.scrollTop = 99999;
     }
@@ -145,7 +138,7 @@ const ChatArea = ({ actions, history, state }) => {
             onClick={() => (chatlogEl.current.scrollTop = 99999)}
           >
             新しいメッセージが{newMessageCnt}件あります
-            <div className="arrow1"></div>
+            <div className="arrow"></div>
           </p>
         )}
 
