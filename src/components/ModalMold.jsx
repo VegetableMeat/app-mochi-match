@@ -225,9 +225,11 @@ const ModalMold = ({ state, actions, history }) => {
       return (
         <div className="modal-body">
           <div className="modal-text modal-header">
-            入力エラーがあります
-            {/* TODO: ここにエラー内容 */}
+            {modalState.data.room_creation_error.title}
           </div>
+          {modalState.data.room_creation_error.msg.map((error, key) => (
+            <div key={key}>{error}</div>
+          ))}
           <div className="footer-button-area">
             <button
               className="cancel-button color-red"

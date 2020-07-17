@@ -29,7 +29,7 @@ import "./css/RoomCreation.css";
 import { roomCreationSaga } from "../store/room/Saga";
 import { selectStartDate, postRoomCreationReq } from "../store/room/Action";
 
-export default function RoomCreation({ state, actions }) {
+export default function RoomCreation({ state, actions, history }) {
   useEffect(() => {
     actions.getGameTitleReq();
     actions.getGameHardReq();
@@ -212,7 +212,11 @@ export default function RoomCreation({ state, actions }) {
             <button
               className="color-blue"
               onClick={() =>
-                actions.postRoomCreationReq({ select: select, error: error })
+                actions.postRoomCreationReq({
+                  select: select,
+                  error: error,
+                  push: history.push,
+                })
               }
             >
               ルーム作成

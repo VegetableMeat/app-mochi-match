@@ -82,12 +82,10 @@ const resRoomCreation = (post) => {
       start: start,
     })
     .then((res) => {
-      console.log(res);
       return { res };
     })
     .catch((e) => {
       const error = e;
-      console.log(e);
       return { error };
     });
 };
@@ -118,32 +116,50 @@ const getGameHard = (get) => {
 
 const allErrorCheck = (post) => {
   let error_flg = false;
+  let error_msg = [];
   Object.entries(post.error).map(([key, value]) => {
     if (key.match(/^input_[a-zA-Z0-9]*$/)) {
       if (key !== "input_time" && key !== "input_date") {
         if (value) {
           error_flg = true;
+          error_msg.push(post.select[key.replace("input_", "")]);
         }
       } else if (post.select.start) {
         if (value) {
           error_flg = true;
+          error_msg.push(post.select[key.replace("input_", "")]);
         }
       }
     }
   });
-  return { error_flg };
+  return { error_flg, error_msg };
 };
 
 function* fetchRoomCreation(post) {
-  const { error_flg } = yield call(allErrorCheck, post.payload);
-  if (!error_flg) {
-    const { res, error } = yield call(resRoomCreation, post);
-    if (!error) {
-      yield put(postRoomCreationOk());
-      return;
+  const { error_flg, error_msg } = yield call(allErrorCheck, post.payload);
+  if (error_flg) {
+    return yield put(
+      showModalTrue("POST_ROOM_ERROR", "room_creation_error", {
+        title: "入力エラー！",
+        msg: error_msg,
+      })
+    );
+  }
+
+  const { res, error } = yield call(resRoomCreation, post);
+  if (!error) {
+    yield put(postRoomCreationOk());
+    yield call(post.payload.push, "/intheroom");
+  } else {
+    if (error.response.status === 400) {
+      yield put(
+        showModalTrue("POST_ROOM_ERROR", "room_creation_error", {
+          title: "作成エラー！",
+          msg: ["ルームを解散していないか、他のルームに参加中です"],
+        })
+      );
     }
   }
-  yield put(showModalTrue("POST_ROOM_ERROR", "room_creation_error", null));
 }
 
 function* fetchTitleRoomCreation(get) {
