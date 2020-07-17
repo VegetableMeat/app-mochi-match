@@ -4,7 +4,7 @@ import UserName from "./UserName";
 import DetailsButton from "./DetailsButton";
 import "./css/UserPlate.css";
 
-const UserPlate = ({ icon, name }) => {
+const UserPlate = ({ icon, name, id }) => {
   return (
     <div className="user-plate">
       <UserIcon icon={icon} />

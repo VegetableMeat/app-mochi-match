@@ -4,7 +4,7 @@ import Top from "./../containers/TopContainer";
 import Login from "./../containers/LoginContainer";
 import Logout from "./Logout";
 import Auth from "./../containers/AuthContainer";
-import History from "./History";
+import History from "./../containers/HistoryContainer";
 import Register from "./../containers/RegisterContainer";
 import SignUp from "./SignUp";
 import ProfileSetting from "./ProfileSettings";

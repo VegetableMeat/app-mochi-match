@@ -1,27 +1,27 @@
 #profile-setting {
-
 }
 
 .favorite-games-area {
-	position: relative;
-	margin: 8px 0 24px;
+  position: relative;
+  margin: 8px 0 24px;
 }
 
 .favorite-games-area .game-name-plate {
-	position: relative;
-	margin: 2px 4px;
+  position: relative;
+  margin: 2px 4px;
+  padding: 2px 12px;
 }
 
 .favorite-game-add-area {
-	position: relative;
+  position: relative;
 }
 
 .favorite-game-add-area .add-button {
-	position: absolute;
-	top: -2px;
-	right: 4px;
+  position: absolute;
+  top: -2px;
+  right: 4px;
 }
 
 #profile-setting .center-main-body {
-	height: 640px;
+  height: 640px;
 }

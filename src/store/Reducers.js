@@ -10,6 +10,7 @@ import adminState from "./common/admin/Reducer";
 import roomCreationState from "./room/creation/Reducer";
 import userState from "./user/Reducer";
 import socketState from "./socket/Reducer";
+import historyState from "./history/Reducer";
 
 const rootReducers = combineReducers({
   roomListState,
@@ -23,6 +24,7 @@ const rootReducers = combineReducers({
   roomCreationState,
   userState,
   socketState,
+  historyState,
 });
 
 export default rootReducers;

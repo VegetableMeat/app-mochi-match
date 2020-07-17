@@ -19,7 +19,7 @@ import {
 import { watchInit } from "./init/Saga";
 import { watchCheckEntryRequest, watchCheckEntrySuccess } from "./user/Saga";
 import { watchTokenRefleshRequest } from "./auth/Saga";
-
+import { historySaga } from "./history/Saga";
 export default function* rootSaga() {
   yield all([
     ...favoriteGamesSaga,
@@ -29,6 +29,7 @@ export default function* rootSaga() {
     ...adminTitleSaga,
     ...adminHardSaga,
     ...roomCreationSaga,
+    ...historySaga,
     call(watchInit),
     call(watchGetRoomListRequest),
     call(watchRoomJoinRequest),
