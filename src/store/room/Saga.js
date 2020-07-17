@@ -66,25 +66,28 @@ export function* fetchRoomList() {
 export const roomListSaga = [takeLatest(GET_ROOM_REQ, fetchRoomList)];
 
 // RoomCreation
-// TODO: 後で色々やる
 const resRoomCreation = (post) => {
-  console.log("post", post);
+  let start = null;
+  if (post.payload.select.start) {
+    start = new Date(
+      post.payload.select.date + " " + post.payload.select.time
+    ).toISOString();
+  }
   return axios_instance
     .post(post.url, {
-      room_text: post.payload.text,
-      game_list_id: post.payload.title,
-      game_hard_id: post.payload.hard,
-      capacity: post.payload.capacity,
-      start: new Date(
-        post.payload.date + " " + post.payload.time
-      ).toISOString(),
+      room_text: post.payload.select.text,
+      game_list_id: post.payload.select.title,
+      game_hard_id: post.payload.select.hard,
+      capacity: post.payload.select.capacity,
+      start: start,
     })
     .then((res) => {
+      console.log(res);
       return { res };
     })
     .catch((e) => {
-      const error = e.data;
-      console.log(e.data);
+      const error = e;
+      console.log(e);
       return { error };
     });
 };
@@ -113,14 +116,35 @@ const getGameHard = (get) => {
     });
 };
 
-function* fetchRoomCreation(post) {
-  const { res, error } = yield call(resRoomCreation, post);
-  console.log("resssssss", res.data);
-  if (res.data === 200 && !error) {
-    return yield put(postRoomCreationOk());
-  }
+const allErrorCheck = (post) => {
+  let error_flg = false;
+  Object.entries(post.error).map(([key, value]) => {
+    if (key.match(/^input_[a-zA-Z0-9]*$/)) {
+      if (key !== "input_time" && key !== "input_date") {
+        if (value) {
+          error_flg = true;
+        }
+      } else if (post.select.start) {
+        if (value) {
+          error_flg = true;
+        }
+      }
+    }
+  });
+  return { error_flg };
+};
 
-  return yield put(postRoomCreationNg());
+function* fetchRoomCreation(post) {
+  const { error_flg } = yield call(allErrorCheck, post.payload);
+  if (!error_flg) {
+    console.log("エラーなし！ヨシ！！");
+    const { res, error } = yield call(resRoomCreation, post);
+    if (!error) {
+      yield put(postRoomCreationOk());
+      return;
+    }
+  }
+  yield put(showModalTrue("POST_ROOM_ERROR", "room_creation_error", null));
 }
 
 function* fetchTitleRoomCreation(get) {

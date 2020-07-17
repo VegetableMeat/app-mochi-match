@@ -10,7 +10,6 @@ const ModalMold = ({ state, actions, history }) => {
   };
 
   const callback = () => history.push("/intheroom");
-
   switch (modalState.category) {
     case "TOP_ROOM_IN":
       return (
@@ -218,6 +217,23 @@ const ModalMold = ({ state, actions, history }) => {
               onClick={() => actions.showModalFalse()}
             >
               OK
+            </button>
+          </div>
+        </div>
+      );
+    case "POST_ROOM_ERROR":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            入力エラーがあります
+            {/* TODO: ここにエラー内容 */}
+          </div>
+          <div className="footer-button-area">
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              閉じる
             </button>
           </div>
         </div>

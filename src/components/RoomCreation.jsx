@@ -21,6 +21,7 @@ import InlineArea from "./InlineArea";
 import ShadowTextArea from "./ShadowTextArea";
 import CenterMainBody from "./CenterMainBody";
 import BodyHeader from "./BodyHeader";
+import Modal from "../containers/ModalContainer";
 
 import { inputValidation } from "../store/validation/Validation";
 
@@ -28,38 +29,20 @@ import "./css/RoomCreation.css";
 import { roomCreationSaga } from "../store/room/Saga";
 import { selectStartDate, postRoomCreationReq } from "../store/room/Action";
 
-export default function RoomCreation({ roomCreation, user, actions }) {
+export default function RoomCreation({ state, actions }) {
   useEffect(() => {
     actions.getGameTitleReq();
     actions.getGameHardReq();
   }, [actions]);
 
-  const { get_data, error, select } = roomCreation.data;
+  const { get_data, error, select } = state.roomCreationState.data;
+  const { favorite_games } = state.userState.user;
   const options = [];
 
   for (let i = 2; i <= 200; i++) {
     options.push({ value: i, label: i });
   }
-  if (select.start && !error.input_date && !error.input_time) {
-    const test_date = new Date(select.date + " " + select.time).toISOString();
-    // console.log(test_date);
-  }
-
-  // const result_date =
-  //   test_date.getFullYear() +
-  //   "-" +
-  //   ("0" + (test_date.getMonth() + 1)).slice(-2) +
-  //   "-" +
-  //   ("0" + test_date.getDate()).slice(-2) +
-  //   "T" +
-  //   ("0" + test_date.getHours()).slice(-2) +
-  //   ":" +
-  //   ("0" + test_date.getMinutes()).slice(-2) +
-  //   ":" +
-  //   ("0" + test_date.getSeconds()).slice(-2) +
-  //   ".000000Z";
-  // console.log(select);
-  // console.log(user);
+  // console.log(favorite_games);
   return (
     <div id="room-creation">
       <Header />
@@ -71,11 +54,11 @@ export default function RoomCreation({ roomCreation, user, actions }) {
             <div className="section-inner-wrapper">
               <HeadLine2>お気に入りゲーム</HeadLine2>
               <div className="favorite-games-area">
-                {get_data.title &&
-                  get_data.title.map((d) => (
+                {favorite_games &&
+                  favorite_games.map((d) => (
                     <GameNamePlate
                       title={d.game_title}
-                      value={d.id}
+                      value={d.game_id}
                       click={actions.clickSelectGameTitle}
                     />
                   ))}
@@ -170,14 +153,14 @@ export default function RoomCreation({ roomCreation, user, actions }) {
                       className="select-date"
                       name="date"
                       type="date"
-                      onChange={(e) => actions.selectStartDate(e.target.value)}
+                      // onChange={(e) => actions.selectStartDate(e.target.value)}
                       disabled={!select.start}
                     />
                     <input
                       className="select-time"
                       name="time"
                       type="time"
-                      onChange={(e) => actions.selectStartTime(e.target.value)}
+                      // onChange={(e) => actions.selectStartTime(e.target.value)}
                       disabled={!select.start}
                     />
                   </div>
@@ -232,7 +215,9 @@ export default function RoomCreation({ roomCreation, user, actions }) {
           <div className="footer-button-area">
             <button
               className="color-blue"
-              onClick={() => actions.postRoomCreationReq(select)}
+              onClick={() =>
+                actions.postRoomCreationReq({ select: select, error: error })
+              }
             >
               ルーム作成
             </button>
@@ -241,6 +226,7 @@ export default function RoomCreation({ roomCreation, user, actions }) {
         </CenterMainBody>
       </Body>
       <Footer />
+      <Modal />
     </div>
   );
 }
