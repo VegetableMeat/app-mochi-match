@@ -6,8 +6,7 @@ import RoomCreation from "../components/RoomCreation";
 
 const mapStateToProps = (state) => {
   return {
-    roomCreation: state.roomCreationState,
-    user: state.userState,
+    state: state,
   };
 };
 
