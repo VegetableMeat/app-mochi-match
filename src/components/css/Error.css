@@ -1,0 +1,16 @@
+.error {
+  position: relative;
+  display: inline-block;
+  color: red;
+  margin: 0px 10px 5px 0px;
+  animation: show-msg 1.2s both;
+}
+
+@keyframes show-msg {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
