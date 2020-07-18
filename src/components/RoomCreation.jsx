@@ -26,6 +26,7 @@ import Modal from "../containers/ModalContainer";
 import { inputValidation } from "../store/validation/Validation";
 
 import "./css/RoomCreation.css";
+import selectStyles, { option } from "./custom/Select";
 import { roomCreationSaga } from "../store/room/Saga";
 import { selectStartDate, postRoomCreationReq } from "../store/room/Action";
 
@@ -37,12 +38,9 @@ export default function RoomCreation({ state, actions, history }) {
 
   const { get_data, error, select } = state.roomCreationState.data;
   const { favorite_games } = state.userState.user;
-  const options = [];
-
-  for (let i = 2; i <= 200; i++) {
-    options.push({ value: i, label: i });
-  }
-
+  useEffect(() => {
+    console.log(select.capacity);
+  }, [select]);
   return (
     <div id="room-creation">
       <Header />
@@ -102,21 +100,13 @@ export default function RoomCreation({ state, actions, history }) {
 
             <HeadLine1>定員選択</HeadLine1>
             <div className="section-inner-wrapper">
-              {/* TODO: 後で消す */}
-              {/* <div class="selectdiv">
-                <label>
-                  <select>
-                    <option selected>2</option>
-                    {capacity}
-                  </select>
-                </label>
-              </div> */}
               <Select
-                options={options}
+                options={option()}
                 defaultValue={{
                   value: select.capacity,
                   label: select.capacity,
                 }}
+                styles={selectStyles()}
                 onChange={(e) => actions.selectCapacity(e.value)}
               />
             </div>
@@ -204,7 +194,7 @@ export default function RoomCreation({ state, actions, history }) {
               />
             </div>
             <div className="error">
-              {error.input_text ? error.rec_text_msg : null}
+              {error.input_text ? error.text_msg : null}
             </div>
           </div>
 

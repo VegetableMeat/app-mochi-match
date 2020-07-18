@@ -33,6 +33,7 @@ const initiaState = {
       input_date: true,
       input_time: true,
       input_text: false,
+      text_msg: "募集テキストは必ず入力してください",
     },
     select: {
       title: "ゲームタイトルが選択されていません",
