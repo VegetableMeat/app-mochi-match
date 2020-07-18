@@ -13,12 +13,17 @@ import RoomCreation from "./../containers/RoomCreationContainer";
 import InTheRoom from "./../containers/InTheRoomContainer";
 import Admin from "./../containers/AdminContainer";
 import LoginDone from "./../containers/LoginDoneContainer";
+import Loading from "./Loading";
 
 const App = ({ actions, history }) => {
   useEffect(() => {
     actions.init(history);
   }, [actions, history]);
 
+  const loading = false;
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <Switch>
       <Route exact path="/" component={Top} />
