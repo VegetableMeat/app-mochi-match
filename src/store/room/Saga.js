@@ -29,6 +29,7 @@ import {
   getChatpostListRequest,
   getChatpostListSuccess,
   CREATE_CHATPOSTLIST_REQUEST,
+  roomCreateResponse,
 } from "./Action";
 import { showModalFalse, showModalTrue } from "./../common/Action";
 import { joinRoomSocket, leaveRoomSocket } from "./../socket/Action";
@@ -149,6 +150,7 @@ function* fetchRoomCreation(post) {
   const { res, error } = yield call(resRoomCreation, post);
   if (!error) {
     yield put(postRoomCreationOk());
+    yield put(roomCreateResponse(res.data));
     yield call(post.payload.push, "/intheroom");
   } else {
     if (error.response.status === 400) {
