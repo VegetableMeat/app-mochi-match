@@ -46,14 +46,14 @@ export default function RoomCreation({ state, actions, history }) {
       <Body>
         <CenterMainBody>
           <BodyHeader>ルーム作成</BodyHeader>
-          <div className="section">
-            <div
-              className={[
-                "section-inner-wrapper",
-                error.input_title ? "error-background" : "",
-              ].join(" ")}
-            >
-              <HeadLine1>ゲーム選択</HeadLine1>
+          <div
+            className={[
+              "section",
+              error.input_title ? "error-background" : "",
+            ].join(" ")}
+          >
+            <HeadLine1>ゲーム選択</HeadLine1>
+            <div className="section-inner-wrapper">
               <HeadLine2>お気に入りゲーム</HeadLine2>
               <div className="favorite-games-area">
                 {favorite_games &&
@@ -79,14 +79,14 @@ export default function RoomCreation({ state, actions, history }) {
           </div>
           <BreakUnderLine />
 
-          <div className="section">
-            <div
-              className={[
-                "section-inner-wrapper",
-                error.input_hard ? "error-background" : "",
-              ].join(" ")}
-            >
-              <HeadLine1>ハード選択</HeadLine1>
+          <div
+            className={[
+              "section",
+              error.input_hard ? "error-background" : "",
+            ].join(" ")}
+          >
+            <HeadLine1>ハード選択</HeadLine1>
+            <div className="section-inner-wrapper">
               <HardSelectArea>
                 {get_data.hard &&
                   get_data.hard.map((d) =>
@@ -104,7 +104,8 @@ export default function RoomCreation({ state, actions, history }) {
               </HardSelectArea>
               {error.input_hard ? <Error text={select.hard} /> : null}
             </div>
-
+          </div>
+          <div className="section">
             <div className="section-inner-wrapper">
               <HeadLine1>定員選択</HeadLine1>
               <Select
@@ -120,17 +121,17 @@ export default function RoomCreation({ state, actions, history }) {
           </div>
           <BreakUnderLine />
 
-          <div className="section">
-            <div
-              className={[
-                "section-inner-wrapper",
-                (select.start && error.input_date) ||
-                (select.start && error.input_time)
-                  ? "error-background"
-                  : "",
-              ].join(" ")}
-            >
-              <HeadLine1>開始時間選択</HeadLine1>
+          <div
+            className={[
+              "section",
+              (select.start && error.input_date) ||
+              (select.start && error.input_time)
+                ? "error-background"
+                : "",
+            ].join(" ")}
+          >
+            <HeadLine1>開始時間選択</HeadLine1>
+            <div className="section-inner-wrapper">
               <div className="radio">
                 <div>
                   <input
@@ -194,14 +195,14 @@ export default function RoomCreation({ state, actions, history }) {
           </div>
           <BreakUnderLine />
 
-          <div className="section">
-            <div
-              className={[
-                "section-inner-wrapper",
-                error.input_text ? "error-background" : "",
-              ].join(" ")}
-            >
-              <HeadLine1>募集テキスト</HeadLine1>
+          <div
+            className={[
+              "section",
+              error.input_text ? "error-background" : "",
+            ].join(" ")}
+          >
+            <HeadLine1>募集テキスト</HeadLine1>
+            <div className="section-inner-wrapper">
               <textarea
                 className="textarea"
                 value={select.text}
