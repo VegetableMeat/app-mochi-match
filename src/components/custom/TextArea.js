@@ -1,25 +1,28 @@
 import styles from "./index";
 /**
- * オプションの作成
- */
-export const capacityOption = () => {
-  const options = [];
-  for (let i = 2; i <= 20; i++) {
-    options.push({ value: i, label: i });
-  }
-  return options;
-};
-/**
  * スタイルを設定する
  */
-const selectStyles = () => {
+const textAreaStyles = () => {
   const style = [
+    {
+      key: "container",
+      func: (base) => ({
+        ...base,
+        minHeight: "30px",
+        border: "none",
+        borderRadius: "0px",
+        borderBottom: "1px solid rgba(168, 168, 168, 0.8)",
+        boxShadow: "0px 6px 5px -5px rgba(168, 168, 168, 0.8)",
+      }),
+    },
     {
       key: "control",
       func: (base) => ({
         ...base,
-        "&:hover": { borderColor: "rgba(168, 168, 168, 0.8)" },
-        border: "1px solid rgba(168, 168, 168, 0.8)",
+        minHeight: "30px",
+        border: "none",
+        borderRadius: "0px",
+        "&:hover": { cursor: "text" },
         boxShadow: "none",
       }),
     },
@@ -40,8 +43,6 @@ const selectStyles = () => {
       key: "menu",
       func: (base) => ({
         ...base,
-        position: "relative",
-        "z-index": "2",
         margin: "4px 0px",
         color: "#7d7d7d",
       }),
@@ -75,4 +76,4 @@ const selectStyles = () => {
   return styles(style);
 };
 
-export default selectStyles;
+export default textAreaStyles;
