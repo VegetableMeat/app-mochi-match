@@ -26,7 +26,9 @@ import AddButton from "./AddButton";
 import "./css/ProfileSetting.css";
 import inputAreaStyles from "./custom/InputArea";
 
-const ProfileSetting = () => {
+const ProfileSetting = ({ state, actions }) => {
+  const { value } = state.profileState;
+  console.log(value);
   return (
     <div id="profile-setting">
       <Header />
@@ -66,7 +68,8 @@ const ProfileSetting = () => {
                   {/* <ShadowTextArea /> */}
                   <Select
                     styles={inputAreaStyles()}
-                    // onChange={(e) => actions.selectCapacity(e.value)}
+                    value={value}
+                    onInputChange={(e) => actions.inputUserName(e)}
                   />
                 </div>
               </div>

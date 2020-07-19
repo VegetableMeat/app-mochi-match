@@ -7,7 +7,7 @@ import Auth from "./../containers/AuthContainer";
 import History from "./History";
 import Register from "./../containers/RegisterContainer";
 import SignUp from "./SignUp";
-import ProfileSetting from "./ProfileSettings";
+import ProfileSetting from "../containers/ProfileSettingsContainer";
 import Configuration from "./Configuration";
 import RoomCreation from "./../containers/RoomCreationContainer";
 import InTheRoom from "./../containers/InTheRoomContainer";

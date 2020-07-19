@@ -5,21 +5,22 @@ import styles from "./index";
 const inputAreaStyles = () => {
   const style = [
     {
+      key: "container",
+      func: (base) => ({
+        ...base,
+        borderBottom: "1px solid rgba(168, 168, 168, 0.8)",
+        "box-shadow": "0px 5px 5px -5px rgba(168, 168, 168, 0.8)",
+      }),
+    },
+    {
       key: "control",
       func: (base) => ({
         ...base,
+        "min-height": "30px",
         "border-radius": "0",
-        "border-top": "0",
-        "border-bottom": "1px solid rgba(168, 168, 168, 0.8)",
-        "border-left": "0",
-        "border-right": "0",
-        "&:hover": {
-          "border-bottom": "1px solid rgba(168, 168, 168, 0.8)",
-          cursor: "text",
-        },
-        // border: "1px solid #b6b6b6",
-        filter: "drop-shadow(1px 4px 2px gray)",
+        border: "none",
         boxShadow: "none",
+        "&:hover": { cursor: "text" },
       }),
     },
     {
