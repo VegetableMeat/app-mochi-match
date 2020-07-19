@@ -18,7 +18,6 @@ import HardSelectArea from "./HardSelectArea";
 import HardIcon from "./HardIcon";
 import OtherButton from "./OtherButton";
 import InlineArea from "./InlineArea";
-import ShadowTextArea from "./ShadowTextArea";
 import CenterMainBody from "./CenterMainBody";
 import BodyHeader from "./BodyHeader";
 import Modal from "../containers/ModalContainer";
@@ -67,14 +66,6 @@ export default function RoomCreation({ state, actions, history }) {
                   ))}
               </div>
               <HeadLine2>その他</HeadLine2>
-              {/* <ShadowTextArea
-                placeholder="ゲームタイトル"
-                auto_flg={true}
-                name="game_title"
-                data_list={get_data.title}
-                actions={actions.inputSelectGameTitle}
-                value={select.input_title}
-              /> */}
               <Select
                 placeholder="文字入力で検索できます"
                 options={
