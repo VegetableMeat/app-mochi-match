@@ -62,6 +62,7 @@ const ProfileSetting = () => {
               <div className="wrapper">
                 <HeadLine1>ユーザー名</HeadLine1>
                 <div className="left-space-wrapper">
+                  {/* TODO: 後で消す */}
                   {/* <ShadowTextArea /> */}
                   <Select
                     styles={inputAreaStyles()}

@@ -8,8 +8,17 @@ const inputAreaStyles = () => {
       key: "control",
       func: (base) => ({
         ...base,
-        "&:hover": { borderColor: "#b6b6b6" },
-        border: "1px solid #b6b6b6",
+        "border-radius": "0",
+        "border-top": "0",
+        "border-bottom": "1px solid rgba(168, 168, 168, 0.8)",
+        "border-left": "0",
+        "border-right": "0",
+        "&:hover": {
+          "border-bottom": "1px solid rgba(168, 168, 168, 0.8)",
+          cursor: "text",
+        },
+        // border: "1px solid #b6b6b6",
+        filter: "drop-shadow(1px 4px 2px gray)",
         boxShadow: "none",
       }),
     },
@@ -21,7 +30,25 @@ const inputAreaStyles = () => {
       }),
     },
     {
+      key: "indicatorsContainer",
+      func: () => ({
+        display: "none",
+      }),
+    },
+    {
+      key: "indicatorSeparator",
+      func: () => ({
+        display: "none",
+      }),
+    },
+    {
       key: "menu",
+      func: () => ({
+        display: "none",
+      }),
+    },
+    {
+      key: "placeholder",
       func: () => ({
         display: "none",
       }),
