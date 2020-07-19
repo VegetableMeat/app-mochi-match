@@ -82,7 +82,7 @@ export default function RoomCreation({ state, actions, history }) {
           <div
             className={[
               "section",
-              error.input_title ? "error-background" : "",
+              error.input_hard ? "error-background" : "",
             ].join(" ")}
           >
             <HeadLine1>ハード選択</HeadLine1>
