@@ -39,7 +39,7 @@ export default function RoomCreation({ state, actions, history }) {
 
   const { get_data, error, select } = state.roomCreationState.data;
   const { favorite_games } = state.userState.user;
-
+  console.log(select);
   return (
     <div id="room-creation">
       <Header />
@@ -105,13 +105,14 @@ export default function RoomCreation({ state, actions, history }) {
                 {get_data.hard &&
                   get_data.hard.map((d) =>
                     d.id === select.hard ? (
-                      <HardIcon id={d.id} select_flg={true} />
+                      <HardIcon id={d.id} isSelect={true} />
                     ) : (
                       <HardIcon
+                        name="game_hard"
                         id={d.id}
                         actions={actions.selectGameHard}
-                        data={get_data.hard}
-                        name="game_hard"
+                        isValidate={true}
+                        list={get_data.hard}
                       />
                     )
                   )}
@@ -222,10 +223,12 @@ export default function RoomCreation({ state, actions, history }) {
                 className="textarea"
                 value={select.text}
                 onChange={(e) =>
-                  inputValidation(
-                    { value: e.target.value, name: "rec_text" },
-                    actions.inputText
-                  )
+                  inputValidation({
+                    value: e.target.value,
+                    name: "rec_text",
+                    action: actions.inputText,
+                    list: [],
+                  })
                 }
               />
               {error.input_text ? <Error text={error.text_msg} /> : null}
