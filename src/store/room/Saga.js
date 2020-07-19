@@ -150,7 +150,7 @@ function* fetchRoomCreation(post) {
   const { res, error } = yield call(resRoomCreation, post);
   if (!error) {
     yield put(postRoomCreationOk());
-    yield put(roomCreateResponse(res.data));
+    yield put(getRoomDetailSuccess(res.data));
     yield call(post.payload.push, "/intheroom");
   } else {
     if (error.response.status === 400) {

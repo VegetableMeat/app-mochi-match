@@ -343,12 +343,3 @@ export const createChatpostListError = (err) => {
     payload: err,
   };
 };
-
-export const ROOM_CREATE_RESPONSE = "ROOM_CREATE_RESPONSE";
-
-export const roomCreateResponse = (data) => {
-  return {
-    type: ROOM_CREATE_RESPONSE,
-    payload: data,
-  };
-};
