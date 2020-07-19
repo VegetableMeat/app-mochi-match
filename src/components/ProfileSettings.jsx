@@ -1,4 +1,5 @@
 import React from "react";
+import Select from "react-select";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -23,6 +24,7 @@ import ShadowTextArea from "./ShadowTextArea";
 import BreakUnderLine from "./BreakUnderLine";
 import AddButton from "./AddButton";
 import "./css/ProfileSetting.css";
+import inputAreaStyles from "./custom/InputArea";
 
 const ProfileSetting = () => {
   return (
@@ -60,7 +62,11 @@ const ProfileSetting = () => {
               <div className="wrapper">
                 <HeadLine1>ユーザー名</HeadLine1>
                 <div className="left-space-wrapper">
-                  <ShadowTextArea />
+                  {/* <ShadowTextArea /> */}
+                  <Select
+                    styles={inputAreaStyles()}
+                    // onChange={(e) => actions.selectCapacity(e.value)}
+                  />
                 </div>
               </div>
               <BreakUnderLine />
