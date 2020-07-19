@@ -13,7 +13,6 @@ import {
   GET_CHATPOSTLIST_REQUEST,
   GET_CHATPOSTLIST_SUCCESS,
   GET_CHATPOSTLIST_ERROR,
-  ROOM_CREATE_RESPONSE,
 } from "./../Action";
 
 const initialState = {
@@ -145,22 +144,6 @@ const roomState = (state = initialState, action) => {
     case GET_CHATPOSTLIST_ERROR:
       return {
         ...state,
-      };
-    case ROOM_CREATE_RESPONSE:
-      return {
-        ...state,
-        room: {
-          ...state.room,
-          room_id: action.payload.room.room_id,
-          owner_id: action.payload.room.owner_id,
-          hard: action.payload.room.hard,
-          title: action.payload.room.title,
-          capacity: action.payload.room.capacity,
-          count: action.payload.room.count,
-          text: action.payload.room.text,
-        },
-        join_users: [...state.join_users, ...action.payload.room.join_users],
-        isEntry: true,
       };
     default:
       return state;
