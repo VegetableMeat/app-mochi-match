@@ -143,7 +143,9 @@ const roomCreationState = (state = initiaState, action) => {
           select: {
             ...state.data.select,
             input_title: action.payload.text,
-            title: action.payload.data,
+            title: state.data.get_data.title.filter((data) => {
+              return data.game_title === action.payload.data;
+            })[0].id,
             title_click_flg: false,
           },
         },
