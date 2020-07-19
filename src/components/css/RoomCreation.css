@@ -102,3 +102,19 @@
 #room-creation .game-name-plate .game-title {
   line-height: 16px;
 }
+
+.error-background {
+  /* border-radius: 4px; */
+  animation: error-back 1.2s both;
+}
+
+@keyframes error-back {
+  0% {
+    /* border: solid 1px rgba(255, 187, 187, 0.1); */
+    background: rgba(255, 187, 187, 0.1);
+  }
+  100% {
+    /* border: solid 1px rgba(255, 187, 187, 0.4); */
+    background: rgba(255, 187, 187, 0.4);
+  }
+}
