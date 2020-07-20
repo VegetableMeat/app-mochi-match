@@ -24,7 +24,7 @@ export default function HardIcon({
                   action: actions,
                   list: list,
                 })
-            : {}
+            : () => {}
         }
       ></div>
     </div>

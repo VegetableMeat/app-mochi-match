@@ -67,6 +67,7 @@ export default function RoomCreation({ state, actions, history }) {
               </div>
               <HeadLine2>その他</HeadLine2>
               <Select
+                menuPortalTarget={document.body}
                 placeholder="文字入力で検索できます"
                 options={
                   get_data.title

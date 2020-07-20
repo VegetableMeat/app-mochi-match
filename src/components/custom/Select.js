@@ -14,6 +14,15 @@ export const capacityOption = () => {
  */
 const selectStyles = () => {
   const style = [
+    // {
+    //   key: "container",
+    //   fuc: (base, { isDisabled }) => ({
+    //     ...base,
+    //     opacity: isDisabled ? ".5" : "1",
+    //     backgroundColor: "transparent",
+    //     zIndex: "999",
+    //   }),
+    // },
     {
       key: "control",
       func: (base) => ({
@@ -40,8 +49,6 @@ const selectStyles = () => {
       key: "menu",
       func: (base) => ({
         ...base,
-        position: "relative",
-        "z-index": "2",
         margin: "4px 0px",
         color: "#7d7d7d",
       }),
