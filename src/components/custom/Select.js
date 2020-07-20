@@ -40,8 +40,6 @@ const selectStyles = () => {
       key: "menu",
       func: (base) => ({
         ...base,
-        position: "relative",
-        "z-index": "2",
         margin: "4px 0px",
         color: "#7d7d7d",
       }),
@@ -50,7 +48,6 @@ const selectStyles = () => {
       key: "option",
       func: (base, { isFocused, isSelected }) => ({
         ...base,
-        fontWeight: "bold",
         fontSize: "14px",
         color: isSelected || isFocused ? "#fff" : "#7d7d7d",
         backgroundColor: isSelected
@@ -66,7 +63,6 @@ const selectStyles = () => {
       func: (base) => ({
         ...base,
         padding: "0px 8px",
-        fontWeight: "bold",
         fontSize: "14px",
       }),
     },

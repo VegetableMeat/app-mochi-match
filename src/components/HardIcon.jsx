@@ -3,26 +3,28 @@ import { inputValidation } from "../store/validation/Validation";
 import "./css/HardIcon.css";
 
 export default function HardIcon({
+  name,
   id,
   actions,
-  data,
-  name,
-  select_flg = false,
+  isSelect = false,
+  isValidate = false,
+  list = [],
 }) {
-  if (select_flg) {
-    return (
-      <div className="hard-icon">
-        <div className="select"></div>
-        <div className="icon"></div>
-      </div>
-    );
-  }
   return (
     <div className="hard-icon">
+      {isSelect && <div className="select"></div>}
       <div
         className="icon"
-        onClick={() =>
-          inputValidation({ value: id, name: name }, actions, data)
+        onClick={
+          isValidate && !isSelect
+            ? () =>
+                inputValidation({
+                  name: name,
+                  value: id,
+                  action: actions,
+                  list: list,
+                })
+            : () => {}
         }
       ></div>
     </div>
