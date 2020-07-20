@@ -4,11 +4,17 @@ import HeaderMenu from "../containers/HeaderMenuContainer";
 import ExitButton from "./ExitButton";
 import "./css/Header.css";
 
-const Header = ({ room }) => {
+const Header = ({ room, state, actions, history }) => {
+  const { roomState, userState } = state;
   if (room === "inTheRoom") {
     return (
       <div id="header">
-        <ExitButton />
+        <ExitButton
+          room={roomState.room}
+          user={userState.user}
+          actions={actions}
+          history={history}
+        />
         <div className="title">
           <Link to="/">もちまっちげーみんぐ</Link>
         </div>

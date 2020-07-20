@@ -153,6 +153,11 @@ function* fetchRoomCreation(post) {
     yield put(getRoomDetailSuccess(res.data));
     yield call(post.payload.push, "/intheroom");
   } else {
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(fetchRoomCreation, post);
+    }
     if (error.response.status === 400) {
       yield put(
         showModalTrue("POST_ROOM_ERROR", "room_creation_error", {

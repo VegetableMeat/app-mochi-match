@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import Header from "./Header";
 import Footer from "./Footer";
 import Body from "./Body";
 import MainBody from "./MainBody";
@@ -9,6 +8,7 @@ import CreateRoomButton from "./CreateRoomButton";
 import PageNation from "./PageNation";
 import MenuHeader from "./MenuHeader";
 import MenuInnerWrapper from "./MenuInnerWrapper";
+import Header from "../containers/HeaderContainer";
 import RoomContents from "../containers/RoomContentsContainer";
 import FavoriteGames from "../containers/FavoriteGamesContainer";
 import PopularGames from "../containers/PopularGamesContainer";
@@ -17,9 +17,10 @@ import ShadowInputArea from "./ShadowInputArea";
 import SerchButton from "./SerchButton";
 import "./css/Top.css";
 
-const Top = ({ actions, history }, props) => {
+const Top = ({ state, actions, history }, props) => {
   const textEl = useRef(null);
   const [text, setText] = useState("");
+  const { roomListState } = state;
 
   useEffect(() => {
     actions.getRoomReq();
@@ -70,7 +71,7 @@ const Top = ({ actions, history }, props) => {
       <Link to="/roomcreation">
         <CreateRoomButton />
       </Link>
-      <PageNation />
+      <PageNation pageCount={roomListState.pageCount} />
       <Footer />
       <Modal />
     </div>

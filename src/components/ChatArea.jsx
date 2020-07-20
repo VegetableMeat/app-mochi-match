@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import ShadowInputArea from "./ShadowInputArea";
 import UserIcon from "./UserIcon";
 import UserName from "./UserName";
+import Loading from "./Loading";
 import "./css/ChatArea.css";
 
 const ChatArea = ({ actions, history, state }) => {
@@ -56,7 +57,7 @@ const ChatArea = ({ actions, history, state }) => {
         chatlogEl.current.scrollHeight - beforeScrollHeight;
       chatlogEl.current.scrollTop = diffScrollHeight;
       return;
-    } else {
+    } else if (chatlogEl.current.scrollHeight > 627) {
       setNewMessageCnt(chatLog.length - beforeMessageCnt);
       setLatestMessageID(chatLog.slice(-1)[0].id);
       setNewMessageflg(true);
@@ -113,15 +114,6 @@ const ChatArea = ({ actions, history, state }) => {
     }
   };
 
-  /**
-   * ルーム退室ボタン押下時のハンドリング
-   */
-  const onLeaveButtonClick = () => {
-    room.owner_id === userState.user.user_id
-      ? actions.showModalTrue("ROOM_DELETION", "room", room)
-      : actions.leaveRoomRequest(room, history);
-  };
-
   return (
     <div className="chat-wrapper">
       <div className="chat-area" ref={chatlogEl}>
@@ -130,7 +122,6 @@ const ChatArea = ({ actions, history, state }) => {
           {chatLogs}
         </div>
       </div>
-
       <div className="chat-send-area">
         {newMessageflg && (
           <p
@@ -154,14 +145,6 @@ const ChatArea = ({ actions, history, state }) => {
           onClick={() => sendChatpost(room.room_id, text)}
         >
           送信
-        </button>
-      </div>
-      <div>
-        <button
-          className="message-send-button"
-          onClick={() => onLeaveButtonClick()}
-        >
-          仮の退室ボターン
         </button>
       </div>
     </div>

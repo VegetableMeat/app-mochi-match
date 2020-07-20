@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "./Header";
+import Header from "../containers/HeaderContainer";
 import Footer from "./Footer";
 import Body from "./Body";
 import CenterMainBody from "./CenterMainBody";
