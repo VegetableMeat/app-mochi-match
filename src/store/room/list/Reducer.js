@@ -15,7 +15,7 @@ const roomListState = (state = initiaState, action) => {
     case GET_ROOM_OK:
       return {
         ...state,
-        data: action.payload,
+        data: action.payload.rooms,
         loadingFlag: false,
       };
     case GET_ROOM_NG:

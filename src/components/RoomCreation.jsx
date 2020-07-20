@@ -34,6 +34,7 @@ import { selectStartDate, postRoomCreationReq } from "../store/room/Action";
 
 export default function RoomCreation({ state, actions, history }) {
   useEffect(() => {
+    actions.roomCreationInit();
     actions.getGameTitleReq();
     actions.getGameHardReq();
   }, [actions]);
