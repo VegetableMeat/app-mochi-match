@@ -18,7 +18,6 @@ import HardSelectArea from "./HardSelectArea";
 import HardIcon from "./HardIcon";
 import OtherButton from "./OtherButton";
 import InlineArea from "./InlineArea";
-import ShadowTextArea from "./ShadowTextArea";
 import CenterMainBody from "./CenterMainBody";
 import BodyHeader from "./BodyHeader";
 import Modal from "../containers/ModalContainer";
@@ -27,7 +26,8 @@ import Error from "./Error";
 import { inputValidation } from "../store/validation/Validation";
 
 import "./css/RoomCreation.css";
-import selectStyles, { option } from "./custom/Select";
+import selectStyles, { capacityOption } from "./custom/Select";
+import TextAreaStyles from "./custom/TextArea";
 import { roomCreationSaga } from "../store/room/Saga";
 import { selectStartDate, postRoomCreationReq } from "../store/room/Action";
 
@@ -66,13 +66,27 @@ export default function RoomCreation({ state, actions, history }) {
                   ))}
               </div>
               <HeadLine2>その他</HeadLine2>
-              <ShadowTextArea
-                placeholder="ゲームタイトル"
-                auto_flg={true}
-                name="game_title"
-                data_list={get_data.title}
-                actions={actions.inputSelectGameTitle}
-                value={select.input_title}
+              <Select
+                placeholder="文字入力で検索できます"
+                options={
+                  get_data.title
+                    ? get_data.title.map((data) => ({
+                        value: data.game_title,
+                        label: data.game_title,
+                      }))
+                    : {
+                        value: "取得に失敗しました",
+                        label: "取得に失敗しました",
+                      }
+                }
+                styles={TextAreaStyles()}
+                onChange={(e) =>
+                  actions.inputSelectGameTitle({
+                    text: e.label,
+                    data: e.label,
+                    error: false,
+                  })
+                }
               />
               {error.input_title ? <Error text={select.title} /> : null}
             </div>
@@ -106,16 +120,17 @@ export default function RoomCreation({ state, actions, history }) {
             </div>
           </div>
           <div className="section">
+            <HeadLine1>定員選択</HeadLine1>
             <div className="section-inner-wrapper">
-              <HeadLine1>定員選択</HeadLine1>
               <Select
-                options={option()}
+                options={capacityOption()}
                 defaultValue={{
                   value: select.capacity,
                   label: select.capacity,
                 }}
                 styles={selectStyles()}
                 onChange={(e) => actions.selectCapacity(e.value)}
+                isSearchable={false}
               />
             </div>
           </div>
