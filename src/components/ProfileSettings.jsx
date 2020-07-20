@@ -23,12 +23,23 @@ import CenterMainBody from "./CenterMainBody";
 import ShadowTextArea from "./ShadowTextArea";
 import BreakUnderLine from "./BreakUnderLine";
 import AddButton from "./AddButton";
+import Error from "./Error";
+import TextAreaStyles from "./custom/TextArea";
 import "./css/ProfileSetting.css";
-import inputAreaStyles from "./custom/InputArea";
+import "./css/Error.css";
+import { useEffect } from "react";
+// import inputAreaStyles from "./custom/InputArea";
 
 const ProfileSetting = ({ state, actions }) => {
-  const { value } = state.profileState;
-  console.log(value);
+  const { get, profile, error, value } = state.profileState;
+  const { favorite_games } = state.userState.user;
+
+  useEffect(() => {
+    actions.getGameTitleReq();
+    actions.setFavoriteGame(favorite_games);
+  }, [actions]);
+  console.log(profile);
+  console.log(favorite_games);
   return (
     <div id="profile-setting">
       <Header />
@@ -61,16 +72,11 @@ const ProfileSetting = ({ state, actions }) => {
           <div className="side-main-body">
             <CenterMainBody>
               <BodyHeader>プロフィール設定</BodyHeader>
-              <div className="wrapper">
+              <div className="wrapper error-background">
                 <HeadLine1>ユーザー名</HeadLine1>
                 <div className="left-space-wrapper">
-                  {/* TODO: 後で消す */}
-                  {/* <ShadowTextArea /> */}
-                  <Select
-                    styles={inputAreaStyles()}
-                    value={value}
-                    onInputChange={(e) => actions.inputUserName(e)}
-                  />
+                  <ShadowTextArea actions={actions.inputUserName} />
+                  <Error text="入力してください" />
                 </div>
               </div>
               <BreakUnderLine />
@@ -92,13 +98,36 @@ const ProfileSetting = ({ state, actions }) => {
                 <HeadLine1>お気に入りゲーム</HeadLine1>
                 <div className="left-space-wrapper">
                   <div className="favorite-games-area">
-                    <GameNamePlate title="タイトル" />
-                    <GameNamePlate title="タイトル" />
-                    <GameNamePlate title="タイトル" />
-                    <GameNamePlate title="タイトル" />
+                    {profile.favorite &&
+                      profile.favorite.map((data, index) => (
+                        <GameNamePlate
+                          key={index}
+                          title={data.game_title}
+                          value={data.game_id}
+                        />
+                      ))}
                   </div>
                   <div className="favorite-game-add-area">
-                    <ShadowTextArea />
+                    <Select
+                      menuPortalTarget={document.body}
+                      placeholder="文字入力で検索できます"
+                      options={
+                        !error.get.title &&
+                        get.title.length &&
+                        get.title.map((data) => ({
+                          value: data.game_title,
+                          label: data.game_title,
+                        }))
+                      }
+                      styles={TextAreaStyles()}
+                      // onChange={(e) =>
+                      //   actions.inputSelectGameTitle({
+                      //     text: e.label,
+                      //     data: e.label,
+                      //     error: false,
+                      //   })
+                      // }
+                    />
                     <AddButton />
                   </div>
                 </div>

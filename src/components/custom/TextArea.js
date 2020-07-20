@@ -51,7 +51,7 @@ const textAreaStyles = () => {
       key: "option",
       func: (base, { isFocused, isSelected }) => ({
         ...base,
-        fontSize: "14px",
+        fontSize: "16px",
         color: isSelected || isFocused ? "#fff" : "#7d7d7d",
         backgroundColor: isSelected
           ? "darkgray"
@@ -66,7 +66,7 @@ const textAreaStyles = () => {
       func: (base) => ({
         ...base,
         padding: "0px 8px",
-        fontSize: "14px",
+        fontSize: "16px",
       }),
     },
   ];

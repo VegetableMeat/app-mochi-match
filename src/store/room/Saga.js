@@ -91,7 +91,7 @@ const resRoomCreation = (post) => {
     });
 };
 
-const getGameTitle = (get) => {
+export const getGameTitle = (get) => {
   return axios_instance
     .get(get.url)
     .then((res) => {
