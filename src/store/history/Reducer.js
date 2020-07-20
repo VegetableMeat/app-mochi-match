@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   history: [],
+  modalUser: [],
 };
 
 const historyState = (state = initialState, action) => {
@@ -15,7 +16,6 @@ const historyState = (state = initialState, action) => {
         ...state,
       };
     case GET_HISTORY_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         history: action.payload.data,

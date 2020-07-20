@@ -1,5 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router";
+import GameNamePlate from "./GameNamePlate";
+import UserIcon from "./UserIcon";
+import UserName from "./UserName";
 
 const ModalMold = ({ state, actions, history }) => {
   const { modalState } = state;
@@ -218,6 +221,36 @@ const ModalMold = ({ state, actions, history }) => {
               onClick={() => actions.showModalFalse()}
             >
               OK
+            </button>
+          </div>
+        </div>
+      );
+    case "USER_DETAILS":
+      console.log(state.modalState.data.data);
+      const user = state.modalState.data.data;
+      let favorite_games_print = "";
+      if (user.favorite_games) {
+        favorite_games_print = user.favorite_games.map((data) => (
+          <GameNamePlate title={data.game_title} />
+        ));
+      } else {
+        favorite_games_print = <p>なし</p>;
+      }
+      return (
+        <div className="modal-body">
+          <div className="user-head">
+            <UserIcon icon={user.icon} />
+            <UserName name={user.user_name} />
+          </div>
+          <div className="modal-text .modal-header-s">お気に入りゲーム</div>
+          {favorite_games_print}
+          <div className="favorite-games-area"></div>
+          <div className="footer-button-area">
+            <button
+              className="report-button color-yellow"
+              onClick={() => actions.showModalFront("REPORT", "check", [])}
+            >
+              違反報告
             </button>
           </div>
         </div>

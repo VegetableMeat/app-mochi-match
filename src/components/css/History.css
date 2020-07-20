@@ -50,3 +50,9 @@
   padding-right: 16px;
   margin: 4px 8px 8px 0;
 }
+
+#history .game-name-plate {
+  position: relative;
+  top: 0;
+  padding: 2px 12px;
+}

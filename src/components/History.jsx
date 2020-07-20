@@ -15,14 +15,16 @@ import InnerText from "./InnerText";
 import BreakUnderLine from "./BreakUnderLine";
 import "./css/History.css";
 import { useRadioGroup } from "@material-ui/core";
+import Modal from "../containers/ModalContainer";
 
 const History = ({ state, actions }) => {
   useEffect(() => {
     actions.getHistoryRequest();
   }, [actions]);
-  state.historyState.history.map((data) =>
-    data.join_users.map((user) => (user.played_date = user.played_date))
-  );
+
+  /*const onPlateClick = (data) => {
+    actions.showModalTrue("", "", data);
+  };*/
   return (
     <div id="history">
       <Header />
@@ -87,6 +89,7 @@ const History = ({ state, actions }) => {
                         icon=""
                         name={user.user_name}
                         id={user.user_id}
+                        onPlateClick={actions.getUserRequest}
                       />
                     ))}
                   </div>
@@ -97,6 +100,7 @@ const History = ({ state, actions }) => {
         </MainBody>
       </Body>
       <Footer />
+      <Modal />
     </div>
   );
 };
