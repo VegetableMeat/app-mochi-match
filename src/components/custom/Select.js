@@ -14,15 +14,6 @@ export const capacityOption = () => {
  */
 const selectStyles = () => {
   const style = [
-    // {
-    //   key: "container",
-    //   fuc: (base, { isDisabled }) => ({
-    //     ...base,
-    //     opacity: isDisabled ? ".5" : "1",
-    //     backgroundColor: "transparent",
-    //     zIndex: "999",
-    //   }),
-    // },
     {
       key: "control",
       func: (base) => ({
@@ -57,7 +48,6 @@ const selectStyles = () => {
       key: "option",
       func: (base, { isFocused, isSelected }) => ({
         ...base,
-        fontWeight: "bold",
         fontSize: "14px",
         color: isSelected || isFocused ? "#fff" : "#7d7d7d",
         backgroundColor: isSelected
@@ -73,7 +63,6 @@ const selectStyles = () => {
       func: (base) => ({
         ...base,
         padding: "0px 8px",
-        fontWeight: "bold",
         fontSize: "14px",
       }),
     },
