@@ -2,7 +2,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as Actions from "../store/common/Action.js";
 
-import Login from "../components/Login";
+import ProfileSettings from "../components/ProfileSettings";
 
 const mapStateToProps = (state) => {
   return {
@@ -16,4 +16,4 @@ const mapDispatchProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchProps)(Login);
+export default connect(mapStateToProps, mapDispatchProps)(ProfileSettings);

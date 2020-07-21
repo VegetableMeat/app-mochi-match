@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Footer from "./Footer";
 import Body from "./Body";
 import MainBody from "./MainBody";
@@ -22,8 +22,17 @@ const Top = ({ state, actions, history }, props) => {
   const [text, setText] = useState("");
   const { roomListState } = state;
 
+  const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  };
+  let query = useQuery();
+
   useEffect(() => {
-    actions.getRoomReq();
+    actions.getRoomReq(Number(query.get("page")));
+  }, [query.get("page")]);
+
+  useEffect(() => {
+    actions.getRoomReq(Number(query.get("page")));
   }, [props.count]);
 
   // TODO
@@ -36,7 +45,7 @@ const Top = ({ state, actions, history }, props) => {
 
   return (
     <div id="top">
-      <Header />
+      <Header roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>
           <div className="menu-wrapper menu-wrapper-1">
@@ -71,7 +80,11 @@ const Top = ({ state, actions, history }, props) => {
       <Link to="/roomcreation">
         <CreateRoomButton />
       </Link>
-      <PageNation pageCount={roomListState.pageCount} />
+      <PageNation
+        actions={actions}
+        history={history}
+        roomListState={roomListState}
+      />
       <Footer />
       <Modal />
     </div>

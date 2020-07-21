@@ -1,5 +1,12 @@
 import { axios_instance } from "../axios/axios";
-import { take, put, call, takeLatest, takeEvery } from "redux-saga/effects";
+import {
+  select,
+  take,
+  put,
+  call,
+  takeLatest,
+  takeEvery,
+} from "redux-saga/effects";
 import {
   GET_ROOM_REQ,
   getRoomReq,
@@ -38,8 +45,8 @@ import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "../auth/Action";
 /**
  * ルームリスト取得リクエスト
  */
-const requestRoomListApi = () => {
-  const url = "https://api.mochi-match.work/v1/rooms?page=1";
+const requestRoomListApi = (pageNum) => {
+  const url = `https://api.mochi-match.work/v1/rooms?page=${pageNum}`;
   return axios_instance
     .get(url)
     .then((res) => {
@@ -51,8 +58,8 @@ const requestRoomListApi = () => {
     });
 };
 
-export function* fetchRoomList() {
-  const { data, error } = yield call(requestRoomListApi);
+export function* fetchRoomList(action) {
+  const { data, error } = yield call(requestRoomListApi, action.payload);
   if (data) {
     yield put(getRoomOk(data));
   } else {
@@ -292,11 +299,12 @@ const leaveRoomReqApi = (room_id) => {
 
 export function* handleLeaveRoomRequest(action) {
   const room_id = action.payload.room.room_id;
+  const state = yield select();
 
   const { res, error } = yield call(leaveRoomReqApi, room_id);
 
   if (!error) {
-    action.history.push("/");
+    action.history.push(`/?page=${state.roomListState.selectPage}`);
     yield put(leaveRoomSocket(room_id));
     yield put(leaveRoomSuccess(room_id));
   } else {

@@ -2,9 +2,10 @@ export const GET_ROOM_REQ = "GET_ROOM_REQ";
 export const GET_ROOM_OK = "GET_ROOM_OK";
 export const GET_ROOM_NG = "GET_ROOM_NG";
 
-export const getRoomReq = () => {
+export const getRoomReq = (pageNum) => {
   return {
     type: GET_ROOM_REQ,
+    payload: pageNum,
   };
 };
 

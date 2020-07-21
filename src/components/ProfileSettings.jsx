@@ -24,10 +24,11 @@ import BreakUnderLine from "./BreakUnderLine";
 import AddButton from "./AddButton";
 import "./css/ProfileSetting.css";
 
-const ProfileSetting = () => {
+const ProfileSetting = ({ state, history }) => {
+  const { roomListState } = state;
   return (
     <div id="profile-setting">
-      <Header />
+      <Header roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>
           <div className="menu-wrapper menu-wrapper-1 account-side-menu">

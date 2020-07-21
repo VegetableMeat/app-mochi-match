@@ -1,11 +1,11 @@
 import React from "react";
 import "./css/ExitButton.css";
 
-const ExitButton = ({ room, user, actions, history }) => {
+const ExitButton = ({ room, user, actions }) => {
   const onLeaveButtonClick = () => {
     room.owner_id === user.user_id
       ? actions.showModalTrue("ROOM_DELETION", "room", room)
-      : actions.leaveRoomRequest(room, history);
+      : actions.showModalTrue("ROOM_LEAVE", "room", room);
   };
 
   return (

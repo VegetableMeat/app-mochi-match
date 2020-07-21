@@ -14,10 +14,11 @@ import DangerButton from "./DangerButton";
 import CenterMainBody from "./CenterMainBody";
 import "./css/Configuration.css";
 
-const Configuration = () => {
+const Configuration = ({ state, history }) => {
+  const { roomListState } = state;
   return (
     <div id="configuration">
-      <Header />
+      <Header roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>
           <div className="menu-wrapper menu-wrapper-1 account-side-menu">

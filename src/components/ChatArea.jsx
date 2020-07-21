@@ -3,11 +3,10 @@ import { withRouter } from "react-router";
 import ShadowInputArea from "./ShadowInputArea";
 import UserIcon from "./UserIcon";
 import UserName from "./UserName";
-import Loading from "./Loading";
 import "./css/ChatArea.css";
 
-const ChatArea = ({ actions, history, state }) => {
-  const { roomState, userState } = state;
+const ChatArea = ({ actions, state }) => {
+  const { roomState } = state;
   const { room, chatLog } = roomState;
 
   const [isLast, setIsLast] = useState(false);
@@ -17,8 +16,7 @@ const ChatArea = ({ actions, history, state }) => {
   const [beforeChatLogLength, setBeforeChatLogLength] = useState(0);
   const [latestMessageID, setLatestMessageID] = useState("");
   const [text, setText] = useState("");
-  const [newMessageflg, setNewMessageflg] = useState(false);
-
+  const [newMessageflg, setNewMessageFlg] = useState(false);
   const [newMessageCnt, setNewMessageCnt] = useState(0);
   const [beforeMessageCnt, setBeforeMessageCnt] = useState(0);
 
@@ -52,6 +50,7 @@ const ChatArea = ({ actions, history, state }) => {
       return;
     }
     if (latestMessageID === chatLog.slice(-1)[0].id) {
+      setBeforeChatLogLength(chatLog.length);
       setBeforeMessageCnt(chatLog.length - newMessageCnt);
       const diffScrollHeight =
         chatlogEl.current.scrollHeight - beforeScrollHeight;
@@ -60,7 +59,7 @@ const ChatArea = ({ actions, history, state }) => {
     } else if (chatlogEl.current.scrollHeight > 627) {
       setNewMessageCnt(chatLog.length - beforeMessageCnt);
       setLatestMessageID(chatLog.slice(-1)[0].id);
-      setNewMessageflg(true);
+      setNewMessageFlg(true);
     }
     if (chatlogEl.current.scrollHeight - chatlogEl.current.scrollTop < 1000) {
       chatlogEl.current.scrollTop = 99999;
@@ -71,7 +70,7 @@ const ChatArea = ({ actions, history, state }) => {
     if (scrollTop > chatlogEl.current.scrollHeight - 620) {
       setNewMessageCnt(0);
       setBeforeMessageCnt(chatLog.length);
-      setNewMessageflg(false);
+      setNewMessageFlg(false);
       return;
     }
     if (scrollTop === 0 && !isLast) {
@@ -132,7 +131,6 @@ const ChatArea = ({ actions, history, state }) => {
             <div className="arrow"></div>
           </p>
         )}
-
         <ShadowInputArea
           placeholder="メッセージ"
           value={text}
