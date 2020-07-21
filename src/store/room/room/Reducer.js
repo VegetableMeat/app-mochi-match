@@ -1,4 +1,5 @@
 import {
+  POST_ROOM_CREATION_OK,
   JOIN_ROOM_REQUEST,
   JOIN_ROOM_SUCCESS,
   JOIN_ROOM_ERROR,
@@ -32,6 +33,11 @@ const initialState = {
 
 const roomState = (state = initialState, action) => {
   switch (action.type) {
+    case POST_ROOM_CREATION_OK:
+      return {
+        ...state,
+        isEntry: true,
+      };
     case CREATED_CHATPOST:
       return {
         ...state,

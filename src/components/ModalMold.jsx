@@ -5,8 +5,6 @@ const ModalMold = ({ state, actions, history }) => {
   const { modalState } = state;
   const { room } = modalState.data;
 
-  const callback = () => history.push("/intheroom");
-
   const handleCheck = (e) => {
     actions.modalCheck(e.target.value, e.target.checked);
   };
@@ -31,7 +29,7 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.joinRoomRequest(room, callback)}
+              onClick={() => actions.joinRoomRequest(room, history)}
             >
               参加する
             </button>
@@ -105,7 +103,7 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.deleteRoomRequest(room, history)}
+              onClick={() => actions.deleteRoomAndJoinRequest(room, history)}
             >
               参加する
             </button>
@@ -135,7 +133,7 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.deleteRoomRequest(room, history)}
+              onClick={() => actions.deleteRoomAndJoinRequest(room, history)}
             >
               作成する
             </button>
@@ -165,7 +163,7 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.deleteRoomRequest(room, history)}
+              onClick={() => actions.leaveRoomAndJoinRequest(room, history)}
             >
               参加する
             </button>

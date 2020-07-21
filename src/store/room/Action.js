@@ -168,20 +168,19 @@ export const JOIN_ROOM_REQUEST = "JOIN_ROOM_REQUEST";
 export const JOIN_ROOM_SUCCESS = "JOIN_ROOM_SUCCESS";
 export const JOIN_ROOM_ERROR = "JOIN_ROOM_ERROR";
 
-export const joinRoomRequest = (data, callback) => {
+export const joinRoomRequest = (data, history) => {
   return {
     type: JOIN_ROOM_REQUEST,
-    payload: {
-      room: data,
-      callback: callback,
-    },
+    payload: { room: data },
+    history: history,
   };
 };
 
-export const joinRoomSuccess = (data, callback) => {
+export const joinRoomSuccess = (data, history) => {
   return {
     type: JOIN_ROOM_SUCCESS,
-    payload: { room_id: data, callback: callback },
+    payload: { room_id: data },
+    history: history,
   };
 };
 
@@ -245,6 +244,30 @@ export const deleteRoomError = (data) => {
   return {
     type: DELETE_ROOM_ERROR,
     payload: { data: data },
+  };
+};
+
+export const DELETE_ROOM_AND_JOIN_REQUEST = "DELETE_ROOM_AND_JOIN_REQUEST";
+
+export const deleteRoomAndJoinRequest = (data, history) => {
+  return {
+    type: DELETE_ROOM_AND_JOIN_REQUEST,
+    payload: {
+      room: data,
+    },
+    history: history,
+  };
+};
+
+export const LEAVE_ROOM_AND_JOIN_REQUEST = "LEAVE_ROOM_AND_JOIN_REQUEST";
+
+export const leaveRoomAndJoinRequest = (data, history) => {
+  return {
+    type: LEAVE_ROOM_AND_JOIN_REQUEST,
+    payload: {
+      room: data,
+    },
+    history: history,
   };
 };
 
