@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import Loading from "./Loading";
 
 const ModalMold = ({ state, actions, history }) => {
   const { modalState } = state;
@@ -20,6 +21,8 @@ const ModalMold = ({ state, actions, history }) => {
   };
 
   switch (modalState.category) {
+    case "LOADING":
+      return <Loading />;
     case "TOP_ROOM_IN":
       return (
         <div className="modal-body">

@@ -80,7 +80,7 @@ const ChatArea = ({ actions, state }) => {
   }, [scrollTop]);
 
   /**
-   * チャットログのソートとレンダリング
+   * チャットログのレンダリング
    */
   let chatLogs = [];
   for (let i in chatLog) {

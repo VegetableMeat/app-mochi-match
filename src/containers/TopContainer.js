@@ -2,6 +2,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as socketActionCreaters from "./../store/socket/Action";
 import * as roomActionCreaters from "./../store/room/Action";
+import * as commonActionCreaters from "../store/common/Action.js";
 import Top from "../components/Top";
 
 const mapStateToProps = (state) => {
@@ -16,6 +17,7 @@ const mapDispatchProps = (dispatch) => {
       {
         ...roomActionCreaters,
         ...socketActionCreaters,
+        ...commonActionCreaters,
       },
       dispatch
     ),

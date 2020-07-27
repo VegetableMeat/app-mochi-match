@@ -27,7 +27,7 @@ const App = ({ actions, history }, props) => {
   }
   return (
     <Switch>
-      <Route exact path="/" component={Top} props={props} />
+      <Route exact path="/" component={Top} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/logout" component={Logout} />
       <Route exact path="/register" component={Register} />

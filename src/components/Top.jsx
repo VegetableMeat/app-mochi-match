@@ -15,9 +15,10 @@ import PopularGames from "../containers/PopularGamesContainer";
 import Modal from "../containers/ModalContainer";
 import ShadowInputArea from "./ShadowInputArea";
 import SerchButton from "./SerchButton";
+import { DisappearedLoading } from "react-loadingg";
 import "./css/Top.css";
 
-const Top = ({ state, actions, history }, props) => {
+const Top = ({ state, actions, history }) => {
   const textEl = useRef(null);
   const [text, setText] = useState("");
   const { roomListState } = state;
@@ -25,15 +26,12 @@ const Top = ({ state, actions, history }, props) => {
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
   };
-  let query = useQuery();
 
+  let query = useQuery();
   useEffect(() => {
+    if (query.get("page") != 0) return;
     actions.getRoomReq(Number(query.get("page")));
   }, [query.get("page")]);
-
-  useEffect(() => {
-    actions.getRoomReq(Number(query.get("page")));
-  }, [props.count]);
 
   // TODO
   const onTextChange = () => {
@@ -74,6 +72,9 @@ const Top = ({ state, actions, history }, props) => {
           </div>
         </SideMenu>
         <MainBody>
+          {roomListState.loadingFlag && (
+            <DisappearedLoading color="rgb(123, 216, 245)" />
+          )}
           <RoomContents history={history} />
         </MainBody>
       </Body>
