@@ -1,5 +1,5 @@
-import React from "react";
-import Header from "./Header";
+import React, { useEffect } from "react";
+import Header from "../containers/HeaderContainer";
 import Footer from "./Footer";
 import Body from "./Body";
 import MainBody from "./MainBody";
@@ -19,12 +19,16 @@ import BreakUnderLine from "./BreakUnderLine";
 import HeadLine2 from "./HeadLine2";
 import "./css/InTheRoom.css";
 
-const InTheRoom = ({ state }) => {
+const InTheRoom = ({ state, history }) => {
   const { room, join_users } = state;
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+  }, []);
 
   return (
     <div id="in-the-room">
-      <Header />
+      <Header room="inTheRoom" history={history} />
       <Body>
         <SideMenu>
           <MenuHeader text="メンバー" />
@@ -44,7 +48,7 @@ const InTheRoom = ({ state }) => {
             <Capacity capacity={room.capacity} count={room.count} />
             <BreakUnderLine />
             <HeadLine2>募集テキスト</HeadLine2>
-            <RecrutimentText>{room.text}</RecrutimentText>
+            <RecrutimentText text={room.text}></RecrutimentText>
             <BreakUnderLine />
           </MenuInnerWrappr>
         </SideMenu>
@@ -52,7 +56,6 @@ const InTheRoom = ({ state }) => {
           <ChatArea />
         </MainBody>
       </Body>
-      <ExitButton />
       <Footer />
     </div>
   );

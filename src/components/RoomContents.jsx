@@ -13,7 +13,7 @@ const RoomContents = ({ state, actions, history }) => {
       return;
     }
     if (isEntry) {
-      data.owner_id === userState.user.user_id
+      roomState.room.owner_id === userState.user.user_id
         ? actions.showModalTrue("ROOM_DELETION_AND_JOIN", "room", data)
         : actions.showModalTrue("ROOM_LEAVE_AND_JOIN", "room", data);
       return;

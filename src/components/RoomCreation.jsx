@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Select from "react-select";
 import { Link } from "react-router-dom";
 
-import Header from "./Header";
+import Header from "../containers/HeaderContainer";
 import Footer from "./Footer";
 import Body from "./Body";
 import Sction from "./Section";
@@ -39,10 +39,11 @@ export default function RoomCreation({ state, actions, history }) {
 
   const { get_data, error, select } = state.roomCreationState.data;
   const { favorite_games } = state.userState.user;
+  const { roomListState } = state;
 
   return (
     <div id="room-creation">
-      <Header />
+      <Header roomListState={roomListState} history={history} />
       <Body>
         <CenterMainBody>
           <BodyHeader>ルーム作成</BodyHeader>

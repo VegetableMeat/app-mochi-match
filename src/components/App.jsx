@@ -1,21 +1,22 @@
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
+import queryString from "query-string";
 import Top from "./../containers/TopContainer";
 import Login from "./../containers/LoginContainer";
 import Logout from "./Logout";
 import Auth from "./../containers/AuthContainer";
-import History from "./History";
+import History from "./../containers/HistoryContainer";
 import Register from "./../containers/RegisterContainer";
 import SignUp from "./SignUp";
-import ProfileSetting from "./ProfileSettings";
-import Configuration from "./Configuration";
+import ProfileSetting from "./../containers/ProfileSettingsContainer";
+import Configuration from "./../containers/ConfigurationContainer";
 import RoomCreation from "./../containers/RoomCreationContainer";
 import InTheRoom from "./../containers/InTheRoomContainer";
 import Admin from "./../containers/AdminContainer";
 import LoginDone from "./../containers/LoginDoneContainer";
 import Loading from "./Loading";
 
-const App = ({ actions, history }) => {
+const App = ({ actions, history }, props) => {
   useEffect(() => {
     actions.init(history);
   }, [actions, history]);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "./Header";
+import Header from "../containers/HeaderContainer";
 import Footer from "./Footer";
 import Body from "./Body";
 import MainBody from "./MainBody";
@@ -16,10 +16,11 @@ import InnerText from "./InnerText";
 import BreakUnderLine from "./BreakUnderLine";
 import "./css/History.css";
 
-const History = () => {
+const History = ({ state, history }) => {
+  const { roomListState } = state;
   return (
     <div id="history">
-      <Header />
+      <Header roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>
           <div className="menu-wrapper menu-wrapper-1 account-side-menu">

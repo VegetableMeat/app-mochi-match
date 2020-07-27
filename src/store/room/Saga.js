@@ -1,5 +1,12 @@
 import { axios_instance } from "../axios/axios";
-import { take, put, call, takeLatest, takeEvery } from "redux-saga/effects";
+import {
+  select,
+  take,
+  put,
+  call,
+  takeLatest,
+  takeEvery,
+} from "redux-saga/effects";
 import {
   GET_ROOM_REQ,
   getRoomReq,
@@ -14,6 +21,7 @@ import {
   POST_ROOM_CREATION_REQ,
   postRoomCreationOk,
   postRoomCreationNg,
+  joinRoomRequest,
   JOIN_ROOM_REQUEST,
   JOIN_ROOM_SUCCESS,
   joinRoomSuccess,
@@ -23,6 +31,8 @@ import {
   leaveRoomSuccess,
   leaveRoomError,
   DELETE_ROOM_REQUEST,
+  DELETE_ROOM_AND_JOIN_REQUEST,
+  LEAVE_ROOM_AND_JOIN_REQUEST,
   getRoomDetailSuccess,
   getRoomDetailError,
   GET_CHATPOSTLIST_REQUEST,
@@ -31,15 +41,15 @@ import {
   CREATE_CHATPOSTLIST_REQUEST,
   roomCreateResponse,
 } from "./Action";
-import { showModalFalse, showModalTrue } from "./../common/Action";
-import { joinRoomSocket, leaveRoomSocket } from "./../socket/Action";
-import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "./../auth/Action";
+import { showModalFalse, showModalTrue } from "../common/Action";
+import { joinRoomSocket, leaveRoomSocket } from "../socket/Action";
+import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "../auth/Action";
 
 /**
  * ルームリスト取得リクエスト
  */
-const requestRoomListApi = () => {
-  const url = "https://api.mochi-match.work/v1/rooms?page=1";
+const requestRoomListApi = (pageNum) => {
+  const url = `https://api.mochi-match.work/v1/rooms?page=${pageNum}`;
   return axios_instance
     .get(url)
     .then((res) => {
@@ -51,8 +61,8 @@ const requestRoomListApi = () => {
     });
 };
 
-export function* fetchRoomList() {
-  const { data, error } = yield call(requestRoomListApi);
+export function* fetchRoomList(action) {
+  const { data, error } = yield call(requestRoomListApi, action.payload);
   if (data) {
     yield put(getRoomOk(data));
   } else {
@@ -153,6 +163,11 @@ function* fetchRoomCreation(post) {
     yield put(getRoomDetailSuccess(res.data));
     yield call(post.payload.push, "/intheroom");
   } else {
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(fetchRoomCreation, post);
+    }
     if (error.response.status === 400) {
       yield put(
         showModalTrue("POST_ROOM_ERROR", "room_creation_error", {
@@ -212,8 +227,7 @@ function* handleRoomJoinRequest(action) {
 
   if (!error) {
     yield put(joinRoomSocket(room_id));
-    yield put(joinRoomSuccess(room_id, action.payload.callback));
-    yield put(getChatpostListRequest(room_id));
+    yield put(joinRoomSuccess(room_id, action.history));
   } else {
     if (error.response.status === 401) {
       yield put(tokenRefleshRequest());
@@ -264,7 +278,7 @@ export function* handleRoomJoinSuccess(action) {
       yield call(handleRoomJoinSuccess, action);
     }
   }
-  action.payload.callback();
+  action.history.push("/intheroom");
 }
 
 export function* watchRoomJoinSuccess() {
@@ -288,11 +302,12 @@ const leaveRoomReqApi = (room_id) => {
 
 export function* handleLeaveRoomRequest(action) {
   const room_id = action.payload.room.room_id;
+  const state = yield select();
 
   const { res, error } = yield call(leaveRoomReqApi, room_id);
 
   if (!error) {
-    action.history.push("/");
+    action.history.push(`/?page=${state.roomListState.selectPage}`);
     yield put(leaveRoomSocket(room_id));
     yield put(leaveRoomSuccess(room_id));
   } else {
@@ -306,6 +321,57 @@ export function* handleLeaveRoomRequest(action) {
 
 export function* watchLeaveRoomRequest() {
   yield takeEvery(LEAVE_ROOM_REQUEST, handleLeaveRoomRequest);
+}
+
+/**
+ * ルーム解散＆参加リクエスト
+ */
+export function* handleDeleteRoomAndJoinRequest(action) {
+  const state = yield select();
+  const { room_id } = state.roomState.room;
+
+  const { res, error } = yield call(deleteRoomReqApi, room_id);
+
+  if (!error) {
+    yield put(leaveRoomSocket(room_id));
+    yield put(joinRoomRequest(action.payload.room, action.history));
+  } else {
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(handleDeleteRoomAndJoinRequest, action);
+    }
+  }
+}
+
+export function* watchDeleteRoomAndJoinRequest() {
+  yield takeEvery(DELETE_ROOM_AND_JOIN_REQUEST, handleDeleteRoomAndJoinRequest);
+}
+
+/**
+ * ルーム退室＆参加リクエスト
+ */
+export function* handleLeaveRoomAndJoinRequest(action) {
+  const state = yield select();
+  const { room_id } = state.roomState.room;
+
+  const { res, error } = yield call(leaveRoomReqApi, room_id);
+
+  if (!error) {
+    yield put(leaveRoomSocket(room_id));
+    yield put(leaveRoomSuccess(room_id));
+    yield put(joinRoomRequest(action.payload.room, action.history));
+  } else {
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(handleLeaveRoomAndJoinRequest, action);
+    }
+  }
+}
+
+export function* watchLeaveRoomAndJoinRequest() {
+  yield takeEvery(LEAVE_ROOM_AND_JOIN_REQUEST, handleLeaveRoomAndJoinRequest);
 }
 
 /**
@@ -331,7 +397,6 @@ export function* handleDeleteRoomRequest(action) {
 
   const { res, error } = yield call(deleteRoomReqApi, room_id);
   if (!error) {
-    console.log(res);
     yield put(getRoomReq());
   } else {
     if (error.response.status === 401) {
@@ -349,10 +414,29 @@ export function* watchDeleteRoomRequest() {
 /**
  * チャットポスト取得リクエスト
  */
-const getChatpostReqApi = (room_id) => {
+const getChatpostReqApi = (room_id, limit, offset) => {
   const url = `https://api.mochi-match.work/v1/rooms/${room_id}/messages`;
+  if (offset == null) {
+    return axios_instance
+      .get(url, {
+        params: {
+          limit: limit,
+        },
+      })
+      .then((res) => {
+        return { res };
+      })
+      .catch((error) => {
+        return { error };
+      });
+  }
   return axios_instance
-    .get(url)
+    .get(url, {
+      params: {
+        limit: limit,
+        offset: offset,
+      },
+    })
     .then((res) => {
       return { res };
     })
@@ -362,9 +446,10 @@ const getChatpostReqApi = (room_id) => {
 };
 
 export function* handleGetChatpostRequest(action) {
-  const room_id = action.payload;
+  const { room_id, limit, offset } = action.payload;
 
-  const { res, error } = yield call(getChatpostReqApi, room_id);
+  const { res, error } = yield call(getChatpostReqApi, room_id, limit, offset);
+
   if (!error) {
     yield put(getChatpostListSuccess(res.data));
   } else {
@@ -384,7 +469,6 @@ export function* watchGetChatpostRequest() {
  * チャットポスト作成リクエスト
  */
 const createChatpostReqApi = (room_id, message) => {
-  console.log(room_id, message);
   const url = `https://api.mochi-match.work/v1/rooms/${room_id}/messages`;
   const data = { message: message };
 
@@ -404,7 +488,6 @@ export function* handleCreateChatpostRequest(action) {
 
   const { res, error } = yield call(createChatpostReqApi, room_id, message);
   if (!error) {
-    console.log(res);
   } else {
     if (error.response.status === 401) {
       yield put(tokenRefleshRequest());

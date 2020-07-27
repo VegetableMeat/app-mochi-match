@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import Loading from "./Loading";
 
 const ModalMold = ({ state, actions, history }) => {
   const { modalState } = state;
@@ -9,8 +10,19 @@ const ModalMold = ({ state, actions, history }) => {
     actions.modalCheck(e.target.value, e.target.checked);
   };
 
-  const callback = () => history.push("/intheroom");
+  const handleRoomLeave = () => {
+    actions.leaveRoomRequest(room, history);
+    actions.showModalFalse();
+  };
+
+  const handleRoomBack = () => {
+    history.push("/intheroom");
+    actions.showModalFalse();
+  };
+
   switch (modalState.category) {
+    case "LOADING":
+      return <Loading />;
     case "TOP_ROOM_IN":
       return (
         <div className="modal-body">
@@ -20,7 +32,7 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.joinRoomRequest(room, callback)}
+              onClick={() => actions.joinRoomRequest(room, history)}
             >
               参加する
             </button>
@@ -37,6 +49,28 @@ const ModalMold = ({ state, actions, history }) => {
           >
             違反報告
           </button>
+        </div>
+      );
+    case "ROOM_LEAVE":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            このルームから退室しますか？
+          </div>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => handleRoomLeave()}
+            >
+              退室する
+            </button>
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              キャンセル
+            </button>
+          </div>
         </div>
       );
     case "ROOM_DELETION":
@@ -72,15 +106,45 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.deleteRoomRequest(room, history)}
+              onClick={() => actions.deleteRoomAndJoinRequest(room, history)}
             >
-              解散して参加する
+              参加する
             </button>
             <button
               className="join-button color-blue"
-              onClick={() => actions.deleteRoomRequest(room, history)}
+              onClick={() => handleRoomBack()}
             >
-              以前のルームに戻る
+              ルームに戻る
+            </button>
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              キャンセル
+            </button>
+          </div>
+        </div>
+      );
+    case "ROOM_DELETION_AND_CREATE":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            既にルームが立てられています。
+            <br />
+            以前のルームを解散してルーム作成しますか？
+          </div>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => actions.deleteRoomAndJoinRequest(room, history)}
+            >
+              作成する
+            </button>
+            <button
+              className="join-button color-blue"
+              onClick={() => handleRoomBack()}
+            >
+              ルームに戻る
             </button>
             <button
               className="cancel-button color-red"
@@ -102,15 +166,15 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.deleteRoomRequest(room, history)}
+              onClick={() => actions.leaveRoomAndJoinRequest(room, history)}
             >
-              退室して参加する
+              参加する
             </button>
             <button
               className="join-button color-blue"
-              onClick={() => actions.deleteRoomRequest(room, history)}
+              onClick={() => handleRoomBack()}
             >
-              以前のルームに戻る
+              ルームに戻る
             </button>
             <button
               className="cancel-button color-red"
@@ -191,7 +255,7 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="modal-text modal-header">
             ルームの定員上限に達しています
             <br />
-            もう一度お試し下さい
+            しばらくして、もう一度お試し下さい
           </div>
           <div className="footer-button-area">
             <button
