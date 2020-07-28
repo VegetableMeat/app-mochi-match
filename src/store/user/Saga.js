@@ -17,8 +17,11 @@ import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "./../auth/Action";
 /**
  * ユーザー情報取得処理
  */
-const requestGetMeApi = () => {
-  const url = "https://api.mochi-match.work/v1/users";
+export const requestGetMeApi = (id = null) => {
+  let url = "https://api.mochi-match.work/v1/users";
+  if (id) {
+    url += "/" + id;
+  }
   return axios_instance
     .get(url)
     .then((res) => {

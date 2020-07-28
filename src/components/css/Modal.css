@@ -57,6 +57,10 @@
   font-size: 18px;
 }
 
+.modal-header-s {
+  font-size: 14px;
+}
+
 .modal button {
   background-color: blue;
   border: none;
@@ -74,6 +78,7 @@
   width: 100%;
   text-align: center;
   position: absolute;
+  bottom: 0;
   bottom: 50px;
   left: 0;
 }
@@ -86,4 +91,14 @@
   height: 20px !important;
   font-size: 11px !important;
   border-radius: 6px !important;
+}
+
+.modal .user-name {
+  color: #7d7d7d;
+  font-size: 22px;
+}
+
+.modal .user-head {
+  display: flex;
+  margin-bottom: 20px;
 }

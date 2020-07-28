@@ -1,6 +1,7 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import * as Actions from "../store/common/Action.js";
+import * as historyActionCreaters from "../store/history/Action.js";
+import * as commonActionCreaters from "../store/common/Action.js";
 
 import History from "../components/History";
 
@@ -12,7 +13,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchProps = (dispatch) => {
   return {
-    actions: bindActionCreators(Actions, dispatch),
+    actions: bindActionCreators(
+      {
+        ...historyActionCreaters,
+        ...commonActionCreaters,
+      },
+      dispatch
+    ),
   };
 };
 

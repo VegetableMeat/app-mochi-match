@@ -1,12 +1,11 @@
 import React from "react";
 import UserIcon from "./UserIcon";
 import UserName from "./UserName";
-import DetailsButton from "./DetailsButton";
 import "./css/UserPlate.css";
 
-const UserPlate = ({ icon, name }) => {
+const UserPlate = ({ icon, name, id, onPlateClick }) => {
   return (
-    <div className="user-plate">
+    <div className="user-plate" onClick={() => onPlateClick(id)}>
       <UserIcon icon={icon} />
       <UserName name={name} />
     </div>

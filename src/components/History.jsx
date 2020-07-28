@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../containers/HeaderContainer";
 import Footer from "./Footer";
@@ -7,7 +7,6 @@ import MainBody from "./MainBody";
 import SideMenu from "./SideMenu";
 import MenuHeader from "./MenuHeader";
 import MenuInnerWrapper from "./MenuInnerWrapper";
-import UnderLineList from "./UnderLineList";
 import RadiusBodyHeader from "./RadiusBodyHeader";
 import RadiusWhiteCard from "./RadiusWhiteCard";
 import UserPlate from "./UserPlate";
@@ -15,9 +14,19 @@ import HeadeLine1 from "./HeadLine1";
 import InnerText from "./InnerText";
 import BreakUnderLine from "./BreakUnderLine";
 import "./css/History.css";
+import { useRadioGroup } from "@material-ui/core";
+import Modal from "../containers/ModalContainer";
 
-const History = ({ state, history }) => {
+const History = ({ state, actions, history }) => {
+  useEffect(() => {
+    actions.getHistoryRequest();
+  }, [actions]);
+
   const { roomListState } = state;
+
+  /*const onPlateClick = (data) => {
+    actions.showModalTrue("", "", data);
+  };*/
   return (
     <div id="history">
       <Header roomListState={roomListState} history={history} />
@@ -48,37 +57,52 @@ const History = ({ state, history }) => {
         </SideMenu>
         <MainBody>
           <RadiusBodyHeader title="プレイ履歴" />
-          <div className="history-cards">
-            <RadiusWhiteCard>
-              <div className="line">
-                <HeadeLine1>プレイ日時</HeadeLine1>
-                <InnerText>4月6日　10時22分</InnerText>
-              </div>
-              <BreakUnderLine />
-              <div className="line">
-                <HeadeLine1>ホスト</HeadeLine1>
-                <InnerText>もちもちくん</InnerText>
-              </div>
-              <BreakUnderLine />
-              <div className="line">
-                <HeadeLine1>ゲーム</HeadeLine1>
-                <InnerText>あつまれどうぶつの盛り</InnerText>
-              </div>
-              <BreakUnderLine />
-              <div className="multi-line">
-                <HeadeLine1>メンバー</HeadeLine1>
-                <div className="members-area">
-                  <UserPlate icon="" name="TestName" />
-                  <UserPlate icon="" name="TestName" />
-                  <UserPlate icon="" name="TestName" />
-                  <UserPlate icon="" name="TestName" />
+          {state.historyState.history.map((data) => (
+            <div className="history-cards">
+              <RadiusWhiteCard>
+                <div className="line">
+                  <HeadeLine1>プレイ日時</HeadeLine1>
+                  <InnerText>
+                    {data.played_date.substr(0, 4) +
+                      "/" +
+                      data.played_date.substr(5, 2) +
+                      "/" +
+                      data.played_date.substr(8, 2) +
+                      " " +
+                      data.played_date.substr(11, 8)}
+                  </InnerText>
                 </div>
-              </div>
-            </RadiusWhiteCard>
-          </div>
+                <BreakUnderLine />
+                <div className="line">
+                  <HeadeLine1>ホスト</HeadeLine1>
+                  <InnerText>{data.host_name}</InnerText>
+                </div>
+                <BreakUnderLine />
+                <div className="line">
+                  <HeadeLine1>ゲーム</HeadeLine1>
+                  <InnerText>{data.game_title}</InnerText>
+                </div>
+                <BreakUnderLine />
+                <div className="multi-line">
+                  <HeadeLine1>メンバー</HeadeLine1>
+                  <div className="members-area">
+                    {data.join_users.map((user) => (
+                      <UserPlate
+                        icon=""
+                        name={user.user_name}
+                        id={user.user_id}
+                        onPlateClick={actions.getUserRequest}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </RadiusWhiteCard>
+            </div>
+          ))}
         </MainBody>
       </Body>
       <Footer />
+      <Modal />
     </div>
   );
 };

@@ -9,6 +9,7 @@
 .favorite-games-area .game-name-plate {
   position: relative;
   margin: 2px 4px;
+  padding: 2px 12px;
 }
 
 .favorite-game-add-area {
@@ -28,6 +29,10 @@
 .plate {
   display: inline-block;
   position: relative;
+}
+
+.plate .game-title {
+  padding: 0px 0px 0px 12px;
 }
 
 .cancel {

@@ -115,7 +115,7 @@ export const getGameTitle = (get) => {
 
 const getGameHard = (get) => {
   return axios_instance
-    .put(get.url)
+    .get(get.url)
     .then((res) => {
       return { res };
     })
@@ -181,7 +181,7 @@ function* fetchRoomCreation(post) {
 
 function* fetchTitleRoomCreation(get) {
   const { res, error } = yield call(getGameTitle, get);
-  if (res.status === 200 && !error) {
+  if (!error) {
     return yield put(getGameTitleOk(res.data));
   }
   return yield put(getGameTitleNg(error));
@@ -189,7 +189,7 @@ function* fetchTitleRoomCreation(get) {
 
 function* fetchHardRoomCreation(get) {
   const { res, error } = yield call(getGameHard, get);
-  if (res.status === 200 && !error) {
+  if (!error) {
     return yield put(getGameHardOk(res.data));
   }
   return yield put(getGameHardNg(error));

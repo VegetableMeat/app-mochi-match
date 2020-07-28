@@ -29,13 +29,7 @@ const userProfile = (update) => {
     .put(update.url, {
       user_name: update.payload.name,
       icon: update.payload.icon,
-      favorite_games: [
-        { game_title: "test1" },
-        { game_title: "test2" },
-        { game_title: "test3" },
-        { game_title: "test4" },
-        { game_title: "test5" },
-      ],
+      favorite_games: favorite,
     })
     .then((res) => {
       return { res };

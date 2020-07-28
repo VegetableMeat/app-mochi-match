@@ -21,6 +21,7 @@ import {
 import { watchInit } from "./init/Saga";
 import { watchCheckEntryRequest, watchCheckEntrySuccess } from "./user/Saga";
 import { watchTokenRefleshRequest } from "./auth/Saga";
+import { historySaga } from "./history/Saga";
 import { profileSaga } from "./profile/Saga";
 
 export default function* rootSaga() {
@@ -32,6 +33,7 @@ export default function* rootSaga() {
     ...adminTitleSaga,
     ...adminHardSaga,
     ...roomCreationSaga,
+    ...historySaga,
     ...profileSaga,
     call(watchInit),
     call(watchGetRoomListRequest),
