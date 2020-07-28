@@ -34,6 +34,10 @@ import { selectStartDate, postRoomCreationReq } from "../store/room/Action";
 
 export default function RoomCreation({ state, actions, history }) {
   useEffect(() => {
+    document.documentElement.scrollTop = 0;
+  }, []);
+
+  useEffect(() => {
     actions.roomCreationInit();
     actions.getGameTitleReq();
     actions.getGameHardReq();
@@ -250,7 +254,9 @@ export default function RoomCreation({ state, actions, history }) {
             >
               ルーム作成
             </button>
-            <button className="color-red">キャンセル</button>
+            <button className="color-red" onClick={() => history.push("/")}>
+              キャンセル
+            </button>
           </div>
         </CenterMainBody>
       </Body>

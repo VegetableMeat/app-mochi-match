@@ -397,7 +397,6 @@ export function* handleDeleteRoomRequest(action) {
 
   const { res, error } = yield call(deleteRoomReqApi, room_id);
   if (!error) {
-    yield put(getRoomReq());
   } else {
     if (error.response.status === 401) {
       yield put(tokenRefleshRequest());
