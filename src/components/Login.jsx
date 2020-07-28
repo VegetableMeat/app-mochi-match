@@ -22,7 +22,7 @@ const Login = ({ state, actions }) => {
       return <Redirect to={`/?page=${roomListState.selectPage}`} />;
     }
   }
-
+  console.log(loginState);
   return (
     <div id="login">
       <Header roomListState={roomListState} />
@@ -37,9 +37,9 @@ const Login = ({ state, actions }) => {
               Googleアカウントでログイン
             </button>
           </div>
-          <div className="link-area">
+          {/* <div className="link-area">
             <Link to="/Register">新規登録</Link>はこちら
-          </div>
+          </div> */}
         </CenterMainBody>
       </Body>
       <Footer />

@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ClickAwayListener } from "@material-ui/core";
+import { useEffect } from "react";
 
 const HeaderMenu = ({ state, actions }) => {
+  const { headerMenuState, loginState } = state;
+  useEffect(() => {
+    actions.initHeaderMenu();
+  }, [loginState]);
   return (
     <ClickAwayListener onClickAway={() => actions.showHeaderMenuFalse()}>
       <div
@@ -14,19 +19,22 @@ const HeaderMenu = ({ state, actions }) => {
         <div className="header-menu-icon">
           <i className="fas fa-user-circle"></i>
         </div>
-        {state.showFlag ? (
+        {headerMenuState.showFlag ? (
           <div className="header-menu">
             <ul className="header-menu-list">
-              <Link to="/login">
-                <li>
-                  <i className="fas fa-sign-in-alt"></i>Login
-                </li>
-              </Link>
-              <Link to="/register">
-                <li>
-                  <i className="fas fa-user-plus"></i>Sign Up
-                </li>
-              </Link>
+              {loginState.loggedIn ? (
+                <Link to="/logout">
+                  <li>
+                    <i className="fas fa-sign-in-alt"></i>Logout
+                  </li>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <li>
+                    <i className="fas fa-sign-in-alt"></i>Login
+                  </li>
+                </Link>
+              )}
               <Link to="/profilesetting">
                 <li>
                   <i className="far fa-id-card"></i>Profile

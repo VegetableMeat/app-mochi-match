@@ -1,4 +1,8 @@
-import { SHOW_HEADER_MENU_TRUE, SHOW_HEADER_MENU_FALSE } from "../Action";
+import {
+  SHOW_HEADER_MENU_TRUE,
+  SHOW_HEADER_MENU_FALSE,
+  INIT_HEADER_MENU,
+} from "../Action";
 
 const initiaState = {
   showFlag: false,
@@ -6,6 +10,10 @@ const initiaState = {
 
 const headerMenuState = (state = initiaState, action) => {
   switch (action.type) {
+    case INIT_HEADER_MENU:
+      return {
+        ...state,
+      };
     case SHOW_HEADER_MENU_TRUE:
       return {
         ...state,

@@ -9,7 +9,8 @@ import {
 } from "./Action";
 import { showModalTrue } from "../common/Action";
 import { getGameTitle } from "../room/Saga";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery, take } from "redux-saga/effects";
+import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "../auth/Action";
 
 function* fetchGameTitle(get) {
   const { res, err } = yield call(getGameTitle, get);
@@ -20,23 +21,22 @@ function* fetchGameTitle(get) {
 }
 
 const userProfile = (update) => {
-  console.log("update", update.payload);
   const favorite = update.payload.profile.favorite.map((fav) => {
     return { game_title: fav.game_title };
   });
-  console.log("favorite", favorite);
+
   return axios_instance
     .put(update.url, {
-      user_name: update.payload.name,
-      icon: update.payload.icon,
+      user_name: update.payload.profile.name,
+      icon: update.payload.profile.icon,
       favorite_games: favorite,
     })
     .then((res) => {
+      console.log("resss", res);
       return { res };
     })
-    .catch((e) => {
-      const error = e.toString();
-      return { error };
+    .catch((err) => {
+      return { err };
     });
 };
 
@@ -66,6 +66,10 @@ function* updateUserProfile(update) {
   const { res, err } = yield call(userProfile, update);
   if (!err) {
     return yield put(updateUserProfileOk());
+  } else if (err.response.status === 401) {
+    yield put(tokenRefleshRequest());
+    yield take(TOKEN_REFRESH_SUCCESS);
+    yield call(updateUserProfile, update);
   }
   yield put(updateUserProfileNg(err));
 }
