@@ -1,7 +1,7 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import * as Actions from "../store/common/Action.js";
-
+import * as profileActionCreaters from "../store/profile/Action.js";
+import * as commonActionCreaters from "../store/common/Action.js";
 import ProfileSettings from "../components/ProfileSettings";
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchProps = (dispatch) => {
   return {
-    actions: bindActionCreators(Actions, dispatch),
+    actions: bindActionCreators(
+      { ...profileActionCreaters, ...commonActionCreaters },
+      dispatch
+    ),
   };
 };
 

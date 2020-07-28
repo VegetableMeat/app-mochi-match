@@ -26,6 +26,7 @@ import Error from "./Error";
 import { inputValidation } from "../store/validation/Validation";
 
 import "./css/RoomCreation.css";
+import "./css/Error.css";
 import selectStyles, { capacityOption } from "./custom/Select";
 import TextAreaStyles from "./custom/TextArea";
 import { roomCreationSaga } from "../store/room/Saga";
@@ -33,6 +34,7 @@ import { selectStartDate, postRoomCreationReq } from "../store/room/Action";
 
 export default function RoomCreation({ state, actions, history }) {
   useEffect(() => {
+    actions.roomCreationInit();
     actions.getGameTitleReq();
     actions.getGameHardReq();
   }, [actions]);
@@ -58,27 +60,26 @@ export default function RoomCreation({ state, actions, history }) {
               <HeadLine2>お気に入りゲーム</HeadLine2>
               <div className="favorite-games-area">
                 {favorite_games &&
-                  favorite_games.map((d) => (
+                  favorite_games.map((data, index) => (
                     <GameNamePlate
-                      title={d.game_title}
-                      value={d.game_id}
-                      click={actions.clickSelectGameTitle}
+                      key={index}
+                      title={data.game_title}
+                      value={data.game_id}
+                      isAction={true}
+                      action={actions.clickSelectGameTitle}
                     />
                   ))}
               </div>
               <HeadLine2>その他</HeadLine2>
               <Select
+                menuPortalTarget={document.body}
                 placeholder="文字入力で検索できます"
                 options={
-                  get_data.title
-                    ? get_data.title.map((data) => ({
-                        value: data.game_title,
-                        label: data.game_title,
-                      }))
-                    : {
-                        value: "取得に失敗しました",
-                        label: "取得に失敗しました",
-                      }
+                  get_data.title.length &&
+                  get_data.title.map((data) => ({
+                    value: data.game_title,
+                    label: data.game_title,
+                  }))
                 }
                 styles={TextAreaStyles()}
                 onChange={(e) =>
@@ -106,13 +107,14 @@ export default function RoomCreation({ state, actions, history }) {
                 {get_data.hard &&
                   get_data.hard.map((d) =>
                     d.id === select.hard ? (
-                      <HardIcon id={d.id} select_flg={true} />
+                      <HardIcon id={d.id} isSelect={true} />
                     ) : (
                       <HardIcon
+                        name="game_hard"
                         id={d.id}
                         actions={actions.selectGameHard}
-                        data={get_data.hard}
-                        name="game_hard"
+                        isValidate={true}
+                        list={get_data.hard}
                       />
                     )
                   )}
@@ -223,10 +225,12 @@ export default function RoomCreation({ state, actions, history }) {
                 className="textarea"
                 value={select.text}
                 onChange={(e) =>
-                  inputValidation(
-                    { value: e.target.value, name: "rec_text" },
-                    actions.inputText
-                  )
+                  inputValidation({
+                    value: e.target.value,
+                    name: "rec_text",
+                    action: actions.inputText,
+                    list: [],
+                  })
                 }
               />
               {error.input_text ? <Error text={error.text_msg} /> : null}

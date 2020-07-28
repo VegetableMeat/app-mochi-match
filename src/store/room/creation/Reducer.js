@@ -16,6 +16,7 @@ import {
   SELECT_START_DATE,
   SELECT_START_TIME,
   INPUT_TEXT,
+  ROOM_CREATION_INIT,
 } from "../Action";
 
 const initiaState = {
@@ -51,6 +52,11 @@ const initiaState = {
 
 const roomCreationState = (state = initiaState, action) => {
   switch (action.type) {
+    case ROOM_CREATION_INIT:
+      return {
+        ...state,
+        data: initiaState.data,
+      };
     case GET_GAME_TITLE_REQ:
       return {
         ...state,

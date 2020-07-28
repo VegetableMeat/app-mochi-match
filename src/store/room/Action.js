@@ -24,6 +24,7 @@ export const getRoomNg = (error) => {
 };
 
 // RoomCreation
+export const ROOM_CREATION_INIT = "ROOM_CREATION_INIT";
 export const GET_GAME_TITLE_REQ = "GET_GAME_TITLE_REQ";
 export const GET_GAME_TITLE_OK = "GET_GAME_TITLE_OK";
 export const GET_GAME_TITLE_NG = "GET_GAME_TITLE_NG";
@@ -45,6 +46,12 @@ export const INPUT_TEXT = "INPUT_TEXT";
 const POST_ROOM_CREATION_URL = `/v1/rooms`;
 const GET_GAME_TITLE_URL = `/v1/gamelist`;
 const GET_GAME_HARD_URL = `/v1/gamehard`;
+
+export const roomCreationInit = () => {
+  return {
+    type: ROOM_CREATION_INIT,
+  };
+};
 
 export const getGameTitleReq = () => {
   return {

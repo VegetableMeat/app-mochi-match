@@ -1,46 +1,44 @@
-// TODO バリデーションを後で追加
-const gameTitleValidation = (value, action, list) => {
-  let data = "入力されたゲームタイトルは存在しません";
-  let error = true;
-  const result = list.filter((data) => {
-    return data.game_title === value;
+const gameHardValidation = (contents) => {
+  const result = contents.list.filter((data) => {
+    return data.id === contents.value;
   });
-  if (result.length > 0) {
-    data = result[0].id;
+  contents.action(result[0].id);
+};
+
+const recTextValidation = (contents) => {
+  let error = true;
+  if (contents.value.length >= 1) {
     error = false;
   }
-  action({ text: value, data: data, error: error });
+  contents.action({ text: contents.value, error: error });
 };
 
-const gameHardValidation = (value, action, list) => {
-  const result = list.filter((data) => {
-    return data.id === value;
-  });
-  action(result[0].id);
-};
-
-const recTextValidation = (value, action) => {
+const userNameValidation = (contents) => {
   let error = true;
-  if (value.length >= 1) {
+  let msg = "ユーザ名が入力されていません";
+  if (contents.value.length >= 1) {
     error = false;
   }
-  action({ text: value, error: error });
+  contents.action({ text: contents.value, error: error, msg: msg });
 };
 
-/**
- *
- * @param {object} 	 value 	- DOMのvalueとnameが入る
- * @param {function} action - バリデーションが上手く通った場合、実行するアクションが入る
- * @param {array} 	 list 	- 配列が入ってくる、主にオートコンプリート用のデータリスト
- */
-export const inputValidation = (value = null, action = null, list = null) => {
-  switch (value.name) {
-    case "game_title":
-      return gameTitleValidation(value.value, action, list);
+const userIconValidation = (contents) => {
+  const result = contents.list.filter((data) => {
+    return data.value === contents.value;
+  });
+  contents.action(result[0].value);
+};
+
+export const inputValidation = (contents) => {
+  switch (contents.name) {
     case "game_hard":
-      return gameHardValidation(value.value, action, list);
+      return gameHardValidation(contents);
     case "rec_text":
-      return recTextValidation(value.value, action);
+      return recTextValidation(contents);
+    case "user_name":
+      return userNameValidation(contents);
+    case "user_icon":
+      return userIconValidation(contents);
     default:
       return;
   }

@@ -33,26 +33,26 @@ const selectStyles = () => {
       key: "singleValue",
       func: (base) => ({
         ...base,
-        color: "#7d7d7d",
+        color: "-internal-light-dark(black, white)",
       }),
     },
     {
       key: "menu",
       func: (base) => ({
         ...base,
-        position: "relative",
-        "z-index": "2",
         margin: "4px 0px",
-        color: "#7d7d7d",
+        color: "-internal-light-dark(black, white)",
       }),
     },
     {
       key: "option",
       func: (base, { isFocused, isSelected }) => ({
         ...base,
-        fontWeight: "bold",
         fontSize: "14px",
-        color: isSelected || isFocused ? "#fff" : "#7d7d7d",
+        color:
+          isSelected || isFocused
+            ? "#fff"
+            : "-internal-light-dark(black, white)",
         backgroundColor: isSelected
           ? "darkgray"
           : isFocused
@@ -66,7 +66,6 @@ const selectStyles = () => {
       func: (base) => ({
         ...base,
         padding: "0px 8px",
-        fontWeight: "bold",
         fontSize: "14px",
       }),
     },

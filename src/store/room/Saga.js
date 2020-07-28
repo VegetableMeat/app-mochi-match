@@ -101,7 +101,7 @@ const resRoomCreation = (post) => {
     });
 };
 
-const getGameTitle = (get) => {
+export const getGameTitle = (get) => {
   return axios_instance
     .get(get.url)
     .then((res) => {
@@ -115,7 +115,7 @@ const getGameTitle = (get) => {
 
 const getGameHard = (get) => {
   return axios_instance
-    .get(get.url)
+    .put(get.url)
     .then((res) => {
       return { res };
     })
@@ -151,7 +151,7 @@ function* fetchRoomCreation(post) {
   if (error_flg) {
     return yield put(
       showModalTrue("POST_ROOM_ERROR", "room_creation_error", {
-        title: "入力エラー！",
+        title: "入力エラー",
         msg: error_msg,
       })
     );
@@ -171,7 +171,7 @@ function* fetchRoomCreation(post) {
     if (error.response.status === 400) {
       yield put(
         showModalTrue("POST_ROOM_ERROR", "room_creation_error", {
-          title: "作成エラー！",
+          title: "作成エラー",
           msg: ["ルームを解散していないか、他のルームに参加中です"],
         })
       );
