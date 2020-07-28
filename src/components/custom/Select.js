@@ -33,7 +33,7 @@ const selectStyles = () => {
       key: "singleValue",
       func: (base) => ({
         ...base,
-        color: "#7d7d7d",
+        color: "-internal-light-dark(black, white)",
       }),
     },
     {
@@ -41,7 +41,7 @@ const selectStyles = () => {
       func: (base) => ({
         ...base,
         margin: "4px 0px",
-        color: "#7d7d7d",
+        color: "-internal-light-dark(black, white)",
       }),
     },
     {
@@ -49,7 +49,10 @@ const selectStyles = () => {
       func: (base, { isFocused, isSelected }) => ({
         ...base,
         fontSize: "14px",
-        color: isSelected || isFocused ? "#fff" : "#7d7d7d",
+        color:
+          isSelected || isFocused
+            ? "#fff"
+            : "-internal-light-dark(black, white)",
         backgroundColor: isSelected
           ? "darkgray"
           : isFocused

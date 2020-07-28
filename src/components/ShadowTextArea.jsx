@@ -1,6 +1,7 @@
 import React from "react";
 import { inputValidation } from "../store/validation/Validation";
 import "./css/ShadowTextArea.css";
+import _default from "@ant-design/icons/lib/icons/ArrowLeftOutlined";
 
 const ShadowTextArea = ({
   name,
@@ -8,6 +9,7 @@ const ShadowTextArea = ({
   placeholder = "",
   isValidate = false,
   list = [],
+  defaultValue = "",
 }) => {
   return (
     <div className="shadow-text-area">
@@ -24,6 +26,7 @@ const ShadowTextArea = ({
               })
             : actions(e.target.value)
         }
+        value={defaultValue}
       />
       <div className="shadow-underline"></div>
     </div>

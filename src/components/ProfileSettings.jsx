@@ -25,21 +25,46 @@ import BreakUnderLine from "./BreakUnderLine";
 import AddButton from "./AddButton";
 import Error from "./Error";
 import TextAreaStyles from "./custom/TextArea";
+import Modal from "../containers/ModalContainer";
 import "./css/ProfileSetting.css";
 import "./css/Error.css";
 import { useEffect } from "react";
+import { CloseOutlined } from "@ant-design/icons";
 // import inputAreaStyles from "./custom/InputArea";
 
 const ProfileSetting = ({ state, actions }) => {
-  const { get, profile, error, value } = state.profileState;
-  const { favorite_games } = state.userState.user;
+  const { get, profile, error, value, select } = state.profileState;
+  const { favorite_games, icon, user_name } = state.userState.user;
 
   useEffect(() => {
     actions.getGameTitleReq();
+    actions.setUserName(user_name);
+    actions.setIcon(icon);
+  }, [state.userState.user]);
+
+  useEffect(() => {
     actions.setFavoriteGame(favorite_games);
-  }, [actions]);
+  }, [get.title]);
+
+  let option = [];
+
+  if (select.title) {
+    option = select.title.map((data) => ({
+      value: data.game_title,
+      label: data.game_title,
+    }));
+  }
+
+  const user_icon = [
+    { key: "icon", value: "icon" },
+    { key: "icon2", value: "icon2" },
+    { key: "icon3", value: "icon3" },
+    { key: "icon4", value: "icon4" },
+    { key: "icon5", value: "icon5" },
+    { key: "icon6", value: "icon6" },
+    { key: "icon7", value: "icon7" },
+  ];
   console.log(profile);
-  console.log(favorite_games);
   return (
     <div id="profile-setting">
       <Header />
@@ -72,11 +97,21 @@ const ProfileSetting = ({ state, actions }) => {
           <div className="side-main-body">
             <CenterMainBody>
               <BodyHeader>プロフィール設定</BodyHeader>
-              <div className="wrapper error-background">
+              <div
+                className={[
+                  "wrapper",
+                  error.flag.name ? "error-background" : "",
+                ].join(" ")}
+              >
                 <HeadLine1>ユーザー名</HeadLine1>
                 <div className="left-space-wrapper">
-                  <ShadowTextArea actions={actions.inputUserName} />
-                  <Error text="入力してください" />
+                  <ShadowTextArea
+                    actions={actions.inputUserName}
+                    isValidate={true}
+                    name="user_name"
+                    defaultValue={profile.name}
+                  />
+                  {error.flag.name ? <Error text={error.msg.name} /> : null}
                 </div>
               </div>
               <BreakUnderLine />
@@ -84,12 +119,20 @@ const ProfileSetting = ({ state, actions }) => {
                 <HeadLine1>ユーザーアイコン</HeadLine1>
                 <div className="left-space-wrapper">
                   <UserIconSelectArea>
-                    <UserIcon />
-                    <UserIcon selectFlg="true" />
-                    <UserIcon />
-                    <UserIcon />
-                    <UserIcon />
-                    <UserIcon />
+                    {profile.icon &&
+                      user_icon.map((i) =>
+                        i.value === profile.icon ? (
+                          <UserIcon isSelect={true} />
+                        ) : (
+                          <UserIcon
+                            name="user_icon"
+                            value={i.value}
+                            actions={actions.inputUserIcon}
+                            isValidate={true}
+                            list={user_icon}
+                          />
+                        )
+                      )}
                   </UserIconSelectArea>
                 </div>
               </div>
@@ -100,47 +143,69 @@ const ProfileSetting = ({ state, actions }) => {
                   <div className="favorite-games-area">
                     {profile.favorite &&
                       profile.favorite.map((data, index) => (
-                        <GameNamePlate
-                          key={index}
-                          title={data.game_title}
-                          value={data.game_id}
-                        />
+                        <div className="plate">
+                          <GameNamePlate
+                            key={index}
+                            title={data.game_title}
+                            value={data.game_id}
+                          />
+                          <div
+                            className="cancel"
+                            onClick={() => {
+                              actions.deleteFavoriteGame(data.game_title);
+                            }}
+                          >
+                            <CloseOutlined
+                              style={{
+                                fontSize: "16px",
+                                color: "#f00",
+                                position: "absolute",
+                                top: "10px",
+                                left: "10px",
+                              }}
+                            />
+                          </div>
+                        </div>
                       ))}
                   </div>
                   <div className="favorite-game-add-area">
                     <Select
                       menuPortalTarget={document.body}
-                      placeholder="文字入力で検索できます"
-                      options={
-                        !error.get.title &&
-                        get.title.length &&
-                        get.title.map((data) => ({
-                          value: data.game_title,
-                          label: data.game_title,
-                        }))
-                      }
+                      placeholder="文字入力で検索"
+                      options={option}
                       styles={TextAreaStyles()}
-                      // onChange={(e) =>
-                      //   actions.inputSelectGameTitle({
-                      //     text: e.label,
-                      //     data: e.label,
-                      //     error: false,
-                      //   })
-                      // }
+                      onChange={(e) => actions.addFavoriteGame(e.value)}
                     />
-                    <AddButton />
                   </div>
                 </div>
               </div>
               <div className="footer-button-area">
-                <button className="color-blue">変更内容保存</button>
-                <button className="color-red">変更キャンセル</button>
+                <button
+                  className="color-blue"
+                  onClick={() => {
+                    actions.updateUserProfileReq({
+                      profile: profile,
+                      error: error,
+                    });
+                  }}
+                >
+                  変更内容保存
+                </button>
+                <button
+                  className="color-red"
+                  onClick={() =>
+                    actions.showModalTrue("CANCEL", "update_profile", null)
+                  }
+                >
+                  変更キャンセル
+                </button>
               </div>
             </CenterMainBody>
           </div>
         </MainBody>
       </Body>
       <Footer />
+      <Modal />
     </div>
   );
 };

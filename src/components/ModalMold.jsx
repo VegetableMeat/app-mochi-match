@@ -240,6 +240,45 @@ const ModalMold = ({ state, actions, history }) => {
           </div>
         </div>
       );
+    case "CANCEL":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">キャンセルしますか？</div>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => document.location.reload()}
+            >
+              はい
+            </button>
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              いいえ
+            </button>
+          </div>
+        </div>
+      );
+    case "UPDATE_USER_PROFILE_ERROR":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            {modalState.data.user_profile_error.title}
+          </div>
+          {modalState.data.user_profile_error.msg.map((error, key) => (
+            <div key={key}>{error}</div>
+          ))}
+          <div className="footer-button-area">
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              閉じる
+            </button>
+          </div>
+        </div>
+      );
     default:
       return "何もありません";
   }
