@@ -1,5 +1,5 @@
 import { axios_instance } from "../axios/axios";
-import { take, put, call, takeEvery } from "redux-saga/effects";
+import { take, put, call, delay, takeEvery } from "redux-saga/effects";
 import { getChatpostListRequest } from "./../room/Action";
 import { alreadyEntry } from "./../room/Action";
 import {
@@ -33,7 +33,6 @@ export const requestGetMeApi = (id = null) => {
 };
 
 export function* handleGetMeRequest() {
-  console.log("handleGetMeRequest");
   const { res, error } = yield call(requestGetMeApi);
   if (!error) {
     yield put(getMeSuccess(res));
@@ -86,11 +85,9 @@ export function* watchCheckEntryRequest() {
  * ルーム参加状況チェックサクセス
  */
 export function* handleCheckEntrySuccess(action) {
-  console.log(action);
   if (action.payload.data.room) {
-    yield action.history.push("/intheroom");
     yield put(alreadyEntry(action.payload.data.room));
-    yield put(getChatpostListRequest(action.payload.data.room.room_id));
+    yield action.history.push("/intheroom");
   } else {
   }
 }

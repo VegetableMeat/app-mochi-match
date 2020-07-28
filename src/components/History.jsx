@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Header from "./Header";
+import Header from "../containers/HeaderContainer";
 import Footer from "./Footer";
 import Body from "./Body";
 import MainBody from "./MainBody";
@@ -17,17 +17,19 @@ import "./css/History.css";
 import { useRadioGroup } from "@material-ui/core";
 import Modal from "../containers/ModalContainer";
 
-const History = ({ state, actions }) => {
+const History = ({ state, actions, history }) => {
   useEffect(() => {
     actions.getHistoryRequest();
   }, [actions]);
+
+  const { roomListState } = state;
 
   /*const onPlateClick = (data) => {
     actions.showModalTrue("", "", data);
   };*/
   return (
     <div id="history">
-      <Header />
+      <Header roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>
           <div className="menu-wrapper menu-wrapper-1 account-side-menu">

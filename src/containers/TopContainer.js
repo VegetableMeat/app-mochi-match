@@ -1,17 +1,26 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import * as Actions from "./../store/socket/Action";
+import * as socketActionCreaters from "./../store/socket/Action";
+import * as roomActionCreaters from "./../store/room/Action";
+import * as commonActionCreaters from "../store/common/Action.js";
 import Top from "../components/Top";
 
 const mapStateToProps = (state) => {
   return {
-    state: state.adminState,
+    state: state,
   };
 };
 
 const mapDispatchProps = (dispatch) => {
   return {
-    actions: bindActionCreators(Actions, dispatch),
+    actions: bindActionCreators(
+      {
+        ...roomActionCreaters,
+        ...socketActionCreaters,
+        ...commonActionCreaters,
+      },
+      dispatch
+    ),
   };
 };
 

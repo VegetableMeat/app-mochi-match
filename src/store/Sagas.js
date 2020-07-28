@@ -5,6 +5,8 @@ import {
   watchRoomJoinRequest,
   watchRoomJoinSuccess,
   watchLeaveRoomRequest,
+  watchLeaveRoomAndJoinRequest,
+  watchDeleteRoomAndJoinRequest,
   watchDeleteRoomRequest,
   watchGetChatpostRequest,
   watchCreateChatpostRequest,
@@ -20,6 +22,8 @@ import { watchInit } from "./init/Saga";
 import { watchCheckEntryRequest, watchCheckEntrySuccess } from "./user/Saga";
 import { watchTokenRefleshRequest } from "./auth/Saga";
 import { historySaga } from "./history/Saga";
+import { profileSaga } from "./profile/Saga";
+
 export default function* rootSaga() {
   yield all([
     ...favoriteGamesSaga,
@@ -30,6 +34,7 @@ export default function* rootSaga() {
     ...adminHardSaga,
     ...roomCreationSaga,
     ...historySaga,
+    ...profileSaga,
     call(watchInit),
     call(watchGetRoomListRequest),
     call(watchRoomJoinRequest),
@@ -37,6 +42,8 @@ export default function* rootSaga() {
     call(watchGetChatpostRequest),
     call(watchCreateChatpostRequest),
     call(watchLeaveRoomRequest),
+    call(watchLeaveRoomAndJoinRequest),
+    call(watchDeleteRoomAndJoinRequest),
     call(watchDeleteRoomRequest),
     call(watchCheckEntryRequest),
     call(watchCheckEntrySuccess),

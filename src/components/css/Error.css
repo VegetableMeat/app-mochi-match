@@ -1,0 +1,32 @@
+.error {
+  position: relative;
+  display: inline-block;
+  color: red;
+  margin: 0px 10px 5px 0px;
+  animation: show-msg 1.2s both;
+}
+
+@keyframes show-msg {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.error-background {
+  /* border-radius: 4px; */
+  animation: error-back 1.2s both;
+}
+
+@keyframes error-back {
+  0% {
+    /* border: solid 1px rgba(255, 187, 187, 0.1); */
+    background: rgba(255, 187, 187, 0.1);
+  }
+  100% {
+    /* border: solid 1px rgba(255, 187, 187, 0.4); */
+    background: rgba(255, 187, 187, 0.4);
+  }
+}

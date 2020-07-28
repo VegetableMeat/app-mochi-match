@@ -25,3 +25,16 @@
 #profile-setting .center-main-body {
   height: 640px;
 }
+
+.plate {
+  display: inline-block;
+  position: relative;
+}
+
+.plate .game-title {
+  padding: 0px 0px 0px 12px;
+}
+
+.cancel {
+  cursor: pointer;
+}

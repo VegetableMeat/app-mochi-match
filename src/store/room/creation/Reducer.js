@@ -16,6 +16,7 @@ import {
   SELECT_START_DATE,
   SELECT_START_TIME,
   INPUT_TEXT,
+  ROOM_CREATION_INIT,
 } from "../Action";
 
 const initiaState = {
@@ -29,31 +30,33 @@ const initiaState = {
       get_hard: "",
       input_title: true,
       input_hard: true,
-      input_start: true,
+      input_start: false,
       input_date: true,
       input_time: true,
       input_text: false,
-      rec_text_msg: "何か入力してください",
+      text_msg: "募集テキストは必ず入力してください",
     },
     select: {
-      title: "選択してください",
+      title: "ゲームタイトルが選択されていません",
       input_title: "",
       title_click_flg: null,
-      hard: "選択してください",
+      hard: "ゲームハードが選択されていません",
       capacity: 4,
       start: false,
-      date: "選択してください",
-      time: "選択してください",
+      date: "日付が選択されていません",
+      time: "時間が選択されていません",
       text: "よろしくお願いします。",
-    },
-    button: {
-      disable: true,
     },
   },
 };
 
 const roomCreationState = (state = initiaState, action) => {
   switch (action.type) {
+    case ROOM_CREATION_INIT:
+      return {
+        ...state,
+        data: initiaState.data,
+      };
     case GET_GAME_TITLE_REQ:
       return {
         ...state,
@@ -146,12 +149,10 @@ const roomCreationState = (state = initiaState, action) => {
           select: {
             ...state.data.select,
             input_title: action.payload.text,
-            title: action.payload.data,
+            title: state.data.get_data.title.filter((data) => {
+              return data.game_title === action.payload.data;
+            })[0].id,
             title_click_flg: false,
-          },
-          button: {
-            ...state.data.button,
-            disable: allErrorCheck(state.data.error),
           },
         },
       };
@@ -170,10 +171,6 @@ const roomCreationState = (state = initiaState, action) => {
             title: action.payload,
             title_click_flg: true,
           },
-          button: {
-            ...state.data.button,
-            disable: allErrorCheck(state.data.error),
-          },
         },
       };
     case SELECT_GAME_HARD:
@@ -189,10 +186,6 @@ const roomCreationState = (state = initiaState, action) => {
             ...state.data.select,
             hard: action.payload,
           },
-          button: {
-            ...state.data.button,
-            disable: allErrorCheck(state.data.error),
-          },
         },
       };
     case SELECT_CAPACITY:
@@ -204,10 +197,6 @@ const roomCreationState = (state = initiaState, action) => {
             ...state.data.select,
             capacity: action.payload,
           },
-          button: {
-            ...state.data.button,
-            disable: allErrorCheck(state.data.error),
-          },
         },
       };
     case SELECT_START:
@@ -218,10 +207,6 @@ const roomCreationState = (state = initiaState, action) => {
           select: {
             ...state.data.select,
             start: action.payload,
-          },
-          button: {
-            ...state.data.button,
-            disable: allErrorCheck(state.data.error),
           },
         },
       };
@@ -238,10 +223,6 @@ const roomCreationState = (state = initiaState, action) => {
             ...state.data.select,
             date: action.payload,
           },
-          button: {
-            ...state.data.button,
-            disable: allErrorCheck(state.data.error),
-          },
         },
       };
     case SELECT_START_TIME:
@@ -256,10 +237,6 @@ const roomCreationState = (state = initiaState, action) => {
           select: {
             ...state.data.select,
             time: action.payload,
-          },
-          button: {
-            ...state.data.button,
-            disable: allErrorCheck(state.data.error),
           },
         },
       };
@@ -276,20 +253,11 @@ const roomCreationState = (state = initiaState, action) => {
             ...state.data.select,
             text: action.payload.text,
           },
-          button: {
-            ...state.data.button,
-            disable: allErrorCheck(state.data.error),
-          },
         },
       };
     default:
       return state;
   }
-};
-
-// TODO: 後で実装する
-const allErrorCheck = (error) => {
-  // console.log("error", error);
 };
 
 export default roomCreationState;

@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import Header from "./Header";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Footer from "./Footer";
 import Body from "./Body";
 import MainBody from "./MainBody";
@@ -9,17 +8,30 @@ import CreateRoomButton from "./CreateRoomButton";
 import PageNation from "./PageNation";
 import MenuHeader from "./MenuHeader";
 import MenuInnerWrapper from "./MenuInnerWrapper";
+import Header from "../containers/HeaderContainer";
 import RoomContents from "../containers/RoomContentsContainer";
 import FavoriteGames from "../containers/FavoriteGamesContainer";
 import PopularGames from "../containers/PopularGamesContainer";
 import Modal from "../containers/ModalContainer";
 import ShadowInputArea from "./ShadowInputArea";
 import SerchButton from "./SerchButton";
+import { DisappearedLoading } from "react-loadingg";
 import "./css/Top.css";
 
-const Top = ({ history }) => {
+const Top = ({ state, actions, history }) => {
   const textEl = useRef(null);
   const [text, setText] = useState("");
+  const { roomListState } = state;
+
+  const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  };
+
+  let query = useQuery();
+  useEffect(() => {
+    if (query.get("page") != 0) return;
+    actions.getRoomReq(Number(query.get("page")));
+  }, [query.get("page")]);
 
   // TODO
   const onTextChange = () => {
@@ -31,7 +43,7 @@ const Top = ({ history }) => {
 
   return (
     <div id="top">
-      <Header />
+      <Header roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>
           <div className="menu-wrapper menu-wrapper-1">
@@ -60,13 +72,20 @@ const Top = ({ history }) => {
           </div>
         </SideMenu>
         <MainBody>
+          {roomListState.loadingFlag && (
+            <DisappearedLoading color="rgb(123, 216, 245)" />
+          )}
           <RoomContents history={history} />
         </MainBody>
       </Body>
       <Link to="/roomcreation">
         <CreateRoomButton />
       </Link>
-      <PageNation />
+      <PageNation
+        actions={actions}
+        history={history}
+        roomListState={roomListState}
+      />
       <Footer />
       <Modal />
     </div>

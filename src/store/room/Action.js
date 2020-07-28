@@ -2,9 +2,10 @@ export const GET_ROOM_REQ = "GET_ROOM_REQ";
 export const GET_ROOM_OK = "GET_ROOM_OK";
 export const GET_ROOM_NG = "GET_ROOM_NG";
 
-export const getRoomReq = () => {
+export const getRoomReq = (pageNum) => {
   return {
     type: GET_ROOM_REQ,
+    payload: pageNum,
   };
 };
 
@@ -23,6 +24,7 @@ export const getRoomNg = (error) => {
 };
 
 // RoomCreation
+export const ROOM_CREATION_INIT = "ROOM_CREATION_INIT";
 export const GET_GAME_TITLE_REQ = "GET_GAME_TITLE_REQ";
 export const GET_GAME_TITLE_OK = "GET_GAME_TITLE_OK";
 export const GET_GAME_TITLE_NG = "GET_GAME_TITLE_NG";
@@ -44,6 +46,12 @@ export const INPUT_TEXT = "INPUT_TEXT";
 const POST_ROOM_CREATION_URL = `/v1/rooms`;
 const GET_GAME_TITLE_URL = `/v1/gamelist`;
 const GET_GAME_HARD_URL = `/v1/gamehard`;
+
+export const roomCreationInit = () => {
+  return {
+    type: ROOM_CREATION_INIT,
+  };
+};
 
 export const getGameTitleReq = () => {
   return {
@@ -167,20 +175,19 @@ export const JOIN_ROOM_REQUEST = "JOIN_ROOM_REQUEST";
 export const JOIN_ROOM_SUCCESS = "JOIN_ROOM_SUCCESS";
 export const JOIN_ROOM_ERROR = "JOIN_ROOM_ERROR";
 
-export const joinRoomRequest = (data, callback) => {
+export const joinRoomRequest = (data, history) => {
   return {
     type: JOIN_ROOM_REQUEST,
-    payload: {
-      room: data,
-      callback: callback,
-    },
+    payload: { room: data },
+    history: history,
   };
 };
 
-export const joinRoomSuccess = (data, callback) => {
+export const joinRoomSuccess = (data, history) => {
   return {
     type: JOIN_ROOM_SUCCESS,
-    payload: { room_id: data, callback: callback },
+    payload: { room_id: data },
+    history: history,
   };
 };
 
@@ -247,6 +254,30 @@ export const deleteRoomError = (data) => {
   };
 };
 
+export const DELETE_ROOM_AND_JOIN_REQUEST = "DELETE_ROOM_AND_JOIN_REQUEST";
+
+export const deleteRoomAndJoinRequest = (data, history) => {
+  return {
+    type: DELETE_ROOM_AND_JOIN_REQUEST,
+    payload: {
+      room: data,
+    },
+    history: history,
+  };
+};
+
+export const LEAVE_ROOM_AND_JOIN_REQUEST = "LEAVE_ROOM_AND_JOIN_REQUEST";
+
+export const leaveRoomAndJoinRequest = (data, history) => {
+  return {
+    type: LEAVE_ROOM_AND_JOIN_REQUEST,
+    payload: {
+      room: data,
+    },
+    history: history,
+  };
+};
+
 export const GET_ROOM_DETAIL_REQUEST = "GET_ROOM_DETAIL_REQUEST";
 export const GET_ROOM_DETAIL_SUCCESS = "GET_ROOM_DETAIL_SUCCESS";
 export const GET_ROOM_DETAIL_ERROR = "GET_ROOM_DETAIL_ERROR";
@@ -295,10 +326,14 @@ export const GET_CHATPOSTLIST_REQUEST = "GET_CHATPOSTLIST";
 export const GET_CHATPOSTLIST_SUCCESS = "GET_CHATPOSTLIST_SUCCESS";
 export const GET_CHATPOSTLIST_ERROR = "GET_CHATPOSTLIST_ERROR";
 
-export const getChatpostListRequest = (room_id) => {
+export const getChatpostListRequest = (room_id, limit, offset) => {
   return {
     type: GET_CHATPOSTLIST_REQUEST,
-    payload: room_id,
+    payload: {
+      room_id: room_id,
+      limit: limit,
+      offset: offset,
+    },
   };
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
-import Header from "./Header";
+import Header from "../containers/HeaderContainer";
 import Footer from "./Footer";
 import Body from "./Body";
 import CenterMainBody from "./CenterMainBody";
@@ -9,21 +9,23 @@ import BodyHeader from "./BodyHeader";
 import "./css/Sign.css";
 
 const Login = ({ state, actions }) => {
+  const { roomListState, loginState } = state;
+
   useEffect(() => {
     actions.authReq();
   }, []);
 
-  if (state.loadingFlag) {
+  if (loginState.loadingFlag) {
     return null;
   } else {
-    if (state.loggedIn) {
-      return <Redirect to={"/"} />;
+    if (loginState.loggedIn) {
+      return <Redirect to={`/?page=${roomListState.selectPage}`} />;
     }
   }
 
   return (
     <div id="login">
-      <Header />
+      <Header roomListState={roomListState} />
       <Body>
         <CenterMainBody>
           <BodyHeader>ログイン</BodyHeader>

@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import GameNamePlate from "./GameNamePlate";
 import UserIcon from "./UserIcon";
 import UserName from "./UserName";
+import Loading from "./Loading";
 
 const ModalMold = ({ state, actions, history }) => {
   const { modalState } = state;
@@ -12,9 +13,19 @@ const ModalMold = ({ state, actions, history }) => {
     actions.modalCheck(e.target.value, e.target.checked);
   };
 
-  const callback = () => history.push("/intheroom");
+  const handleRoomLeave = () => {
+    actions.leaveRoomRequest(room, history);
+    actions.showModalFalse();
+  };
+
+  const handleRoomBack = () => {
+    history.push("/intheroom");
+    actions.showModalFalse();
+  };
 
   switch (modalState.category) {
+    case "LOADING":
+      return <Loading />;
     case "TOP_ROOM_IN":
       return (
         <div className="modal-body">
@@ -24,7 +35,7 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.joinRoomRequest(room, callback)}
+              onClick={() => actions.joinRoomRequest(room, history)}
             >
               参加する
             </button>
@@ -41,6 +52,28 @@ const ModalMold = ({ state, actions, history }) => {
           >
             違反報告
           </button>
+        </div>
+      );
+    case "ROOM_LEAVE":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            このルームから退室しますか？
+          </div>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => handleRoomLeave()}
+            >
+              退室する
+            </button>
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              キャンセル
+            </button>
+          </div>
         </div>
       );
     case "ROOM_DELETION":
@@ -76,15 +109,45 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.deleteRoomRequest(room, history)}
+              onClick={() => actions.deleteRoomAndJoinRequest(room, history)}
             >
-              解散して参加する
+              参加する
             </button>
             <button
               className="join-button color-blue"
-              onClick={() => actions.deleteRoomRequest(room, history)}
+              onClick={() => handleRoomBack()}
             >
-              以前のルームに戻る
+              ルームに戻る
+            </button>
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              キャンセル
+            </button>
+          </div>
+        </div>
+      );
+    case "ROOM_DELETION_AND_CREATE":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            既にルームが立てられています。
+            <br />
+            以前のルームを解散してルーム作成しますか？
+          </div>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => actions.deleteRoomAndJoinRequest(room, history)}
+            >
+              作成する
+            </button>
+            <button
+              className="join-button color-blue"
+              onClick={() => handleRoomBack()}
+            >
+              ルームに戻る
             </button>
             <button
               className="cancel-button color-red"
@@ -106,15 +169,15 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.deleteRoomRequest(room, history)}
+              onClick={() => actions.leaveRoomAndJoinRequest(room, history)}
             >
-              退室して参加する
+              参加する
             </button>
             <button
               className="join-button color-blue"
-              onClick={() => actions.deleteRoomRequest(room, history)}
+              onClick={() => handleRoomBack()}
             >
-              以前のルームに戻る
+              ルームに戻る
             </button>
             <button
               className="cancel-button color-red"
@@ -195,7 +258,7 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="modal-text modal-header">
             ルームの定員上限に達しています
             <br />
-            もう一度お試し下さい
+            しばらくして、もう一度お試し下さい
           </div>
           <div className="footer-button-area">
             <button
@@ -251,6 +314,64 @@ const ModalMold = ({ state, actions, history }) => {
               onClick={() => actions.showModalFront("REPORT", "check", [])}
             >
               違反報告
+            </button>
+          </div>
+        </div>
+      );
+    case "POST_ROOM_ERROR":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            {modalState.data.room_creation_error.title}
+          </div>
+          {modalState.data.room_creation_error.msg.map((error, key) => (
+            <div key={key}>{error}</div>
+          ))}
+          <div className="footer-button-area">
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              閉じる
+            </button>
+          </div>
+        </div>
+      );
+    case "CANCEL":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">キャンセルしますか？</div>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => document.location.reload()}
+            >
+              はい
+            </button>
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              いいえ
+            </button>
+          </div>
+        </div>
+      );
+    case "UPDATE_USER_PROFILE_ERROR":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            {modalState.data.user_profile_error.title}
+          </div>
+          {modalState.data.user_profile_error.msg.map((error, key) => (
+            <div key={key}>{error}</div>
+          ))}
+          <div className="footer-button-area">
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              閉じる
             </button>
           </div>
         </div>
