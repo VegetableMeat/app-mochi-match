@@ -51,6 +51,33 @@
   background-color: rgb(16, 140, 255);
 }
 
+.chat-send-area .new-chatlog-message {
+  position: absolute;
+  height: 30px;
+  width: 97%;
+  text-align: center;
+  line-height: 30px;
+  border-left: 100px;
+  font-size: 14px;
+  font-weight: 100;
+  border-radius: 10px;
+  top: -33px;
+  left: 10px;
+  color: rgb(255, 255, 255);
+  background-color: rgba(161, 161, 161, 0.774);
+}
+
+.chat-send-area .arrow {
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  right: 20px;
+  top: 0px;
+  border: 3px solid;
+  border-color: transparent transparent #838080d8 #838080d8;
+  transform: rotate(-45deg);
+}
+
 .side-main-body .chat-area {
   width: 100%;
   margin: 0;
@@ -62,6 +89,9 @@
   .chat-wrapper {
     width: 100%;
   }
+  .new-chatlog-message {
+    border-radius: 0 0 12px 12px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -71,6 +101,9 @@
   }
   .chat-send-area {
     border-radius: 0 0 12px 12px;
+  }
+  .new-chatlog-message {
+    border-radius: 0 0 c12px 12px;
   }
 }
 

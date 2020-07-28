@@ -1,4 +1,5 @@
 import {
+  POST_ROOM_CREATION_OK,
   JOIN_ROOM_REQUEST,
   JOIN_ROOM_SUCCESS,
   JOIN_ROOM_ERROR,
@@ -32,6 +33,11 @@ const initialState = {
 
 const roomState = (state = initialState, action) => {
   switch (action.type) {
+    case POST_ROOM_CREATION_OK:
+      return {
+        ...state,
+        isEntry: true,
+      };
     case CREATED_CHATPOST:
       return {
         ...state,
@@ -137,9 +143,17 @@ const roomState = (state = initialState, action) => {
         ...state,
       };
     case GET_CHATPOSTLIST_SUCCESS:
+      let newState = [...state.chatLog, ...action.payload];
+      const map = new Map(newState.map((o) => [o.created_at, o]));
+      newState = Array.from(map.values());
+      newState.sort(function (a, b) {
+        if (a.created_at < b.created_at) return -1;
+        if (a.created_at > b.created_at) return 1;
+        return 0;
+      });
       return {
         ...state,
-        chatLog: [...state.chatLog, ...action.payload],
+        chatLog: newState,
       };
     case GET_CHATPOSTLIST_ERROR:
       return {

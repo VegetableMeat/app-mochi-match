@@ -5,7 +5,10 @@ const Footer = () => {
   return (
     <div id="footer">
       <div className="footer-top">
-        <i className="fas fa-angle-up"></i>
+        <i
+          className="fas fa-angle-up"
+          onClick={() => (document.documentElement.scrollTop = 0)}
+        ></i>
       </div>
       <div className="footer-bottom">
         <p className="copyright">
