@@ -15,6 +15,13 @@
   font-weight: bold;
 }
 
+.history-cards .history-none {
+  font-size: 14px;
+  color: rgb(109, 109, 109);
+  font-weight: bold;
+  margin: 50px auto;
+}
+
 .history-cards .inner-text {
   font-size: 12px;
   color: rgb(160, 160, 160);

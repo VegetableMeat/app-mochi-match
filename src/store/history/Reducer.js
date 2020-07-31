@@ -5,7 +5,7 @@ import {
 } from "./Action";
 
 const initialState = {
-  history: [],
+  history: null,
   modalUser: [],
 };
 
