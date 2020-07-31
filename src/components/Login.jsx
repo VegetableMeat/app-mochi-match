@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Header from "../containers/HeaderContainer";
 import Footer from "./Footer";
 import Body from "./Body";
@@ -32,14 +32,10 @@ const Login = ({ state, actions }) => {
           <div className="button-area">
             <button className="facebook">Facebookアカウントでログイン</button>
             <button className="twitter">Twitterアカウントでログイン</button>
-            {/* <button onClick={() => this.locationGoogle()} className="google">Googleアカウントでログイン</button> */}
             <button onClick={() => actions.loginReq()} className="google">
               Googleアカウントでログイン
             </button>
           </div>
-          {/* <div className="link-area">
-            <Link to="/Register">新規登録</Link>はこちら
-          </div> */}
         </CenterMainBody>
       </Body>
       <Footer />

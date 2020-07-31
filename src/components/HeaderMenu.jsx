@@ -4,10 +4,8 @@ import { ClickAwayListener } from "@material-ui/core";
 import { useEffect } from "react";
 
 const HeaderMenu = ({ state, actions }) => {
-  const { headerMenuState, loginState } = state;
-  useEffect(() => {
-    actions.initHeaderMenu();
-  }, [loginState]);
+  const { headerMenuState, userState } = state;
+
   return (
     <ClickAwayListener onClickAway={() => actions.showHeaderMenuFalse()}>
       <div
@@ -22,7 +20,7 @@ const HeaderMenu = ({ state, actions }) => {
         {headerMenuState.showFlag ? (
           <div className="header-menu">
             <ul className="header-menu-list">
-              {loginState.loggedIn ? (
+              {localStorage.getItem("access_token") ? (
                 <Link to="/logout">
                   <li>
                     <i className="fas fa-sign-in-alt"></i>Logout

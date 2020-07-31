@@ -51,7 +51,6 @@ export const modalCheck = (data, toggle) => {
 //HeaderMenu
 export const SHOW_HEADER_MENU_TRUE = "SHOW_HEADER_MENU_TRUE";
 export const SHOW_HEADER_MENU_FALSE = "SHOW_HEADER_MENU_FALSE";
-export const INIT_HEADER_MENU = "INIT_HEADER_MENU";
 
 export const showHeaderMenuTrue = () => {
   return {
@@ -62,12 +61,6 @@ export const showHeaderMenuTrue = () => {
 export const showHeaderMenuFalse = () => {
   return {
     type: SHOW_HEADER_MENU_FALSE,
-  };
-};
-
-export const initHeaderMenu = () => {
-  return {
-    type: INIT_HEADER_MENU,
   };
 };
 

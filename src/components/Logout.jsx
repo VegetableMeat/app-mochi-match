@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../containers/HeaderContainer";
-import Body from "./Body";
 import Footer from "./Footer";
+import Body from "./Body";
+import CenterMainBody from "./CenterMainBody";
+import Modal from "../containers/ModalContainer";
+import BodyHeader from "./BodyHeader";
+import "./css/Sign.css";
 
 const Logout = () => {
   const logout = () => {
@@ -10,17 +14,23 @@ const Logout = () => {
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("expires_in");
   };
-
   return (
-    <div id="logout">
+    <div id="login">
       <Header />
       <Body>
-        <h1>Logout画面です</h1>
-        <Link to={"/"} onClick={() => logout()}>
-          ログアウトする
-        </Link>
+        <CenterMainBody>
+          <BodyHeader>ログアウト</BodyHeader>
+          <div className="button-area">
+            <Link to={"/"} onClick={() => logout()}>
+              <button onClick={() => logout()} className="google">
+                ログアウト
+              </button>
+            </Link>
+          </div>
+        </CenterMainBody>
       </Body>
       <Footer />
+      <Modal />
     </div>
   );
 };
