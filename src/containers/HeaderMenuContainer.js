@@ -6,7 +6,7 @@ import HeaderMenu from "../components/HeaderMenu";
 
 const mapStateToProps = (state) => {
   return {
-    state: state.headerMenuState,
+    state: state,
   };
 };
 

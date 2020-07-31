@@ -8,8 +8,11 @@ function* initProduct(action) {
   yield put(openSocket());
   yield put(getRoomReq(1));
   // TODO トークンがあれば
-  const token = localStorage.getItem("access_token");
-  if (token != null) {
+  if (
+    localStorage.getItem("access_token") &&
+    localStorage.getItem("refresh_token") &&
+    localStorage.getItem("expires_in")
+  ) {
     yield call(handleGetMeRequest);
     yield call(handleCheckEntryRequest, action.payload);
   }

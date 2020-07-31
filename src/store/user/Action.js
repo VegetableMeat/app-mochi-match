@@ -3,7 +3,6 @@ export const GET_ME_SUCCESS = "GET_ME_SUCCESS";
 export const GET_ME_ERROR = "GET_ME_ERROR";
 
 export const getMeRequest = () => {
-  console.log("getMeRequest");
   return {
     type: GET_ME_REQUEST,
   };

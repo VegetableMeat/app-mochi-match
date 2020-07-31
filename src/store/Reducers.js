@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import authState from "./auth/Reducer";
 import roomListState from "./room/list/Reducer";
 import favoriteGameState from "./game/favorite/Reducer";
 import popularGameState from "./game/popular/Reducer";
@@ -14,6 +15,7 @@ import historyState from "./history/Reducer";
 import profileState from "./profile/Reducer";
 
 const rootReducers = combineReducers({
+  authState,
   roomListState,
   favoriteGameState,
   popularGameState,
