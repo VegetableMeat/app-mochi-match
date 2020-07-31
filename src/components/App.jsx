@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import queryString from "query-string";
 import Top from "./../containers/TopContainer";
 import Login from "./../containers/LoginContainer";
-import Logout from "./Logout";
+import Logout from "./../containers/LogoutContainer";
 import Auth from "./../containers/AuthContainer";
 import History from "./../containers/HistoryContainer";
 import Register from "./../containers/RegisterContainer";

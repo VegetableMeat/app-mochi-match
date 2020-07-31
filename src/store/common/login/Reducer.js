@@ -1,4 +1,4 @@
-import { LOGIN_REQ, LOGIN_OK, LOGIN_NG } from "../Action";
+import { LOGIN_REQ, LOGIN_OK, LOGIN_NG, LOGOUT } from "../Action";
 
 const initiaState = {
   loadingFlag: true,
@@ -19,6 +19,7 @@ const loginState = (state = initiaState, action) => {
         loggedIn: true,
       };
     case LOGIN_NG:
+    case LOGOUT:
       return {
         ...state,
         loadingFlag: false,

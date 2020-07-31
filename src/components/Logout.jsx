@@ -8,13 +8,21 @@ import Modal from "../containers/ModalContainer";
 import BodyHeader from "./BodyHeader";
 import "./css/Sign.css";
 
-const Logout = ({ history }) => {
+const Logout = ({ state, actions }) => {
   const logout = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("expires_in");
-    history.push(`/`);
+    actions.logout();
   };
+
+  if (
+    !localStorage.getItem("access_token") &&
+    !localStorage.getItem("refresh_token") &&
+    !localStorage.getItem("expires_in")
+  ) {
+    return <Redirect to={`/`} />;
+  }
 
   return (
     <div id="login">
