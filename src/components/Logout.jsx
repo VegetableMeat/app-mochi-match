@@ -8,7 +8,7 @@ import Modal from "../containers/ModalContainer";
 import BodyHeader from "./BodyHeader";
 import "./css/Sign.css";
 
-const Logout = ({ state, actions }) => {
+const Logout = ({ state, actions, history }) => {
   const logout = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
@@ -26,7 +26,7 @@ const Logout = ({ state, actions }) => {
 
   return (
     <div id="login">
-      <Header />
+      <Header history={history} />
       <Body>
         <CenterMainBody>
           <BodyHeader>ログアウト</BodyHeader>

@@ -8,7 +8,7 @@ import Modal from "../containers/ModalContainer";
 import BodyHeader from "./BodyHeader";
 import "./css/Sign.css";
 
-const Login = ({ state, actions }) => {
+const Login = ({ state, actions, history }) => {
   const { roomListState, loginState } = state;
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Login = ({ state, actions }) => {
   console.log(loginState);
   return (
     <div id="login">
-      <Header roomListState={roomListState} />
+      <Header roomListState={roomListState} history={history} />
       <Body>
         <CenterMainBody>
           <BodyHeader>ログイン</BodyHeader>
