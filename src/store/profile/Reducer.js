@@ -20,11 +20,6 @@ const initialState = {
     icon: null,
     favorite: [],
   },
-  // cancel: {
-  //   name: null,
-  //   icon: null,
-  //   favorite: [],
-  // },
   error: {
     get: {
       title: true,
@@ -34,8 +29,6 @@ const initialState = {
     },
     flag: {
       name: false,
-      // icon: false,
-      // favorite: false,
     },
   },
   list: {
@@ -92,6 +85,11 @@ const profileState = (state = initialState, action) => {
         },
       };
     case SET_FAVORITE_GAME:
+      if (!action.payload) {
+        return {
+          ...state,
+        };
+      }
       return {
         ...state,
         profile: {
