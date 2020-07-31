@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import HeaderMenu from "../containers/HeaderMenuContainer";
 import ExitButton from "./ExitButton";
 import "./css/Header.css";

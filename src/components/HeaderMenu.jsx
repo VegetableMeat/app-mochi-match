@@ -4,7 +4,7 @@ import { ClickAwayListener } from "@material-ui/core";
 import { useEffect } from "react";
 
 const HeaderMenu = ({ state, actions }) => {
-  const { headerMenuState, userState } = state;
+  const { authState, headerMenuState } = state;
 
   return (
     <ClickAwayListener onClickAway={() => actions.showHeaderMenuFalse()}>

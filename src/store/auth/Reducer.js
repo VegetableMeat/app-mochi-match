@@ -5,7 +5,7 @@ import {
 } from "./Action";
 
 const initialState = {
-  loggedIn: false,
+  loggedIn: true,
   refleshToken: null,
   accessToken: null,
   expiresIn: null,
