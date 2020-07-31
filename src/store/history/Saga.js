@@ -4,12 +4,10 @@ import { requestGetMeApi } from "../user/Saga";
 
 import {
   GET_HISTORY_REQUEST,
-  getHistoryRequest,
   getHistorySuccess,
   getHistoryError,
   getUserSuccess,
   getUserError,
-  getUserRequest,
   GET_USER_REQUEST,
 } from "./Action";
 import { showModalTrue } from "../common/Action";
@@ -32,7 +30,7 @@ const requestGetHistoryApi = () => {
 function* fetchHistory() {
   const { res, error } = yield call(requestGetHistoryApi);
 
-  if (res) {
+  if (!error) {
     yield put(getHistorySuccess(res));
   } else {
     yield put(getHistoryError(error));
@@ -42,7 +40,7 @@ function* fetchHistory() {
 function* fetchUser(id) {
   const { res, error } = yield call(requestGetMeApi, id.payload);
 
-  if (res) {
+  if (!error) {
     //yield put(getUserSuccess(res));
     yield put(showModalTrue("USER_DETAILS", "data", res.data));
   } else {

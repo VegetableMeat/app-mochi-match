@@ -22,11 +22,66 @@ const History = ({ state, actions, history }) => {
     actions.getHistoryRequest();
   }, [actions]);
 
-  const { roomListState } = state;
-
+  const { roomListState, historyState } = state;
+  let history_cards = [];
+  if (historyState.history) {
+    history_cards = historyState.history.map((data) => (
+      <div className="history-cards">
+        <RadiusWhiteCard>
+          <div className="line">
+            <HeadeLine1>プレイ日時</HeadeLine1>
+            <InnerText>
+              {data.played_date.substr(0, 4) +
+                "/" +
+                data.played_date.substr(5, 2) +
+                "/" +
+                data.played_date.substr(8, 2) +
+                " " +
+                data.played_date.substr(11, 8)}
+            </InnerText>
+          </div>
+          <BreakUnderLine />
+          <div className="line">
+            <HeadeLine1>ホスト</HeadeLine1>
+            <InnerText>{data.host_name}</InnerText>
+          </div>
+          <BreakUnderLine />
+          <div className="line">
+            <HeadeLine1>ゲーム</HeadeLine1>
+            <InnerText>{data.game_title}</InnerText>
+          </div>
+          <BreakUnderLine />
+          <div className="multi-line">
+            <HeadeLine1>メンバー</HeadeLine1>
+            <div className="members-area">
+              {data.join_users.map((user) => (
+                <UserPlate
+                  icon=""
+                  name={user.user_name}
+                  id={user.user_id}
+                  onPlateClick={actions.getUserRequest}
+                />
+              ))}
+            </div>
+          </div>
+        </RadiusWhiteCard>
+      </div>
+    ));
+  } else {
+    history_cards.push(
+      <div className="history-cards">
+        <RadiusWhiteCard>
+          <div className="line">
+            <div className="history-none">プレイ履歴が存在していません</div>
+          </div>
+        </RadiusWhiteCard>
+      </div>
+    );
+  }
   /*const onPlateClick = (data) => {
     actions.showModalTrue("", "", data);
-  };*/
+	};*/
+
   return (
     <div id="history">
       <Header roomListState={roomListState} history={history} />
@@ -57,48 +112,7 @@ const History = ({ state, actions, history }) => {
         </SideMenu>
         <MainBody>
           <RadiusBodyHeader title="プレイ履歴" />
-          {state.historyState.history.map((data) => (
-            <div className="history-cards">
-              <RadiusWhiteCard>
-                <div className="line">
-                  <HeadeLine1>プレイ日時</HeadeLine1>
-                  <InnerText>
-                    {data.played_date.substr(0, 4) +
-                      "/" +
-                      data.played_date.substr(5, 2) +
-                      "/" +
-                      data.played_date.substr(8, 2) +
-                      " " +
-                      data.played_date.substr(11, 8)}
-                  </InnerText>
-                </div>
-                <BreakUnderLine />
-                <div className="line">
-                  <HeadeLine1>ホスト</HeadeLine1>
-                  <InnerText>{data.host_name}</InnerText>
-                </div>
-                <BreakUnderLine />
-                <div className="line">
-                  <HeadeLine1>ゲーム</HeadeLine1>
-                  <InnerText>{data.game_title}</InnerText>
-                </div>
-                <BreakUnderLine />
-                <div className="multi-line">
-                  <HeadeLine1>メンバー</HeadeLine1>
-                  <div className="members-area">
-                    {data.join_users.map((user) => (
-                      <UserPlate
-                        icon=""
-                        name={user.user_name}
-                        id={user.user_id}
-                        onPlateClick={actions.getUserRequest}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </RadiusWhiteCard>
-            </div>
-          ))}
+          {history_cards}
         </MainBody>
       </Body>
       <Footer />
