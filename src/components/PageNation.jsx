@@ -60,7 +60,6 @@ const PageNation = ({ actions, history, roomListState }) => {
       limit = 5 - pageCount;
     }
 
-    console.log(start, limit);
     if (2 < pageCount) {
       for (let i = start + 1; i <= limit; i++) {
         pageNation.push(
