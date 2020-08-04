@@ -36,16 +36,19 @@ const PageNation = ({ actions, history, roomListState }) => {
     rendering();
   };
 
-  let pageNation = [];
+  let pageNation;
   const rendering = () => {
     pageNation = [];
 
     let start = 1;
-    if (selectPage > 3) {
+    if (3 < selectPage) {
       start = selectPage - 2;
     }
     if (pageCount - selectPage < 3) {
       start = pageCount - 4;
+    }
+    if (pageCount < 4) {
+      start = 1;
     }
 
     let limit;
@@ -53,18 +56,25 @@ const PageNation = ({ actions, history, roomListState }) => {
     if (pageCount - selectPage < 2) {
       limit = start + 3;
     }
-
-    for (let i = start + 1; i <= limit; i++) {
-      pageNation.push(
-        <button
-          key={i}
-          className={attachClass(i)}
-          onClick={handleOnClick.bind(this, i)}
-        >
-          {i}
-        </button>
-      );
+    if (pageCount < 4) {
+      limit = 5 - pageCount;
     }
+
+    console.log(start, limit);
+    if (2 < pageCount) {
+      for (let i = start + 1; i <= limit; i++) {
+        pageNation.push(
+          <button
+            key={i}
+            className={attachClass(i)}
+            onClick={handleOnClick.bind(this, i)}
+          >
+            {i}
+          </button>
+        );
+      }
+    }
+
     pageNation.unshift(
       <button
         key={1}
@@ -74,15 +84,18 @@ const PageNation = ({ actions, history, roomListState }) => {
         {1}
       </button>
     );
-    pageNation.push(
-      <button
-        key={pageCount}
-        className={attachClass(pageCount)}
-        onClick={handleOnClick.bind(this, pageCount)}
-      >
-        {pageCount}
-      </button>
-    );
+
+    if (1 < pageCount) {
+      pageNation.push(
+        <button
+          key={pageCount}
+          className={attachClass(pageCount)}
+          onClick={handleOnClick.bind(this, pageCount)}
+        >
+          {pageCount}
+        </button>
+      );
+    }
   };
 
   useEffect(() => {
