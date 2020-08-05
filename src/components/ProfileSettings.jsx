@@ -168,7 +168,7 @@ const ProfileSetting = ({ state, actions, history }) => {
                                 fontSize: "10px",
                                 color: "#f00",
                                 position: "absolute",
-                                top: "13px",
+                                top: "16px",
                                 left: "12px",
                               }}
                             />
