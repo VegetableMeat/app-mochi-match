@@ -166,6 +166,17 @@ const roomCreationState = (state = initiaState, action) => {
     case POST_ROOM_CREATION_NG:
       return {
         ...state,
+        data: {
+          ...state.data,
+          error: {
+            ...state.data.error,
+            default: {
+              ...state.data.error.default,
+              title: action.err.title,
+              hard: action.err.hard,
+            },
+          },
+        },
       };
     case INPUT_SELECT_GAME_TITLE:
       return {
@@ -203,7 +214,9 @@ const roomCreationState = (state = initiaState, action) => {
           },
           select: {
             ...state.data.select,
-            input_title: "",
+            input_title: state.data.get_data.title.filter((data) => {
+              return data.id === action.payload;
+            })[0].game_title,
             title: action.payload,
             title_click_flg: true,
           },

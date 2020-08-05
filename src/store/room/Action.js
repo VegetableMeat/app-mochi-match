@@ -110,9 +110,10 @@ export const postRoomCreationOk = () => {
   };
 };
 
-export const postRoomCreationNg = () => {
+export const postRoomCreationNg = (err) => {
   return {
     type: POST_ROOM_CREATION_NG,
+    err: err,
   };
 };
 

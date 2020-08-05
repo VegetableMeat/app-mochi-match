@@ -128,18 +128,16 @@ const getGameHard = (get) => {
 const allErrorCheck = (post) => {
   let error_flg = false;
   let error_msg = [];
-  Object.entries(post.error).map(([key, value]) => {
-    if (key.match(/^input_[a-zA-Z0-9]*$/)) {
-      if (key !== "input_time" && key !== "input_date") {
-        if (value) {
-          error_flg = true;
-          error_msg.push(post.select[key.replace("input_", "")]);
-        }
-      } else if (post.select.start) {
-        if (value) {
-          error_flg = true;
-          error_msg.push(post.select[key.replace("input_", "")]);
-        }
+  Object.entries(post.error.flag).map(([key, value]) => {
+    if (key !== "time" && key !== "date") {
+      if (value) {
+        error_flg = true;
+        error_msg.push(post.error.msg[key]);
+      }
+    } else if (post.select.start) {
+      if (value) {
+        error_flg = true;
+        error_msg.push(post.error.msg[key]);
       }
     }
   });
@@ -149,12 +147,13 @@ const allErrorCheck = (post) => {
 function* fetchRoomCreation(post) {
   const { error_flg, error_msg } = yield call(allErrorCheck, post.payload);
   if (error_flg) {
-    return yield put(
+    yield put(
       showModalTrue("POST_ROOM_ERROR", "room_creation_error", {
         title: "入力エラー",
         msg: error_msg,
       })
     );
+    return yield put(postRoomCreationNg(post.payload.error.flag));
   }
 
   const { res, error } = yield call(resRoomCreation, post);

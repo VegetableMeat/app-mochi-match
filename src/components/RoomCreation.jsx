@@ -77,7 +77,7 @@ export default function RoomCreation({ state, actions, history }) {
                     />
                   ))}
               </div>
-              <HeadLine2>その他</HeadLine2>
+              <HeadLine2>選択したゲーム</HeadLine2>
               <div id="select" onBlur={() => actions.selectTitleOnClick()}>
                 <Select
                   menuPortalTarget={document.body}
@@ -96,6 +96,14 @@ export default function RoomCreation({ state, actions, history }) {
                       data: e.label,
                       error: false,
                     })
+                  }
+                  value={
+                    select.input_title !== ""
+                      ? {
+                          value: select.input_title,
+                          label: select.input_title,
+                        }
+                      : null
                   }
                 />
               </div>
