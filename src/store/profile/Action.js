@@ -11,6 +11,7 @@ export const INPUT_USER_ICON = "INPUT_USER_ICON";
 export const UPDATE_USER_PROFILE_REQ = "UPDATE_USER_PROFILE_REQ";
 export const UPDATE_USER_PROFILE_OK = "UPDATE_USER_PROFILE_OK";
 export const UPDATE_USER_PROFILE_NG = "UPDATE_USER_PROFILE_NG";
+export const DELETE_SUCCESS_MESSAGE = "DELETE_SUCCESS_MESSAGE";
 
 const GET_GAME_TITLE_URL = `/v1/gamelist`;
 const PUT_USER_PROFILE_URL = `/v1/users`;
@@ -103,5 +104,11 @@ export const updateUserProfileNg = (data) => {
   return {
     type: UPDATE_USER_PROFILE_NG,
     payload: data,
+  };
+};
+
+export const deleteSuccessMessage = () => {
+  return {
+    type: DELETE_SUCCESS_MESSAGE,
   };
 };
