@@ -21,7 +21,6 @@ import "./css/InTheRoom.css";
 
 const InTheRoom = ({ state, history }) => {
   const { room, join_users } = state;
-  console.log(join_users);
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;

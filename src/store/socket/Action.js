@@ -17,7 +17,6 @@ export const closeSocket = () => {
 };
 
 export const joinRoomSocket = (room_id) => {
-  console.log(room_id);
   return {
     type: JOIN_ROOM_SOCKET,
     payload: room_id,

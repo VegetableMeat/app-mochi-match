@@ -5,7 +5,6 @@ const PopularGames = ({ state, actions }) => {
     actions.getPopularGamesReq();
   }, []);
 
-  console.log(state);
   return (
     <ol>
       {state.data.map((value, key) => (
