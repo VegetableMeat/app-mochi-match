@@ -6,6 +6,8 @@ import Body from "./Body";
 import CenterMainBody from "./CenterMainBody";
 import Modal from "../containers/ModalContainer";
 import BodyHeader from "./BodyHeader";
+import { message } from "antd";
+import "./css/Antd.css";
 import "./css/Sign.css";
 
 const Logout = ({ state, actions, history }) => {
@@ -14,6 +16,7 @@ const Logout = ({ state, actions, history }) => {
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("expires_in");
     actions.logout();
+    message.success("ログアウトしました");
   };
 
   if (

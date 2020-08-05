@@ -21760,7 +21760,7 @@ textarea.ant-mentions {
 }
 .ant-message-notice {
   padding: 8px;
-  text-align: center;
+  /* text-align: center; */
 }
 .ant-message-notice-content {
   display: inline-block;

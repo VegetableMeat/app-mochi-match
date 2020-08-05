@@ -31,7 +31,7 @@ import "./css/Error.css";
 import "./css/Antd.css";
 import { useEffect } from "react";
 import { CloseOutlined } from "@ant-design/icons";
-import { message, Space } from "antd";
+import { message } from "antd";
 // import inputAreaStyles from "./custom/InputArea";
 
 const ProfileSetting = ({ state, actions, history }) => {
@@ -74,7 +74,7 @@ const ProfileSetting = ({ state, actions, history }) => {
   console.log(profile);
   return (
     <div id="profile-setting">
-      <Space>{success ? successMessage("保存しました") : null}</Space>
+      {success ? successMessage("保存しました") : null}
       <Header roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>
