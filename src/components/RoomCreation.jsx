@@ -46,7 +46,8 @@ export default function RoomCreation({ state, actions, history }) {
   const { get_data, error, select } = state.roomCreationState.data;
   const { favorite_games } = state.userState.user;
   const { roomListState } = state;
-  console.log(favorite_games);
+  console.log("Select", select);
+  console.log("Error", error);
   return (
     <div id="room-creation">
       <Header roomListState={roomListState} history={history} />
@@ -56,7 +57,9 @@ export default function RoomCreation({ state, actions, history }) {
           <div
             className={[
               "section",
-              error.input_title ? "error-background" : "",
+              !select.title && error.default.title && error.flag.title
+                ? "error-background"
+                : "",
             ].join(" ")}
           >
             <HeadLine1>ゲーム選択</HeadLine1>
@@ -74,27 +77,39 @@ export default function RoomCreation({ state, actions, history }) {
                     />
                   ))}
               </div>
-              <HeadLine2>その他</HeadLine2>
-              <Select
-                menuPortalTarget={document.body}
-                placeholder="文字入力で検索できます"
-                options={
-                  get_data.title.length &&
-                  get_data.title.map((data) => ({
-                    value: data.game_title,
-                    label: data.game_title,
-                  }))
-                }
-                styles={TextAreaStyles()}
-                onChange={(e) =>
-                  actions.inputSelectGameTitle({
-                    text: e.label,
-                    data: e.label,
-                    error: false,
-                  })
-                }
-              />
-              {error.input_title ? <Error text={select.title} /> : null}
+              <HeadLine2>選択したゲーム</HeadLine2>
+              <div id="select" onBlur={() => actions.selectTitleOnClick()}>
+                <Select
+                  menuPortalTarget={document.body}
+                  placeholder="文字入力で検索できます"
+                  options={
+                    get_data.title.length &&
+                    get_data.title.map((data) => ({
+                      value: data.game_title,
+                      label: data.game_title,
+                    }))
+                  }
+                  styles={TextAreaStyles()}
+                  onChange={(e) =>
+                    actions.inputSelectGameTitle({
+                      text: e.label,
+                      data: e.label,
+                      error: false,
+                    })
+                  }
+                  value={
+                    select.input_title !== ""
+                      ? {
+                          value: select.input_title,
+                          label: select.input_title,
+                        }
+                      : null
+                  }
+                />
+              </div>
+              {!select.title && error.default.title && error.flag.title ? (
+                <Error text={error.msg.title} />
+              ) : null}
             </div>
           </div>
           <BreakUnderLine />
@@ -102,7 +117,9 @@ export default function RoomCreation({ state, actions, history }) {
           <div
             className={[
               "section",
-              error.input_hard ? "error-background" : "",
+              !select.hard && error.default.hard && error.flag.hard
+                ? "error-background"
+                : "",
             ].join(" ")}
           >
             <HeadLine1>ハード選択</HeadLine1>
@@ -123,7 +140,9 @@ export default function RoomCreation({ state, actions, history }) {
                     )
                   )}
               </HardSelectArea>
-              {error.input_hard ? <Error text={select.hard} /> : null}
+              {!select.hard && error.default.hard && error.flag.hard ? (
+                <Error text={error.msg.hard} />
+              ) : null}
             </div>
           </div>
           <div className="section">
@@ -146,8 +165,8 @@ export default function RoomCreation({ state, actions, history }) {
           <div
             className={[
               "section",
-              (select.start && error.input_date) ||
-              (select.start && error.input_time)
+              (select.start && error.flag.date) ||
+              (select.start && error.flag.time)
                 ? "error-background"
                 : "",
             ].join(" ")}
@@ -207,11 +226,11 @@ export default function RoomCreation({ state, actions, history }) {
                   </div>
                 )}
               </div>
-              {select.start && error.input_date ? (
-                <Error text={select.date} />
+              {select.start && error.flag.date ? (
+                <Error text={error.msg.date} />
               ) : null}
-              {select.start && error.input_time ? (
-                <Error text={select.time} />
+              {select.start && error.flag.time ? (
+                <Error text={error.msg.time} />
               ) : null}
             </div>
           </div>
@@ -220,7 +239,7 @@ export default function RoomCreation({ state, actions, history }) {
           <div
             className={[
               "section",
-              error.input_text ? "error-background" : "",
+              error.flag.text ? "error-background" : "",
             ].join(" ")}
           >
             <HeadLine1>募集テキスト</HeadLine1>
@@ -237,7 +256,7 @@ export default function RoomCreation({ state, actions, history }) {
                   })
                 }
               />
-              {error.input_text ? <Error text={error.text_msg} /> : null}
+              {error.flag.text ? <Error text={error.msg.text} /> : null}
             </div>
           </div>
 
