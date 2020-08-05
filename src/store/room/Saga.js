@@ -40,6 +40,7 @@ import {
   getChatpostListSuccess,
   CREATE_CHATPOSTLIST_REQUEST,
   roomCreateResponse,
+  userLeave,
 } from "./Action";
 import { showModalFalse, showModalTrue } from "../common/Action";
 import { joinRoomSocket, leaveRoomSocket } from "../socket/Action";
@@ -159,7 +160,9 @@ function* fetchRoomCreation(post) {
 
   const { res, error } = yield call(resRoomCreation, post);
   if (!error) {
+    console.log(res.data);
     yield put(postRoomCreationOk());
+    yield put(joinRoomSocket(res.data.data.room_id));
     yield put(getRoomDetailSuccess(res.data));
     yield call(post.payload.push, "/intheroom");
   } else {
@@ -226,6 +229,7 @@ function* handleRoomJoinRequest(action) {
   const { res, error } = yield call(joinRoomReqApi, room_id);
 
   if (!error) {
+    console.log("joinRoomSocket");
     yield put(joinRoomSocket(room_id));
     yield put(joinRoomSuccess(room_id, action.history));
   } else {

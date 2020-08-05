@@ -14,6 +14,8 @@ import {
   GET_CHATPOSTLIST_REQUEST,
   GET_CHATPOSTLIST_SUCCESS,
   GET_CHATPOSTLIST_ERROR,
+  USER_JOIN,
+  USER_LEAVE,
 } from "./../Action";
 
 const initialState = {
@@ -158,6 +160,41 @@ const roomState = (state = initialState, action) => {
     case GET_CHATPOSTLIST_ERROR:
       return {
         ...state,
+      };
+    case USER_JOIN:
+      if (
+        state.join_users.some(
+          (user) => user.user_id === action.payload.user.user_id
+        )
+      ) {
+        return {
+          ...state,
+        };
+      }
+      return {
+        ...state,
+        room: {
+          ...state.room,
+          count: state.room.count + 1,
+        },
+        join_users: [...state.join_users, action.payload.user],
+      };
+    case USER_LEAVE:
+      let leaveCount = 0;
+      let newJoinUsers = state.join_users;
+      newJoinUsers.some(function (v, i) {
+        if (v.user_id == action.payload.user.user_id) {
+          newJoinUsers.splice(i, 1);
+          leaveCount++;
+        }
+      });
+      return {
+        ...state,
+        room: {
+          ...state.room,
+          count: leaveCount,
+        },
+        join_users: newJoinUsers,
       };
     default:
       return state;
