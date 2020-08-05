@@ -10,6 +10,7 @@ import {
   POST_ROOM_CREATION_NG,
   INPUT_SELECT_GAME_TITLE,
   CLICK_SELECT_GAME_TITLE,
+  SELECT_TITLE_ON_CLICK,
   SELECT_GAME_HARD,
   SELECT_CAPACITY,
   SELECT_START,
@@ -26,25 +27,54 @@ const initiaState = {
       hard: [],
     },
     error: {
+      msg: {
+        // { key: "title", value: "ゲームタイトルが選択されていません" },
+        // { key: "hard", value: "ゲームハードが選択されていません" },
+        // { key: "date", value: "日付が選択されていません" },
+        // { key: "time", value: "時間が選択されていません" },
+        // { key: "text", value: "募集テキストは必ず入力して下さい" },
+        title: "ゲームタイトルが選択されていません",
+        hard: "ゲームハードが選択されていません",
+        date: "日付が選択されていません",
+        time: "時間が選択されていません",
+        text: "募集テキストは必ず入力して下さい",
+      },
+      flag: {
+        // { key: "title", value: true },
+        // { key: "hard", value: true },
+        // { key: "start", value: false },
+        // { key: "date", value: true },
+        // { key: "time", value: true },
+        // { key: "text", value: false },
+        title: true,
+        hard: true,
+        start: false,
+        date: true,
+        time: true,
+        text: false,
+      },
+      default: {
+        title: false,
+        hard: false,
+      },
       get_title: "",
       get_hard: "",
-      input_title: true,
-      input_hard: true,
-      input_start: false,
-      input_date: true,
-      input_time: true,
-      input_text: false,
-      text_msg: "募集テキストは必ず入力してください",
+      // input_title: true,
+      // input_hard: true,
+      // input_start: false,
+      // input_date: true,
+      // input_time: true,
+      // input_text: false,
     },
     select: {
-      title: "ゲームタイトルが選択されていません",
+      title: null,
       input_title: "",
       title_click_flg: null,
-      hard: "ゲームハードが選択されていません",
+      hard: null,
       capacity: 4,
       start: false,
-      date: "日付が選択されていません",
-      time: "時間が選択されていません",
+      date: null,
+      time: null,
       text: "よろしくお願いします。",
     },
   },
@@ -68,7 +98,7 @@ const roomCreationState = (state = initiaState, action) => {
           ...state.data,
           error: {
             ...state.data.error,
-            get_title: initiaState.data.error.title,
+            get_title: initiaState.data.error.get_title,
           },
           get_data: {
             ...state.data.get_data,
@@ -102,7 +132,7 @@ const roomCreationState = (state = initiaState, action) => {
           ...state.data,
           error: {
             ...state.data.error,
-            get_hard: initiaState.data.error.hard,
+            get_hard: initiaState.data.error.get_hard,
           },
           get_data: {
             ...state.data.get_data,
@@ -144,7 +174,10 @@ const roomCreationState = (state = initiaState, action) => {
           ...state.data,
           error: {
             ...state.data.error,
-            input_title: action.payload.error,
+            flag: {
+              ...state.data.error.flag,
+              title: action.payload.error,
+            },
           },
           select: {
             ...state.data.select,
@@ -163,13 +196,30 @@ const roomCreationState = (state = initiaState, action) => {
           ...state.data,
           error: {
             ...state.data.error,
-            input_title: false,
+            flag: {
+              ...state.data.error.flag,
+              title: false,
+            },
           },
           select: {
             ...state.data.select,
             input_title: "",
             title: action.payload,
             title_click_flg: true,
+          },
+        },
+      };
+    case SELECT_TITLE_ON_CLICK:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          error: {
+            ...state.data.error,
+            default: {
+              ...state.data.error.default,
+              title: true,
+            },
           },
         },
       };
@@ -180,7 +230,10 @@ const roomCreationState = (state = initiaState, action) => {
           ...state.data,
           error: {
             ...state.data.error,
-            input_hard: false,
+            flag: {
+              ...state.data.error.flag,
+              hard: false,
+            },
           },
           select: {
             ...state.data.select,
@@ -217,7 +270,10 @@ const roomCreationState = (state = initiaState, action) => {
           ...state.data,
           error: {
             ...state.data.error,
-            input_date: false,
+            flag: {
+              ...state.data.error.flag,
+              date: false,
+            },
           },
           select: {
             ...state.data.select,
@@ -232,7 +288,10 @@ const roomCreationState = (state = initiaState, action) => {
           ...state.data,
           error: {
             ...state.data.error,
-            input_time: false,
+            flag: {
+              ...state.data.error.flag,
+              time: false,
+            },
           },
           select: {
             ...state.data.select,
@@ -247,7 +306,10 @@ const roomCreationState = (state = initiaState, action) => {
           ...state.data,
           error: {
             ...state.data.error,
-            input_text: action.payload.error,
+            flag: {
+              ...state.data.error.flag,
+              text: action.payload.error,
+            },
           },
           select: {
             ...state.data.select,
