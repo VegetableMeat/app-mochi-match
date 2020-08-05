@@ -1,3 +1,5 @@
+// TODO: css問題をなんとかする
+// import "antd/dist/antd.css";
 import React from "react";
 import Select from "react-select";
 import { Link } from "react-router-dom";
@@ -30,12 +32,18 @@ import "./css/ProfileSetting.css";
 import "./css/Error.css";
 import { useEffect } from "react";
 import { CloseOutlined } from "@ant-design/icons";
+import { message, Space } from "antd";
 // import inputAreaStyles from "./custom/InputArea";
 
 const ProfileSetting = ({ state, actions, history }) => {
-  const { get, profile, error, value, select } = state.profileState;
+  const { get, profile, error, value, select, success } = state.profileState;
   const { favorite_games, icon, user_name } = state.userState.user;
   const { roomListState } = state;
+
+  const successMessage = (mes) => {
+    message.success(mes);
+    actions.deleteSuccessMessage();
+  };
 
   useEffect(() => {
     actions.getGameTitleReq();
@@ -63,11 +71,11 @@ const ProfileSetting = ({ state, actions, history }) => {
     { key: "icon4", value: "icon4" },
     { key: "icon5", value: "icon5" },
     { key: "icon6", value: "icon6" },
-    { key: "icon7", value: "icon7" },
   ];
   console.log(profile);
   return (
     <div id="profile-setting">
+      <Space>{success ? successMessage("保存しました") : null}</Space>
       <Header roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>

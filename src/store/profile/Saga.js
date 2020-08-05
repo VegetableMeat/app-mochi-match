@@ -56,12 +56,13 @@ const allErrorCheck = (err) => {
 function* updateUserProfile(update) {
   const { err_flag, err_msg } = yield call(allErrorCheck, update.payload.error);
   if (err_flag) {
-    return yield put(
+    yield put(
       showModalTrue("UPDATE_USER_PROFILE_ERROR", "user_profile_error", {
         title: "入力エラー",
         msg: err_msg,
       })
     );
+    return yield put(updateUserProfileNg());
   }
 
   const { res, err } = yield call(userProfile, update);
@@ -73,7 +74,7 @@ function* updateUserProfile(update) {
     yield take(TOKEN_REFRESH_SUCCESS);
     yield call(updateUserProfile, update);
   }
-  yield put(updateUserProfileNg(err));
+  yield put(updateUserProfileNg());
 }
 
 export const profileSaga = [
