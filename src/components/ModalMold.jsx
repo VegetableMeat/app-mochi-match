@@ -12,7 +12,7 @@ const ModalMold = ({ state, actions, history }) => {
   const handleCheck = (e) => {
     actions.modalCheck(e.target.value, e.target.checked);
   };
-
+  console.log(modalState);
   const handleRoomLeave = () => {
     actions.leaveRoomRequest(room, history);
     actions.showModalFalse();
@@ -201,7 +201,7 @@ const ModalMold = ({ state, actions, history }) => {
                 modalState.data.check.includes(key.toString()) ? true : false
               }
             />
-            {text}
+            <span className="checkbox-text">{text}</span>
           </div>
         );
       });
@@ -220,11 +220,20 @@ const ModalMold = ({ state, actions, history }) => {
         </div>
       );
     case "FINAL_CONFIRMATION":
+      let check = [];
+      if (modalState.data.check !== []) {
+        modalState.data.check.forEach((num, key) => {
+          check.push(<li key={key}>{modalState.report[num]}</li>);
+        });
+      }
+      // TODO: 登録処理を追加する
       return (
         <div className="modal-body">
           <div className="modal-text modal-header">
             本当に下記の内容で報告しますか？
           </div>
+          <ul>{check}</ul>
+
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
@@ -248,10 +257,12 @@ const ModalMold = ({ state, actions, history }) => {
             ご協力ありがとうございました！
           </div>
           <div className="footer-button-area">
-            <input
-              type="button"
-              onClick={() => window.location.reload()}
-            ></input>
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              閉じる
+            </button>
           </div>
         </div>
       );
