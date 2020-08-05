@@ -74,7 +74,7 @@ const ProfileSetting = ({ state, actions, history }) => {
   console.log(profile);
   return (
     <div id="profile-setting">
-      <Space>{success ? successMessage("保存しました") : null}</Space>
+      {success ? successMessage("保存しました") : null}
       <Header roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>
