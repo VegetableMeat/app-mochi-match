@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import Loading from "./Loading";
 
 const LoginDone = ({ actions }) => {
   const useQuery = () => {
@@ -24,7 +25,7 @@ const LoginDone = ({ actions }) => {
     }
   }, []);
 
-  return <div></div>;
+  return <Loading />;
 };
 
 export default LoginDone;
