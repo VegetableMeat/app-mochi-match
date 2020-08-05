@@ -16,7 +16,7 @@ const Logout = ({ state, actions, history }) => {
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("expires_in");
     actions.logout();
-    message.success("ログアウトしました", 1);
+    message.success("ログアウトしました");
   };
 
   if (
