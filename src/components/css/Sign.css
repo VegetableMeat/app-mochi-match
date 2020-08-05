@@ -1,4 +1,5 @@
 #login .button-area button,
+#logout .button-area button,
 #register .button-area button {
   border: none;
   font-size: 14px;
@@ -10,6 +11,7 @@
 }
 
 #login .button-area,
+#logout .button-area,
 #register .button-area {
   width: 280px;
   margin: 40px calc((100% - 280px) / 2);
@@ -17,17 +19,20 @@
 
 @media screen and (max-width: 600px) {
   #login .button-area,
+  #logout .button-area,
   #register .button-area {
     width: 94%;
     margin: 12px 3%;
   }
   #login .button-area button,
+  #logout .button-area button,
   #register .button-area button {
     font-size: 11px;
   }
 }
 
 #login .button-area button:focus,
+#logout .button-area button:focus,
 #register .button-area button:focus {
   outline-style: none;
 }
@@ -51,18 +56,21 @@
 }
 
 #login p,
+#logout p,
 #register p {
   text-align: center;
 }
 
 @media screen and (max-width: 800px) {
   #login p,
+  #logout p,
   #register p {
     font-size: 12px;
   }
 }
 
-#login .button-area button i {
+#login .button-area button i,
+#logout .button-area button i {
   margin: 0 8px 0 0;
   font-size: 18px;
 }
@@ -72,3 +80,12 @@
 /* #login .button-area button {
   line-height: 32px;
 } */
+#login .center-main-body,
+#logout .center-main-body {
+  min-height: 300px;
+  height: 360px;
+}
+
+#logout .button-area {
+  margin: 70px calc((100% - 280px) / 2);
+}

@@ -28,7 +28,7 @@ const Logout = ({ state, actions, history }) => {
   }
 
   return (
-    <div id="login">
+    <div id="logout">
       <Header history={history} />
       <Body>
         <CenterMainBody>
