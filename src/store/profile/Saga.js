@@ -11,6 +11,7 @@ import { showModalTrue } from "../common/Action";
 import { getGameTitle } from "../room/Saga";
 import { call, put, takeEvery, take } from "redux-saga/effects";
 import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "../auth/Action";
+import { handleGetMeRequest } from "./../user/Saga";
 
 function* fetchGameTitle(get) {
   const { res, err } = yield call(getGameTitle, get);
@@ -65,6 +66,7 @@ function* updateUserProfile(update) {
 
   const { res, err } = yield call(userProfile, update);
   if (!err) {
+    yield call(handleGetMeRequest);
     return yield put(updateUserProfileOk());
   } else if (err.response.status === 401) {
     yield put(tokenRefleshRequest());
