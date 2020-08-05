@@ -9,6 +9,9 @@ import {
   DELETE_FAVORITE_GAME,
   INPUT_USER_NAME,
   INPUT_USER_ICON,
+  UPDATE_USER_PROFILE_OK,
+  UPDATE_USER_PROFILE_NG,
+  DELETE_SUCCESS_MESSAGE,
 } from "./Action";
 
 const initialState = {
@@ -37,6 +40,7 @@ const initialState = {
   select: {
     title: [],
   },
+  success: false,
 };
 
 const profileState = (state = initialState, action) => {
@@ -219,6 +223,21 @@ const profileState = (state = initialState, action) => {
           ...state.profile,
           icon: action.payload,
         },
+      };
+    case UPDATE_USER_PROFILE_OK:
+      return {
+        ...state,
+        success: true,
+      };
+    case UPDATE_USER_PROFILE_NG:
+      return {
+        ...state,
+        success: false,
+      };
+    case DELETE_SUCCESS_MESSAGE:
+      return {
+        ...state,
+        success: false,
       };
     default:
       return state;
