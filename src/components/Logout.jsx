@@ -6,7 +6,7 @@ import Body from "./Body";
 import CenterMainBody from "./CenterMainBody";
 import Modal from "../containers/ModalContainer";
 import BodyHeader from "./BodyHeader";
-import { message, Space } from "antd";
+import { message } from "antd";
 import "./css/Antd.css";
 import "./css/Sign.css";
 
