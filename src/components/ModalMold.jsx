@@ -209,12 +209,14 @@ const ModalMold = ({ state, actions, history }) => {
         <div className="modal-body">
           <div className="modal-text modal-header">どのような違反ですか？</div>
           {check_box}
-          <div className="footer-button-area"></div>
-          <input
-            type="submit"
-            onClick={() => actions.showModalFront("FINAL_CONFIRMATION")}
-            value="違反報告"
-          ></input>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => actions.showModalFront("FINAL_CONFIRMATION")}
+            >
+              違反報告
+            </button>
+          </div>
         </div>
       );
     case "FINAL_CONFIRMATION":
@@ -224,13 +226,14 @@ const ModalMold = ({ state, actions, history }) => {
             本当に下記の内容で報告しますか？
           </div>
           <div className="footer-button-area">
-            <input
-              type="button"
-              onClick={() => actions.showModalFront("end_modal")}
-              value="はい"
-            ></input>
             <button
-              className="cancel-button color-bulue"
+              className="join-button color-blue"
+              onClick={() => actions.showModalFront("end_modal")}
+            >
+              はい
+            </button>
+            <button
+              className="cancel-button color-red"
               onClick={() => actions.showModalBack("REPORT")}
             >
               キャンセル
@@ -246,7 +249,7 @@ const ModalMold = ({ state, actions, history }) => {
           </div>
           <div className="footer-button-area">
             <input
-              ype="button"
+              type="button"
               onClick={() => window.location.reload()}
             ></input>
           </div>
