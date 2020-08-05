@@ -80,8 +80,8 @@
 /* #login .button-area button {
   line-height: 32px;
 } */
-
-.center-main-body {
+#login .center-main-body,
+#logout .center-main-body {
   min-height: 300px;
   height: 360px;
 }
