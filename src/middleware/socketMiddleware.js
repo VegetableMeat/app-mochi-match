@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import { createdChatpost } from "./../store/room/Action";
+import { createdChatpost, userJoin, userLeave } from "./../store/room/Action";
 import {
   OPEN_SOCKET,
   CLOSE_SOCKET,
@@ -16,12 +16,13 @@ const socketMiddleware = (store) => (next) => (action) => {
     socket = io("wss://mochi-match.work/chatroom");
 
     socket.on("notify_entry", function (data) {
-      console.log(data);
+      store.dispatch(userJoin(data));
+      console.log("notify_entry", data);
     });
 
     socket.on("notify_leave", function (data) {
-      store.dispatch(createdChatpost(data));
-      console.log("msg", data);
+      store.dispatch(userLeave(data));
+      console.log("notify_leave", data);
     });
 
     socket.on("user_input_start", function (data) {
@@ -43,7 +44,6 @@ const socketMiddleware = (store) => (next) => (action) => {
   // socket通信の切断
   if (action.type === CLOSE_SOCKET) {
     socket.disconnect();
-    console.log("close socket");
   }
 
   let userState;
@@ -52,26 +52,21 @@ const socketMiddleware = (store) => (next) => (action) => {
   // socketルームへの参加
   if (action.type === JOIN_ROOM_SOCKET) {
     userState = store.getState().userState;
-    room_id = action.payload.room_id;
-
+    room_id = action.payload;
     socket.emit("join_req", {
       room_id: room_id,
-      user: {
-        user_name: userState.user_name,
-      },
+      user: userState.user,
     });
   }
 
   // socketルームからの切断
   if (action.type === LEAVE_ROOM_SOCKET) {
     userState = store.getState().userState;
-    room_id = action.payload.room_id;
+    room_id = action.payload;
 
     socket.emit("leave", {
       room_id: room_id,
-      user: {
-        user_name: userState.user_name,
-      },
+      user: userState.user,
     });
   }
   next(action);
