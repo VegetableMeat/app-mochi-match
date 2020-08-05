@@ -36,6 +36,7 @@ export const POST_ROOM_CREATION_OK = "POST_ROOM_CREATION_OK";
 export const POST_ROOM_CREATION_NG = "POST_ROOM_CREATION_NG";
 export const INPUT_SELECT_GAME_TITLE = "INPUT_SELECT_GAME_TITLE";
 export const CLICK_SELECT_GAME_TITLE = "CLICK_SELECT_GAME_TITLE";
+export const SELECT_TITLE_ON_CLICK = "SELECT_TITLE_ON_CLICK";
 export const SELECT_GAME_HARD = "SELECT_GAME_HARD";
 export const SELECT_CAPACITY = "SELECT_CAPACITY";
 export const SELECT_START = "SELECT_START";
@@ -109,9 +110,10 @@ export const postRoomCreationOk = () => {
   };
 };
 
-export const postRoomCreationNg = () => {
+export const postRoomCreationNg = (err) => {
   return {
     type: POST_ROOM_CREATION_NG,
+    err: err,
   };
 };
 
@@ -126,6 +128,12 @@ export const clickSelectGameTitle = (data) => {
   return {
     type: CLICK_SELECT_GAME_TITLE,
     payload: data,
+  };
+};
+
+export const selectTitleOnClick = () => {
+  return {
+    type: SELECT_TITLE_ON_CLICK,
   };
 };
 

@@ -91,17 +91,17 @@ const History = ({ state, actions, history }) => {
             <MenuHeader text="メニュー" />
             <MenuInnerWrapper>
               <ul>
-                <Link to="/">
+                <Link to="/profileSetting">
                   <li>
                     <i className="far fa-id-card"></i>Profile
                   </li>
                 </Link>
-                <Link to="/">
+                <Link to="/configuration">
                   <li>
                     <i className="fas fa-user-cog"></i>Setting
                   </li>
                 </Link>
-                <Link to="/History">
+                <Link to="/history">
                   <li>
                     <i className="fas fa-history"></i>Play History
                   </li>

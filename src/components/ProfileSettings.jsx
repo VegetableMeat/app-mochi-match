@@ -1,5 +1,3 @@
-// TODO: css問題をなんとかする
-// import "antd/dist/antd.css";
 import React from "react";
 import Select from "react-select";
 import { Link } from "react-router-dom";
@@ -30,9 +28,10 @@ import TextAreaStyles from "./custom/TextArea";
 import Modal from "../containers/ModalContainer";
 import "./css/ProfileSetting.css";
 import "./css/Error.css";
+import "./css/Antd.css";
 import { useEffect } from "react";
 import { CloseOutlined } from "@ant-design/icons";
-import { message, Space } from "antd";
+import { message } from "antd";
 // import inputAreaStyles from "./custom/InputArea";
 
 const ProfileSetting = ({ state, actions, history }) => {
@@ -75,7 +74,7 @@ const ProfileSetting = ({ state, actions, history }) => {
   console.log(profile);
   return (
     <div id="profile-setting">
-      <Space>{success ? successMessage("保存しました") : null}</Space>
+      {success ? successMessage("保存しました") : null}
       <Header roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>
@@ -166,11 +165,11 @@ const ProfileSetting = ({ state, actions, history }) => {
                           >
                             <CloseOutlined
                               style={{
-                                fontSize: "16px",
+                                fontSize: "10px",
                                 color: "#f00",
                                 position: "absolute",
-                                top: "10px",
-                                left: "10px",
+                                top: "13px",
+                                left: "12px",
                               }}
                             />
                           </div>
