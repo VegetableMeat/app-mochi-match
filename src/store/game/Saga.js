@@ -39,7 +39,7 @@ export const favoriteGamesSaga = [
 
 // Popular
 const requestPopularGamesApi = () => {
-  const url = `http://localhost:3000/popular-game`;
+  const url = `https://api.mochi-match.work/v1/hot/games`;
   return axios
     .get(url)
     .then((res) => {
