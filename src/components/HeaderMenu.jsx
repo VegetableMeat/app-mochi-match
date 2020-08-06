@@ -2,9 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ClickAwayListener } from "@material-ui/core";
 import { useEffect } from "react";
+import { message } from "antd";
+import "./css/Antd.css";
 
 const HeaderMenu = ({ state, actions }) => {
-  const { authState, headerMenuState } = state;
+  const { headerMenuState } = state;
+
+  const logout = () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("expires_in");
+    actions.logout();
+    message.success("ログアウトしました");
+  };
 
   return (
     <ClickAwayListener onClickAway={() => actions.showHeaderMenuFalse()}>
@@ -21,11 +31,15 @@ const HeaderMenu = ({ state, actions }) => {
           <div className="header-menu">
             <ul className="header-menu-list">
               {localStorage.getItem("access_token") ? (
-                <Link to="/logout">
-                  <li>
-                    <i className="fas fa-sign-in-alt"></i>Logout
-                  </li>
-                </Link>
+                <li
+                  onClick={() =>
+                    actions.showModalTrue("LOGOUT", "logout", [
+                      { action: logout },
+                    ])
+                  }
+                >
+                  <i className="fas fa-sign-in-alt"></i>Logout
+                </li>
               ) : (
                 <Link to="/login">
                   <li>
