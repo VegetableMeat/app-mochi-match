@@ -32,3 +32,18 @@
   background-color: white !important;
   background-image: url(../img/hard/PC.png);
 }
+
+.Phone {
+  background-color: white !important;
+  background-image: url(../img/hard/Phone.png);
+}
+
+.Xbox {
+  background-color: green !important;
+  background-image: url(../img/hard/Xbox.png);
+}
+
+.WiiU {
+  background-color: white !important;
+  background-image: url(../img/hard/WiiU.png);
+}
