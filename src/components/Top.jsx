@@ -22,8 +22,6 @@ import TextAreaStyles from "./custom/TextArea";
 import RemoveButton from "./RemoveButton";
 
 const Top = ({ state, actions, history }) => {
-  const textEl = useRef(null);
-  const [text, setText] = useState("");
   const { roomListState, userState, searchState } = state;
 
   const location = useLocation();
@@ -56,14 +54,6 @@ const Top = ({ state, actions, history }) => {
       actions.setRoomHardQuery(searchState.post.hard.id);
     else actions.setRoomHardQuery(null);
   }, [searchState.post.title, searchState.post.hard]);
-
-  // TODO
-  const onTextChange = () => {
-    setText(textEl.current.value);
-  };
-
-  // TODO
-  const handleKeyDown = (e) => {};
 
   return (
     <div id="top">

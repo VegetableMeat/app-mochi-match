@@ -423,7 +423,6 @@ export const userLeave = (data) => {
 export const DELETE_ROOM = "DELETE_ROOM";
 
 export const deleteRoom = () => {
-  console.log(DELETE_ROOM);
   return {
     type: DELETE_ROOM,
   };
