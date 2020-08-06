@@ -85,18 +85,17 @@ const ChatArea = ({ actions, state }) => {
    */
   let chatLogs = [];
   for (let i in chatLog) {
-    console.log(chatLog[i]);
     chatLog[i].user_id === user.user_id
       ? chatLogs.push(
           <div className="message-wrapper" key={chatLog[i].created_at}>
-            <UserIcon />
+            <UserIcon value={chatLog[i].icon} />
             <UserName name={chatLog[i].name} />
             <div className="message bg-blue">{chatLog[i].message}</div>
           </div>
         )
       : chatLogs.push(
           <div className="message-wrapper" key={chatLog[i].created_at}>
-            <UserIcon />
+            <UserIcon value={chatLog[i].icon} />
             <UserName name={chatLog[i].name} />
             <div className="message bg-green">{chatLog[i].message}</div>
           </div>

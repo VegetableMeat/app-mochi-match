@@ -6,7 +6,7 @@ import "./css/SimpleProfile.css";
 const SimpleProfile = ({ icon, name }) => {
   return (
     <div className="simple-profile">
-      <UserIcon icon={icon} />
+      <UserIcon value={icon} />
       <UserName name={name} />
     </div>
   );

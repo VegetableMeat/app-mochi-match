@@ -6,7 +6,7 @@ import "./css/UserPlate.css";
 const UserPlate = ({ icon, name, id, onPlateClick }) => {
   return (
     <div className="user-plate" onClick={() => onPlateClick(id)}>
-      <UserIcon icon={icon} />
+      <UserIcon value={icon} />
       <UserName name={name} />
     </div>
   );

@@ -43,7 +43,7 @@ const InTheRoom = ({ state, history }) => {
           </MenuInnerWrappr>
           <MenuHeader text="ルーム情報" />
           <MenuInnerWrappr>
-            <GamePlate hard="" title={room.title} />
+            <GamePlate hard={room.hard} title={room.title} />
             <BreakUnderLine />
             <Capacity capacity={room.capacity} count={room.count} />
             <BreakUnderLine />

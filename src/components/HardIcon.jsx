@@ -9,12 +9,13 @@ export default function HardIcon({
   isSelect = false,
   isValidate = false,
   list = [],
+  hard_name = "none",
 }) {
   return (
     <div className="hard-icon">
       {isSelect && <div className="select"></div>}
       <div
-        className="icon"
+        className={`icon ${hard_name}`}
         onClick={
           isValidate && !isSelect
             ? () =>
