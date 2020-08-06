@@ -23,6 +23,12 @@ const Top = ({ state, actions, history }) => {
   const [text, setText] = useState("");
   const { roomListState } = state;
 
+  const location = useLocation();
+
+  useEffect(() => {
+    actions.getRoomReq(Number(query.get("page")));
+  }, [location]);
+
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
   };
@@ -43,7 +49,7 @@ const Top = ({ state, actions, history }) => {
 
   return (
     <div id="top">
-      <Header roomListState={roomListState} history={history} />
+      <Header room="top" roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>
           <div className="menu-wrapper menu-wrapper-1">

@@ -32,6 +32,7 @@ import {
   leaveRoomError,
   DELETE_ROOM_REQUEST,
   DELETE_ROOM_AND_JOIN_REQUEST,
+  deleteRoomSuccess,
   LEAVE_ROOM_AND_JOIN_REQUEST,
   getRoomDetailSuccess,
   getRoomDetailError,
@@ -241,6 +242,9 @@ function* handleRoomJoinRequest(action) {
         case 5:
           yield put(showModalTrue("ROOM_CAPACITY_OVER", "room", null));
           break;
+        case 99:
+          yield put(showModalTrue("NOTIFY_ROOM_DELETION", "room", null));
+          break;
         default:
           yield put(showModalTrue("SERVER_ERROR", "room", null));
       }
@@ -400,6 +404,7 @@ export function* handleDeleteRoomRequest(action) {
 
   const { res, error } = yield call(deleteRoomReqApi, room_id);
   if (!error) {
+    yield put(deleteRoomSuccess(room_id));
   } else {
     if (error.response.status === 401) {
       yield put(tokenRefleshRequest());
