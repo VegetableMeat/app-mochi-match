@@ -180,8 +180,8 @@ const roomState = (state = initialState, action) => {
         join_users: [...state.join_users, action.payload.user],
       };
     case USER_LEAVE:
-      let leaveCount = 0;
       let newJoinUsers = state.join_users;
+      let leaveCount = 0;
       newJoinUsers.some(function (v, i) {
         if (v.user_id == action.payload.user.user_id) {
           newJoinUsers.splice(i, 1);
@@ -192,7 +192,7 @@ const roomState = (state = initialState, action) => {
         ...state,
         room: {
           ...state.room,
-          count: leaveCount,
+          count: state.room.count - leaveCount,
         },
         join_users: newJoinUsers,
       };
