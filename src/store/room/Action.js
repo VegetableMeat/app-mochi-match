@@ -264,10 +264,10 @@ export const deleteRoomRequest = (data, history) => {
   };
 };
 
-export const deleteRoomSuccess = (data, callback) => {
+export const deleteRoomSuccess = (data) => {
   return {
     type: DELETE_ROOM_SUCCESS,
-    payload: { room_id: data, callback: callback },
+    payload: { room_id: data },
   };
 };
 
@@ -422,9 +422,8 @@ export const userLeave = (data) => {
 
 export const DELETE_ROOM = "DELETE_ROOM";
 
-export const deleteRoom = (data) => {
+export const deleteRoom = () => {
   return {
     type: DELETE_ROOM,
-    payload: data,
   };
 };

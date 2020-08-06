@@ -22,9 +22,13 @@ import TextAreaStyles from "./custom/TextArea";
 import RemoveButton from "./RemoveButton";
 
 const Top = ({ state, actions, history }) => {
-  const textEl = useRef(null);
-  const [text, setText] = useState("");
   const { roomListState, userState, searchState } = state;
+
+  const location = useLocation();
+
+  useEffect(() => {
+    actions.getRoomReq(Number(query.get("page")));
+  }, [location]);
 
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
@@ -51,17 +55,9 @@ const Top = ({ state, actions, history }) => {
     else actions.setRoomHardQuery(null);
   }, [searchState.post.title, searchState.post.hard]);
 
-  // TODO
-  const onTextChange = () => {
-    setText(textEl.current.value);
-  };
-
-  // TODO
-  const handleKeyDown = (e) => {};
-
   return (
     <div id="top">
-      <Header roomListState={roomListState} history={history} />
+      <Header room="top" roomListState={roomListState} history={history} />
       <Body>
         <SideMenu>
           <div className="menu-wrapper menu-wrapper-1">

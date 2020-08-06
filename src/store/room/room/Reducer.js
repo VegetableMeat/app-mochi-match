@@ -19,8 +19,6 @@ import {
   DELETE_ROOM,
 } from "./../Action";
 
-import { showModalTrue } from "./../../common/Action";
-
 const initialState = {
   room: {
     room_id: null,
@@ -200,8 +198,6 @@ const roomState = (state = initialState, action) => {
         join_users: newJoinUsers,
       };
     case DELETE_ROOM:
-      console.log("DELETE_ROOM");
-      showModalTrue("NOTIFY_ROOM_DELETION", "room", null);
       return initialState;
     default:
       return state;

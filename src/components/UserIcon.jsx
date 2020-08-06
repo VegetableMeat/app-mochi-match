@@ -10,7 +10,6 @@ const UserIcon = ({
   isValidate = false,
   list = [],
 }) => {
-  console.log("VALUE", value);
   return (
     <div
       className="user-icon"
