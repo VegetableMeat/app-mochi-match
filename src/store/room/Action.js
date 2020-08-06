@@ -403,3 +403,12 @@ export const userLeave = (data) => {
     payload: data,
   };
 };
+
+export const DELETE_ROOM = "DELETE_ROOM";
+
+export const deleteRoom = (data) => {
+  return {
+    type: DELETE_ROOM,
+    payload: data,
+  };
+};
