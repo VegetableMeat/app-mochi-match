@@ -1,5 +1,10 @@
 import io from "socket.io-client";
-import { createdChatpost, userJoin, userLeave } from "./../store/room/Action";
+import {
+  createdChatpost,
+  userJoin,
+  userLeave,
+  deleteRoom,
+} from "./../store/room/Action";
 import {
   OPEN_SOCKET,
   CLOSE_SOCKET,
@@ -23,6 +28,12 @@ const socketMiddleware = (store) => (next) => (action) => {
     socket.on("notify_leave", function (data) {
       store.dispatch(userLeave(data));
       console.log("notify_leave", data);
+    });
+
+    socket.on("notify_delete_room", function (data) {
+      console.log("notify_delete_room");
+      store.dispatch(deleteRoom(data));
+      console.log("notify_delete_room", data);
     });
 
     socket.on("user_input_start", function (data) {

@@ -23,6 +23,11 @@ const ModalMold = ({ state, actions, history }) => {
     actions.showModalFalse();
   };
 
+  const handleTopBack = () => {
+    history.push("/");
+    actions.showModalFalse();
+  };
+
   switch (modalState.category) {
     case "LOADING":
       return <Loading />;
@@ -94,6 +99,22 @@ const ModalMold = ({ state, actions, history }) => {
               onClick={() => actions.showModalFalse()}
             >
               キャンセル
+            </button>
+          </div>
+        </div>
+      );
+    case "NOTIFY_ROOM_DELETION":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">
+            　このルームは解散されました
+          </div>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => handleTopBack()}
+            >
+              OK
             </button>
           </div>
         </div>
