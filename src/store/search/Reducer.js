@@ -14,6 +14,8 @@ import {
   REMOVE_SEARCH_HARD,
 } from "./Action";
 
+import dataSort from "../sort/Sort";
+
 const initiaState = {
   get: {
     title: [],
@@ -41,7 +43,9 @@ const searchState = (state = initiaState, action) => {
         ...state,
         get: {
           ...state.get,
-          title: action.payload,
+          title: action.payload.sort((a, b) => {
+            return dataSort(a, b);
+          }),
         },
       };
     case GET_SEARCH_GAME_HARD_OK:
