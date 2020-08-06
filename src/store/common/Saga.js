@@ -30,6 +30,8 @@ import {
   adminGameHardDeleteNg,
   adminGameHardUpdateOk,
   adminGameHardUpdateNg,
+  POST_REPORT_REQ,
+  postReportOk,
 } from "./Action";
 
 // Login
@@ -364,3 +366,33 @@ export const adminHardSaga = [
   takeLatest(ADMIN_GAME_HARD_DELETE_REQ, fetchAdminGameHardDelete),
   takeLatest(ADMIN_GAME_HARD_UPDATE_REQ, fetchAdminGameHardUpdate),
 ];
+
+const resPostReport = (post) => {
+  let report = [];
+  post.payload.check.forEach((value) => {
+    report.push(post.payload.report[value]);
+  });
+
+  return axios_instance
+    .post(post.url, {
+      vaiolator_id: post.payload.owner_id,
+      detail: report,
+    })
+    .then((res) => {
+      return { res };
+    })
+    .catch((e) => {
+      const error = e.toString();
+      return { error };
+    });
+};
+
+function* postReport(post) {
+  const { data, err } = yield call(resPostReport, post);
+  console.log(data);
+  if (!err) {
+    return yield put(postReportOk());
+  }
+}
+
+export const reportSaga = [takeLatest(POST_REPORT_REQ, postReport)];

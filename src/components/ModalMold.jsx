@@ -221,12 +221,27 @@ const ModalMold = ({ state, actions, history }) => {
       );
     case "FINAL_CONFIRMATION":
       let check = [];
-      if (modalState.data.check !== []) {
-        modalState.data.check.forEach((num, key) => {
-          check.push(<li key={key}>{modalState.report[num]}</li>);
-        });
+      if (modalState.data.check.length < 1) {
+        return (
+          <div className="modal-body">
+            <div className="modal-text modal-header">
+              最低一つはチェックしてください
+            </div>
+            <div className="footer-button-area">
+              <button
+                className="cancel-button color-red"
+                onClick={() => actions.showModalBack("REPORT")}
+              >
+                戻る
+              </button>
+            </div>
+          </div>
+        );
       }
-      // TODO: 登録処理を追加する
+
+      modalState.data.check.forEach((num, key) => {
+        check.push(<li key={key}>{modalState.report[num]}</li>);
+      });
       return (
         <div className="modal-body">
           <div className="modal-text modal-header">
@@ -237,7 +252,15 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.showModalFront("end_modal")}
+              onClick={() => {
+                actions.showModalFront("end_modal");
+                actions.postReportReq({
+                  check: modalState.data.check,
+                  report: modalState.report,
+                  room_id: modalState.data.room.room_id,
+                  owner_id: modalState.data.room.owner_id,
+                });
+              }}
             >
               はい
             </button>
@@ -400,7 +423,6 @@ const ModalMold = ({ state, actions, history }) => {
               onClick={() => {
                 modalState.data.logout[0].action();
                 actions.showModalFalse();
-                // console.log(modalState.data.logout[0]);
               }}
             >
               はい
