@@ -390,6 +390,30 @@ const ModalMold = ({ state, actions, history }) => {
           </div>
         </div>
       );
+    case "LOGOUT":
+      return (
+        <div className="modal-body">
+          <div className="modal-text modal-header">ログアウトしますか？</div>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => {
+                modalState.data.logout[0].action();
+                actions.showModalFalse();
+                // console.log(modalState.data.logout[0]);
+              }}
+            >
+              はい
+            </button>
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              いいえ
+            </button>
+          </div>
+        </div>
+      );
     default:
       return "何もありません";
   }
