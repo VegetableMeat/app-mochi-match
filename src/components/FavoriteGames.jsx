@@ -1,16 +1,26 @@
 import React from "react";
+import GameNamePlate from "./GameNamePlate";
 
-const FavoriteGames = ({ state }) => {
+const FavoriteGames = ({ state, action }) => {
   const { favorite_games } = state.userState.user;
-
   let favoriteGames = [];
   for (let i in favorite_games) {
+    let gameName = favorite_games[i].game_title;
+    if (gameName.length > 25) {
+      gameName = gameName.slice(0, 24) + "...";
+    }
+
     favoriteGames.push(
-      <li key={favorite_games[i].created_at}>{favorite_games[i].game_title}</li>
+      <GameNamePlate
+        key={favorite_games[i].created_at}
+        title={gameName}
+        value={favorite_games[i].game_title}
+        isAction={true}
+        action={action}
+      />
     );
   }
-
-  return <ul>{favoriteGames}</ul>;
+  return <div className="favorite-games-area">{favoriteGames}</div>;
 };
 
 export default FavoriteGames;

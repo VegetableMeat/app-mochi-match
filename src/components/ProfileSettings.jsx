@@ -120,7 +120,7 @@ const ProfileSetting = ({ state, actions, history }) => {
                     actions={actions.inputUserName}
                     isValidate={true}
                     name="user_name"
-                    defaultValue={profile.name}
+                    defaultValue={profile.name ? profile.name : ""}
                   />
                   {error.flag.name ? <Error text={error.msg.name} /> : null}
                 </div>

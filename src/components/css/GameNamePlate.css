@@ -16,3 +16,7 @@
   color: white;
   font-weight: bold;
 }
+
+.game-name-plate:hover {
+  cursor: pointer;
+}

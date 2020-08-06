@@ -118,13 +118,12 @@ const Top = ({ state, actions, history }) => {
                 }}
                 room={roomListState}
               />
-              {console.log(searchState)}
             </MenuInnerWrapper>
           </div>
           <div className="menu-wrapper menu-wrapper-2">
             <MenuHeader text="お気に入りゲーム" />
             <MenuInnerWrapper>
-              <FavoriteGames />
+              <FavoriteGames action={actions.setSearchTitle} />
             </MenuInnerWrapper>
           </div>
           <div className="menu-wrapper menu-wrapper-3">
