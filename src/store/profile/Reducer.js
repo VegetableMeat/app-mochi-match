@@ -14,6 +14,8 @@ import {
   DELETE_SUCCESS_MESSAGE,
 } from "./Action";
 
+import dataSort from "../sort/Sort";
+
 const initialState = {
   get: {
     title: [],
@@ -245,11 +247,3 @@ const profileState = (state = initialState, action) => {
 };
 
 export default profileState;
-
-const dataSort = (a, b) => {
-  let A = a.game_title.toUpperCase();
-  let B = b.game_title.toUpperCase();
-  if (A < B) return -1;
-  if (A > B) return 1;
-  return 0;
-};
