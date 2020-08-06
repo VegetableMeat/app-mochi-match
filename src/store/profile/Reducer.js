@@ -14,6 +14,8 @@ import {
   DELETE_SUCCESS_MESSAGE,
 } from "./Action";
 
+import dataSort from "../sort/Sort";
+
 const initialState = {
   get: {
     title: [],
@@ -50,7 +52,6 @@ const profileState = (state = initialState, action) => {
         ...state,
       };
     case GET_GAME_TITLE_OK:
-      console.log("action.payload.data", action.payload.data);
       return {
         ...state,
         get: {
@@ -94,19 +95,27 @@ const profileState = (state = initialState, action) => {
           ...state,
         };
       }
+
+      let obj = state.select.title;
+      action.payload.map((data) => {
+        obj = obj.filter((pay) => {
+          return data.game_id !== pay.id;
+        });
+      });
+
       return {
         ...state,
         profile: {
           ...state.profile,
-          favorite: action.payload,
+          favorite: action.payload.sort((a, b) => {
+            return dataSort(a, b);
+          }),
         },
         select: {
           ...state.select,
-          title: action.payload.map((data) => {
-            return state.select.title.filter((pay) => {
-              return data.game_title !== pay.game_title;
-            });
-          })[0],
+          title: obj.sort((a, b) => {
+            return dataSort(a, b);
+          }),
         },
       };
     case SET_USER_NAME:
@@ -245,11 +254,3 @@ const profileState = (state = initialState, action) => {
 };
 
 export default profileState;
-
-const dataSort = (a, b) => {
-  let A = a.game_title.toUpperCase();
-  let B = b.game_title.toUpperCase();
-  if (A < B) return -1;
-  if (A > B) return 1;
-  return 0;
-};

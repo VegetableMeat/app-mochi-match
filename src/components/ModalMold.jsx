@@ -12,7 +12,6 @@ const ModalMold = ({ state, actions, history }) => {
   const handleCheck = (e) => {
     actions.modalCheck(e.target.value, e.target.checked);
   };
-  console.log(modalState);
   const handleRoomLeave = () => {
     actions.leaveRoomRequest(room, history);
     actions.showModalFalse();

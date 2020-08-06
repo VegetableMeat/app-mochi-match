@@ -1,5 +1,6 @@
 import io from "socket.io-client";
 import {
+  DELETE_ROOM_SUCCESS,
   createdChatpost,
   userJoin,
   userLeave,
@@ -12,6 +13,8 @@ import {
   LEAVE_ROOM_SOCKET,
   updateSocketObject,
 } from "./../store/socket/Action";
+
+import { showModalTrue } from "./../store/common/Action";
 
 let socket;
 
@@ -30,10 +33,10 @@ const socketMiddleware = (store) => (next) => (action) => {
       console.log("notify_leave", data);
     });
 
-    socket.on("notify_delete_room", function (data) {
+    socket.on("notify_delete_room", function () {
       console.log("notify_delete_room");
-      store.dispatch(deleteRoom(data));
-      console.log("notify_delete_room", data);
+      store.dispatch(deleteRoom());
+      store.dispatch(showModalTrue("NOTIFY_ROOM_DELETION", "room", null));
     });
 
     socket.on("user_input_start", function (data) {
@@ -80,6 +83,14 @@ const socketMiddleware = (store) => (next) => (action) => {
       user: userState.user,
     });
   }
+  // ルームの解散
+  if (action.type === DELETE_ROOM_SUCCESS) {
+    console.log("DELETE_ROOM_SUCCESS", action.payload);
+    socket.emit("delete_room", {
+      room_id: action.payload.room_id,
+    });
+  }
+
   next(action);
 };
 

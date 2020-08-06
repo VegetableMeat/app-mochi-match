@@ -32,6 +32,7 @@ import {
   leaveRoomError,
   DELETE_ROOM_REQUEST,
   DELETE_ROOM_AND_JOIN_REQUEST,
+  deleteRoomSuccess,
   LEAVE_ROOM_AND_JOIN_REQUEST,
   getRoomDetailSuccess,
   getRoomDetailError,
@@ -49,8 +50,14 @@ import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "../auth/Action";
 /**
  * ルームリスト取得リクエスト
  */
-const requestRoomListApi = (pageNum) => {
-  const url = `https://api.mochi-match.work/v1/rooms?page=${pageNum}`;
+const requestRoomListApi = (get) => {
+  let url = `https://api.mochi-match.work/v1/rooms?page=${get.pageNum}`;
+  if (get.title !== null) {
+    url += `&title=${get.title}`;
+  }
+  if (get.hard !== null) {
+    url += `&hard=${get.hard}`;
+  }
   return axios_instance
     .get(url)
     .then((res) => {
@@ -114,7 +121,7 @@ export const getGameTitle = (get) => {
     });
 };
 
-const getGameHard = (get) => {
+export const getGameHard = (get) => {
   return axios_instance
     .get(get.url)
     .then((res) => {
@@ -240,6 +247,9 @@ function* handleRoomJoinRequest(action) {
       switch (error.response.data.code) {
         case 5:
           yield put(showModalTrue("ROOM_CAPACITY_OVER", "room", null));
+          break;
+        case 99:
+          yield put(showModalTrue("NOTIFY_ROOM_DELETION", "room", null));
           break;
         default:
           yield put(showModalTrue("SERVER_ERROR", "room", null));
@@ -400,6 +410,7 @@ export function* handleDeleteRoomRequest(action) {
 
   const { res, error } = yield call(deleteRoomReqApi, room_id);
   if (!error) {
+    yield put(deleteRoomSuccess(room_id));
   } else {
     if (error.response.status === 401) {
       yield put(tokenRefleshRequest());

@@ -24,6 +24,7 @@ import { watchCheckEntryRequest, watchCheckEntrySuccess } from "./user/Saga";
 import { watchTokenRefleshRequest } from "./auth/Saga";
 import { historySaga } from "./history/Saga";
 import { profileSaga } from "./profile/Saga";
+import { searchSaga } from "./search/Saga";
 
 export default function* rootSaga() {
   yield all([
@@ -37,6 +38,7 @@ export default function* rootSaga() {
     ...historySaga,
     ...profileSaga,
     ...reportSaga,
+    ...searchSaga,
     call(watchInit),
     call(watchGetRoomListRequest),
     call(watchRoomJoinRequest),

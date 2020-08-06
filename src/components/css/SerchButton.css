@@ -1,15 +1,21 @@
 .serch-button {
-  position: absolute;
-  top: 23px;
-  right: 22px;
   background-color: rgba(0, 0, 0, 0);
-  border: none;
+  border: solid;
   font-size: 14px;
   color: #a8a8a8;
   padding: 0;
-  margin: 0;
+  margin-top: 20px;
+  margin-left: 12%;
+  padding: 2px 50px;
+  border-width: 1px;
+  transition: 0.2s color;
 }
 
-.serch-button:focus {
+/* .serch-button:focus {
   outline-style: none;
+} */
+
+.serch-button:hover,
+.serch-button:active {
+  color: #4dcee6 !important;
 }

@@ -17,6 +17,7 @@ import Capacity from "./Capacity";
 import RecrutimentText from "./RecrutimentText";
 import BreakUnderLine from "./BreakUnderLine";
 import HeadLine2 from "./HeadLine2";
+import Modal from "../containers/ModalContainer";
 import "./css/InTheRoom.css";
 
 const InTheRoom = ({ state, history }) => {
@@ -57,6 +58,7 @@ const InTheRoom = ({ state, history }) => {
         </MainBody>
       </Body>
       <Footer />
+      <Modal />
     </div>
   );
 };

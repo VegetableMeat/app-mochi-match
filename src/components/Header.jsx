@@ -7,6 +7,10 @@ const Header = ({ room, state, actions, history }) => {
   const { roomState, userState, roomListState } = state;
 
   const handleOnClick = () => {
+    if (room === "top") {
+      window.location.reload();
+      return;
+    }
     history.push(`/?page=${roomListState.selectPage}`);
   };
 

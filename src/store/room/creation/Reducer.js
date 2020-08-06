@@ -20,6 +20,8 @@ import {
   ROOM_CREATION_INIT,
 } from "../Action";
 
+import dataSort from "../../sort/Sort";
+
 const initiaState = {
   data: {
     get_data: {
@@ -321,11 +323,3 @@ const roomCreationState = (state = initiaState, action) => {
 };
 
 export default roomCreationState;
-
-const dataSort = (a, b) => {
-  let A = a.game_title.toUpperCase();
-  let B = b.game_title.toUpperCase();
-  if (A < B) return -1;
-  if (A > B) return 1;
-  return 0;
-};
