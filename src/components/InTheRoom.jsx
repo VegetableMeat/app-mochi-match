@@ -20,7 +20,7 @@ import HeadLine2 from "./HeadLine2";
 import Modal from "../containers/ModalContainer";
 import "./css/InTheRoom.css";
 
-const InTheRoom = ({ state, history }) => {
+const InTheRoom = ({ state, history, actions }) => {
   const { room, join_users } = state;
 
   useEffect(() => {
@@ -34,11 +34,14 @@ const InTheRoom = ({ state, history }) => {
         <SideMenu>
           <MenuHeader text="メンバー" />
           <MenuInnerWrappr>
+            {/* TODO: 爆発は回避したが、designがおかしい */}
             {join_users.map((data) => (
               <UserPlate
                 key={data.user_id}
                 icon={data.icon}
                 name={data.user_name}
+                id={data.user_id}
+                onPlateClick={actions.getUserRequest}
               />
             ))}
           </MenuInnerWrappr>

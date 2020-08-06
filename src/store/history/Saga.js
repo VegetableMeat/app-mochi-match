@@ -50,6 +50,11 @@ function* fetchUser(id) {
     //yield put(getUserSuccess(res));
     yield put(showModalTrue("USER_DETAILS", "data", res.data));
   } else {
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(fetchUser, id);
+    }
     yield put(getUserError(error));
   }
 }
