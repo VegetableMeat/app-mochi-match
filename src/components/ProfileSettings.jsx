@@ -72,6 +72,7 @@ const ProfileSetting = ({ state, actions, history }) => {
     { key: "icon6", value: "icon6" },
     { key: "icon7", value: "icon7" },
     { key: "icon8", value: "icon8" },
+    { key: "icon9", value: "icon9" },
   ];
   console.log(profile);
   return (
