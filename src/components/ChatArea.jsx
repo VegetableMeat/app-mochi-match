@@ -6,8 +6,9 @@ import UserName from "./UserName";
 import "./css/ChatArea.css";
 
 const ChatArea = ({ actions, state }) => {
-  const { roomState } = state;
+  const { roomState, userState } = state;
   const { room, chatLog } = roomState;
+  const { user } = userState;
 
   const [isLast, setIsLast] = useState(false);
   const [chatLogMounted, setChatLogMounted] = useState(false);
@@ -84,13 +85,22 @@ const ChatArea = ({ actions, state }) => {
    */
   let chatLogs = [];
   for (let i in chatLog) {
-    chatLogs.push(
-      <div className="message-wrapper" key={chatLog[i].created_at}>
-        <UserIcon />
-        <UserName name={chatLog[i].name} />
-        <div className="message bg-green">{chatLog[i].message}</div>
-      </div>
-    );
+    console.log(chatLog[i]);
+    chatLog[i].user_id === user.user_id
+      ? chatLogs.push(
+          <div className="message-wrapper" key={chatLog[i].created_at}>
+            <UserIcon />
+            <UserName name={chatLog[i].name} />
+            <div className="message bg-blue">{chatLog[i].message}</div>
+          </div>
+        )
+      : chatLogs.push(
+          <div className="message-wrapper" key={chatLog[i].created_at}>
+            <UserIcon />
+            <UserName name={chatLog[i].name} />
+            <div className="message bg-green">{chatLog[i].message}</div>
+          </div>
+        );
   }
 
   /**
