@@ -350,3 +350,20 @@ export const gameHardCheck = (data, toggle) => {
     toggle: toggle,
   };
 };
+
+export const POST_REPORT_REQ = "POST_REPORT_REQ";
+export const POST_REPORT_OK = "POST_REPORT_OK";
+
+export const postReportReq = (data) => {
+  return {
+    type: POST_REPORT_REQ,
+    payload: data,
+    url: `/v1/rooms/${data.room_id}/report`,
+  };
+};
+
+export const postReportOk = () => {
+  return {
+    type: POST_REPORT_OK,
+  };
+};

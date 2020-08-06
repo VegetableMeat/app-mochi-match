@@ -46,8 +46,7 @@ export default function RoomCreation({ state, actions, history }) {
   const { get_data, error, select } = state.roomCreationState.data;
   const { favorite_games } = state.userState.user;
   const { roomListState } = state;
-  console.log("Select", select);
-  console.log("Error", error);
+
   return (
     <div id="room-creation">
       <Header roomListState={roomListState} history={history} />
@@ -260,7 +259,7 @@ export default function RoomCreation({ state, actions, history }) {
             </div>
           </div>
 
-          <div className="footer-button-area">
+          <div className="footer-button-area room-creation-button-area">
             <button
               className="color-blue"
               onClick={() =>

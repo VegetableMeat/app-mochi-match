@@ -102,3 +102,11 @@
   display: flex;
   margin-bottom: 20px;
 }
+
+.checkbox-text {
+  margin-left: 4px;
+}
+
+.modal-body ul {
+  padding-left: 17px;
+}
