@@ -9,10 +9,15 @@
   background-color: #4dcee6;
   border-radius: 28px;
   filter: drop-shadow(2px 2px 1px gray);
+  user-select: none;
 }
 
 .game-name-plate .game-title {
   font-size: 10px;
   color: white;
   font-weight: bold;
+}
+
+.game-name-plate:hover {
+  cursor: pointer;
 }
