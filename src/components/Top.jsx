@@ -82,7 +82,7 @@ const Top = ({ state, actions, history }) => {
                 styles={TextAreaStyles()}
                 onChange={(e) => {}}
               />
-              {/* <SerchButton /> */}
+              <SerchButton />
             </MenuInnerWrapper>
           </div>
           <div className="menu-wrapper menu-wrapper-2">
