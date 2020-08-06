@@ -12,7 +12,7 @@ const ModalMold = ({ state, actions, history }) => {
   const handleCheck = (e) => {
     actions.modalCheck(e.target.value, e.target.checked);
   };
-
+  console.log(modalState);
   const handleRoomLeave = () => {
     actions.leaveRoomRequest(room, history);
     actions.showModalFalse();
@@ -201,7 +201,7 @@ const ModalMold = ({ state, actions, history }) => {
                 modalState.data.check.includes(key.toString()) ? true : false
               }
             />
-            {text}
+            <span className="checkbox-text">{text}</span>
           </div>
         );
       });
@@ -209,28 +209,63 @@ const ModalMold = ({ state, actions, history }) => {
         <div className="modal-body">
           <div className="modal-text modal-header">どのような違反ですか？</div>
           {check_box}
-          <div className="footer-button-area"></div>
-          <input
-            type="submit"
-            onClick={() => actions.showModalFront("FINAL_CONFIRMATION")}
-            value="違反報告"
-          ></input>
+          <div className="footer-button-area">
+            <button
+              className="join-button color-blue"
+              onClick={() => actions.showModalFront("FINAL_CONFIRMATION")}
+            >
+              違反報告
+            </button>
+          </div>
         </div>
       );
     case "FINAL_CONFIRMATION":
+      let check = [];
+      if (modalState.data.check.length < 1) {
+        return (
+          <div className="modal-body">
+            <div className="modal-text modal-header">
+              最低一つはチェックしてください
+            </div>
+            <div className="footer-button-area">
+              <button
+                className="cancel-button color-red"
+                onClick={() => actions.showModalBack("REPORT")}
+              >
+                戻る
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      modalState.data.check.forEach((num, key) => {
+        check.push(<li key={key}>{modalState.report[num]}</li>);
+      });
       return (
         <div className="modal-body">
           <div className="modal-text modal-header">
             本当に下記の内容で報告しますか？
           </div>
+          <ul>{check}</ul>
+
           <div className="footer-button-area">
-            <input
-              type="button"
-              onClick={() => actions.showModalFront("end_modal")}
-              value="はい"
-            ></input>
             <button
-              className="cancel-button color-bulue"
+              className="join-button color-blue"
+              onClick={() => {
+                actions.showModalFront("end_modal");
+                actions.postReportReq({
+                  check: modalState.data.check,
+                  report: modalState.report,
+                  room_id: modalState.data.room.room_id,
+                  owner_id: modalState.data.room.owner_id,
+                });
+              }}
+            >
+              はい
+            </button>
+            <button
+              className="cancel-button color-red"
               onClick={() => actions.showModalBack("REPORT")}
             >
               キャンセル
@@ -245,10 +280,12 @@ const ModalMold = ({ state, actions, history }) => {
             ご協力ありがとうございました！
           </div>
           <div className="footer-button-area">
-            <input
-              ype="button"
-              onClick={() => window.location.reload()}
-            ></input>
+            <button
+              className="cancel-button color-red"
+              onClick={() => actions.showModalFalse()}
+            >
+              閉じる
+            </button>
           </div>
         </div>
       );
@@ -386,7 +423,6 @@ const ModalMold = ({ state, actions, history }) => {
               onClick={() => {
                 modalState.data.logout[0].action();
                 actions.showModalFalse();
-                // console.log(modalState.data.logout[0]);
               }}
             >
               はい

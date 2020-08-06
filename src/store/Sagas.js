@@ -17,6 +17,7 @@ import {
   authSaga,
   adminTitleSaga,
   adminHardSaga,
+  reportSaga,
 } from "./common/Saga";
 import { watchInit } from "./init/Saga";
 import { watchCheckEntryRequest, watchCheckEntrySuccess } from "./user/Saga";
@@ -35,6 +36,7 @@ export default function* rootSaga() {
     ...roomCreationSaga,
     ...historySaga,
     ...profileSaga,
+    ...reportSaga,
     call(watchInit),
     call(watchGetRoomListRequest),
     call(watchRoomJoinRequest),

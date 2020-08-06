@@ -1,6 +1,6 @@
 import axios from "axios";
 import { axios_instance } from "../axios/axios";
-import { put, call, takeLatest } from "redux-saga/effects";
+import { put, call, takeLatest, take } from "redux-saga/effects";
 import {
   AUTH_REQ,
   LOGIN_REQ,
@@ -30,7 +30,10 @@ import {
   adminGameHardDeleteNg,
   adminGameHardUpdateOk,
   adminGameHardUpdateNg,
+  POST_REPORT_REQ,
+  postReportOk,
 } from "./Action";
+import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "../auth/Action";
 
 // Login
 const responseLogin = () => {
@@ -364,3 +367,33 @@ export const adminHardSaga = [
   takeLatest(ADMIN_GAME_HARD_DELETE_REQ, fetchAdminGameHardDelete),
   takeLatest(ADMIN_GAME_HARD_UPDATE_REQ, fetchAdminGameHardUpdate),
 ];
+
+const resPostReport = (post, index) => {
+  return axios_instance
+    .post(post.url, {
+      vaiolator_id: post.payload.owner_id,
+      detail: post.payload.report[post.payload.check[index]],
+    })
+    .then((res) => {
+      return { res };
+    })
+    .catch((e) => {
+      return { e };
+    });
+};
+
+function* postReport(post, index = 0) {
+  for (let i = index; i < post.payload.check.length; i++) {
+    const { res, e } = yield call(resPostReport, post, i);
+
+    if (!e) {
+      yield put(postReportOk());
+    } else if (e.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(postReport, post, i);
+    }
+  }
+}
+
+export const reportSaga = [takeLatest(POST_REPORT_REQ, postReport)];
