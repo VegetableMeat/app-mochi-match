@@ -28,11 +28,6 @@ const initiaState = {
     },
     error: {
       msg: {
-        // { key: "title", value: "ゲームタイトルが選択されていません" },
-        // { key: "hard", value: "ゲームハードが選択されていません" },
-        // { key: "date", value: "日付が選択されていません" },
-        // { key: "time", value: "時間が選択されていません" },
-        // { key: "text", value: "募集テキストは必ず入力して下さい" },
         title: "ゲームタイトルが選択されていません",
         hard: "ゲームハードが選択されていません",
         date: "日付が選択されていません",
@@ -40,12 +35,6 @@ const initiaState = {
         text: "募集テキストは必ず入力して下さい",
       },
       flag: {
-        // { key: "title", value: true },
-        // { key: "hard", value: true },
-        // { key: "start", value: false },
-        // { key: "date", value: true },
-        // { key: "time", value: true },
-        // { key: "text", value: false },
         title: true,
         hard: true,
         start: false,
@@ -59,12 +48,6 @@ const initiaState = {
       },
       get_title: "",
       get_hard: "",
-      // input_title: true,
-      // input_hard: true,
-      // input_start: false,
-      // input_date: true,
-      // input_time: true,
-      // input_text: false,
     },
     select: {
       title: null,
@@ -102,7 +85,9 @@ const roomCreationState = (state = initiaState, action) => {
           },
           get_data: {
             ...state.data.get_data,
-            title: action.payload,
+            title: action.payload.sort((a, b) => {
+              return dataSort(a, b);
+            }),
           },
         },
       };
@@ -336,3 +321,11 @@ const roomCreationState = (state = initiaState, action) => {
 };
 
 export default roomCreationState;
+
+const dataSort = (a, b) => {
+  let A = a.game_title.toUpperCase();
+  let B = b.game_title.toUpperCase();
+  if (A < B) return -1;
+  if (A > B) return 1;
+  return 0;
+};

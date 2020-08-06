@@ -4,12 +4,41 @@
 }
 
 .user-icon .icon {
-  height: 20px;
-  width: 20px;
+  height: 24px;
+  width: 24px;
   background-color: transparent;
-  border-radius: 20px;
+  border-radius: 24px;
+  filter: drop-shadow(0 0 0.07rem black);
 }
 
 ._icon {
+  background-image: url(../img/user/icon_180.gif);
+}
+
+._icon2 {
+  background-image: url(../img/user/icon_120.gif);
+}
+
+._icon3 {
+  background-image: url(../img/user/icon_60.gif);
+}
+
+._icon4 {
   background-image: url(../img/user/icon_.png);
+}
+
+._icon5 {
+  background-image: url(../img/user/icon_60_.gif);
+}
+
+._icon6 {
+  background-image: url(../img/user/icon_120_.gif);
+}
+
+._icon7 {
+  background-image: url(../img/user/icon_180_.gif);
+}
+
+._icon8 {
+  background-image: url(../img/user/icon_gaming.gif);
 }
