@@ -19,6 +19,7 @@ import SerchButton from "./SerchButton";
 import { DisappearedLoading } from "react-loadingg";
 import "./css/Top.css";
 import TextAreaStyles from "./custom/TextArea";
+import RemoveButton from "./RemoveButton";
 
 const Top = ({ state, actions, history }) => {
   const textEl = useRef(null);
@@ -39,6 +40,16 @@ const Top = ({ state, actions, history }) => {
     actions.getSearchGameTitleReq();
     actions.getSearchGameHardReq();
   }, [userState.user]);
+
+  useEffect(() => {
+    if (searchState.post.title !== null)
+      actions.setRoomTitleQuery(searchState.post.title.id);
+    else actions.setRoomTitleQuery(null);
+
+    if (searchState.post.hard !== null)
+      actions.setRoomHardQuery(searchState.post.hard.id);
+    else actions.setRoomHardQuery(null);
+  }, [searchState.post.title, searchState.post.hard]);
 
   // TODO
   const onTextChange = () => {
@@ -67,7 +78,17 @@ const Top = ({ state, actions, history }) => {
                   }))
                 }
                 styles={TextAreaStyles()}
-                onChange={(e) => {}}
+                onChange={(e) => {
+                  actions.setSearchTitle(e.value);
+                }}
+                value={
+                  searchState.post.title !== null
+                    ? {
+                        value: searchState.post.title.game_title,
+                        label: searchState.post.title.game_title,
+                      }
+                    : null
+                }
               />
               <Select
                 menuPortalTarget={document.body}
@@ -80,9 +101,28 @@ const Top = ({ state, actions, history }) => {
                   }))
                 }
                 styles={TextAreaStyles()}
-                onChange={(e) => {}}
+                onChange={(e) => {
+                  actions.setSearchHard(e.value);
+                }}
+                value={
+                  searchState.post.hard !== null
+                    ? {
+                        value: searchState.post.hard.hard_name,
+                        label: searchState.post.hard.hard_name,
+                      }
+                    : null
+                }
               />
-              <SerchButton />
+              <SerchButton action={actions.getRoomReq} room={roomListState} />
+              <RemoveButton
+                actions={{
+                  getRoomReq: actions.getRoomReq,
+                  removeSearchTitle: actions.removeSearchTitle,
+                  removeSearchHard: actions.removeSearchHard,
+                }}
+                room={roomListState}
+              />
+              {console.log(searchState)}
             </MenuInnerWrapper>
           </div>
           <div className="menu-wrapper menu-wrapper-2">
