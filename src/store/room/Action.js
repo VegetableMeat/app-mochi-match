@@ -386,3 +386,20 @@ export const createChatpostListError = (err) => {
     payload: err,
   };
 };
+
+export const USER_JOIN = "USER_JOIN";
+export const USER_LEAVE = "USER_LEAVE";
+
+export const userJoin = (data) => {
+  return {
+    type: USER_JOIN,
+    payload: data,
+  };
+};
+
+export const userLeave = (data) => {
+  return {
+    type: USER_LEAVE,
+    payload: data,
+  };
+};

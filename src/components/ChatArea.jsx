@@ -67,7 +67,7 @@ const ChatArea = ({ actions, state }) => {
   }, [roomState.chatLog]);
 
   useEffect(() => {
-    if (scrollTop > chatlogEl.current.scrollHeight - 620) {
+    if (scrollTop > chatlogEl.current.scrollHeight - 650) {
       setNewMessageCnt(0);
       setBeforeMessageCnt(chatLog.length);
       setNewMessageFlg(false);

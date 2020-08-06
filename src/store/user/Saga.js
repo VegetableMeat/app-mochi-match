@@ -12,6 +12,7 @@ import {
   checkEntrySuccess,
   checkEntryError,
 } from "./Action";
+import { joinRoomSocket } from "../socket/Action";
 import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "./../auth/Action";
 
 /**
@@ -65,6 +66,7 @@ const requestCheckEntryApi = () => {
 };
 
 export function* handleCheckEntryRequest(action) {
+  yield call(handleGetMeRequest);
   const { res, error } = yield call(requestCheckEntryApi);
   if (!error) {
     yield put(checkEntrySuccess(res, action));
@@ -87,6 +89,7 @@ export function* watchCheckEntryRequest() {
 export function* handleCheckEntrySuccess(action) {
   if (action.payload.data.room) {
     yield put(alreadyEntry(action.payload.data.room));
+    yield put(joinRoomSocket(action.payload.data.room.room_id));
     yield action.history.push("/intheroom");
   } else {
   }
