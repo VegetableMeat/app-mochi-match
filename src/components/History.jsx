@@ -16,6 +16,7 @@ import BreakUnderLine from "./BreakUnderLine";
 import "./css/History.css";
 import { useRadioGroup } from "@material-ui/core";
 import Modal from "../containers/ModalContainer";
+import { DisappearedLoading } from "react-loadingg";
 
 const History = ({ state, actions, history }) => {
   useEffect(() => {
@@ -24,7 +25,20 @@ const History = ({ state, actions, history }) => {
 
   const { roomListState, historyState } = state;
   let history_cards = [];
-  if (historyState.history) {
+  if (historyState.loadingFlag) {
+    history_cards.push(
+      <div className="history-cards">
+        <RadiusWhiteCard>
+          <div className="line">
+            <DisappearedLoading
+              color="rgb(123, 216, 245)"
+              style={{ margin: "11% auto" }}
+            />
+          </div>
+        </RadiusWhiteCard>
+      </div>
+    );
+  } else if (historyState.history) {
     history_cards = historyState.history.map((data) => (
       <div className="history-cards">
         <RadiusWhiteCard>
@@ -56,7 +70,7 @@ const History = ({ state, actions, history }) => {
             <div className="members-area">
               {data.join_users.map((user) => (
                 <UserPlate
-                  icon=""
+                  icon={user.icon}
                   name={user.user_name}
                   id={user.user_id}
                   onPlateClick={actions.getUserRequest}
