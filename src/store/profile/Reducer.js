@@ -52,7 +52,6 @@ const profileState = (state = initialState, action) => {
         ...state,
       };
     case GET_GAME_TITLE_OK:
-      console.log("action.payload.data", action.payload.data);
       return {
         ...state,
         get: {
@@ -96,19 +95,27 @@ const profileState = (state = initialState, action) => {
           ...state,
         };
       }
+
+      let obj = state.select.title;
+      action.payload.map((data) => {
+        obj = obj.filter((pay) => {
+          return data.game_id !== pay.id;
+        });
+      });
+
       return {
         ...state,
         profile: {
           ...state.profile,
-          favorite: action.payload,
+          favorite: action.payload.sort((a, b) => {
+            return dataSort(a, b);
+          }),
         },
         select: {
           ...state.select,
-          title: action.payload.map((data) => {
-            return state.select.title.filter((pay) => {
-              return data.game_title !== pay.game_title;
-            });
-          })[0],
+          title: obj.sort((a, b) => {
+            return dataSort(a, b);
+          }),
         },
       };
     case SET_USER_NAME:
