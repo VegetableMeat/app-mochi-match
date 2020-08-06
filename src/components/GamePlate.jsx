@@ -6,7 +6,7 @@ import "./css/GamePlate.css";
 const GamePlate = ({ hard, title }) => {
   return (
     <div className="game-plate">
-      <HardIcon hard={hard} />
+      <HardIcon hard={hard} hard_name={hard} />
       <GameNamePlate title={title} />
     </div>
   );

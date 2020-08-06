@@ -10,4 +10,25 @@
   width: 24px;
   background-color: blue;
   border-radius: 24px;
+  filter: drop-shadow(0 0 0.1rem black);
+}
+
+.Switch {
+  background-color: red !important;
+  background-image: url(../img/hard/Switch.png);
+}
+
+.PS3 {
+  background-color: black !important;
+  background-image: url(../img/hard/PS3.png);
+}
+
+.PS4 {
+  background-color: black !important;
+  background-image: url(../img/hard/PS4.png);
+}
+
+.PC {
+  background-color: white !important;
+  background-image: url(../img/hard/PC.png);
 }

@@ -4,12 +4,13 @@ import "./css/UserIcon.css";
 
 const UserIcon = ({
   name,
-  value,
+  value = "",
   actions,
   isSelect = false,
   isValidate = false,
   list = [],
 }) => {
+  console.log("VALUE", value);
   return (
     <div
       className="user-icon"
@@ -26,7 +27,7 @@ const UserIcon = ({
       }
     >
       {isSelect && <div className="select"></div>}
-      <div className="icon"></div>
+      <div className={`icon ${"_" + value}`}></div>
     </div>
   );
 };

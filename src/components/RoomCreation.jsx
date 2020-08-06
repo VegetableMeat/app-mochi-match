@@ -127,7 +127,11 @@ export default function RoomCreation({ state, actions, history }) {
                 {get_data.hard &&
                   get_data.hard.map((d) =>
                     d.id === select.hard ? (
-                      <HardIcon id={d.id} isSelect={true} />
+                      <HardIcon
+                        id={d.id}
+                        isSelect={true}
+                        hard_name={d.hard_name}
+                      />
                     ) : (
                       <HardIcon
                         name="game_hard"
@@ -135,6 +139,7 @@ export default function RoomCreation({ state, actions, history }) {
                         actions={actions.selectGameHard}
                         isValidate={true}
                         list={get_data.hard}
+                        hard_name={d.hard_name}
                       />
                     )
                   )}

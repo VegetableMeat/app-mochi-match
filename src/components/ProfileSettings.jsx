@@ -130,7 +130,7 @@ const ProfileSetting = ({ state, actions, history }) => {
                     {profile.icon &&
                       user_icon.map((i) =>
                         i.value === profile.icon ? (
-                          <UserIcon isSelect={true} />
+                          <UserIcon isSelect={true} value={i.value} />
                         ) : (
                           <UserIcon
                             name="user_icon"
