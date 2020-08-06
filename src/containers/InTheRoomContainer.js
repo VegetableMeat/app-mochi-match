@@ -1,6 +1,7 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import * as Actions from "../store/room/Action.js";
+import * as roomActionCreaters from "../store/room/Action.js";
+import * as historyActionCreaters from "../store/history/Action.js";
 
 import InTheRoom from "../components/InTheRoom.jsx";
 
@@ -12,7 +13,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchProps = (dispatch) => {
   return {
-    actions: bindActionCreators(Actions, dispatch),
+    actions: bindActionCreators(
+      { ...roomActionCreaters, ...historyActionCreaters },
+      dispatch
+    ),
   };
 };
 
