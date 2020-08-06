@@ -49,8 +49,14 @@ import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "../auth/Action";
 /**
  * ルームリスト取得リクエスト
  */
-const requestRoomListApi = (pageNum) => {
-  const url = `https://api.mochi-match.work/v1/rooms?page=${pageNum}`;
+const requestRoomListApi = (get) => {
+  let url = `https://api.mochi-match.work/v1/rooms?page=${get.pageNum}`;
+  if (get.title !== null) {
+    url += `&title=${get.title}`;
+  }
+  if (get.hard !== null) {
+    url += `&hard=${get.hard}`;
+  }
   return axios_instance
     .get(url)
     .then((res) => {
