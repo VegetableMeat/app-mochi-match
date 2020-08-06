@@ -1,8 +1,10 @@
 import React from "react";
 import GameNamePlate from "./GameNamePlate";
+import dataSort from "../store/sort/Sort";
 
 const FavoriteGames = ({ state, action }) => {
   const { favorite_games } = state.userState.user;
+
   let favoriteGames = [];
   for (let i in favorite_games) {
     let gameName = favorite_games[i].game_title;

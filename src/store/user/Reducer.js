@@ -7,6 +7,8 @@ import {
   CHECK_ENTRY_ERROR,
 } from "./Action";
 
+import dataSort from "../sort/Sort";
+
 const initialState = {
   user: {
     user_id: null,
@@ -31,7 +33,9 @@ const userState = (state = initialState, action) => {
           user_id: action.payload.data.id,
           user_name: action.payload.data.user_name,
           icon: action.payload.data.icon,
-          favorite_games: action.payload.data.favorite_games,
+          favorite_games: action.payload.data.favorite_games.sort((a, b) => {
+            return dataSort(a, b);
+          }),
         },
       };
     case GET_ME_ERROR:
