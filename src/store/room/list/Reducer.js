@@ -1,9 +1,17 @@
-import { GET_ROOM_REQ, GET_ROOM_OK, GET_ROOM_NG } from "../Action";
+import {
+  GET_ROOM_REQ,
+  GET_ROOM_OK,
+  GET_ROOM_NG,
+  SET_ROOM_TITLE_QUERY,
+  SET_ROOM_HARD_QUERY,
+} from "../Action";
 
 const initiaState = {
   data: [],
   pageCount: 0,
   selectPage: 1,
+  selectTitle: null,
+  selectHard: null,
   loadingFlag: false,
 };
 
@@ -13,7 +21,7 @@ const roomListState = (state = initiaState, action) => {
       return {
         ...state,
         data: [],
-        selectPage: action.payload,
+        selectPage: action.payload.pageNum,
         loadingFlag: true,
       };
     case GET_ROOM_OK:
@@ -32,6 +40,16 @@ const roomListState = (state = initiaState, action) => {
       return {
         ...state,
         loadingFlag: false,
+      };
+    case SET_ROOM_TITLE_QUERY:
+      return {
+        ...state,
+        selectTitle: action.payload,
+      };
+    case SET_ROOM_HARD_QUERY:
+      return {
+        ...state,
+        selectHard: action.payload,
       };
     default:
       return state;

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./css/PageNation.css";
 
 const PageNation = ({ actions, history, roomListState }) => {
-  const { selectPage, pageCount } = roomListState;
+  const { selectPage, selectTitle, selectHard, pageCount } = roomListState;
 
   const attachClass = (i) => {
     let baseClass = ["number"];
@@ -15,7 +15,7 @@ const PageNation = ({ actions, history, roomListState }) => {
   const handleOnClick = (i) => {
     if (selectPage === i) return;
     history.push(`/?page=${i}`);
-    actions.getRoomReq(i);
+    actions.getRoomReq(i, selectTitle, selectHard);
     document.documentElement.scrollTop = 0;
     rendering();
   };
@@ -23,7 +23,7 @@ const PageNation = ({ actions, history, roomListState }) => {
   const handlePrev = () => {
     if (selectPage <= 1) return;
     history.push(`/?page=${selectPage - 1}`);
-    actions.getRoomReq(selectPage - 1);
+    actions.getRoomReq(selectPage - 1, selectTitle, selectHard);
     document.documentElement.scrollTop = 0;
     rendering();
   };
@@ -31,7 +31,7 @@ const PageNation = ({ actions, history, roomListState }) => {
   const handleNext = () => {
     if (selectPage >= pageCount) return;
     history.push(`/?page=${selectPage + 1}`);
-    actions.getRoomReq(selectPage + 1);
+    actions.getRoomReq(selectPage + 1, selectTitle, selectHard);
     document.documentElement.scrollTop = 0;
     rendering();
   };

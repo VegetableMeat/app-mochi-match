@@ -1,11 +1,13 @@
 export const GET_ROOM_REQ = "GET_ROOM_REQ";
 export const GET_ROOM_OK = "GET_ROOM_OK";
 export const GET_ROOM_NG = "GET_ROOM_NG";
+export const SET_ROOM_TITLE_QUERY = "SET_ROOM_TITLE_QUERY";
+export const SET_ROOM_HARD_QUERY = "SET_ROOM_HARD_QUERY";
 
-export const getRoomReq = (pageNum) => {
+export const getRoomReq = (pageNum, title = null, hard = null) => {
   return {
     type: GET_ROOM_REQ,
-    payload: pageNum,
+    payload: { pageNum: pageNum, title: title, hard: hard },
   };
 };
 
@@ -20,6 +22,20 @@ export const getRoomNg = (error) => {
   return {
     type: GET_ROOM_NG,
     payload: error,
+  };
+};
+
+export const setRoomTitleQuery = (data) => {
+  return {
+    type: SET_ROOM_TITLE_QUERY,
+    payload: data,
+  };
+};
+
+export const setRoomHardQuery = (data) => {
+  return {
+    type: SET_ROOM_HARD_QUERY,
+    payload: data,
   };
 };
 

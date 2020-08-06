@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Select from "react-select";
 import Footer from "./Footer";
 import Body from "./Body";
 import MainBody from "./MainBody";
@@ -17,11 +18,13 @@ import ShadowInputArea from "./ShadowInputArea";
 import SerchButton from "./SerchButton";
 import { DisappearedLoading } from "react-loadingg";
 import "./css/Top.css";
+import TextAreaStyles from "./custom/TextArea";
+import RemoveButton from "./RemoveButton";
 
 const Top = ({ state, actions, history }) => {
   const textEl = useRef(null);
   const [text, setText] = useState("");
-  const { roomListState } = state;
+  const { roomListState, userState, searchState } = state;
 
   const location = useLocation();
 
@@ -39,6 +42,21 @@ const Top = ({ state, actions, history }) => {
     actions.getRoomReq(Number(query.get("page")));
   }, [query.get("page")]);
 
+  useEffect(() => {
+    actions.getSearchGameTitleReq();
+    actions.getSearchGameHardReq();
+  }, [userState.user]);
+
+  useEffect(() => {
+    if (searchState.post.title !== null)
+      actions.setRoomTitleQuery(searchState.post.title.id);
+    else actions.setRoomTitleQuery(null);
+
+    if (searchState.post.hard !== null)
+      actions.setRoomHardQuery(searchState.post.hard.id);
+    else actions.setRoomHardQuery(null);
+  }, [searchState.post.title, searchState.post.hard]);
+
   // TODO
   const onTextChange = () => {
     setText(textEl.current.value);
@@ -55,13 +73,62 @@ const Top = ({ state, actions, history }) => {
           <div className="menu-wrapper menu-wrapper-1">
             <MenuHeader text="検索" />
             <MenuInnerWrapper>
-              <ShadowInputArea
-                value={text}
-                onChangeValue={onTextChange}
-                handleKeyDown={handleKeyDown}
-                ref={textEl}
+              <Select
+                menuPortalTarget={document.body}
+                placeholder="ゲームタイトルを入力"
+                options={
+                  searchState.get.title.length &&
+                  searchState.get.title.map((data) => ({
+                    value: data.game_title,
+                    label: data.game_title,
+                  }))
+                }
+                styles={TextAreaStyles()}
+                onChange={(e) => {
+                  actions.setSearchTitle(e.value);
+                }}
+                value={
+                  searchState.post.title !== null
+                    ? {
+                        value: searchState.post.title.game_title,
+                        label: searchState.post.title.game_title,
+                      }
+                    : null
+                }
               />
-              <SerchButton />
+              <Select
+                menuPortalTarget={document.body}
+                placeholder="ハードを入力"
+                options={
+                  searchState.get.hard.length &&
+                  searchState.get.hard.map((data) => ({
+                    value: data.hard_name,
+                    label: data.hard_name,
+                  }))
+                }
+                styles={TextAreaStyles()}
+                onChange={(e) => {
+                  actions.setSearchHard(e.value);
+                }}
+                value={
+                  searchState.post.hard !== null
+                    ? {
+                        value: searchState.post.hard.hard_name,
+                        label: searchState.post.hard.hard_name,
+                      }
+                    : null
+                }
+              />
+              <SerchButton action={actions.getRoomReq} room={roomListState} />
+              <RemoveButton
+                actions={{
+                  getRoomReq: actions.getRoomReq,
+                  removeSearchTitle: actions.removeSearchTitle,
+                  removeSearchHard: actions.removeSearchHard,
+                }}
+                room={roomListState}
+              />
+              {console.log(searchState)}
             </MenuInnerWrapper>
           </div>
           <div className="menu-wrapper menu-wrapper-2">
