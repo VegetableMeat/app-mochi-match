@@ -13,6 +13,7 @@ import userState from "./user/Reducer";
 import socketState from "./socket/Reducer";
 import historyState from "./history/Reducer";
 import profileState from "./profile/Reducer";
+import searchState from "./search/Reducer";
 
 const rootReducers = combineReducers({
   authState,
@@ -29,6 +30,7 @@ const rootReducers = combineReducers({
   socketState,
   historyState,
   profileState,
+  searchState,
 });
 
 export default rootReducers;

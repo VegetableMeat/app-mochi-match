@@ -114,7 +114,7 @@ export const getGameTitle = (get) => {
     });
 };
 
-const getGameHard = (get) => {
+export const getGameHard = (get) => {
   return axios_instance
     .get(get.url)
     .then((res) => {
