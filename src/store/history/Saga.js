@@ -11,6 +11,7 @@ import {
   GET_USER_REQUEST,
 } from "./Action";
 import { showModalTrue } from "../common/Action";
+import { TOKEN_REFRESH_SUCCESS, tokenRefleshRequest } from "../auth/Action";
 
 /**
  * 履歴情報取得処理
@@ -33,6 +34,11 @@ function* fetchHistory() {
   if (!error) {
     yield put(getHistorySuccess(res));
   } else {
+    if (error.response.status === 401) {
+      yield put(tokenRefleshRequest());
+      yield take(TOKEN_REFRESH_SUCCESS);
+      yield call(fetchHistory);
+    }
     yield put(getHistoryError(error));
   }
 }
