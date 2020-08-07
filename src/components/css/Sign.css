@@ -72,7 +72,7 @@
 #login .button-area button i,
 #logout .button-area button i {
   margin: 0 8px 0 0;
-  font-size: 18px;
+  font-size: 14px;
 }
 /*
   ボタン内の文字が中心にならないためコメント化
@@ -88,4 +88,9 @@
 
 #logout .button-area {
   margin: 70px calc((100% - 280px) / 2);
+}
+
+#login .center-main-body {
+  height: 180px;
+  min-height: 180px !important;
 }

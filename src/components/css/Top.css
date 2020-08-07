@@ -31,3 +31,30 @@
     right: 16px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  #top .side-menu {
+    display: block;
+  }
+
+  #top .side-menu {
+    width: 240px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #top .main-body {
+    width: 90%;
+    margin: 120px 5% 40px;
+  }
+
+  #top .side-menu {
+    display: block;
+    width: 90%;
+    margin: 0 5% 80px;
+  }
+
+  #top #body {
+    display: block;
+  }
+}
