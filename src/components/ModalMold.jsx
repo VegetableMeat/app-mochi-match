@@ -27,7 +27,7 @@ const ModalMold = ({ state, actions, history }) => {
     history.push("/");
     actions.showModalFalse();
   };
-
+  console.log("modalState", modalState);
   switch (modalState.category) {
     case "LOADING":
       return <Loading />;

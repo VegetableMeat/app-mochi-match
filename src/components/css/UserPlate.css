@@ -1,7 +1,7 @@
 .user-plate {
   display: flex;
   min-width: 80px;
-  max-width: 200px;
+  /* max-width: 200px; */
   padding: 2px 4px;
   margin: 8px 0;
   background-color: white;

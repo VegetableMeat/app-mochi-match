@@ -64,6 +64,7 @@ const History = ({ state, actions, history }) => {
             <HeadeLine1>ゲーム</HeadeLine1>
             <InnerText>{data.game_title}</InnerText>
           </div>
+          {console.log("data", historyState)}
           <BreakUnderLine />
           <div className="multi-line">
             <HeadeLine1>メンバー</HeadeLine1>
@@ -95,7 +96,6 @@ const History = ({ state, actions, history }) => {
   /*const onPlateClick = (data) => {
     actions.showModalTrue("", "", data);
 	};*/
-
   return (
     <div id="history">
       <Header roomListState={roomListState} history={history} />
