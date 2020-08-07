@@ -30,10 +30,8 @@ const Login = ({ state, actions, history }) => {
         <CenterMainBody>
           <BodyHeader>ログイン</BodyHeader>
           <div className="button-area">
-            <button className="facebook">Facebookアカウントでログイン</button>
-            <button className="twitter">Twitterアカウントでログイン</button>
             <button onClick={() => actions.loginReq()} className="google">
-              Googleアカウントでログイン
+              <i class="fab fa-google"></i>Googleアカウントでログイン
             </button>
           </div>
         </CenterMainBody>

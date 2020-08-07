@@ -117,3 +117,17 @@
   margin-bottom: 60px;
   overflow: scroll;
 }
+
+.modal .user-name {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 600px) {
+  #history .modal {
+    height: auto;
+  }
+}
+
+#history .modal-body {
+  margin-bottom: 20px;
+}
