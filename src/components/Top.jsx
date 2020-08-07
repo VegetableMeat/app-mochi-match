@@ -65,7 +65,7 @@ const Top = ({ state, actions, history }) => {
             <MenuInnerWrapper>
               <Select
                 menuPortalTarget={document.body}
-                placeholder="ゲームタイトルを入力"
+                placeholder="タイトルを入力"
                 options={
                   searchState.get.title.length &&
                   searchState.get.title.map((data) => ({

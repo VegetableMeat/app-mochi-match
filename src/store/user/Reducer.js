@@ -26,6 +26,13 @@ const userState = (state = initialState, action) => {
         ...state,
       };
     case GET_ME_SUCCESS:
+      let favorite_game = [];
+      if (action.payload.data.favorite_games !== null) {
+        favorite_game = action.payload.data.favorite_games.sort((a, b) => {
+          return dataSort(a, b);
+        });
+      }
+
       return {
         ...state,
         user: {
@@ -33,9 +40,7 @@ const userState = (state = initialState, action) => {
           user_id: action.payload.data.id,
           user_name: action.payload.data.user_name,
           icon: action.payload.data.icon,
-          favorite_games: action.payload.data.favorite_games.sort((a, b) => {
-            return dataSort(a, b);
-          }),
+          favorite_games: favorite_game,
         },
       };
     case GET_ME_ERROR:
