@@ -375,18 +375,18 @@ const ModalMold = ({ state, actions, history }) => {
       return (
         <div className="modal-body">
           <div className="user-head">
-            <UserIcon icon={user.icon} />
+            <UserIcon value={user.icon} />
             <UserName name={user.user_name} />
           </div>
           <div className="modal-text .modal-header-s">お気に入りゲーム</div>
           <div className="favorite-games-area">{favorite_games_print}</div>
           <div className="footer-button-area">
-            <button
+            {/* <button
               className="report-button color-yellow"
               onClick={() => actions.showModalFront("REPORT", "check", [])}
             >
               違反報告
-            </button>
+            </button> */}
           </div>
         </div>
       );
