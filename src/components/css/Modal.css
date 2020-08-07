@@ -15,9 +15,9 @@
   position: relative;
   z-index: 20;
   position: absolute;
-  height: 250px;
+  height: auto;
   width: 420px;
-  top: calc((100vh - 250px) / 2);
+  top: calc((100vh - 400px) / 2);
   left: calc((100vw - 420px) / 2);
   background-color: #fff;
   border-radius: 5;
@@ -110,4 +110,10 @@
 
 .modal-body ul {
   padding-left: 17px;
+}
+
+.modal-body {
+  height: 200px;
+  margin-bottom: 60px;
+  overflow: scroll;
 }

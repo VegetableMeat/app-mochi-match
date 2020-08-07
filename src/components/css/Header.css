@@ -1,7 +1,7 @@
 #header {
   height: 48px;
   width: 100vw;
-  background-color: #A8A8A8;
+  background-color: #a8a8a8;
   padding: 8px 20px;
   box-shadow: gray 0 0 10px;
   position: relative;
@@ -9,12 +9,14 @@
 
 #header .title {
   color: white;
-  font-size: 22px;
+  font-size: 28px;
   width: 260px;
   text-align: center;
-  height: 28px;
+  height: auto;
   margin: auto;
-  font-family: 'Noto Serif JP', serif;
+  transform: translate(0, -6px);
+  font-family: "Nico Moji";
+  cursor: pointer;
 }
 
 #header .title a {
@@ -27,7 +29,8 @@
 
 @media screen and (max-width: 480px) {
   #header .title {
-      font-size: 18px;
+    font-size: 22px;
+    transform: translate(0, 0);
   }
 }
 
@@ -41,7 +44,8 @@
   transition: 0.2s color;
 }
 
-#header .header-menu-icon:hover, #header .header-menu-icon:active {
+#header .header-menu-icon:hover,
+#header .header-menu-icon:active {
   color: black;
 }
 
@@ -68,15 +72,16 @@
 #header .header-menu li {
   cursor: pointer;
   padding: 4px;
-  margin: 6px 0;
+  margin: 10px 0;
   font-size: 14px;
   color: #7d7d7d;
-  border-bottom: solid 1px #A8A8A8;
+  border-bottom: solid 1px #a8a8a8;
   font-weight: bold;
   transition: 0.2s color;
 }
 
-.header-menu li:hover, .header-menu li:active {
+.header-menu li:hover,
+.header-menu li:active {
   color: #4dcee6 !important;
   border-bottom: solid 1px black;
 }

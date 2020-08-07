@@ -3,13 +3,14 @@
   position: absolute;
   top: 6px;
   left: 0;
-  height: 20px;
+  height: auto;
   padding: 2px 12px 2px 28px;
   margin-left: 4px;
   background-color: #4dcee6;
-  border-radius: 28px;
+  border-radius: 12px;
   filter: drop-shadow(2px 2px 1px gray);
   user-select: none;
+  appearance: textarea;
 }
 
 .game-name-plate .game-title {
