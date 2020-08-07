@@ -379,8 +379,7 @@ const ModalMold = ({ state, actions, history }) => {
             <UserName name={user.user_name} />
           </div>
           <div className="modal-text .modal-header-s">お気に入りゲーム</div>
-          {favorite_games_print}
-          <div className="favorite-games-area"></div>
+          <div className="favorite-games-area">{favorite_games_print}</div>
           <div className="footer-button-area">
             <button
               className="report-button color-yellow"
