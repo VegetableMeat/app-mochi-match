@@ -4,6 +4,12 @@
 .favorite-games-area {
   position: relative;
   margin: 8px 0 24px;
+  height: 90px;
+  overflow: scroll;
+}
+
+#top .favorite-games-area {
+  height: 180px;
 }
 
 .favorite-games-area .game-name-plate {

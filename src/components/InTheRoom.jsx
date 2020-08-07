@@ -32,29 +32,33 @@ const InTheRoom = ({ state, history, actions }) => {
       <Header room="inTheRoom" history={history} />
       <Body>
         <SideMenu>
-          <MenuHeader text="メンバー" />
-          <MenuInnerWrappr>
-            {/* TODO: 爆発は回避したが、designがおかしい */}
-            {join_users.map((data) => (
-              <UserPlate
-                key={data.user_id}
-                icon={data.icon}
-                name={data.user_name}
-                id={data.user_id}
-                onPlateClick={actions.getUserRequest}
-              />
-            ))}
-          </MenuInnerWrappr>
-          <MenuHeader text="ルーム情報" />
-          <MenuInnerWrappr>
-            <GamePlate hard={room.hard} title={room.title} />
-            <BreakUnderLine />
-            <Capacity capacity={room.capacity} count={room.count} />
-            <BreakUnderLine />
-            <HeadLine2>募集テキスト</HeadLine2>
-            <RecrutimentText text={room.text}></RecrutimentText>
-            <BreakUnderLine />
-          </MenuInnerWrappr>
+          <div className="menu-wrapper menu-wrapper-1">
+            <MenuHeader text="メンバー" />
+            <MenuInnerWrappr>
+              {/* TODO: 爆発は回避したが、designがおかしい */}
+              {join_users.map((data) => (
+                <UserPlate
+                  key={data.user_id}
+                  icon={data.icon}
+                  name={data.user_name}
+                  id={data.user_id}
+                  onPlateClick={actions.getUserRequest}
+                />
+              ))}
+            </MenuInnerWrappr>
+          </div>
+          <div className="menu-wrapper menu-wrapper-2">
+            <MenuHeader text="ルーム情報" />
+            <MenuInnerWrappr>
+              <GamePlate hard={room.hard} title={room.title} />
+              <BreakUnderLine />
+              <Capacity capacity={room.capacity} count={room.count} />
+              <BreakUnderLine />
+              <HeadLine2>募集テキスト</HeadLine2>
+              <RecrutimentText text={room.text}></RecrutimentText>
+              <BreakUnderLine />
+            </MenuInnerWrappr>
+          </div>
         </SideMenu>
         <MainBody>
           <ChatArea />

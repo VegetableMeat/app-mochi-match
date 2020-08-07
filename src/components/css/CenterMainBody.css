@@ -2,6 +2,7 @@
   position: relative;
   width: 600px;
   min-height: 400px;
+  height: auto;
   border-radius: 20px;
   background-color: white;
   margin: 0 calc((100% - 600px) / 2);

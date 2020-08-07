@@ -16,6 +16,7 @@
   margin: auto;
   transform: translate(0, -6px);
   font-family: "Nico Moji";
+  cursor: pointer;
 }
 
 #header .title a {
@@ -71,7 +72,7 @@
 #header .header-menu li {
   cursor: pointer;
   padding: 4px;
-  margin: 6px 0;
+  margin: 10px 0;
   font-size: 14px;
   color: #7d7d7d;
   border-bottom: solid 1px #a8a8a8;

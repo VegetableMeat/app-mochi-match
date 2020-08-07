@@ -1,5 +1,5 @@
 #footer {
-  background-color: #A8A8A8;
+  background-color: #a8a8a8;
   width: 100vw;
   height: 90px;
 }
@@ -12,10 +12,11 @@
 .footer-top i {
   font-size: 46px;
   color: white;
+  cursor: pointer;
 }
 
 .footer-bottom {
-  background-color: #7B7B7B;
+  background-color: #7b7b7b;
   width: 100vw;
   height: 30px;
 }
