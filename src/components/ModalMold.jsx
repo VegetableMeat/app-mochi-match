@@ -36,6 +36,7 @@ const ModalMold = ({ state, actions, history }) => {
       if (17 < gameName.length) {
         gameName = gameName.slice(0, 16) + "...";
       }
+
       return (
         <div className="modal-body">
           <div className="modal-text modal-header">
@@ -47,7 +48,14 @@ const ModalMold = ({ state, actions, history }) => {
           <div className="footer-button-area">
             <button
               className="join-button color-blue"
-              onClick={() => actions.joinRoomRequest(room, history)}
+              onClick={
+                localStorage.getItem("access_token")
+                  ? () => actions.joinRoomRequest(room, history)
+                  : () => {
+                      history.push("/login");
+                      actions.showModalFalse();
+                    }
+              }
             >
               参加する
             </button>
