@@ -11,8 +11,8 @@ import "./css/RoomCard.css";
 
 const RoomCard = ({ room, onCardClick }) => {
   let gameName = room.title;
-  if (15 < gameName.length) {
-    gameName = gameName.slice(0, 14) + "...";
+  if (12 < gameName.length) {
+    gameName = gameName.slice(0, 11) + "...";
   }
   return (
     <div className="room-card" onClick={() => onCardClick(room)}>

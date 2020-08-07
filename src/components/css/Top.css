@@ -7,6 +7,12 @@
   padding-right: 40px;
 }
 
+#top .button-area {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 600px) {
   #top .shadow-input-area input {
     padding-right: 20px;
@@ -17,7 +23,8 @@
     font-size: 10px;
   }
 
-  #top .menu-inner-wrapper .serch-button {
+  #top .menu-inner-wrapper .serch-button,
+  #top .menu-inner-wrapper .remove-button {
     font-size: 10px;
     font-weight: 100;
     top: 23px;

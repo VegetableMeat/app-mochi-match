@@ -65,7 +65,7 @@ const Top = ({ state, actions, history }) => {
             <MenuInnerWrapper>
               <Select
                 menuPortalTarget={document.body}
-                placeholder="タイトルを入力"
+                placeholder="タイトル"
                 options={
                   searchState.get.title.length &&
                   searchState.get.title.map((data) => ({
@@ -88,7 +88,7 @@ const Top = ({ state, actions, history }) => {
               />
               <Select
                 menuPortalTarget={document.body}
-                placeholder="ハードを入力"
+                placeholder="ハード"
                 options={
                   searchState.get.hard.length &&
                   searchState.get.hard.map((data) => ({
@@ -109,15 +109,17 @@ const Top = ({ state, actions, history }) => {
                     : null
                 }
               />
-              <SerchButton action={actions.getRoomReq} room={roomListState} />
-              <RemoveButton
-                actions={{
-                  getRoomReq: actions.getRoomReq,
-                  removeSearchTitle: actions.removeSearchTitle,
-                  removeSearchHard: actions.removeSearchHard,
-                }}
-                room={roomListState}
-              />
+              <div className="button-area">
+                <SerchButton action={actions.getRoomReq} room={roomListState} />
+                <RemoveButton
+                  actions={{
+                    getRoomReq: actions.getRoomReq,
+                    removeSearchTitle: actions.removeSearchTitle,
+                    removeSearchHard: actions.removeSearchHard,
+                  }}
+                  room={roomListState}
+                />
+              </div>
             </MenuInnerWrapper>
           </div>
           <div className="menu-wrapper menu-wrapper-2">

@@ -4,6 +4,7 @@ import GameNamePlate from "./GameNamePlate";
 import UserIcon from "./UserIcon";
 import UserName from "./UserName";
 import Loading from "./Loading";
+import GamePlate from "./GamePlate";
 
 const ModalMold = ({ state, actions, history }) => {
   const { modalState } = state;
@@ -31,10 +32,17 @@ const ModalMold = ({ state, actions, history }) => {
     case "LOADING":
       return <Loading />;
     case "TOP_ROOM_IN":
+      let gameName = room.title;
+      if (17 < gameName.length) {
+        gameName = gameName.slice(0, 16) + "...";
+      }
       return (
         <div className="modal-body">
           <div className="modal-text modal-header">
             {room.name}のルームに参加しますか？
+            <div className="nodal-game-plate">
+              <GamePlate hard={room.hard} title={gameName} />
+            </div>
           </div>
           <div className="footer-button-area">
             <button
