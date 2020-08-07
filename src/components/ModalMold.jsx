@@ -375,7 +375,7 @@ const ModalMold = ({ state, actions, history }) => {
       return (
         <div className="modal-body">
           <div className="user-head">
-            <UserIcon icon={user.icon} />
+            <UserIcon value={user.icon} />
             <UserName name={user.user_name} />
           </div>
           <div className="modal-text .modal-header-s">お気に入りゲーム</div>
